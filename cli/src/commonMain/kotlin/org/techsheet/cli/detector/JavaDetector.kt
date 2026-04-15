@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.ProgrammingLanguageType
 
-class JavaDetector : AbstractJvmLanguageDetector(
+class JavaDetector : AbstractSourceFileLanguageDetector(
   name = "Java",
   type = ProgrammingLanguageType.JAVA,
   sourceExtension = JAVA_EXT,

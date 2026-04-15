@@ -2,8 +2,8 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.BuildTool
-import org.techsheet.cli.domain.BuildToolType
+import org.techsheet.cli.domain.Tool
+import org.techsheet.cli.domain.ToolType
 import org.techsheet.cli.domain.TechSheet
 
 class MavenDetector : Detector("Maven") {
@@ -16,14 +16,14 @@ class MavenDetector : Detector("Maven") {
     ctx.log.d("Checking maven markers: ${markers.joinToString(", ")}")
 
     val tool = detectType(markers)?.let { type ->
-      BuildTool(type = type, version = detectVersion(ctx, markers))
+      Tool(type = type, version = detectVersion(ctx, markers))
     }
-    return tool?.let(sheet::withBuildTool) ?: sheet
+    return tool?.let(sheet::withTool) ?: sheet
   }
 
-  private fun detectType(markers: Set<Path>): BuildToolType? {
+  private fun detectType(markers: Set<Path>): ToolType? {
     val names = markers.mapTo(HashSet()) { it.name }
-    return if (names.any { it in ALL_MARKERS }) BuildToolType.MAVEN else null
+    return if (names.any { it in ALL_MARKERS }) ToolType.MAVEN else null
   }
 
   private fun detectVersion(ctx: AnalyzerContext, markers: Set<Path>): String? = markers

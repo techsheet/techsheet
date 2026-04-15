@@ -3,7 +3,7 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
-import co.touchlab.kermit.platformLogWriter
+import co.touchlab.kermit.CommonWriter
 import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
@@ -36,7 +36,7 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     }
 
     val log = Logger(
-      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(platformLogWriter())),
+      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(CommonWriter())),
       tag = "analyze",
     )
 

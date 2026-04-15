@@ -5,7 +5,7 @@ TechSheet.org
 Building the CLI
 ----------------
 
-The CLI is a Kotlin Multiplatform module with JVM and native (Linux x64, Windows x64) targets.
+The CLI is a Kotlin Multiplatform module with JVM and native (Linux x64, Windows x64, macOS arm64) targets.
 
 Build all targets at once:
 
@@ -20,6 +20,7 @@ Per-target builds:
 | JVM         | `./gradlew :cli:jvmJar`                         | `cli/build/libs/techsheet-cli-jvm-<version>.jar`               |
 | Linux x64   | `./gradlew :cli:linkReleaseExecutableLinuxX64`  | `cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe`  |
 | Windows x64 | `./gradlew :cli:linkReleaseExecutableMingwX64`  | `cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe`   |
+| macOS arm64 | `./gradlew :cli:linkReleaseExecutableMacosArm64`| `cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe`|
 
 Use `linkDebugExecutable*` in place of `linkReleaseExecutable*` for debug builds.
 

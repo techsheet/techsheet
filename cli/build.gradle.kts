@@ -31,6 +31,15 @@ kotlin {
     }
   }
 
+  macosArm64 {
+    binaries {
+      executable {
+        baseName = "techsheet-cli"
+        entryPoint = "org.techsheet.cli.main"
+      }
+    }
+  }
+
   sourceSets {
     commonMain.dependencies {
       implementation(libs.clikt)

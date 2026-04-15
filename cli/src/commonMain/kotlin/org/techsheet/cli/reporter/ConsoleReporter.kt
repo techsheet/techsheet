@@ -1,9 +1,10 @@
 package org.techsheet.cli.reporter
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.BuildTool
 import org.techsheet.cli.domain.ProgrammingLanguage
 import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.Technology
+import org.techsheet.cli.domain.Tool
 
 class ConsoleReporter : Reporter {
 
@@ -11,9 +12,10 @@ class ConsoleReporter : Reporter {
     val lines = buildList {
       add("TechSheet for ${ctx.path}")
       add(SEPARATOR)
-      section("Build tools", sheet.buildTools, ::formatBuildTool)
       section("Programming languages", sheet.programmingLanguage, ::formatLanguage)
-      if (sheet.buildTools.isEmpty() && sheet.programmingLanguage.isEmpty()) {
+      section("Tools", sheet.tools, ::formatTool)
+      section("Frameworks & Libraries", sheet.technologies, ::formatTechnology)
+      if (sheet.tools.isEmpty() && sheet.technologies.isEmpty() && sheet.programmingLanguage.isEmpty()) {
         add("Nothing detected.")
       }
     }
@@ -26,8 +28,11 @@ class ConsoleReporter : Reporter {
     items.map(format).forEach { add("  - $it") }
   }
 
-  private fun formatBuildTool(tool: BuildTool): String =
+  private fun formatTool(tool: Tool): String =
     "${tool.type.title}${tool.version?.let { " ($it)" }.orEmpty()}"
+
+  private fun formatTechnology(tech: Technology): String =
+    "${tech.type.title}${tech.version?.let { " ($it)" }.orEmpty()}"
 
   private fun formatLanguage(language: ProgrammingLanguage): String =
     "${language.type.title}${language.version?.let { " ($it)" }.orEmpty()}"

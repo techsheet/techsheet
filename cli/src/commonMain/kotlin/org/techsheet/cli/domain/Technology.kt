@@ -1,0 +1,22 @@
+package org.techsheet.cli.domain
+
+data class Technology(
+  val type: TechnologyType,
+  val version: String?,
+)
+
+enum class TechnologyType(val title: String, val category: TechnologyCategory) {
+
+  // Frameworks
+  ANGULAR("Angular", TechnologyCategory.FRAMEWORK),
+  SPRING_BOOT("Spring Boot", TechnologyCategory.FRAMEWORK),
+  SPRING_MVC("Spring MVC", TechnologyCategory.FRAMEWORK),
+  SPRING_WEBFLUX("Spring WebFlux", TechnologyCategory.FRAMEWORK),
+  SPRING_SECURITY("Spring Security", TechnologyCategory.FRAMEWORK),
+  SPRING_DATA("Spring Data", TechnologyCategory.FRAMEWORK),
+}
+
+enum class TechnologyCategory(val title: String) {
+  FRAMEWORK("Framework"),
+  LIBRARY("Library"),
+}

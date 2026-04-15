@@ -6,7 +6,8 @@ import co.touchlab.kermit.StaticConfig
 import okio.Path.Companion.toOkioPath
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.techsheet.cli.domain.BuildToolType
+import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.ToolType
 import org.techsheet.cli.domain.ProgrammingLanguageType
 import org.techsheet.cli.domain.TechSheet
 import java.nio.file.Paths
@@ -18,13 +19,35 @@ class AnalyzerIntegrationTest {
   private val cases = listOf(
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
-        .withBuildTool(BuildToolType.GRADLE_KOTLIN, version = "9.4.1")
+        .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+        .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
+        .withTechnology(TechnologyType.SPRING_MVC)
         .withProgrammingLanguage(ProgrammingLanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {
       TechSheet()
-        .withBuildTool(BuildToolType.MAVEN, version = "3.9.14")
+        .withTool(ToolType.MAVEN, version = "3.9.14")
+        .withTechnology(TechnologyType.SPRING_BOOT, version = "3.5.13")
+        .withTechnology(TechnologyType.SPRING_SECURITY)
+        .withTechnology(TechnologyType.SPRING_DATA)
         .withProgrammingLanguage(ProgrammingLanguageType.JAVA, version = "17")
+    },
+    testCase("angular") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.TYPESCRIPT, version = "5.9.2")
+        .withTool(ToolType.EDITORCONFIG)
+        .withTool(ToolType.NPM)
+        .withTechnology(TechnologyType.ANGULAR, version = "20.3.0")
+        .withTool(ToolType.VS_CODE)
+    },
+    testCase("ci-tools") {
+      TechSheet()
+        .withTool(ToolType.GITLAB_CI)
+        .withTool(ToolType.CODEOWNERS)
+        .withTool(ToolType.DOCKER)
+        .withTool(ToolType.DOCKER_COMPOSE)
+        .withTool(ToolType.EDITORCONFIG)
+        .withTool(ToolType.RENOVATE)
     },
   )
 

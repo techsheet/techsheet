@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.ProgrammingLanguageType
 
-class ScalaDetector : AbstractJvmLanguageDetector(
+class ScalaDetector : AbstractSourceFileLanguageDetector(
   name = "Scala",
   type = ProgrammingLanguageType.Scala,
   sourceExtension = SCALA_EXT,

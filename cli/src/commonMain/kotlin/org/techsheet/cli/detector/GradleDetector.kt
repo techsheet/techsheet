@@ -2,8 +2,8 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.BuildTool
-import org.techsheet.cli.domain.BuildToolType
+import org.techsheet.cli.domain.Tool
+import org.techsheet.cli.domain.ToolType
 import org.techsheet.cli.domain.TechSheet
 
 class GradleDetector : Detector("Gradle") {
@@ -16,17 +16,17 @@ class GradleDetector : Detector("Gradle") {
     ctx.log.d("Checking gradle markers: ${markers.joinToString(", ")}")
 
     val tool = detectType(markers)?.let { type ->
-      BuildTool(type = type, version = detectVersion(ctx, markers))
+      Tool(type = type, version = detectVersion(ctx, markers))
     }
-    return tool?.let(sheet::withBuildTool) ?: sheet
+    return tool?.let(sheet::withTool) ?: sheet
   }
 
-  private fun detectType(markers: Set<Path>): BuildToolType? {
+  private fun detectType(markers: Set<Path>): ToolType? {
     val names = markers.mapTo(HashSet()) { it.name }
     return when {
-      names.any { it in KOTLIN_DSL_FILES } -> BuildToolType.GRADLE_KOTLIN
-      names.any { it in GROOVY_DSL_FILES } -> BuildToolType.GRADLE_GROOVY
-      names.any { it in WRAPPER_FILES } -> BuildToolType.GRADLE
+      names.any { it in KOTLIN_DSL_FILES } -> ToolType.GRADLE_KOTLIN
+      names.any { it in GROOVY_DSL_FILES } -> ToolType.GRADLE_GROOVY
+      names.any { it in WRAPPER_FILES } -> ToolType.GRADLE
       else -> null
     }
   }

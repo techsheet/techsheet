@@ -14,6 +14,19 @@ class Analyzer(
     JavaDetector(),
     KotlinDetector(),
     ScalaDetector(),
+    JavaScriptDetector(),
+    TypeScriptDetector(),
+    GitLabCiDetector(),
+    CodeOwnersDetector(),
+    DockerDetector(),
+    DockerComposeDetector(),
+    EditorConfigDetector(),
+    RenovateDetector(),
+    NpmDetector(),
+    AngularDetector(),
+    SpringDetector(),
+    IntelliJIdeaDetector(),
+    VsCodeDetector(),
   )
 
   fun analyze(ctx: AnalyzerContext): TechSheet = detectors

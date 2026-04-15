@@ -20,6 +20,16 @@ data class AnalyzerContext(
 
   fun walk(maxDepth: Int): Sequence<Path> = fs
     .listRecursively(path)
-    .filter { (it.relativeTo(path).segments.size - 1) <= maxDepth }
+    .filter { candidate ->
+      val segments = candidate.relativeTo(path).segments
+      (segments.size - 1) <= maxDepth && segments.none(IGNORED_DIR_SEGMENTS::contains)
+    }
     .filter { fs.metadataOrNull(it)?.isRegularFile == true }
+
+  companion object {
+    // Noise directories that no detector should look into.
+    private val IGNORED_DIR_SEGMENTS = setOf(
+      "node_modules", ".git", ".gradle", ".idea", "build", "target", "dist", "out",
+    )
+  }
 }

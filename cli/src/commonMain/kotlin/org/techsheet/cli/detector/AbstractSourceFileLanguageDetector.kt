@@ -5,7 +5,7 @@ import org.techsheet.cli.domain.ProgrammingLanguage
 import org.techsheet.cli.domain.ProgrammingLanguageType
 import org.techsheet.cli.domain.TechSheet
 
-abstract class AbstractJvmLanguageDetector(
+abstract class AbstractSourceFileLanguageDetector(
   name: String,
   private val type: ProgrammingLanguageType,
   private val sourceExtension: String,

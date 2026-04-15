@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.ProgrammingLanguageType
 
-class KotlinDetector : AbstractJvmLanguageDetector(
+class KotlinDetector : AbstractSourceFileLanguageDetector(
   name = "Kotlin",
   type = ProgrammingLanguageType.KOTLIN,
   sourceExtension = KOTLIN_EXT,
