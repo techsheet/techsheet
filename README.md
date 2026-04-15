@@ -50,3 +50,68 @@ Adding a new fixture:
 2. Append a `testCase("<name>") { ... }` entry to `AnalyzerIntegrationTest.cases`
    describing the expected `TechSheet`.
 3. Run `./gradlew :cli:jvmTest`.
+
+Roadmap
+-------
+
+Coverage targets for detectors. Checked boxes are already shipping.
+
+### Programming languages
+
+- [ ] Python
+- [x] JavaScript
+- [x] TypeScript
+- [x] Java
+- [ ] C#
+- [ ] C++
+- [ ] Go
+- [ ] Rust
+- [x] Kotlin
+- [ ] PHP
+- [x] Scala
+
+### Frameworks & libraries
+
+- [ ] React
+- [ ] Vue.js
+- [x] Angular
+- [ ] Svelte
+- [ ] Next.js
+- [ ] Nuxt.js
+- [ ] Express
+- [ ] NestJS
+- [ ] Django
+- [ ] Flask
+- [ ] FastAPI
+- [ ] Ruby on Rails
+- [ ] Laravel
+- [x] Spring Boot
+- [x] Spring MVC
+- [x] Spring WebFlux
+- [x] Spring Security
+- [x] Spring Data
+- [x] Play Framework
+- [x] Playwright
+
+### Tools
+
+- [ ] Git
+- [x] Docker
+- [x] Docker Compose
+- [ ] Kubernetes
+- [x] Maven
+- [x] Gradle
+- [x] sbt
+- [x] npm
+- [x] Yarn
+- [ ] pnpm
+- [ ] Webpack
+- [ ] Prettier
+- [x] GitHub Actions
+- [x] GitLab CI
+- [ ] Jenkins
+- [x] Renovate
+- [x] CODEOWNERS
+- [x] EditorConfig
+- [x] IntelliJ IDEA
+- [x] Visual Studio Code

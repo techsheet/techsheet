@@ -17,6 +17,13 @@ import kotlin.test.assertNotNull
 class AnalyzerIntegrationTest {
 
   private val cases = listOf(
+    testCase("groovy-spring-boot-gradle") {
+      TechSheet()
+        .withTool(ToolType.GRADLE_GROOVY, version = "9.4.1")
+        .withTool(ToolType.INTELLIJ_IDEA)
+        .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
+        .withTechnology(TechnologyType.SPRING_WEBFLUX)
+    },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
         .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
