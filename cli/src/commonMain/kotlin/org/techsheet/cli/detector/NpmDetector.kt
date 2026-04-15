@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import org.techsheet.cli.domain.ToolType
 
 class NpmDetector : AbstractFilePresentDetector(
-  "npm",
+  "NPM",
   { it.withTool(ToolType.NPM) },
   "package.json",
   "package-lock.json",

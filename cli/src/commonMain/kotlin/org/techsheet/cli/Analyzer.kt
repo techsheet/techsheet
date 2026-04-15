@@ -8,30 +8,37 @@ class Analyzer(
   private val log: Logger
 ) {
 
-  private val detectors = listOf(
-    GradleDetector(),
-    MavenDetector(),
-    JavaDetector(),
-    KotlinDetector(),
-    ScalaDetector(),
-    JavaScriptDetector(),
-    TypeScriptDetector(),
-    GitLabCiDetector(),
-    CodeOwnersDetector(),
-    DockerDetector(),
-    DockerComposeDetector(),
-    EditorConfigDetector(),
-    RenovateDetector(),
-    NpmDetector(),
-    AngularDetector(),
-    SpringDetector(),
-    IntelliJIdeaDetector(),
-    VsCodeDetector(),
-  )
-
-  fun analyze(ctx: AnalyzerContext): TechSheet = detectors
+  fun analyze(ctx: AnalyzerContext): TechSheet = ALL_DETECTORS
     .fold(TechSheet.empty()) { acc, detector ->
       log.i { "Running ${detector.name} detector" }
       detector.detect(ctx, acc)
     }
+
+  companion object {
+    val ALL_DETECTORS: List<Detector> = listOf(
+      GradleDetector(),
+      MavenDetector(),
+      JavaDetector(),
+      KotlinDetector(),
+      ScalaDetector(),
+      JavaScriptDetector(),
+      TypeScriptDetector(),
+      GitLabCiDetector(),
+      GitHubActionsDetector(),
+      CodeOwnersDetector(),
+      DockerDetector(),
+      DockerComposeDetector(),
+      EditorConfigDetector(),
+      RenovateDetector(),
+      NpmDetector(),
+      YarnDetector(),
+      SbtDetector(),
+      AngularDetector(),
+      SpringDetector(),
+      PlayDetector(),
+      PlaywrightDetector(),
+      IntelliJIdeaDetector(),
+      VsCodeDetector(),
+    )
+  }
 }

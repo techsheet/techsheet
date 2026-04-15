@@ -5,5 +5,5 @@ import com.github.ajalt.clikt.core.subcommands
 
 fun main(args: Array<String>) =
   TechsheetCli()
-    .subcommands(AnalyzerCommand())
+    .subcommands(AnalyzerCommand(), DetectorsCommand())
     .main(args)

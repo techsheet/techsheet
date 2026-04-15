@@ -40,6 +40,21 @@ class AnalyzerIntegrationTest {
         .withTechnology(TechnologyType.ANGULAR, version = "20.3.0")
         .withTool(ToolType.VS_CODE)
     },
+    testCase("play-scala-seed") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.Scala, version = "2.13.18")
+        .withProgrammingLanguage(ProgrammingLanguageType.JAVASCRIPT)
+        .withTool(ToolType.SBT, version = "1.12.9")
+        .withTechnology(TechnologyType.PLAY_FRAMEWORK, version = "3.0.10")
+    },
+    testCase("playwright") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.TYPESCRIPT)
+        .withTool(ToolType.GITHUB_ACTIONS)
+        .withTool(ToolType.NPM)
+        .withTool(ToolType.YARN)
+        .withTechnology(TechnologyType.PLAYWRIGHT, version = "1.59.1")
+    },
     testCase("ci-tools") {
       TechSheet()
         .withTool(ToolType.GITLAB_CI)

@@ -14,9 +14,14 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
   SPRING_WEBFLUX("Spring WebFlux", TechnologyCategory.FRAMEWORK),
   SPRING_SECURITY("Spring Security", TechnologyCategory.FRAMEWORK),
   SPRING_DATA("Spring Data", TechnologyCategory.FRAMEWORK),
+  PLAY_FRAMEWORK("Play Framework", TechnologyCategory.FRAMEWORK),
+
+  // Testing
+  PLAYWRIGHT("Playwright", TechnologyCategory.TESTING),
 }
 
 enum class TechnologyCategory(val title: String) {
   FRAMEWORK("Framework"),
   LIBRARY("Library"),
+  TESTING("Testing"),
 }

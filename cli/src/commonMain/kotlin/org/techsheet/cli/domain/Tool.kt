@@ -13,9 +13,12 @@ enum class ToolType(val title: String, val category: ToolCategory) {
   GRADLE_GROOVY("Gradle - Groovy DSL", ToolCategory.BUILD),
   MAVEN("Maven", ToolCategory.BUILD),
   NPM("NPM", ToolCategory.BUILD),
+  YARN("Yarn", ToolCategory.BUILD),
+  SBT("sbt", ToolCategory.BUILD),
 
   // CI Tools
-  GITLAB_CI("Git Lab CI", ToolCategory.CI),
+  GITLAB_CI("GitLab CI", ToolCategory.CI),
+  GITHUB_ACTIONS("GitHub Actions", ToolCategory.CI),
   CODEOWNERS("CODEOWNERS", ToolCategory.CI),
 
   // Container
