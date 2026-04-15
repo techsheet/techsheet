@@ -12,4 +12,5 @@ enum class ProgrammingLanguageType(val title: String) {
   JAVASCRIPT("JavaScript"),
   TYPESCRIPT("TypeScript"),
   PHP("PHP"),
+  PYTHON("Python"),
 }

@@ -15,6 +15,9 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
   SPRING_SECURITY("Spring Security", TechnologyCategory.FRAMEWORK),
   SPRING_DATA("Spring Data", TechnologyCategory.FRAMEWORK),
   PLAY_FRAMEWORK("Play Framework", TechnologyCategory.FRAMEWORK),
+  DJANGO("Django", TechnologyCategory.FRAMEWORK),
+  FLASK("Flask", TechnologyCategory.FRAMEWORK),
+  FASTAPI("FastAPI", TechnologyCategory.FRAMEWORK),
 
   // Testing
   PLAYWRIGHT("Playwright", TechnologyCategory.TESTING),

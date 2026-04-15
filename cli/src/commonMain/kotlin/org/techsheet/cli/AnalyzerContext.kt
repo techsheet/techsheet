@@ -30,6 +30,7 @@ data class AnalyzerContext(
     // Noise directories that no detector should look into.
     private val IGNORED_DIR_SEGMENTS = setOf(
       "node_modules", ".git", ".gradle", ".idea", "build", "target", "dist", "out",
+      "venv", ".venv", "__pycache__",
     )
   }
 }

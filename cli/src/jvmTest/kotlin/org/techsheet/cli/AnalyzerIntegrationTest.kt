@@ -47,6 +47,21 @@ class AnalyzerIntegrationTest {
         .withTechnology(TechnologyType.ANGULAR, version = "20.3.0")
         .withTool(ToolType.VS_CODE)
     },
+    testCase("python_django") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON)
+        .withTechnology(TechnologyType.DJANGO)
+    },
+    testCase("python_flask") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON)
+        .withTechnology(TechnologyType.FLASK, version = "3.0.3")
+    },
+    testCase("python_fastapi") {
+      TechSheet()
+        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON, version = "3.12")
+        .withTechnology(TechnologyType.FASTAPI, version = "0.115.0")
+    },
     testCase("play-scala-seed") {
       TechSheet()
         .withProgrammingLanguage(ProgrammingLanguageType.Scala, version = "2.13.18")

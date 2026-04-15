@@ -59,3 +59,9 @@ kotlin {
 tasks.named<Test>("jvmTest") {
   useJUnitPlatform()
 }
+
+// Skip Python virtualenv / cache directories that may sneak into fixture projects —
+// they contain broken symlinks that Gradle can't process.
+tasks.named<Copy>("jvmTestProcessResources") {
+  exclude("**/*_env/**", "**/venv/**", "**/.venv/**", "**/__pycache__/**")
+}

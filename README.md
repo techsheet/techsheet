@@ -58,7 +58,7 @@ Coverage targets for detectors. Checked boxes are already shipping.
 
 ### Programming languages
 
-- [ ] Python
+- [x] Python
 - [x] JavaScript
 - [x] TypeScript
 - [x] Java
@@ -80,9 +80,9 @@ Coverage targets for detectors. Checked boxes are already shipping.
 - [ ] Nuxt.js
 - [ ] Express
 - [ ] NestJS
-- [ ] Django
-- [ ] Flask
-- [ ] FastAPI
+- [x] Django
+- [x] Flask
+- [x] FastAPI
 - [ ] Ruby on Rails
 - [ ] Laravel
 - [x] Spring Boot
