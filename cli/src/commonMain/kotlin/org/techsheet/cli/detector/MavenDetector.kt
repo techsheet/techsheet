@@ -1,7 +1,7 @@
 package org.techsheet.cli.detector
 
 import okio.Path
-import org.techsheet.cli.domain.AnalyzerContext
+import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.BuildTool
 import org.techsheet.cli.domain.BuildToolType
 import org.techsheet.cli.domain.TechSheet

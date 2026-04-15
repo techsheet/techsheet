@@ -12,17 +12,10 @@ import com.github.ajalt.clikt.parameters.options.option
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
-import org.techsheet.cli.detector.GradleDetector
-import org.techsheet.cli.detector.JavaDetector
-import org.techsheet.cli.detector.KotlinDetector
-import org.techsheet.cli.detector.MavenDetector
-import org.techsheet.cli.detector.ScalaDetector
-import org.techsheet.cli.domain.AnalyzerContext
-import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.reporter.ConsoleReporter
 import org.techsheet.cli.reporter.Reporter
 
-class AnalyzeCommand : CoreCliktCommand(name = "analyze") {
+class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
     .flag()
 
@@ -34,15 +27,6 @@ class AnalyzeCommand : CoreCliktCommand(name = "analyze") {
     help = "Project directory to analyze (defaults to current directory)",
   ).default("./")
 
-  private val detectors = listOf(
-    GradleDetector(),
-    MavenDetector(),
-    JavaDetector(),
-    KotlinDetector(),
-    ScalaDetector(),
-  )
-
-  private val reporter: Reporter = ConsoleReporter()
 
   override fun run() {
     val minSeverity = when {
@@ -63,11 +47,10 @@ class AnalyzeCommand : CoreCliktCommand(name = "analyze") {
 
     log.i { "Starting analysis of project ${ctx.path}" }
 
-    val sheet = detectors
-      .fold(TechSheet.empty()) { acc, detector ->
-        log.i { "Running ${detector.name} detector" }
-        detector.detect(ctx, acc)
-      }
+    val sheet = Analyzer(log).analyze(ctx)
+    val reporter: Reporter = ConsoleReporter()
+
+    log.i { "Analysis done, generating report" }
 
     reporter.report(ctx, sheet)
   }

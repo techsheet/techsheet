@@ -1,6 +1,6 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.AnalyzerContext
+import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.ProgrammingLanguageType
 
 class ScalaDetector : AbstractJvmLanguageDetector(

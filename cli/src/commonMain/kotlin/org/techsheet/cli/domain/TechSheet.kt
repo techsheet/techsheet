@@ -8,8 +8,14 @@ data class TechSheet(
   fun withBuildTool(buildTool: BuildTool): TechSheet =
     copy(buildTools = buildTools + buildTool)
 
+  fun withBuildTool(type: BuildToolType, version: String? = null): TechSheet =
+    withBuildTool(BuildTool(type = type, version = version))
+
   fun withProgrammingLanguage(language: ProgrammingLanguage): TechSheet =
     copy(programmingLanguage = programmingLanguage + language)
+
+  fun withProgrammingLanguage(type: ProgrammingLanguageType, version: String? = null): TechSheet =
+    withProgrammingLanguage(ProgrammingLanguage(type = type, version = version))
 
   companion object {
     fun empty() = TechSheet()

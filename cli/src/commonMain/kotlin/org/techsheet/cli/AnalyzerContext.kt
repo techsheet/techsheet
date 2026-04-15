@@ -1,4 +1,4 @@
-package org.techsheet.cli.domain
+package org.techsheet.cli
 
 import co.touchlab.kermit.Logger
 import okio.FileSystem
@@ -6,9 +6,9 @@ import okio.Path
 import okio.SYSTEM
 
 data class AnalyzerContext(
-  val path: Path,
-  val log: Logger,
-  val fs: FileSystem = FileSystem.SYSTEM,
+    val path: Path,
+    val log: Logger,
+    val fs: FileSystem = FileSystem.SYSTEM,
 ) {
 
   fun hasFile(relative: String): Boolean = fs.exists(path / relative)
