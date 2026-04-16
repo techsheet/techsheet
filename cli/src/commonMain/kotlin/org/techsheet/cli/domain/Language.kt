@@ -13,4 +13,5 @@ enum class LanguageType(val title: String) {
   TYPESCRIPT("TypeScript"),
   PHP("PHP"),
   PYTHON("Python"),
+  CPP("C++"),
 }

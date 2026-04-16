@@ -13,7 +13,7 @@ and test-projects, see [AnalyzerIntegrationTest](cli/src/jvmTest/kotlin/org/tech
 | Language   | Detector                                                            | Test Project(s)                                   |
 |------------|---------------------------------------------------------------------|---------------------------------------------------|
 | C#         | _planned_                                                           | —                                                 |
-| C++        | _planned_                                                           | —                                                 |
+| C++        | [CppDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/CppDetector.kt) | `qt-cmake-app`                                    |
 | Go         | _planned_                                                           | —                                                 |
 | Java       | [JavaDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JavaDetector.kt)             | `java-spring-boot-maven`                          |
 | JavaScript | [JavaScriptDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JavaScriptDetector.kt) | `play-scala-seed`<br>`node-express`               |
@@ -38,6 +38,7 @@ and test-projects, see [AnalyzerIntegrationTest](cli/src/jvmTest/kotlin/org/tech
 | Next.js         | Framework | [NextDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/NextDetector.kt)             | `next-js`                                                                          |
 | Nuxt.js         | Framework | _planned_                                                           | —                                                                                  |
 | Play Framework  | Framework | [PlayDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/PlayDetector.kt)             | `play-scala-seed`                                                                  |
+| Qt              | Framework | [QtDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/QtDetector.kt)                 | `qt-cmake-app`                                                                     |
 | React           | Framework | [ReactDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/ReactDetector.kt)           | `next-js`                                                                          |
 | Ruby on Rails   | Framework | _planned_                                                           | —                                                                                  |
 | Spring Boot     | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `groovy-spring-boot-gradle`<br>`kotlin-spring-boot-gradle`<br>`java-spring-boot-maven` |
