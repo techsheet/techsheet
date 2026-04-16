@@ -1,0 +1,44 @@
+name: New detector request
+description: Propose a new language, tool, or technology for TechSheet to detect.
+title: "[detector] "
+labels: ["detector-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please check the tables in the [README](../../blob/master/README.md#detectors)
+        — your detector might already be planned or shipped.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      description: What category does this fit into?
+      options:
+        - Language
+        - Technology (framework, library, testing)
+        - Tool (build, CI, container, dev tooling, IDE)
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: Name of the language, tool, or technology.
+      placeholder: e.g. Svelte, pnpm, Ruby
+    validations:
+      required: true
+
+  - type: textarea
+    id: detection
+    attributes:
+      label: How should it be detected? (optional)
+      description: |
+        Anything that helps identify this on disk — config files, manifest entries,
+        file extensions, directory layout, dependency names, version sources.
+      placeholder: |
+        e.g. `svelte.config.js` at project root, or a `"svelte"` entry in package.json.
+    validations:
+      required: false
