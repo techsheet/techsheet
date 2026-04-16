@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Assemble all targets
+        run: ./gradlew :cli:assemble --no-daemon
+      - name: Stage release assets
+        run: |
+          install -D cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
+          install -D cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
+          install -D cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
+          install -D cli/build/libs/techsheet-cli-jvm-*.jar                        dist/cli/jvm/techsheet.jar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-assets
+          path: dist/
+          if-no-files-found: error
+
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-assets
+          path: dist
+      - run: chmod +x dist/cli/linux-x64/techsheet
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@v5
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest
+      - uses: docker/build-push-action@v5
+        with:
+          context: dist/cli/linux-x64
+          file: cli/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  release:
+    needs: [build, docker]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-assets
+          path: dist
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --generate-notes \
+            'dist/cli/linux-x64/techsheet#techsheet-linux-x64' \
+            'dist/cli/windows-x64/techsheet.exe#techsheet-windows-x64.exe' \
+            'dist/cli/macos-arm64/techsheet#techsheet-macos-arm64' \
+            'dist/cli/jvm/techsheet.jar#techsheet.jar'
