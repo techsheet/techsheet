@@ -100,6 +100,11 @@ class AnalyzerIntegrationTest {
         .withLanguage(LanguageType.CPP)
         .withTechnology(TechnologyType.QT, version = "6")
     },
+    testCase("asp-net-core-app") {
+      TechSheet()
+        .withLanguage(LanguageType.CSHARP)
+        .withTechnology(TechnologyType.ASP_NET_CORE, version = "9.0")
+    },
     testCase("ci-tools") {
       TechSheet()
         .withTool(ToolType.GITLAB_CI)
