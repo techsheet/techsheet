@@ -9,6 +9,11 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
 
   // Frameworks
   ANGULAR("Angular", TechnologyCategory.FRAMEWORK),
+  REACT("React", TechnologyCategory.FRAMEWORK),
+  VUE("Vue.js", TechnologyCategory.FRAMEWORK),
+  SVELTE("Svelte", TechnologyCategory.FRAMEWORK),
+  NEXT("Next.js", TechnologyCategory.FRAMEWORK),
+  EXPRESS("Express", TechnologyCategory.FRAMEWORK),
   SPRING_BOOT("Spring Boot", TechnologyCategory.FRAMEWORK),
   SPRING_MVC("Spring MVC", TechnologyCategory.FRAMEWORK),
   SPRING_WEBFLUX("Spring WebFlux", TechnologyCategory.FRAMEWORK),
@@ -22,6 +27,9 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
   // Testing
   PLAYWRIGHT("Playwright", TechnologyCategory.TESTING),
   JUNIT("JUnit", TechnologyCategory.TESTING),
+
+  // Libraries
+  TAILWIND("Tailwind CSS", TechnologyCategory.LIBRARY),
 }
 
 enum class TechnologyCategory(val title: String) {
