@@ -1,16 +1,16 @@
 package org.techsheet.cli.domain
 
 data class TechSheet(
-  val tools: List<Tool> = emptyList(),
+  val languages: List<Language> = emptyList(),
   val technologies: List<Technology> = emptyList(),
-  val programmingLanguage: List<ProgrammingLanguage> = emptyList(),
+  val tools: List<Tool> = emptyList(),
 ) {
 
-  fun withTool(tool: Tool): TechSheet =
-    copy(tools = tools + tool)
+  fun withLanguage(language: Language): TechSheet =
+    copy(languages = languages + language)
 
-  fun withTool(type: ToolType, version: String? = null): TechSheet =
-    withTool(Tool(type = type, version = version))
+  fun withLanguage(type: LanguageType, version: String? = null): TechSheet =
+    withLanguage(Language(type = type, version = version))
 
   fun withTechnology(technology: Technology): TechSheet =
     copy(technologies = technologies + technology)
@@ -18,16 +18,16 @@ data class TechSheet(
   fun withTechnology(type: TechnologyType, version: String? = null): TechSheet =
     withTechnology(Technology(type = type, version = version))
 
-  fun withProgrammingLanguage(language: ProgrammingLanguage): TechSheet =
-    copy(programmingLanguage = programmingLanguage + language)
+  fun withTool(tool: Tool): TechSheet =
+    copy(tools = tools + tool)
 
-  fun withProgrammingLanguage(type: ProgrammingLanguageType, version: String? = null): TechSheet =
-    withProgrammingLanguage(ProgrammingLanguage(type = type, version = version))
+  fun withTool(type: ToolType, version: String? = null): TechSheet =
+    withTool(Tool(type = type, version = version))
 
   operator fun plus(other: TechSheet): TechSheet = copy(
-    tools = tools + other.tools,
+    languages = languages + other.languages,
     technologies = technologies + other.technologies,
-    programmingLanguage = programmingLanguage + other.programmingLanguage,
+    tools = tools + other.tools,
   )
 
   companion object {

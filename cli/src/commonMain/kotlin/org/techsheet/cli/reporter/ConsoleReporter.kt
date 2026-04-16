@@ -28,11 +28,11 @@ class ConsoleReporter(
 
   private fun renderBody(sheet: TechSheet): List<String> = buildList {
     val sections = listOfNotNull(
-      flatSection("Languages", sheet.programmingLanguage) { it.type.title to it.version },
-      categorizedSection("Tools", sheet.tools, ToolCategory.entries, { it.type.category }, { it.title }) {
+      flatSection("Languages", sheet.languages) { it.type.title to it.version },
+      categorizedSection("Frameworks & Libraries", sheet.technologies, TechnologyCategory.entries, { it.type.category }, { it.title }) {
         it.type.title to it.version
       },
-      categorizedSection("Frameworks & Libraries", sheet.technologies, TechnologyCategory.entries, { it.type.category }, { it.title }) {
+      categorizedSection("Tools", sheet.tools, ToolCategory.entries, { it.type.category }, { it.title }) {
         it.type.title to it.version
       },
     )
@@ -85,9 +85,9 @@ class ConsoleReporter(
 
   private fun summary(sheet: TechSheet): String {
     val parts = listOf(
-      pluralize(sheet.programmingLanguage.size, "language", "languages"),
-      pluralize(sheet.tools.size, "tool", "tools"),
+      pluralize(sheet.languages.size, "language", "languages"),
       pluralize(sheet.technologies.size, "framework", "frameworks"),
+      pluralize(sheet.tools.size, "tool", "tools"),
     )
     return " " + style.dim("Total: " + parts.joinToString(" · "))
   }

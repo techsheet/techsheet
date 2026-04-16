@@ -1,6 +1,6 @@
 package org.techsheet.cli.reporter
 
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.TechnologyType
 import org.techsheet.cli.domain.ToolType
@@ -18,7 +18,7 @@ class ConsoleReporterTest {
   @Test
   fun `renders the expected layout`() {
     val sheet = TechSheet()
-      .withProgrammingLanguage(ProgrammingLanguageType.KOTLIN, version = "2.2.21")
+      .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
       .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
       .withTool(ToolType.INTELLIJ_IDEA)
       .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
@@ -30,18 +30,18 @@ class ConsoleReporterTest {
       " Languages",
       "   - Kotlin 2.2.21",
       "",
+      " Frameworks & Libraries",
+      " Framework",
+      "   - Spring Boot 4.0.5",
+      "   - Spring MVC",
+      "",
       " Tools",
       " Build",
       "   - Gradle - Kotlin DSL 9.4.1",
       " IDE",
       "   - IntelliJ IDEA",
       "",
-      " Frameworks & Libraries",
-      " Framework",
-      "   - Spring Boot 4.0.5",
-      "   - Spring MVC",
-      "",
-      " Total: 1 language · 2 tools · 2 frameworks",
+      " Total: 1 language · 2 frameworks · 2 tools",
       "─".repeat(60),
       "",
     )

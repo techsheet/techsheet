@@ -1,14 +1,14 @@
 package org.techsheet.cli.domain
 
-data class ProgrammingLanguage(
-  val type: ProgrammingLanguageType,
+data class Language(
+  val type: LanguageType,
   val version: String?,
 )
 
-enum class ProgrammingLanguageType(val title: String) {
+enum class LanguageType(val title: String) {
   JAVA("Java"),
   KOTLIN("Kotlin"),
-  Scala("Scala"),
+  SCALA("Scala"),
   JAVASCRIPT("JavaScript"),
   TYPESCRIPT("TypeScript"),
   PHP("PHP"),

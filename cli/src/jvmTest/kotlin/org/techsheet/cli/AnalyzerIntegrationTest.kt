@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
 import org.techsheet.cli.domain.TechnologyType
 import org.techsheet.cli.domain.ToolType
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
 import java.nio.file.Paths
 import kotlin.test.assertEquals
@@ -31,7 +31,7 @@ class AnalyzerIntegrationTest {
         .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
         .withTechnology(TechnologyType.SPRING_MVC)
         .withTechnology(TechnologyType.JUNIT, version = "5")
-        .withProgrammingLanguage(ProgrammingLanguageType.KOTLIN, version = "2.2.21")
+        .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {
       TechSheet()
@@ -39,11 +39,11 @@ class AnalyzerIntegrationTest {
         .withTechnology(TechnologyType.SPRING_BOOT, version = "3.5.13")
         .withTechnology(TechnologyType.SPRING_SECURITY)
         .withTechnology(TechnologyType.SPRING_DATA)
-        .withProgrammingLanguage(ProgrammingLanguageType.JAVA, version = "17")
+        .withLanguage(LanguageType.JAVA, version = "17")
     },
     testCase("angular") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.TYPESCRIPT, version = "5.9.2")
+        .withLanguage(LanguageType.TYPESCRIPT, version = "5.9.2")
         .withTool(ToolType.EDITORCONFIG)
         .withTool(ToolType.NPM)
         .withTechnology(TechnologyType.ANGULAR, version = "20.3.0")
@@ -51,29 +51,29 @@ class AnalyzerIntegrationTest {
     },
     testCase("python_django") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON)
+        .withLanguage(LanguageType.PYTHON)
         .withTechnology(TechnologyType.DJANGO)
     },
     testCase("python_flask") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON)
+        .withLanguage(LanguageType.PYTHON)
         .withTechnology(TechnologyType.FLASK, version = "3.0.3")
     },
     testCase("python_fastapi") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.PYTHON, version = "3.12")
+        .withLanguage(LanguageType.PYTHON, version = "3.12")
         .withTechnology(TechnologyType.FASTAPI, version = "0.115.0")
     },
     testCase("play-scala-seed") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.Scala, version = "2.13.18")
-        .withProgrammingLanguage(ProgrammingLanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.SCALA, version = "2.13.18")
+        .withLanguage(LanguageType.JAVASCRIPT)
         .withTool(ToolType.SBT, version = "1.12.9")
         .withTechnology(TechnologyType.PLAY_FRAMEWORK, version = "3.0.10")
     },
     testCase("playwright") {
       TechSheet()
-        .withProgrammingLanguage(ProgrammingLanguageType.TYPESCRIPT)
+        .withLanguage(LanguageType.TYPESCRIPT)
         .withTool(ToolType.GITHUB_ACTIONS)
         .withTool(ToolType.NPM)
         .withTool(ToolType.YARN)
