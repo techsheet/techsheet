@@ -28,7 +28,7 @@ jobs:
           cp cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
           cp cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
           cp cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
-          cp cli/build/libs/techsheet-cli-jvm-*.jar                        dist/cli/jvm/techsheet.jar
+          cp cli/build/libs/techsheet-cli-jvm.jar                          dist/cli/jvm/techsheet.jar
       - uses: actions/upload-artifact@v4
         with:
           name: release-assets
@@ -53,10 +53,9 @@ jobs:
       - uses: docker/metadata-action@v5
         id: meta
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/techsheet/analyzer
           tags: |
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest
       - uses: docker/build-push-action@v5
         with:
