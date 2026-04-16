@@ -79,10 +79,12 @@ jobs:
           GH_REPO: ${{ github.repository }}
           TAG: ${{ github.ref_name }}
         run: |
+          mkdir -p release
+          cp dist/cli/linux-x64/techsheet       release/techsheet-linux-x64
+          cp dist/cli/windows-x64/techsheet.exe release/techsheet-windows-x64.exe
+          cp dist/cli/macos-arm64/techsheet     release/techsheet-macos-arm64
+          cp dist/cli/jvm/techsheet.jar         release/techsheet.jar
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes \
-            'dist/cli/linux-x64/techsheet#techsheet-linux-x64' \
-            'dist/cli/windows-x64/techsheet.exe#techsheet-windows-x64.exe' \
-            'dist/cli/macos-arm64/techsheet#techsheet-macos-arm64' \
-            'dist/cli/jvm/techsheet.jar#techsheet.jar'
+            release/*
