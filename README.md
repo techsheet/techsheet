@@ -15,71 +15,71 @@ and test-projects, see [AnalyzerIntegrationTest](cli/src/jvmTest/kotlin/org/tech
 | C#         | _planned_                                                           | —                                                 |
 | C++        | _planned_                                                           | —                                                 |
 | Go         | _planned_                                                           | —                                                 |
-| Java       | [JavaDetector](org.techsheet.cli.detector.JavaDetector)             | `java-spring-boot-maven`                          |
-| JavaScript | [JavaScriptDetector](org.techsheet.cli.detector.JavaScriptDetector) | `play-scala-seed`, `node-express`                 |
-| Kotlin     | [KotlinDetector](org.techsheet.cli.detector.KotlinDetector)         | `kotlin-spring-boot-gradle`                       |
+| Java       | [JavaDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JavaDetector.kt)             | `java-spring-boot-maven`                          |
+| JavaScript | [JavaScriptDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JavaScriptDetector.kt) | `play-scala-seed`<br>`node-express`               |
+| Kotlin     | [KotlinDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/KotlinDetector.kt)         | `kotlin-spring-boot-gradle`                       |
 | PHP        | _planned_                                                           | —                                                 |
-| Python     | [PythonDetector](org.techsheet.cli.detector.PythonDetector)         | `python_django`, `python_fastapi`, `python_flask` |
+| Python     | [PythonDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/PythonDetector.kt)         | `python_django`<br>`python_fastapi`<br>`python_flask` |
 | Rust       | _planned_                                                           | —                                                 |
-| Scala      | [ScalaDetector](org.techsheet.cli.detector.ScalaDetector)           | `play-scala-seed`                                 |
-| TypeScript | [TypeScriptDetector](org.techsheet.cli.detector.TypeScriptDetector) | `angular`, `playwright`, `next-js`                |
+| Scala      | [ScalaDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/ScalaDetector.kt)           | `play-scala-seed`                                 |
+| TypeScript | [TypeScriptDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/TypeScriptDetector.kt) | `angular`<br>`playwright`<br>`next-js`            |
 
 ### Technologies
 
 | Technology      | Category  | Detector                                                            | Test Project(s)                                                                    |
 |-----------------|-----------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| Angular         | Framework | [AngularDetector](org.techsheet.cli.detector.AngularDetector)       | `angular`                                                                          |
-| Django          | Framework | [DjangoDetector](org.techsheet.cli.detector.DjangoDetector)         | `python_django`                                                                    |
-| Express         | Framework | [ExpressDetector](org.techsheet.cli.detector.ExpressDetector)       | `node-express`                                                                     |
-| FastAPI         | Framework | [FastApiDetector](org.techsheet.cli.detector.FastApiDetector)       | `python_fastapi`                                                                   |
-| Flask           | Framework | [FlaskDetector](org.techsheet.cli.detector.FlaskDetector)           | `python_flask`                                                                     |
+| Angular         | Framework | [AngularDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/AngularDetector.kt)       | `angular`                                                                          |
+| Django          | Framework | [DjangoDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/DjangoDetector.kt)         | `python_django`                                                                    |
+| Express         | Framework | [ExpressDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/ExpressDetector.kt)       | `node-express`                                                                     |
+| FastAPI         | Framework | [FastApiDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/FastApiDetector.kt)       | `python_fastapi`                                                                   |
+| Flask           | Framework | [FlaskDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/FlaskDetector.kt)           | `python_flask`                                                                     |
 | Laravel         | Framework | _planned_                                                           | —                                                                                  |
 | NestJS          | Framework | _planned_                                                           | —                                                                                  |
-| Next.js         | Framework | [NextDetector](org.techsheet.cli.detector.NextDetector)             | `next-js`                                                                          |
+| Next.js         | Framework | [NextDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/NextDetector.kt)             | `next-js`                                                                          |
 | Nuxt.js         | Framework | _planned_                                                           | —                                                                                  |
-| Play Framework  | Framework | [PlayDetector](org.techsheet.cli.detector.PlayDetector)             | `play-scala-seed`                                                                  |
-| React           | Framework | [ReactDetector](org.techsheet.cli.detector.ReactDetector)           | `next-js`                                                                          |
+| Play Framework  | Framework | [PlayDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/PlayDetector.kt)             | `play-scala-seed`                                                                  |
+| React           | Framework | [ReactDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/ReactDetector.kt)           | `next-js`                                                                          |
 | Ruby on Rails   | Framework | _planned_                                                           | —                                                                                  |
-| Spring Boot     | Framework | [SpringDetector](org.techsheet.cli.detector.SpringDetector)         | `groovy-spring-boot-gradle`, `kotlin-spring-boot-gradle`, `java-spring-boot-maven` |
-| Spring Data     | Framework | [SpringDetector](org.techsheet.cli.detector.SpringDetector)         | `java-spring-boot-maven`                                                           |
-| Spring MVC      | Framework | [SpringDetector](org.techsheet.cli.detector.SpringDetector)         | `kotlin-spring-boot-gradle`                                                        |
-| Spring Security | Framework | [SpringDetector](org.techsheet.cli.detector.SpringDetector)         | `java-spring-boot-maven`                                                           |
-| Spring WebFlux  | Framework | [SpringDetector](org.techsheet.cli.detector.SpringDetector)         | `groovy-spring-boot-gradle`                                                        |
-| Svelte          | Framework | [SvelteDetector](org.techsheet.cli.detector.SvelteDetector)         | —                                                                                  |
+| Spring Boot     | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `groovy-spring-boot-gradle`<br>`kotlin-spring-boot-gradle`<br>`java-spring-boot-maven` |
+| Spring Data     | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `java-spring-boot-maven`                                                           |
+| Spring MVC      | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `kotlin-spring-boot-gradle`                                                        |
+| Spring Security | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `java-spring-boot-maven`                                                           |
+| Spring WebFlux  | Framework | [SpringDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SpringDetector.kt)         | `groovy-spring-boot-gradle`                                                        |
+| Svelte          | Framework | [SvelteDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SvelteDetector.kt)         | —                                                                                  |
 | Symfony         | Framework | _planned_                                                           | —                                                                                  |
-| Vue.js          | Framework | [VueDetector](org.techsheet.cli.detector.VueDetector)               | —                                                                                  |
+| Vue.js          | Framework | [VueDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/VueDetector.kt)               | —                                                                                  |
 | WordPress       | Framework | _planned_                                                           | —                                                                                  |
-| Tailwind CSS    | Library   | [TailwindDetector](org.techsheet.cli.detector.TailwindDetector)     | `next-js`                                                                          |
-| JUnit           | Testing   | [JUnitDetector](org.techsheet.cli.detector.JUnitDetector)           | `groovy-spring-boot-gradle`, `kotlin-spring-boot-gradle`                           |
-| Playwright      | Testing   | [PlaywrightDetector](org.techsheet.cli.detector.PlaywrightDetector) | `playwright`                                                                       |
+| Tailwind CSS    | Library   | [TailwindDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/TailwindDetector.kt)     | `next-js`                                                                          |
+| JUnit           | Testing   | [JUnitDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JUnitDetector.kt)           | `groovy-spring-boot-gradle`<br>`kotlin-spring-boot-gradle`                         |
+| Playwright      | Testing   | [PlaywrightDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/PlaywrightDetector.kt) | `playwright`                                                                       |
 
 ### Tools
 
 | Tool               | Category    | Detector                                                                  | Test Project(s)                                    |
 |--------------------|-------------|---------------------------------------------------------------------------|----------------------------------------------------|
-| Gradle (Groovy)    | Build       | [GradleDetector](org.techsheet.cli.detector.GradleDetector)               | `groovy-spring-boot-gradle`                        |
-| Gradle (Kotlin)    | Build       | [GradleDetector](org.techsheet.cli.detector.GradleDetector)               | `kotlin-spring-boot-gradle`                        |
-| Maven              | Build       | [MavenDetector](org.techsheet.cli.detector.MavenDetector)                 | `java-spring-boot-maven`                           |
-| npm                | Build       | [NpmDetector](org.techsheet.cli.detector.NpmDetector)                     | `angular`, `playwright`, `next-js`, `node-express` |
+| Gradle (Groovy)    | Build       | [GradleDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/GradleDetector.kt)               | `groovy-spring-boot-gradle`                        |
+| Gradle (Kotlin)    | Build       | [GradleDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/GradleDetector.kt)               | `kotlin-spring-boot-gradle`                        |
+| Maven              | Build       | [MavenDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/MavenDetector.kt)                 | `java-spring-boot-maven`                           |
+| npm                | Build       | [NpmDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/NpmDetector.kt)                     | `angular`<br>`playwright`<br>`next-js`<br>`node-express` |
 | pnpm               | Build       | _planned_                                                                 | —                                                  |
-| sbt                | Build       | [SbtDetector](org.techsheet.cli.detector.SbtDetector)                     | `play-scala-seed`                                  |
+| sbt                | Build       | [SbtDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/SbtDetector.kt)                     | `play-scala-seed`                                  |
 | Webpack            | Build       | _planned_                                                                 | —                                                  |
-| Yarn               | Build       | [YarnDetector](org.techsheet.cli.detector.YarnDetector)                   | `playwright`                                       |
-| CODEOWNERS         | CI          | [CodeOwnersDetector](org.techsheet.cli.detector.CodeOwnersDetector)       | `ci-tools`                                         |
-| GitHub Actions     | CI          | [GitHubActionsDetector](org.techsheet.cli.detector.GitHubActionsDetector) | `playwright`                                       |
-| GitLab CI          | CI          | [GitLabCiDetector](org.techsheet.cli.detector.GitLabCiDetector)           | `ci-tools`                                         |
+| Yarn               | Build       | [YarnDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/YarnDetector.kt)                   | `playwright`                                       |
+| CODEOWNERS         | CI          | [CodeOwnersDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/CodeOwnersDetector.kt)       | `ci-tools`                                         |
+| GitHub Actions     | CI          | [GitHubActionsDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/GitHubActionsDetector.kt) | `playwright`                                       |
+| GitLab CI          | CI          | [GitLabCiDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/GitLabCiDetector.kt)           | `ci-tools`                                         |
 | Jenkins            | CI          | _planned_                                                                 | —                                                  |
-| Docker             | Container   | [DockerDetector](org.techsheet.cli.detector.DockerDetector)               | `ci-tools`                                         |
-| Docker Compose     | Container   | [DockerComposeDetector](org.techsheet.cli.detector.DockerComposeDetector) | `ci-tools`                                         |
+| Docker             | Container   | [DockerDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/DockerDetector.kt)               | `ci-tools`                                         |
+| Docker Compose     | Container   | [DockerComposeDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/DockerComposeDetector.kt) | `ci-tools`                                         |
 | Kubernetes         | Container   | _planned_                                                                 | —                                                  |
-| EditorConfig       | Dev Tooling | [EditorConfigDetector](org.techsheet.cli.detector.EditorConfigDetector)   | `angular`, `ci-tools`                              |
-| ESLint             | Dev Tooling | [EslintDetector](org.techsheet.cli.detector.EslintDetector)               | `next-js`                                          |
-| Git                | Dev Tooling | [GitDetector](org.techsheet.cli.detector.GitDetector)                     | —                                                  |
-| Node.js            | Dev Tooling | [NodeDetector](org.techsheet.cli.detector.NodeDetector)                   | `node-express`                                     |
-| Prettier           | Dev Tooling | [PrettierDetector](org.techsheet.cli.detector.PrettierDetector)           | —                                                  |
-| Renovate           | Dev Tooling | [RenovateDetector](org.techsheet.cli.detector.RenovateDetector)           | `ci-tools`                                         |
-| IntelliJ IDEA      | IDE         | [IntelliJIdeaDetector](org.techsheet.cli.detector.IntelliJIdeaDetector)   | `groovy-spring-boot-gradle`                        |
-| Visual Studio Code | IDE         | [VsCodeDetector](org.techsheet.cli.detector.VsCodeDetector)               | `angular`                                          |
+| EditorConfig       | Dev Tooling | [EditorConfigDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/EditorConfigDetector.kt)   | `angular`<br>`ci-tools`                            |
+| ESLint             | Dev Tooling | [EslintDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/EslintDetector.kt)               | `next-js`                                          |
+| Git                | Dev Tooling | [GitDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/GitDetector.kt)                     | —                                                  |
+| Node.js            | Dev Tooling | [NodeDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/NodeDetector.kt)                   | `node-express`                                     |
+| Prettier           | Dev Tooling | [PrettierDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/PrettierDetector.kt)           | —                                                  |
+| Renovate           | Dev Tooling | [RenovateDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/RenovateDetector.kt)           | `ci-tools`                                         |
+| IntelliJ IDEA      | IDE         | [IntelliJIdeaDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/IntelliJIdeaDetector.kt)   | `groovy-spring-boot-gradle`                        |
+| Visual Studio Code | IDE         | [VsCodeDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/VsCodeDetector.kt)               | `angular`                                          |
 
 Building the CLI
 ----------------
