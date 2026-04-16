@@ -23,12 +23,14 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.INTELLIJ_IDEA)
         .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
         .withTechnology(TechnologyType.SPRING_WEBFLUX)
+        .withTechnology(TechnologyType.JUNIT, version = "5")
     },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
         .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
         .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
         .withTechnology(TechnologyType.SPRING_MVC)
+        .withTechnology(TechnologyType.JUNIT, version = "5")
         .withProgrammingLanguage(ProgrammingLanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {

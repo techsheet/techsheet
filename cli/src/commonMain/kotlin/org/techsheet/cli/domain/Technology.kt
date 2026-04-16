@@ -21,6 +21,7 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
 
   // Testing
   PLAYWRIGHT("Playwright", TechnologyCategory.TESTING),
+  JUNIT("JUnit", TechnologyCategory.TESTING),
 }
 
 enum class TechnologyCategory(val title: String) {

@@ -28,6 +28,7 @@ enum class ToolType(val title: String, val category: ToolCategory) {
   // Developer tooling
   EDITORCONFIG("EditorConfig", ToolCategory.DEV),
   RENOVATE("Renovate", ToolCategory.DEV),
+  GIT("Git", ToolCategory.DEV),
 
   // IDEs
   INTELLIJ_IDEA("IntelliJ IDEA", ToolCategory.IDE),
@@ -38,6 +39,6 @@ enum class ToolCategory(val title: String) {
   BUILD("Build"),
   CI("CI"),
   CONTAINER("Container"),
-  DEV("Dev Tooling"),
+  DEV("Development"),
   IDE("IDE"),
 }

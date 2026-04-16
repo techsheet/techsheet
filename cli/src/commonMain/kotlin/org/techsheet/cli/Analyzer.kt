@@ -41,6 +41,8 @@ class Analyzer(
       FlaskDetector(),
       FastApiDetector(),
       PlaywrightDetector(),
+      JUnitDetector(),
+      GitDetector(),
       IntelliJIdeaDetector(),
       VsCodeDetector(),
     )
