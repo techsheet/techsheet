@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class JavaDetector : AbstractSourceFileLanguageDetector(
   name = "Java",
-  type = ProgrammingLanguageType.JAVA,
+  type = LanguageType.JAVA,
   sourceExtension = JAVA_EXT,
 ) {
 

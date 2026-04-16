@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class PythonDetector : AbstractSourceFileLanguageDetector(
   name = "Python",
-  type = ProgrammingLanguageType.PYTHON,
+  type = LanguageType.PYTHON,
   sourceExtension = PYTHON_EXT,
 ) {
 

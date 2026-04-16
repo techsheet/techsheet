@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class KotlinDetector : AbstractSourceFileLanguageDetector(
   name = "Kotlin",
-  type = ProgrammingLanguageType.KOTLIN,
+  type = LanguageType.KOTLIN,
   sourceExtension = KOTLIN_EXT,
 ) {
 

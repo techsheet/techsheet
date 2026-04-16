@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class ScalaDetector : AbstractSourceFileLanguageDetector(
   name = "Scala",
-  type = ProgrammingLanguageType.Scala,
+  type = LanguageType.SCALA,
   sourceExtension = SCALA_EXT,
 ) {
 

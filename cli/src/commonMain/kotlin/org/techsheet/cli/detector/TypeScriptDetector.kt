@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class TypeScriptDetector : AbstractSourceFileLanguageDetector(
   name = "TypeScript",
-  type = ProgrammingLanguageType.TYPESCRIPT,
+  type = LanguageType.TYPESCRIPT,
   sourceExtension = TS_EXT,
 ) {
 

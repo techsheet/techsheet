@@ -1,11 +1,11 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.ProgrammingLanguageType
+import org.techsheet.cli.domain.LanguageType
 
 class JavaScriptDetector : AbstractSourceFileLanguageDetector(
   name = "JavaScript",
-  type = ProgrammingLanguageType.JAVASCRIPT,
+  type = LanguageType.JAVASCRIPT,
   sourceExtension = JS_EXT,
 ) {
 
