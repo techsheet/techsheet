@@ -24,10 +24,11 @@ jobs:
         run: ./gradlew :cli:assemble --no-daemon
       - name: Stage release assets
         run: |
-          install -D cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
-          install -D cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
-          install -D cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
-          install -D cli/build/libs/techsheet-cli-jvm-*.jar                        dist/cli/jvm/techsheet.jar
+          mkdir -p dist/cli/linux-x64 dist/cli/windows-x64 dist/cli/macos-arm64 dist/cli/jvm
+          cp cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
+          cp cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
+          cp cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
+          cp cli/build/libs/techsheet-cli-jvm-*.jar                        dist/cli/jvm/techsheet.jar
       - uses: actions/upload-artifact@v4
         with:
           name: release-assets
