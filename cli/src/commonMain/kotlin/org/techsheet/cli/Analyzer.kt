@@ -42,6 +42,8 @@ class Analyzer(
       NextDetector(),
       ExpressDetector(),
       TailwindDetector(),
+      EslintDetector(),
+      PrettierDetector(),
       SpringDetector(),
       PlayDetector(),
       DjangoDetector(),

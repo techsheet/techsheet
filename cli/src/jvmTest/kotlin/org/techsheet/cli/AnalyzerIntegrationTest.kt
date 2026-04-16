@@ -79,6 +79,22 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.YARN)
         .withTechnology(TechnologyType.PLAYWRIGHT, version = "1.59.1")
     },
+    testCase("next-js") {
+      TechSheet()
+        .withLanguage(LanguageType.TYPESCRIPT, version = "5")
+        .withTool(ToolType.NPM)
+        .withTool(ToolType.ESLINT, version = "9")
+        .withTechnology(TechnologyType.REACT, version = "19.2.4")
+        .withTechnology(TechnologyType.NEXT, version = "16.2.4")
+        .withTechnology(TechnologyType.TAILWIND, version = "4")
+    },
+    testCase("node-express") {
+      TechSheet()
+        .withLanguage(LanguageType.JAVASCRIPT)
+        .withTool(ToolType.NPM)
+        .withTool(ToolType.NODE)
+        .withTechnology(TechnologyType.EXPRESS, version = "4.16.1")
+    },
     testCase("ci-tools") {
       TechSheet()
         .withTool(ToolType.GITLAB_CI)
