@@ -33,6 +33,7 @@ class Analyzer(
       RenovateDetector(),
       NpmDetector(),
       YarnDetector(),
+      NodeDetector(),
       SbtDetector(),
       AngularDetector(),
       SpringDetector(),

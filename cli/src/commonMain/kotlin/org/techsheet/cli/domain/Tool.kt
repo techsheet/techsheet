@@ -29,6 +29,7 @@ enum class ToolType(val title: String, val category: ToolCategory) {
   EDITORCONFIG("EditorConfig", ToolCategory.DEV),
   RENOVATE("Renovate", ToolCategory.DEV),
   GIT("Git", ToolCategory.DEV),
+  NODE("Node.js", ToolCategory.DEV),
 
   // IDEs
   INTELLIJ_IDEA("IntelliJ IDEA", ToolCategory.IDE),
