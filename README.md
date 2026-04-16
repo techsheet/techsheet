@@ -15,12 +15,12 @@ Build all targets at once:
 
 Per-target builds:
 
-| Target      | Command                                         | Output                                                         |
-|-------------|-------------------------------------------------|----------------------------------------------------------------|
-| JVM         | `./gradlew :cli:jvmJar`                         | `cli/build/libs/techsheet-cli-jvm-<version>.jar`               |
-| Linux x64   | `./gradlew :cli:linkReleaseExecutableLinuxX64`  | `cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe`  |
-| Windows x64 | `./gradlew :cli:linkReleaseExecutableMingwX64`  | `cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe`   |
-| macOS arm64 | `./gradlew :cli:linkReleaseExecutableMacosArm64`| `cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe`|
+| Target      | Command                                          | Output                                                          |
+|-------------|--------------------------------------------------|-----------------------------------------------------------------|
+| JVM         | `./gradlew :cli:jvmJar`                          | `cli/build/libs/techsheet-cli-jvm-<version>.jar`                |
+| Linux x64   | `./gradlew :cli:linkReleaseExecutableLinuxX64`   | `cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe`   |
+| Windows x64 | `./gradlew :cli:linkReleaseExecutableMingwX64`   | `cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe`    |
+| macOS arm64 | `./gradlew :cli:linkReleaseExecutableMacosArm64` | `cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe` |
 
 Use `linkDebugExecutable*` in place of `linkReleaseExecutable*` for debug builds.
 
@@ -51,10 +51,14 @@ Adding a new fixture:
    describing the expected `TechSheet`.
 3. Run `./gradlew :cli:jvmTest`.
 
-Roadmap
--------
+Detectors
+---------
 
-Coverage targets for detectors. Checked boxes are already shipping.
+Thw following sections outline a selection of detectors. As they are
+
+| Language | Detector                                                    | Test Project(s)                                   |
+|----------|-------------------------------------------------------------|---------------------------------------------------|
+| Pathon   | [PythonDetector](org.techsheet.cli.detector.PythonDetector) | `python_django`, `python_fastapi`, `python_flask` |
 
 ### Programming languages
 
@@ -72,19 +76,21 @@ Coverage targets for detectors. Checked boxes are already shipping.
 
 ### Frameworks & libraries
 
-- [ ] React
-- [ ] Vue.js
+- [x] React
+- [x] Vue.js
 - [x] Angular
-- [ ] Svelte
-- [ ] Next.js
+- [x] Svelte
+- [x] Next.js
 - [ ] Nuxt.js
-- [ ] Express
+- [x] Express
 - [ ] NestJS
 - [x] Django
 - [x] Flask
 - [x] FastAPI
 - [ ] Ruby on Rails
 - [ ] Laravel
+- [ ] Smyfony
+- [ ] Wordpress
 - [x] Spring Boot
 - [x] Spring MVC
 - [x] Spring WebFlux
@@ -92,10 +98,12 @@ Coverage targets for detectors. Checked boxes are already shipping.
 - [x] Spring Data
 - [x] Play Framework
 - [x] Playwright
+- [x] JUnit (4 / 5)
+- [x] Tailwind CSS
 
 ### Tools
 
-- [ ] Git
+- [x] Git
 - [x] Docker
 - [x] Docker Compose
 - [ ] Kubernetes
@@ -105,8 +113,10 @@ Coverage targets for detectors. Checked boxes are already shipping.
 - [x] npm
 - [x] Yarn
 - [ ] pnpm
+- [x] Node.js
 - [ ] Webpack
-- [ ] Prettier
+- [x] Prettier
+- [x] ESLint
 - [x] GitHub Actions
 - [x] GitLab CI
 - [ ] Jenkins
