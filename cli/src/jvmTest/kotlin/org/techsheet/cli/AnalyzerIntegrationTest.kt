@@ -95,6 +95,11 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.NODE)
         .withTechnology(TechnologyType.EXPRESS, version = "4.16.1")
     },
+    testCase("qt-cmake-app") {
+      TechSheet()
+        .withLanguage(LanguageType.CPP)
+        .withTechnology(TechnologyType.QT, version = "6")
+    },
     testCase("ci-tools") {
       TechSheet()
         .withTool(ToolType.GITLAB_CI)
