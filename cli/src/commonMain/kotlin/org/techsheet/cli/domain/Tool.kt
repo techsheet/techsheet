@@ -35,9 +35,9 @@ enum class ToolType(val title: String, val category: ToolCategory) {
 }
 
 enum class ToolCategory(val title: String) {
-  BUILD("Build Tool"),
-  CI("CI Tool"),
+  BUILD("Build"),
+  CI("CI"),
   CONTAINER("Container"),
-  DEV("Developer Tooling"),
+  DEV("Dev Tooling"),
   IDE("IDE"),
 }

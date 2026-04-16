@@ -13,13 +13,15 @@ import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.reporter.ConsoleReporter
-import org.techsheet.cli.reporter.Reporter
 
 class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
     .flag()
 
   private val quiet: Boolean by option("-q", "--quiet", help = "Reduce output to a minimum")
+    .flag()
+
+  private val ci: Boolean by option("--ci", help = "Render the report without ANSI colors")
     .flag()
 
   private val source: String by argument(
@@ -48,10 +50,11 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     log.i { "Starting analysis of project ${ctx.path}" }
 
     val sheet = Analyzer(log).analyze(ctx)
-    val reporter: Reporter = ConsoleReporter()
 
     log.i { "Analysis done, generating report" }
 
-    reporter.report(ctx, sheet)
+    if (!quiet) {
+      ConsoleReporter(plain = ci).report(sheet)
+    }
   }
 }
