@@ -15,6 +15,7 @@ enum class TechnologyType(val title: String, val category: TechnologyCategory) {
   NEXT("Next.js", TechnologyCategory.FRAMEWORK),
   EXPRESS("Express", TechnologyCategory.FRAMEWORK),
   QT("Qt", TechnologyCategory.FRAMEWORK),
+  ASP_NET_CORE("ASP.NET Core", TechnologyCategory.FRAMEWORK),
   SPRING_BOOT("Spring Boot", TechnologyCategory.FRAMEWORK),
   SPRING_MVC("Spring MVC", TechnologyCategory.FRAMEWORK),
   SPRING_WEBFLUX("Spring WebFlux", TechnologyCategory.FRAMEWORK),

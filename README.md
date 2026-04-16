@@ -12,7 +12,7 @@ and test-projects, see [AnalyzerIntegrationTest](cli/src/jvmTest/kotlin/org/tech
 
 | Language   | Detector                                                            | Test Project(s)                                   |
 |------------|---------------------------------------------------------------------|---------------------------------------------------|
-| C#         | _planned_                                                           | —                                                 |
+| C#         | [CSharpDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/CSharpDetector.kt) | `asp-net-core-app`                                |
 | C++        | [CppDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/CppDetector.kt) | `qt-cmake-app`                                    |
 | Go         | _planned_                                                           | —                                                 |
 | Java       | [JavaDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/JavaDetector.kt)             | `java-spring-boot-maven`                          |
@@ -29,6 +29,7 @@ and test-projects, see [AnalyzerIntegrationTest](cli/src/jvmTest/kotlin/org/tech
 | Technology      | Category  | Detector                                                            | Test Project(s)                                                                    |
 |-----------------|-----------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | Angular         | Framework | [AngularDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/AngularDetector.kt)       | `angular`                                                                          |
+| ASP.NET Core    | Framework | [AspNetCoreDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/AspNetCoreDetector.kt) | `asp-net-core-app`                                                                 |
 | Django          | Framework | [DjangoDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/DjangoDetector.kt)         | `python_django`                                                                    |
 | Express         | Framework | [ExpressDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/ExpressDetector.kt)       | `node-express`                                                                     |
 | FastAPI         | Framework | [FastApiDetector](cli/src/commonMain/kotlin/org/techsheet/cli/detector/FastApiDetector.kt)       | `python_fastapi`                                                                   |
