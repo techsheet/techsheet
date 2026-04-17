@@ -7,5 +7,4 @@ FROM debian:bookworm-slim
 COPY techsheet /usr/local/bin/techsheet
 
 WORKDIR /workspace
-ENTRYPOINT ["techsheet"]
-CMD ["analyze"]
+CMD ["techsheet", "analyze"]
