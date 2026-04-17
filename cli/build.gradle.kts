@@ -1,5 +1,6 @@
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
+  alias(libs.plugins.kotlinSerialization)
 }
 
 base {
@@ -41,10 +42,16 @@ kotlin {
   }
 
   sourceSets {
+    commonMain {
+      kotlin.srcDir(layout.buildDirectory.dir("generated/version"))
+    }
     commonMain.dependencies {
       implementation(libs.clikt)
       implementation(libs.kermit)
       implementation(libs.okio)
+      implementation(libs.kotlinx.serialization.json)
+      implementation(libs.kotlinx.datetime)
+      implementation(libs.kaml)
     }
     commonTest.dependencies {
       implementation(libs.kotlin.test)
@@ -54,6 +61,22 @@ kotlin {
       implementation(libs.junit.jupiter)
     }
   }
+}
+
+val generateVersion by tasks.registering {
+  val output = layout.buildDirectory.file("generated/version/org/techsheet/cli/CliVersion.kt")
+  val ver = project.version.toString()
+  outputs.file(output)
+  doLast {
+    output.get().asFile.apply {
+      parentFile.mkdirs()
+      writeText("package org.techsheet.cli\n\nconst val CLI_VERSION = \"$ver\"\n")
+    }
+  }
+}
+
+tasks.configureEach {
+  if (name.startsWith("compileKotlin") || name.startsWith("compileCommon")) dependsOn(generateVersion)
 }
 
 tasks.named<Test>("jvmTest") {
