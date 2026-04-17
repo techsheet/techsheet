@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class JUnitDetector : Detector("JUnit") {
 
@@ -17,8 +17,8 @@ class JUnitDetector : Detector("JUnit") {
       .takeIf(String::isNotEmpty)
       ?.let { content ->
         when {
-          JUNIT_5.containsMatchIn(content) -> sheet.withTechnology(TechnologyType.JUNIT, version = "5")
-          JUNIT_4.containsMatchIn(content) -> sheet.withTechnology(TechnologyType.JUNIT, version = "4")
+          JUNIT_5.containsMatchIn(content) -> sheet.withFramework(FrameworkType.JUNIT, version = "5")
+          JUNIT_4.containsMatchIn(content) -> sheet.withFramework(FrameworkType.JUNIT, version = "4")
           else -> sheet
         }
       }

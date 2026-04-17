@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class QtDetector : Detector("Qt") {
 
@@ -18,8 +18,8 @@ class QtDetector : Detector("Qt") {
         val version = FIND_PACKAGE_QT.find(content)?.groupValues?.get(1)
           ?: QT_COMPONENT.find(content)?.groupValues?.get(1)
         when {
-          version != null -> sheet.withTechnology(TechnologyType.QT, version = version)
-          QMAKE_QT_MODULE.containsMatchIn(content) -> sheet.withTechnology(TechnologyType.QT)
+          version != null -> sheet.withFramework(FrameworkType.QT, version = version)
+          QMAKE_QT_MODULE.containsMatchIn(content) -> sheet.withFramework(FrameworkType.QT)
           else -> sheet
         }
       }

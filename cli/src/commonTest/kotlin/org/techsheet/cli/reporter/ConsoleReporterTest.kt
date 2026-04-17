@@ -1,8 +1,8 @@
 package org.techsheet.cli.reporter
 
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 import org.techsheet.cli.domain.ToolType
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -21,8 +21,8 @@ class ConsoleReporterTest {
       .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
       .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
       .withTool(ToolType.INTELLIJ_IDEA)
-      .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
-      .withTechnology(TechnologyType.SPRING_MVC)
+      .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
+      .withFramework(FrameworkType.SPRING_MVC)
     val expected = listOf(
       "",
       "─".repeat(5) + " TechSheet " + "─".repeat(60 - 16),
@@ -30,8 +30,8 @@ class ConsoleReporterTest {
       " Languages",
       "   - Kotlin 2.2.21",
       "",
-      " Frameworks & Libraries",
-      " Framework",
+      " Frameworks",
+      " Application",
       "   - Spring Boot 4.0.5",
       "   - Spring MVC",
       "",

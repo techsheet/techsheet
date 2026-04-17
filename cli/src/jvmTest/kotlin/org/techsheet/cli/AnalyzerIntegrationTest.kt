@@ -6,7 +6,7 @@ import co.touchlab.kermit.StaticConfig
 import okio.Path.Companion.toOkioPath
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.ToolType
 import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
@@ -21,24 +21,24 @@ class AnalyzerIntegrationTest {
       TechSheet()
         .withTool(ToolType.GRADLE_GROOVY, version = "9.4.1")
         .withTool(ToolType.INTELLIJ_IDEA)
-        .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
-        .withTechnology(TechnologyType.SPRING_WEBFLUX)
-        .withTechnology(TechnologyType.JUNIT, version = "5")
+        .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
+        .withFramework(FrameworkType.SPRING_WEBFLUX)
+        .withFramework(FrameworkType.JUNIT, version = "5")
     },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
         .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
-        .withTechnology(TechnologyType.SPRING_BOOT, version = "4.0.5")
-        .withTechnology(TechnologyType.SPRING_MVC)
-        .withTechnology(TechnologyType.JUNIT, version = "5")
+        .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
+        .withFramework(FrameworkType.SPRING_MVC)
+        .withFramework(FrameworkType.JUNIT, version = "5")
         .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {
       TechSheet()
         .withTool(ToolType.MAVEN, version = "3.9.14")
-        .withTechnology(TechnologyType.SPRING_BOOT, version = "3.5.13")
-        .withTechnology(TechnologyType.SPRING_SECURITY)
-        .withTechnology(TechnologyType.SPRING_DATA)
+        .withFramework(FrameworkType.SPRING_BOOT, version = "3.5.13")
+        .withFramework(FrameworkType.SPRING_SECURITY)
+        .withFramework(FrameworkType.SPRING_DATA)
         .withLanguage(LanguageType.JAVA, version = "17")
     },
     testCase("angular") {
@@ -46,30 +46,30 @@ class AnalyzerIntegrationTest {
         .withLanguage(LanguageType.TYPESCRIPT, version = "5.9.2")
         .withTool(ToolType.EDITORCONFIG)
         .withTool(ToolType.NPM)
-        .withTechnology(TechnologyType.ANGULAR, version = "20.3.0")
+        .withFramework(FrameworkType.ANGULAR, version = "20.3.0")
         .withTool(ToolType.VS_CODE)
     },
     testCase("python_django") {
       TechSheet()
         .withLanguage(LanguageType.PYTHON)
-        .withTechnology(TechnologyType.DJANGO)
+        .withFramework(FrameworkType.DJANGO)
     },
     testCase("python_flask") {
       TechSheet()
         .withLanguage(LanguageType.PYTHON)
-        .withTechnology(TechnologyType.FLASK, version = "3.0.3")
+        .withFramework(FrameworkType.FLASK, version = "3.0.3")
     },
     testCase("python_fastapi") {
       TechSheet()
         .withLanguage(LanguageType.PYTHON, version = "3.12")
-        .withTechnology(TechnologyType.FASTAPI, version = "0.115.0")
+        .withFramework(FrameworkType.FASTAPI, version = "0.115.0")
     },
     testCase("play-scala-seed") {
       TechSheet()
         .withLanguage(LanguageType.SCALA, version = "2.13.18")
         .withLanguage(LanguageType.JAVASCRIPT)
         .withTool(ToolType.SBT, version = "1.12.9")
-        .withTechnology(TechnologyType.PLAY_FRAMEWORK, version = "3.0.10")
+        .withFramework(FrameworkType.PLAY_FRAMEWORK, version = "3.0.10")
     },
     testCase("playwright") {
       TechSheet()
@@ -77,33 +77,33 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.GITHUB_ACTIONS)
         .withTool(ToolType.NPM)
         .withTool(ToolType.YARN)
-        .withTechnology(TechnologyType.PLAYWRIGHT, version = "1.59.1")
+        .withFramework(FrameworkType.PLAYWRIGHT, version = "1.59.1")
     },
     testCase("next-js") {
       TechSheet()
         .withLanguage(LanguageType.TYPESCRIPT, version = "5")
         .withTool(ToolType.NPM)
         .withTool(ToolType.ESLINT, version = "9")
-        .withTechnology(TechnologyType.REACT, version = "19.2.4")
-        .withTechnology(TechnologyType.NEXT, version = "16.2.4")
-        .withTechnology(TechnologyType.TAILWIND, version = "4")
+        .withFramework(FrameworkType.REACT, version = "19.2.4")
+        .withFramework(FrameworkType.NEXT, version = "16.2.4")
+        .withFramework(FrameworkType.TAILWIND, version = "4")
     },
     testCase("node-express") {
       TechSheet()
         .withLanguage(LanguageType.JAVASCRIPT)
         .withTool(ToolType.NPM)
         .withTool(ToolType.NODE)
-        .withTechnology(TechnologyType.EXPRESS, version = "4.16.1")
+        .withFramework(FrameworkType.EXPRESS, version = "4.16.1")
     },
     testCase("qt-cmake-app") {
       TechSheet()
         .withLanguage(LanguageType.CPP)
-        .withTechnology(TechnologyType.QT, version = "6")
+        .withFramework(FrameworkType.QT, version = "6")
     },
     testCase("asp-net-core-app") {
       TechSheet()
         .withLanguage(LanguageType.CSHARP)
-        .withTechnology(TechnologyType.ASP_NET_CORE, version = "9.0")
+        .withFramework(FrameworkType.ASP_NET_CORE, version = "9.0")
     },
     testCase("ci-tools") {
       TechSheet()

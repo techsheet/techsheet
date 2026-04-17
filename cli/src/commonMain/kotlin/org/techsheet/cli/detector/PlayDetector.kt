@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class PlayDetector : Detector("Play Framework") {
 
@@ -13,7 +13,7 @@ class PlayDetector : Detector("Play Framework") {
       .filter { it.name == "plugins.sbt" }
       .firstNotNullOfOrNull { ctx.readFileContents(it) }
       ?.let { PLAY_PLUGIN.find(it)?.groupValues?.get(1) }
-      ?.let { version -> sheet.withTechnology(TechnologyType.PLAY_FRAMEWORK, version = version) }
+      ?.let { version -> sheet.withFramework(FrameworkType.PLAY_FRAMEWORK, version = version) }
       ?: sheet
 
   companion object {

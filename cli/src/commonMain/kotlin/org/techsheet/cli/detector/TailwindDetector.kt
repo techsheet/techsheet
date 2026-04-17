@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class TailwindDetector : AbstractNpmDependencyDetector(
   "Tailwind CSS", "tailwindcss",
-  { sheet, v -> sheet.withTechnology(TechnologyType.TAILWIND, v) },
+  { sheet, v -> sheet.withFramework(FrameworkType.TAILWIND, v) },
 )

@@ -1,9 +1,9 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class FastApiDetector : AbstractPythonDependencyDetector(
   name = "FastAPI",
-  technology = TechnologyType.FASTAPI,
+  framework = FrameworkType.FASTAPI,
   packageName = "fastapi",
 )

@@ -7,7 +7,7 @@ data class Tool(
 
 enum class ToolType(val title: String, val category: ToolCategory) {
 
-  // Build Tools
+  // Build
   GRADLE("Gradle", ToolCategory.BUILD),
   GRADLE_KOTLIN("Gradle - Kotlin DSL", ToolCategory.BUILD),
   GRADLE_GROOVY("Gradle - Groovy DSL", ToolCategory.BUILD),
@@ -16,7 +16,7 @@ enum class ToolType(val title: String, val category: ToolCategory) {
   YARN("Yarn", ToolCategory.BUILD),
   SBT("sbt", ToolCategory.BUILD),
 
-  // CI Tools
+  // CI
   GITLAB_CI("GitLab CI", ToolCategory.CI),
   GITHUB_ACTIONS("GitHub Actions", ToolCategory.CI),
   CODEOWNERS("CODEOWNERS", ToolCategory.CI),
@@ -25,15 +25,21 @@ enum class ToolType(val title: String, val category: ToolCategory) {
   DOCKER("Docker", ToolCategory.CONTAINER),
   DOCKER_COMPOSE("Docker Compose", ToolCategory.CONTAINER),
 
-  // Developer tooling
-  EDITORCONFIG("EditorConfig", ToolCategory.DEV),
-  RENOVATE("Renovate", ToolCategory.DEV),
-  GIT("Git", ToolCategory.DEV),
-  ESLINT("ESLint", ToolCategory.DEV),
-  PRETTIER("Prettier", ToolCategory.DEV),
-  NODE("Node.js", ToolCategory.DEV),
+  // Runtime
+  NODE("Node.js", ToolCategory.RUNTIME),
 
-  // IDEs
+  // VCS
+  GIT("Git", ToolCategory.VCS),
+
+  // Format
+  EDITORCONFIG("EditorConfig", ToolCategory.FORMAT),
+  ESLINT("ESLint", ToolCategory.FORMAT),
+  PRETTIER("Prettier", ToolCategory.FORMAT),
+
+  // Security
+  RENOVATE("Renovate", ToolCategory.SECURITY),
+
+  // IDE
   INTELLIJ_IDEA("IntelliJ IDEA", ToolCategory.IDE),
   VS_CODE("Visual Studio Code", ToolCategory.IDE),
 }
@@ -42,6 +48,9 @@ enum class ToolCategory(val title: String) {
   BUILD("Build"),
   CI("CI"),
   CONTAINER("Container"),
-  DEV("Development"),
+  FORMAT("Format"),
   IDE("IDE"),
+  RUNTIME("Runtime"),
+  SECURITY("Security"),
+  VCS("VCS"),
 }

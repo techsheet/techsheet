@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class ReactDetector : AbstractNpmDependencyDetector(
   "React", "react",
-  { sheet, v -> sheet.withTechnology(TechnologyType.REACT, v) },
+  { sheet, v -> sheet.withFramework(FrameworkType.REACT, v) },
 )

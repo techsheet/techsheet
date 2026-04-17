@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class AspNetCoreDetector : Detector("ASP.NET Core") {
 
@@ -15,8 +15,8 @@ class AspNetCoreDetector : Detector("ASP.NET Core") {
       .joinToString("\n")
       .takeIf { it.isNotEmpty() && (WEB_SDK.containsMatchIn(it) || ASPNETCORE_FRAMEWORK.containsMatchIn(it)) }
       ?.let { content ->
-        sheet.withTechnology(
-          TechnologyType.ASP_NET_CORE,
+        sheet.withFramework(
+          FrameworkType.ASP_NET_CORE,
           version = TARGET_FRAMEWORK.find(content)?.groupValues?.get(1),
         )
       }

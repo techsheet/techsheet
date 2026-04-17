@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class NextDetector : AbstractNpmDependencyDetector(
   "Next.js", "next",
-  { sheet, v -> sheet.withTechnology(TechnologyType.NEXT, v) },
+  { sheet, v -> sheet.withFramework(FrameworkType.NEXT, v) },
 )

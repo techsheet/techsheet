@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class VueDetector : AbstractNpmDependencyDetector(
   "Vue.js", "vue",
-  { sheet, v -> sheet.withTechnology(TechnologyType.VUE, v) },
+  { sheet, v -> sheet.withFramework(FrameworkType.VUE, v) },
 )

@@ -1,5 +1,5 @@
 name: New detector request
-description: Propose a new language, tool, or technology for TechSheet to detect.
+description: Propose a new language, framework, service, or tool for TechSheet to detect.
 title: "[detector] "
 labels: ["detector-request"]
 body:
@@ -16,8 +16,9 @@ body:
       description: What category does this fit into?
       options:
         - Language
-        - Technology (framework, library, testing)
-        - Tool (build, CI, container, dev tooling, IDE)
+        - Framework (application, data, security, testing, UI)
+        - Service (database, queue, server)
+        - Tool (build, CI, container, format, IDE, runtime, security, VCS)
         - Other
     validations:
       required: true
@@ -26,8 +27,8 @@ body:
     id: name
     attributes:
       label: Name
-      description: Name of the language, tool, or technology.
-      placeholder: e.g. Svelte, pnpm, Ruby
+      description: Name of the language, framework, service, or tool.
+      placeholder: e.g. Svelte, PostgreSQL, pnpm, Ruby
     validations:
       required: true
 

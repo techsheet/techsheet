@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class PlaywrightDetector : Detector("Playwright") {
 
@@ -13,7 +13,7 @@ class PlaywrightDetector : Detector("Playwright") {
     ctx.walk(depth)
       .firstOrNull { it.name in CONFIG_FILES }
       ?.also { ctx.log.d { "Playwright: '${it.name}' present" } }
-      ?.let { sheet.withTechnology(TechnologyType.PLAYWRIGHT, version = detectVersion(ctx)) }
+      ?.let { sheet.withFramework(FrameworkType.PLAYWRIGHT, version = detectVersion(ctx)) }
       ?: sheet
 
   private fun detectVersion(ctx: AnalyzerContext): String? =

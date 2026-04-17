@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class ExpressDetector : AbstractNpmDependencyDetector(
   "Express", "express",
-  { sheet, v -> sheet.withTechnology(TechnologyType.EXPRESS, v) },
+  { sheet, v -> sheet.withFramework(FrameworkType.EXPRESS, v) },
 )

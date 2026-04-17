@@ -2,7 +2,8 @@ package org.techsheet.cli.domain
 
 data class TechSheet(
   val languages: List<Language> = emptyList(),
-  val technologies: List<Technology> = emptyList(),
+  val frameworks: List<Framework> = emptyList(),
+  val services: List<Service> = emptyList(),
   val tools: List<Tool> = emptyList(),
 ) {
 
@@ -12,11 +13,17 @@ data class TechSheet(
   fun withLanguage(type: LanguageType, version: String? = null): TechSheet =
     withLanguage(Language(type = type, version = version))
 
-  fun withTechnology(technology: Technology): TechSheet =
-    copy(technologies = technologies + technology)
+  fun withFramework(framework: Framework): TechSheet =
+    copy(frameworks = frameworks + framework)
 
-  fun withTechnology(type: TechnologyType, version: String? = null): TechSheet =
-    withTechnology(Technology(type = type, version = version))
+  fun withFramework(type: FrameworkType, version: String? = null): TechSheet =
+    withFramework(Framework(type = type, version = version))
+
+  fun withService(service: Service): TechSheet =
+    copy(services = services + service)
+
+  fun withService(type: ServiceType, version: String? = null): TechSheet =
+    withService(Service(type = type, version = version))
 
   fun withTool(tool: Tool): TechSheet =
     copy(tools = tools + tool)
@@ -26,7 +33,8 @@ data class TechSheet(
 
   operator fun plus(other: TechSheet): TechSheet = copy(
     languages = languages + other.languages,
-    technologies = technologies + other.technologies,
+    frameworks = frameworks + other.frameworks,
+    services = services + other.services,
     tools = tools + other.tools,
   )
 

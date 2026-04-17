@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 /**
  * Base for Python framework/library detectors. Scans common Python dependency
@@ -11,7 +11,7 @@ import org.techsheet.cli.domain.TechnologyType
  */
 abstract class AbstractPythonDependencyDetector(
   name: String,
-  private val technology: TechnologyType,
+  private val framework: FrameworkType,
   private val packageName: String,
 ) : Detector(name) {
 
@@ -24,7 +24,7 @@ abstract class AbstractPythonDependencyDetector(
       .joinToString("\n")
       .takeIf(presenceRegex::containsMatchIn)
       ?.also { ctx.log.d { "$name: '$packageName' present in Python dependencies" } }
-      ?.let { content -> sheet.withTechnology(technology, version = versionRegex.find(content)?.groupValues?.get(1)) }
+      ?.let { content -> sheet.withFramework(framework, version = versionRegex.find(content)?.groupValues?.get(1)) }
       ?: sheet
 
   private val presenceRegex = Regex("""\b${Regex.escape(packageName)}\b""", RegexOption.IGNORE_CASE)

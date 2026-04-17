@@ -1,8 +1,8 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class SpringDetector : Detector("Spring") {
 
@@ -24,18 +24,18 @@ class SpringDetector : Detector("Spring") {
 
   private fun appendIfPresent(content: String): (TechSheet, Marker) -> TechSheet =
     { acc, (type, regex, version) ->
-      if (regex.containsMatchIn(content)) acc.withTechnology(type, version) else acc
+      if (regex.containsMatchIn(content)) acc.withFramework(type, version) else acc
     }
 
   private fun markers(bootVersion: String?): List<Marker> = listOf(
-    Marker(TechnologyType.SPRING_BOOT, SPRING_BOOT, bootVersion),
-    Marker(TechnologyType.SPRING_MVC, SPRING_MVC, null),
-    Marker(TechnologyType.SPRING_WEBFLUX, SPRING_WEBFLUX, null),
-    Marker(TechnologyType.SPRING_SECURITY, SPRING_SECURITY, null),
-    Marker(TechnologyType.SPRING_DATA, SPRING_DATA, null),
+    Marker(FrameworkType.SPRING_BOOT, SPRING_BOOT, bootVersion),
+    Marker(FrameworkType.SPRING_MVC, SPRING_MVC, null),
+    Marker(FrameworkType.SPRING_WEBFLUX, SPRING_WEBFLUX, null),
+    Marker(FrameworkType.SPRING_SECURITY, SPRING_SECURITY, null),
+    Marker(FrameworkType.SPRING_DATA, SPRING_DATA, null),
   )
 
-  private data class Marker(val type: TechnologyType, val regex: Regex, val version: String?)
+  private data class Marker(val type: FrameworkType, val regex: Regex, val version: String?)
 
   companion object {
     private val BUILD_FILES = setOf("build.gradle.kts", "build.gradle", "pom.xml")

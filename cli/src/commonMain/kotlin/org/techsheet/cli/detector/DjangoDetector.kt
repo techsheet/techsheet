@@ -1,12 +1,12 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
+import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
 
 class DjangoDetector : AbstractPythonDependencyDetector(
   name = "Django",
-  technology = TechnologyType.DJANGO,
+  framework = FrameworkType.DJANGO,
   packageName = "django",
 ) {
 
@@ -16,7 +16,7 @@ class DjangoDetector : AbstractPythonDependencyDetector(
   override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
     super.detect(ctx, sheet).let { updated ->
       if (updated == sheet && ctx.walk(depth).any { it.name == "manage.py" })
-        sheet.withTechnology(TechnologyType.DJANGO, version = null)
+        sheet.withFramework(FrameworkType.DJANGO, version = null)
       else updated
     }
 }

@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.AnalyzerContext
 import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.TechnologyType
+import org.techsheet.cli.domain.FrameworkType
 
 class AngularDetector : Detector("Angular") {
 
@@ -13,7 +13,7 @@ class AngularDetector : Detector("Angular") {
     ctx.walk(depth)
       .firstOrNull { it.name == "angular.json" }
       ?.also { ctx.log.d { "Angular: '${it.name}' present" } }
-      ?.let { sheet.withTechnology(TechnologyType.ANGULAR, version = detectVersion(ctx)) }
+      ?.let { sheet.withFramework(FrameworkType.ANGULAR, version = detectVersion(ctx)) }
       ?: sheet
 
   private fun detectVersion(ctx: AnalyzerContext): String? =
