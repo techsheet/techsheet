@@ -25,7 +25,7 @@ class ConsoleReporterTest {
       .withFramework(FrameworkType.SPRING_MVC)
     val expected = listOf(
       "",
-      "─".repeat(5) + " TechSheet " + "─".repeat(60 - 16),
+      "─".repeat(5) + " TechSheet v${org.techsheet.cli.CLI_VERSION} " + "─".repeat(60 - 16 - org.techsheet.cli.CLI_VERSION.length - 2),
       "",
       " Languages",
       "   - Kotlin 2.2.21",
@@ -52,7 +52,7 @@ class ConsoleReporterTest {
   fun `renders empty sheet`() {
     val expected = listOf(
       "",
-      "─".repeat(5) + " TechSheet " + "─".repeat(60 - 16),
+      "─".repeat(5) + " TechSheet v${org.techsheet.cli.CLI_VERSION} " + "─".repeat(60 - 16 - org.techsheet.cli.CLI_VERSION.length - 2),
       "",
       " Nothing detected.",
       "─".repeat(60),
