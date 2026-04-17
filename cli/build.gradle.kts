@@ -79,6 +79,10 @@ tasks.configureEach {
   if (name.startsWith("compileKotlin") || name.startsWith("compileCommon")) dependsOn(generateVersion)
 }
 
+tasks.named<Jar>("jvmJar") {
+  archiveFileName.set("techsheet-cli-jvm.jar")
+}
+
 tasks.named<Test>("jvmTest") {
   useJUnitPlatform()
 }
