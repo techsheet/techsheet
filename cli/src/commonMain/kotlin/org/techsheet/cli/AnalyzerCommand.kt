@@ -9,10 +9,13 @@ import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.options.optionalValue
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.reporter.ConsoleReporter
+import org.techsheet.cli.reporter.JsonReporter
+import org.techsheet.cli.reporter.YamlReporter
 
 class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
@@ -23,6 +26,12 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
 
   private val ci: Boolean by option("--ci", help = "Render the report without ANSI colors")
     .flag()
+
+  private val yaml: String? by option("--yaml", help = "Export YAML report (optionally specify output path with =)")
+    .optionalValue("techsheet.yml")
+
+  private val json: String? by option("--json", help = "Export JSON report (optionally specify output path with =)")
+    .optionalValue("techsheet.json")
 
   private val source: String by argument(
     name = "source",
@@ -42,8 +51,10 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       tag = "analyze",
     )
 
+    val sourcePath = FileSystem.SYSTEM.canonicalize(source.toPath())
+
     val ctx = AnalyzerContext(
-      path = FileSystem.SYSTEM.canonicalize(source.toPath()),
+      path = sourcePath,
       log = log,
     )
 
@@ -55,6 +66,18 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
 
     if (!quiet) {
       ConsoleReporter(plain = ci).report(sheet)
+    }
+
+    yaml?.let {
+      val target = sourcePath / it.toPath()
+      log.i { "Writing YAML report to $target" }
+      YamlReporter(target).report(sheet)
+    }
+
+    json?.let {
+      val target = sourcePath / it.toPath()
+      log.i { "Writing JSON report to $target" }
+      JsonReporter(target).report(sheet)
     }
   }
 }

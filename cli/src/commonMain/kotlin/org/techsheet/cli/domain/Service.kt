@@ -5,7 +5,11 @@ data class Service(
   val version: String?,
 )
 
-enum class ServiceType(val title: String, val category: ServiceCategory)
+enum class ServiceType(
+  val title: String,
+  val url: String,
+  val category: ServiceCategory,
+)
 
 enum class ServiceCategory(val title: String) {
   DATABASE("Database"),

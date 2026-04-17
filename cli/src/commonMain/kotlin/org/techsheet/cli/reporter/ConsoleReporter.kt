@@ -1,5 +1,6 @@
 package org.techsheet.cli.reporter
 
+import org.techsheet.cli.CLI_VERSION
 import org.techsheet.cli.domain.FrameworkCategory
 import org.techsheet.cli.domain.ServiceCategory
 import org.techsheet.cli.domain.TechSheet
@@ -101,7 +102,7 @@ class ConsoleReporter(
     "$n ${if (n == 1) singular else plural}"
 
   private fun topRule(width: Int): String {
-    val title = " TechSheet "
+    val title = " TechSheet v$CLI_VERSION "
     val tail = "─".repeat(width - LEAD_DASHES - title.length)
     return style.cyan("─".repeat(LEAD_DASHES) + title + tail)
   }

@@ -5,14 +5,17 @@ data class Language(
   val version: String?,
 )
 
-enum class LanguageType(val title: String) {
-  JAVA("Java"),
-  KOTLIN("Kotlin"),
-  SCALA("Scala"),
-  JAVASCRIPT("JavaScript"),
-  TYPESCRIPT("TypeScript"),
-  PHP("PHP"),
-  PYTHON("Python"),
-  CPP("C++"),
-  CSHARP("C#"),
+enum class LanguageType(
+  val title: String,
+  val url: String
+) {
+  JAVA("Java", "https://techsheet.org/language/java"),
+  KOTLIN("Kotlin", "https://techsheet.org/language/kotlin"),
+  SCALA("Scala", "https://techsheet.org/language/scala"),
+  JAVASCRIPT("JavaScript", "https://techsheet.org/language/javascript"),
+  TYPESCRIPT("TypeScript", "https://techsheet.org/language/typescript"),
+  PHP("PHP", "https://techsheet.org/language/php"),
+  PYTHON("Python", "https://techsheet.org/language/python"),
+  CPP("C++", "https://techsheet.org/language/cpp"),
+  CSHARP("C#", "https://techsheet.org/language/csharp"),
 }
