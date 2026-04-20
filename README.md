@@ -14,12 +14,12 @@
 
 ---
 
-TechSheet scans a repository and identifies what it actually uses. It detects languages, frameworks, services, and
-tools, including versions where possible.
+TechSheet scans a repository and identifies what it actually uses. It detects **9+ languages**, **59+ frameworks**, and
+**19+ tools**, including versions where possible.
 
-Run it in CI to generate an up-to-date report on every build. Collect reports across your organization to build a real 
-inventory of your stack. It stays current without manual upkeep, so you can drop the spreadsheets and stop pretending 
-the Confluence page is accurate. TechSheet is available as a precompiled binary for Linux, macOS, and Windows, a 
+Run it in CI to generate an up-to-date report on every build. Collect reports across your organization to build a real
+inventory of your stack. It stays current without manual upkeep, so you can drop the spreadsheets and stop pretending
+the Confluence page is accurate. TechSheet is available as a precompiled binary for Linux, macOS, and Windows, a
 distroless Docker image, or a CI snippet you can drop into an existing pipeline.
 
 The goal is simple: make stack visibility and cross-team governance automatic, reliable, and no longer a chore.
