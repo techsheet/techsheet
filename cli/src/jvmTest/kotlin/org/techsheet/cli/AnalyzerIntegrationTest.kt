@@ -24,7 +24,7 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.INTELLIJ_IDEA)
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_WEBFLUX)
-        .withFramework(FrameworkType.JUNIT, version = "5")
+        .withFramework(FrameworkType.JUNIT)
     },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
@@ -32,7 +32,7 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.JVM, version = "21")
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_MVC)
-        .withFramework(FrameworkType.JUNIT, version = "5")
+        .withFramework(FrameworkType.JUNIT)
         .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {
