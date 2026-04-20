@@ -2,7 +2,7 @@
 
 # TechSheet.org
 
-**TechSheet is your automated technology detector and inventory. Replace governance chores with a simple CI job.**
+**TechSheet is your automated technology detector and inventory:<br>Replace governance chores with a simple CI job.**
 
 [![Release][release-badge]][release-url]
 [![CI][ci-badge]][ci-url]
