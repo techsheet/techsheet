@@ -1,11 +1,14 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.AnalyzerContext
+import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class GitHubActionsDetector : Detector("GitHub Actions") {
+class GitHubActionsDetector : Detector("GitHub Actions", Matcher.DirectoryAt(".github", "workflows")) {
 
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
-    if (ctx.hasFile(".github/workflows")) sheet.withTool(ToolType.GITHUB_ACTIONS) else sheet
+  override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.GITHUB_ACTIONS)
+
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    sheet.withTool(ToolType.GITHUB_ACTIONS)
 }

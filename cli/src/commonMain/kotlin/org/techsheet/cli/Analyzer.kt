@@ -3,7 +3,7 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import okio.FileMetadata
 import okio.Path
-import org.techsheet.cli.detectorv2.*
+import org.techsheet.cli.detector.*
 import org.techsheet.cli.domain.TechSheet
 
 class Analyzer(

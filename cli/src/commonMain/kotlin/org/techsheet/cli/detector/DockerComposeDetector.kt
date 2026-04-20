@@ -1,12 +1,14 @@
 package org.techsheet.cli.detector
 
+import okio.Path
+import org.techsheet.cli.domain.Matcher
+import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class DockerComposeDetector : AbstractFilePresentDetector(
-  "Docker Compose",
-  { it.withTool(ToolType.DOCKER_COMPOSE) },
-  "docker-compose.yml",
-  ) {
+class DockerComposeDetector : Detector("Docker Compose", Matcher.Filename("docker-compose.yml")) {
 
-  override val depth = 2
+  override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.DOCKER_COMPOSE)
+
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    sheet.withTool(ToolType.DOCKER_COMPOSE)
 }

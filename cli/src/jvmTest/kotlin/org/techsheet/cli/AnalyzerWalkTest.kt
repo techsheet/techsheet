@@ -6,8 +6,8 @@ import co.touchlab.kermit.StaticConfig
 import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toOkioPath
-import org.techsheet.cli.detectorv2.Detector
-import org.techsheet.cli.detectorv2.Detectors
+import org.techsheet.cli.detector.Detector
+import org.techsheet.cli.detector.Detectors
 import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType

@@ -1,33 +1,32 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.AnalyzerContext
+import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
 
-class QtDetector : Detector("Qt") {
+class QtDetector : Detector(
+  "Qt",
+  Matcher.Filename("CMakeLists.txt"),
+  Matcher.Extension(".pro"),
+) {
 
-  private val depth = 3
-
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
-    ctx.walk(depth)
-      .filter { it.name == "CMakeLists.txt" || it.name.endsWith(".pro") }
-      .mapNotNull(ctx::readFileContents)
-      .joinToString("\n")
-      .takeIf(String::isNotEmpty)
-      ?.let { content ->
-        val version = FIND_PACKAGE_QT.find(content)?.groupValues?.get(1)
-          ?: QT_COMPONENT.find(content)?.groupValues?.get(1)
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    content.value
+      ?.let { text ->
+        val version = FIND_PACKAGE_QT.find(text)?.groupValues?.getOrNull(1)
+          ?: QT_COMPONENT.find(text)?.groupValues?.getOrNull(1)
         when {
           version != null -> sheet.withFramework(FrameworkType.QT, version = version)
-          QMAKE_QT_MODULE.containsMatchIn(content) -> sheet.withFramework(FrameworkType.QT)
+          QMAKE_QT_MODULE.containsMatchIn(text) -> sheet.withFramework(FrameworkType.QT)
           else -> sheet
         }
       }
       ?: sheet
 
-  companion object {
-    private val FIND_PACKAGE_QT = Regex("""find_package\s*\(\s*Qt(\d+)""")
-    private val QT_COMPONENT = Regex("""\bQt(\d+)::""")
-    private val QMAKE_QT_MODULE = Regex("""(?m)^\s*QT\s*[+*/]?=""")
+  private companion object {
+    val FIND_PACKAGE_QT = Regex("""find_package\s*\(\s*Qt(\d+)""")
+    val QT_COMPONENT = Regex("""\bQt(\d+)::""")
+    val QMAKE_QT_MODULE = Regex("""(?m)^\s*QT\s*[+*/]?=""")
   }
 }

@@ -1,7 +1,7 @@
 package org.techsheet.cli
 
 import com.github.ajalt.clikt.core.CoreCliktCommand
-import org.techsheet.cli.detectorv2.Detectors
+import org.techsheet.cli.detector.Detectors
 
 class DetectorsCommand : CoreCliktCommand(name = "detectors") {
 

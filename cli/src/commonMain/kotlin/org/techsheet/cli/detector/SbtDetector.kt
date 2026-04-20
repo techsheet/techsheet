@@ -1,28 +1,31 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.AnalyzerContext
+import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class SbtDetector : Detector("sbt") {
+class SbtDetector : Detector(
+  "sbt",
+  Matcher.Filename(BUILD_SBT),
+  Matcher.Filename(BUILD_PROPERTIES),
+) {
 
-  // Multi-project sbt builds can keep sub-module build.sbt files under sub-dirs.
-  private val depth = 3
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    when (path.name) {
+      BUILD_SBT -> sheet.withTool(ToolType.SBT)
+      BUILD_PROPERTIES -> versionFrom(content.value)
+        ?.let { sheet.withTool(ToolType.SBT, it) }
+        ?: sheet
+      else -> sheet
+    }
 
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
-    ctx.walk(depth)
-      .firstOrNull { it.name == "build.sbt" }
-      ?.also { ctx.log.d { "sbt: '${it.name}' present" } }
-      ?.let { sheet.withTool(ToolType.SBT, version = detectVersion(ctx)) }
-      ?: sheet
+  private fun versionFrom(text: String?): String? =
+    text?.let { SBT_VERSION.find(it)?.groupValues?.getOrNull(1) }
 
-  private fun detectVersion(ctx: AnalyzerContext): String? =
-    ctx.walk(depth)
-      .filter { it.name == "build.properties" }
-      .firstNotNullOfOrNull { ctx.readFileContents(it) }
-      ?.let { SBT_VERSION.find(it)?.groupValues?.get(1) }
-
-  companion object {
-    private val SBT_VERSION = Regex("""^\s*sbt\.version\s*=\s*(\S+)""", RegexOption.MULTILINE)
+  private companion object {
+    const val BUILD_SBT = "build.sbt"
+    const val BUILD_PROPERTIES = "build.properties"
+    val SBT_VERSION = Regex("""^\s*sbt\.version\s*=\s*(\S+)""", RegexOption.MULTILINE)
   }
 }
