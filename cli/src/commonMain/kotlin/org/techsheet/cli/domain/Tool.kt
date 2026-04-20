@@ -2,7 +2,8 @@ package org.techsheet.cli.domain
 
 data class Tool(
   val type: ToolType,
-  val version: String?,
+  val version: String? = null,
+  val flavor: String? = null,
 )
 
 enum class ToolType(
@@ -13,12 +14,10 @@ enum class ToolType(
 
   // Build
   GRADLE("Gradle", "https://techsheet.org/tool/gradle", ToolCategory.BUILD),
-  GRADLE_KOTLIN("Gradle - Kotlin DSL", "https://techsheet.org/tool/gradle-kotlin", ToolCategory.BUILD),
-  GRADLE_GROOVY("Gradle - Groovy DSL", "https://techsheet.org/tool/gradle-groovy", ToolCategory.BUILD),
   MAVEN("Maven", "https://techsheet.org/tool/maven", ToolCategory.BUILD),
   NPM("NPM", "https://techsheet.org/tool/npm", ToolCategory.BUILD),
   YARN("Yarn", "https://techsheet.org/tool/yarn", ToolCategory.BUILD),
-  SBT("sbt", "https://techsheet.org/tool/sbt", ToolCategory.BUILD),
+  SBT("SBT", "https://techsheet.org/tool/sbt", ToolCategory.BUILD),
 
   // CI
   GITLAB_CI("GitLab CI", "https://techsheet.org/tool/gitlab-ci", ToolCategory.CI),
@@ -30,6 +29,7 @@ enum class ToolType(
   DOCKER_COMPOSE("Docker Compose", "https://techsheet.org/tool/docker-compose", ToolCategory.CONTAINER),
 
   // Runtime
+  JVM("JVM", "https://techsheet.org/tool/jvm", ToolCategory.RUNTIME),
   NODE("Node.js", "https://techsheet.org/tool/nodejs", ToolCategory.RUNTIME),
 
   // VCS

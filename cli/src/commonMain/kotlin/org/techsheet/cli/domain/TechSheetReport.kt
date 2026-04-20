@@ -52,6 +52,7 @@ data class TechSheetReport(
           url = it.type.url,
           category = it.type.category.title,
           version = it.version,
+          flavor = it.flavor,
         )
       },
     )
@@ -93,4 +94,5 @@ data class ToolEntry(
   val url: String,
   val category: String,
   val version: String? = null,
+  val flavor: String? = null,
 )

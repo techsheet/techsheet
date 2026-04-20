@@ -19,7 +19,7 @@ class ConsoleReporterTest {
   fun `renders the expected layout`() {
     val sheet = TechSheet()
       .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
-      .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+      .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
       .withTool(ToolType.INTELLIJ_IDEA)
       .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
       .withFramework(FrameworkType.SPRING_MVC)
@@ -63,7 +63,7 @@ class ConsoleReporterTest {
 
   @Test
   fun `applies ANSI colors in normal mode`() {
-    val sheet = TechSheet().withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+    val sheet = TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
     val sink = mutableListOf<String>()
     ConsoleReporter(plain = false, emit = sink::add).report(sheet)
     assertEquals(" \u001B[1;33mTools\u001B[0m", sink.single { it.endsWith("Tools\u001B[0m") })
@@ -76,7 +76,7 @@ class ConsoleReporterTest {
 
   @Test
   fun `applies no ANSI colors in plain mode`() {
-    val sheet = TechSheet().withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+    val sheet = TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
     val sink = mutableListOf<String>()
     ConsoleReporter(plain = true, emit = sink::add).report(sheet)
     assertEquals(" Tools", sink.single { it.contains("Tools") })

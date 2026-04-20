@@ -15,7 +15,7 @@ class TechSheetReportTest {
       .withLanguage(LanguageType.JAVASCRIPT)
       .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
       .withFramework(FrameworkType.JUNIT, version = "5")
-      .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+      .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
       .withTool(ToolType.GIT)
 
     val report = TechSheetReport.of(sheet)
@@ -25,11 +25,11 @@ class TechSheetReportTest {
     assertNotNull(report.meta.generatorVersion)
 
     assertEquals(2, report.languages.size)
-    assertEquals("Kotlin", report.languages[0].name)
-    assertEquals("https://techsheet.org/language/kotlin", report.languages[0].url)
-    assertEquals("2.2.21", report.languages[0].version)
-    assertEquals("JavaScript", report.languages[1].name)
-    assertNull(report.languages[1].version)
+    assertEquals("JavaScript", report.languages[0].name)
+    assertNull(report.languages[0].version)
+    assertEquals("Kotlin", report.languages[1].name)
+    assertEquals("https://techsheet.org/language/kotlin", report.languages[1].url)
+    assertEquals("2.2.21", report.languages[1].version)
 
     assertEquals(2, report.frameworks.size)
     assertEquals("Spring Boot", report.frameworks[0].name)
@@ -43,12 +43,14 @@ class TechSheetReportTest {
     assertEquals(0, report.services.size)
 
     assertEquals(2, report.tools.size)
-    assertEquals("Gradle - Kotlin DSL", report.tools[0].name)
-    assertEquals("https://techsheet.org/tool/gradle-kotlin", report.tools[0].url)
+    assertEquals("Gradle", report.tools[0].name)
+    assertEquals("https://techsheet.org/tool/gradle", report.tools[0].url)
     assertEquals("Build", report.tools[0].category)
     assertEquals("9.4.1", report.tools[0].version)
+    assertEquals("Kotlin DSL", report.tools[0].flavor)
     assertEquals("Git", report.tools[1].name)
     assertEquals("VCS", report.tools[1].category)
     assertNull(report.tools[1].version)
+    assertNull(report.tools[1].flavor)
   }
 }

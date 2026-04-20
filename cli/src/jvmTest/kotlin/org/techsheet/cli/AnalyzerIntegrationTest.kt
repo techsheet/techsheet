@@ -19,7 +19,8 @@ class AnalyzerIntegrationTest {
   private val cases = listOf(
     testCase("groovy-spring-boot-gradle") {
       TechSheet()
-        .withTool(ToolType.GRADLE_GROOVY, version = "9.4.1")
+        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Groovy DSL")
+        .withTool(ToolType.JVM, version = "26")
         .withTool(ToolType.INTELLIJ_IDEA)
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_WEBFLUX)
@@ -27,7 +28,8 @@ class AnalyzerIntegrationTest {
     },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
-        .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
+        .withTool(ToolType.JVM, version = "21")
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_MVC)
         .withFramework(FrameworkType.JUNIT, version = "5")
@@ -36,6 +38,7 @@ class AnalyzerIntegrationTest {
     testCase("java-spring-boot-maven") {
       TechSheet()
         .withTool(ToolType.MAVEN, version = "3.9.14")
+        .withTool(ToolType.JVM, version = "17")
         .withFramework(FrameworkType.SPRING_BOOT, version = "3.5.13")
         .withFramework(FrameworkType.SPRING_SECURITY)
         .withFramework(FrameworkType.SPRING_DATA)

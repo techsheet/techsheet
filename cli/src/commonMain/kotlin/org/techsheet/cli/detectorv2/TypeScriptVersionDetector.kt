@@ -1,0 +1,33 @@
+package org.techsheet.cli.detectorv2
+
+import okio.Path
+import org.techsheet.cli.domain.Language
+import org.techsheet.cli.domain.LanguageType
+import org.techsheet.cli.domain.TechSheet
+
+class TypeScriptVersionDetector : Detector("TypeScript (version)") {
+
+  override val matchers: List<Matcher> = listOf(
+    Matcher.Filename("package.json"),
+    Matcher.Filename(".tool-versions"),
+  )
+
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    content.value
+      ?.let { extractVersion(path.name, it) }
+      ?.let { sheet.withLanguage(Language(LanguageType.TYPESCRIPT, it)) }
+      ?: sheet
+
+  private fun extractVersion(filename: String, text: String): String? = when (filename) {
+    "package.json" -> PACKAGE_JSON_TYPESCRIPT.find(text)?.groupValues?.getOrNull(1)
+      ?.trimStart('^', '~', '>', '=', ' ')
+    ".tool-versions" -> text.lineSequence()
+      .firstNotNullOfOrNull { TOOL_VERSIONS_LINE.find(it)?.groupValues?.getOrNull(1) }
+    else -> null
+  }
+
+  private companion object {
+    val PACKAGE_JSON_TYPESCRIPT = Regex(""""typescript"\s*:\s*"([^"]+)"""")
+    val TOOL_VERSIONS_LINE = Regex("""^\s*typescript\s+(\S+)""")
+  }
+}

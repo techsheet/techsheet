@@ -24,8 +24,8 @@ class GradleDetector : Detector("Gradle") {
   private fun detectType(markers: Set<Path>): ToolType? {
     val names = markers.mapTo(HashSet()) { it.name }
     return when {
-      names.any { it in KOTLIN_DSL_FILES } -> ToolType.GRADLE_KOTLIN
-      names.any { it in GROOVY_DSL_FILES } -> ToolType.GRADLE_GROOVY
+      names.any { it in KOTLIN_DSL_FILES } -> ToolType.GRADLE
+      names.any { it in GROOVY_DSL_FILES } -> ToolType.GRADLE
       names.any { it in WRAPPER_FILES } -> ToolType.GRADLE
       else -> null
     }
