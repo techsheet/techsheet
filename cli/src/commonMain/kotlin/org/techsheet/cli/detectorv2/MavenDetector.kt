@@ -1,16 +1,16 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class MavenDetector : Detector("Maven") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename(POM_FILE),
-    Matcher.Filename(WRAPPER_SCRIPT),
-    Matcher.Filename(WRAPPER_PROPERTIES),
-  )
+class MavenDetector : Detector(
+  "Maven",
+  Matcher.Filename(POM_FILE),
+  Matcher.Filename(WRAPPER_SCRIPT),
+  Matcher.Filename(WRAPPER_PROPERTIES),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     sheet.withTool(ToolType.MAVEN, versionFor(path.name, content))

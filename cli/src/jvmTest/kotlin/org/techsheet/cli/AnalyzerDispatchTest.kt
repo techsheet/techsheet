@@ -7,9 +7,9 @@ import okio.FileSystem
 import okio.ForwardingFileSystem
 import okio.Path
 import okio.Path.Companion.toOkioPath
-import okio.SYSTEM
 import org.techsheet.cli.detectorv2.Detector
-import org.techsheet.cli.detectorv2.Matcher
+import org.techsheet.cli.detectorv2.Detectors
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import java.nio.file.Files
 import kotlin.test.Test
@@ -30,13 +30,12 @@ class AnalyzerDispatchTest {
   @Test fun `content is not read when no detector forces it`() {
     val root = projectWith("pom.xml", "<project/>")
 
-    class Observer : Detector("observer") {
-      override val matchers = listOf(Matcher.Filename("pom.xml"))
+    class Observer : Detector("observer", Matcher.Filename("pom.xml")) {
       override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet = sheet
     }
 
     val fs = CountingFs()
-    Analyzer(silent, listOf(Observer())).analyze(AnalyzerContext(root, silent, fs))
+    Analyzer(silent, Detectors(listOf(Observer()))).analyze(AnalyzerContext(root, silent, fs))
 
     assertEquals(0, fs.reads, "no detector forced content; fs.source must not have been called on pom.xml")
   }
@@ -44,19 +43,17 @@ class AnalyzerDispatchTest {
   @Test fun `content is read once when multiple detectors consume it`() {
     val root = projectWith("pom.xml", "<project/>")
 
-    class A : Detector("a") {
-      override val matchers = listOf(Matcher.Filename("pom.xml"))
+    class A : Detector("a", Matcher.Filename("pom.xml")) {
       override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
         sheet.also { content.value }
     }
-    class B : Detector("b") {
-      override val matchers = listOf(Matcher.Filename("pom.xml"))
+    class B : Detector("b", Matcher.Filename("pom.xml")) {
       override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
         sheet.also { content.value }
     }
 
     val fs = CountingFs()
-    Analyzer(silent, listOf(A(), B())).analyze(AnalyzerContext(root, silent, fs))
+    Analyzer(silent, Detectors(listOf(A(), B()))).analyze(AnalyzerContext(root, silent, fs))
 
     assertEquals(1, fs.reads, "two detectors shared one Lazy; fs.source must be called exactly once")
   }

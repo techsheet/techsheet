@@ -1,16 +1,16 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class NpmDetector : Detector("NPM") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename("package.json"),
-    Matcher.Filename("package-lock.json"),
-    Matcher.Filename("npm-shrinkwrap.json"),
-  )
+class NpmDetector : Detector(
+  "NPM",
+  Matcher.Filename("package.json"),
+  Matcher.Filename("package-lock.json"),
+  Matcher.Filename("npm-shrinkwrap.json"),
+) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean =
     sheet.tools.any { it.type == ToolType.NPM && it.version != null }

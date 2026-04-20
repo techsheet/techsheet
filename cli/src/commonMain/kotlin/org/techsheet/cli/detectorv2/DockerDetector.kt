@@ -1,12 +1,11 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class DockerDetector : Detector("Docker") {
-
-  override val matchers: List<Matcher> = listOf(Matcher.Filename("Dockerfile"))
+class DockerDetector : Detector("Docker", Matcher.Filename("Dockerfile")) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.DOCKER)
 

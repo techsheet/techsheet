@@ -1,21 +1,21 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.Language
 import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
 
-class KotlinVersionDetector : Detector("Kotlin (version)") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename("libs.versions.toml"),
-    Matcher.Filename("build.gradle.kts"),
-    Matcher.Filename("settings.gradle.kts"),
-    Matcher.Filename("build.gradle"),
-    Matcher.Filename("settings.gradle"),
-    Matcher.Filename(".tool-versions"),
-    Matcher.Filename("pom.xml"),
-  )
+class KotlinVersionDetector : Detector(
+  "Kotlin (version)",
+  Matcher.Filename("libs.versions.toml"),
+  Matcher.Filename("build.gradle.kts"),
+  Matcher.Filename("settings.gradle.kts"),
+  Matcher.Filename("build.gradle"),
+  Matcher.Filename("settings.gradle"),
+  Matcher.Filename(".tool-versions"),
+  Matcher.Filename("pom.xml"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value

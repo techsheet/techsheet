@@ -1,12 +1,11 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class GitLabCiDetector : Detector("GitLab CI") {
-
-  override val matchers: List<Matcher> = listOf(Matcher.Filename(".gitlab-ci.yml"))
+class GitLabCiDetector : Detector("GitLab CI", Matcher.Filename(".gitlab-ci.yml")) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.GITLAB_CI)
 

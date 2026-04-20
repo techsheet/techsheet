@@ -1,4 +1,4 @@
-package org.techsheet.cli.detectorv2
+package org.techsheet.cli.domain
 
 sealed interface Matcher {
   data class Filename(val name: String) : Matcher

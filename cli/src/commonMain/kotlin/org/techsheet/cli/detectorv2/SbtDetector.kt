@@ -1,15 +1,15 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class SbtDetector : Detector("sbt") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename(BUILD_SBT),
-    Matcher.Filename(BUILD_PROPERTIES),
-  )
+class SbtDetector : Detector(
+  "sbt",
+  Matcher.Filename(BUILD_SBT),
+  Matcher.Filename(BUILD_PROPERTIES),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     when (path.name) {

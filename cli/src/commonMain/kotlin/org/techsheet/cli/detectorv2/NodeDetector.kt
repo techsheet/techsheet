@@ -1,16 +1,16 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class NodeDetector : Detector("Node.js") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename(".nvmrc"),
-    Matcher.Filename(".node-version"),
-    Matcher.Filename("package.json"),
-  )
+class NodeDetector : Detector(
+  "Node.js",
+  Matcher.Filename(".nvmrc"),
+  Matcher.Filename(".node-version"),
+  Matcher.Filename("package.json"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     when (path.name) {

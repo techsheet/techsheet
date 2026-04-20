@@ -1,12 +1,11 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class GitHubActionsDetector : Detector("GitHub Actions") {
-
-  override val matchers: List<Matcher> = listOf(Matcher.DirectoryAt(".github", "workflows"))
+class GitHubActionsDetector : Detector("GitHub Actions", Matcher.DirectoryAt(".github", "workflows")) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.GITHUB_ACTIONS)
 

@@ -1,5 +1,6 @@
 package org.techsheet.cli.detectorv2
 
+import org.techsheet.cli.domain.Matcher
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

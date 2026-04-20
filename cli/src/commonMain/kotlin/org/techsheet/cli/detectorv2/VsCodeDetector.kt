@@ -1,15 +1,15 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class VsCodeDetector : Detector("Visual Studio Code") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.DirectoryAt(".vscode"),
-    Matcher.Extension(".code-workspace"),
-  )
+class VsCodeDetector : Detector(
+  "Visual Studio Code",
+  Matcher.DirectoryAt(".vscode"),
+  Matcher.Extension(".code-workspace"),
+) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.VS_CODE)
 

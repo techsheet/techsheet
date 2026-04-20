@@ -1,16 +1,16 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
 
-class JUnitDetector : Detector("JUnit") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename("build.gradle.kts"),
-    Matcher.Filename("build.gradle"),
-    Matcher.Filename("pom.xml"),
-  )
+class JUnitDetector : Detector(
+  "JUnit",
+  Matcher.Filename("build.gradle.kts"),
+  Matcher.Filename("build.gradle"),
+  Matcher.Filename("pom.xml"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value

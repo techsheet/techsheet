@@ -6,9 +6,9 @@ import co.touchlab.kermit.StaticConfig
 import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toOkioPath
-import okio.SYSTEM
 import org.techsheet.cli.detectorv2.Detector
-import org.techsheet.cli.detectorv2.Matcher
+import org.techsheet.cli.detectorv2.Detectors
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 import java.nio.file.Files
@@ -34,15 +34,14 @@ class AnalyzerWalkTest {
       writeFile(dir / "src" / "main.kt", "fun main() {}")
     }
 
-    class Tripwire : Detector("tripwire") {
-      override val matchers = listOf(Matcher.Filename("tripwire.json"))
+    class Tripwire : Detector("tripwire", Matcher.Filename("tripwire.json")) {
       var hit = false
       override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
         sheet.also { hit = true }
     }
     val tw = Tripwire()
 
-    Analyzer(silent, listOf(tw)).analyze(AnalyzerContext(root, silent))
+    Analyzer(silent, Detectors(listOf(tw))).analyze(AnalyzerContext(root, silent))
     assertEquals(false, tw.hit, "node_modules contents must not be dispatched")
   }
 
@@ -51,13 +50,12 @@ class AnalyzerWalkTest {
       writeFile(dir / ".idea" / "workspace.xml", "<x/>")
     }
 
-    class Idea : Detector("idea") {
-      override val matchers = listOf(Matcher.DirectoryAt(".idea"))
+    class Idea : Detector("idea", Matcher.DirectoryAt(".idea")) {
       override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
         sheet.withTool(ToolType.INTELLIJ_IDEA)
     }
 
-    val sheet = Analyzer(silent, listOf(Idea())).analyze(AnalyzerContext(root, silent))
+    val sheet = Analyzer(silent, Detectors(listOf(Idea()))).analyze(AnalyzerContext(root, silent))
     assertTrue(sheet.hasTool(ToolType.INTELLIJ_IDEA), "DirectoryAt('.idea') must fire on root .idea")
   }
 }

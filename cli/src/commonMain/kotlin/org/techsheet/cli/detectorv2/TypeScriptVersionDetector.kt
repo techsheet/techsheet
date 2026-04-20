@@ -1,16 +1,16 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.Language
 import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
 
-class TypeScriptVersionDetector : Detector("TypeScript (version)") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename("package.json"),
-    Matcher.Filename(".tool-versions"),
-  )
+class TypeScriptVersionDetector : Detector(
+  "TypeScript (version)",
+  Matcher.Filename("package.json"),
+  Matcher.Filename(".tool-versions"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value

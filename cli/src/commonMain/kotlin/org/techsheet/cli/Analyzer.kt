@@ -8,14 +8,12 @@ import org.techsheet.cli.domain.TechSheet
 
 class Analyzer(
   private val log: Logger,
-  private val detectors: List<Detector> = ALL_DETECTORS,
+  private val detectors: Detectors = Detectors(),
 ) {
 
   fun analyze(ctx: AnalyzerContext): TechSheet =
-    DispatchIndex(detectors).let { index ->
-      walkFromRoot(ctx).fold(TechSheet.empty()) { sheet, entry ->
-        dispatch(ctx, index, entry, sheet)
-      }
+    walkFromRoot(ctx).fold(TechSheet.empty()) { sheet, entry ->
+      dispatch(ctx, entry, sheet)
     }
 
   private data class WalkEntry(val path: Path, val metadata: FileMetadata)
@@ -36,24 +34,20 @@ class Analyzer(
         }
       }
 
-  private fun dispatch(
-    ctx: AnalyzerContext,
-    index: DispatchIndex,
-    entry: WalkEntry,
-    sheet: TechSheet,
-  ): TechSheet = hitsFor(ctx, index, entry)
-    .takeIf { it.isNotEmpty() }
-    ?.let { hits ->
-      val content = contentOf(ctx, entry)
-      hits.fold(sheet) { acc, d -> applyDetector(d, entry.path, content, acc) }
-    }
-    ?: sheet
+  private fun dispatch(ctx: AnalyzerContext, entry: WalkEntry, sheet: TechSheet): TechSheet =
+    hitsFor(ctx, entry)
+      .takeIf { it.isNotEmpty() }
+      ?.let { hits ->
+        val content = contentOf(ctx, entry)
+        hits.fold(sheet) { acc, d -> applyDetector(d, entry.path, content, acc) }
+      }
+      ?: sheet
 
-  private fun hitsFor(ctx: AnalyzerContext, index: DispatchIndex, entry: WalkEntry): List<Detector> =
+  private fun hitsFor(ctx: AnalyzerContext, entry: WalkEntry): List<Detector> =
     entry.path.relativeTo(ctx.path).segments.joinToString("/").let { relative ->
       when {
-        entry.metadata.isRegularFile -> index.forFile(relative, entry.path.name, extensionOf(entry.path.name))
-        entry.metadata.isDirectory == true -> index.forDirectory(relative)
+        entry.metadata.isRegularFile -> detectors.forFile(relative, entry.path.name, extensionOf(entry.path.name))
+        entry.metadata.isDirectory == true -> detectors.forDirectory(relative)
         else -> emptyList()
       }
     }
@@ -80,61 +74,10 @@ class Analyzer(
       ?.let(name::substring)
 
   companion object {
+    // TODO: We should take this to a seperate place and make it configurable
     private val IGNORED_DIR_SEGMENTS = setOf(
       "node_modules", ".git", ".gradle", ".idea", "build", "target", "dist", "out",
       "venv", ".venv", "__pycache__",
-    )
-
-    val ALL_DETECTORS: List<Detector> = listOf(
-      GradleDetector(),
-      MavenDetector(),
-      JavaDetector(),
-      KotlinDetector(),
-      ScalaDetector(),
-      JavaScriptDetector(),
-      TypeScriptDetector(),
-      PythonDetector(),
-      CppDetector(),
-      CSharpDetector(),
-      JavaVersionDetector(),
-      JVMDetector(),
-      KotlinVersionDetector(),
-      ScalaVersionDetector(),
-      TypeScriptVersionDetector(),
-      PythonVersionDetector(),
-      GitLabCiDetector(),
-      GitHubActionsDetector(),
-      CodeOwnersDetector(),
-      DockerDetector(),
-      DockerComposeDetector(),
-      EditorConfigDetector(),
-      RenovateDetector(),
-      NpmDetector(),
-      YarnDetector(),
-      NodeDetector(),
-      SbtDetector(),
-      AngularDetector(),
-      ReactDetector(),
-      VueDetector(),
-      SvelteDetector(),
-      NextDetector(),
-      ExpressDetector(),
-      QtDetector(),
-      AspNetCoreDetector(),
-      TailwindDetector(),
-      EslintDetector(),
-      PrettierDetector(),
-      SpringDetector(),
-      PlayDetector(),
-      DjangoDetector(),
-      DjangoMarkerDetector(),
-      FlaskDetector(),
-      FastApiDetector(),
-      PlaywrightDetector(),
-      JUnitDetector(),
-      GitDetector(),
-      IntelliJIdeaDetector(),
-      VsCodeDetector(),
     )
   }
 }

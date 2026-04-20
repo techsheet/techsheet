@@ -37,7 +37,7 @@ class ConsoleReporterTest {
       "",
       " Tools",
       " Build",
-      "   - Gradle - Kotlin DSL 9.4.1",
+      "   - Gradle (Kotlin DSL) 9.4.1",
       " IDE",
       "   - IntelliJ IDEA",
       "",
@@ -69,7 +69,7 @@ class ConsoleReporterTest {
     assertEquals(" \u001B[1;33mTools\u001B[0m", sink.single { it.endsWith("Tools\u001B[0m") })
     assertEquals(" \u001B[32mBuild\u001B[0m", sink.single { it.contains("Build") })
     assertEquals(
-      "   Gradle - Kotlin DSL \u001B[2m9.4.1\u001B[0m",
+      "   Gradle (Kotlin DSL) \u001B[2m9.4.1\u001B[0m",
       sink.single { it.contains("Gradle") },
     )
   }
@@ -81,6 +81,6 @@ class ConsoleReporterTest {
     ConsoleReporter(plain = true, emit = sink::add).report(sheet)
     assertEquals(" Tools", sink.single { it.contains("Tools") })
     assertEquals(" Build", sink.single { it.contains("Build") })
-    assertEquals("   - Gradle - Kotlin DSL 9.4.1", sink.single { it.contains("Gradle") })
+    assertEquals("   - Gradle (Kotlin DSL) 9.4.1", sink.single { it.contains("Gradle") })
   }
 }

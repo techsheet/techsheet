@@ -1,20 +1,20 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class JVMDetector : Detector("JVM") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename(".java-version"),
-    Matcher.Filename(".tool-versions"),
-    Matcher.Filename("pom.xml"),
-    Matcher.Filename("build.gradle.kts"),
-    Matcher.Filename("settings.gradle.kts"),
-    Matcher.Filename("build.gradle"),
-    Matcher.Filename("settings.gradle"),
-  )
+class JVMDetector : Detector(
+  "JVM",
+  Matcher.Filename(".java-version"),
+  Matcher.Filename(".tool-versions"),
+  Matcher.Filename("pom.xml"),
+  Matcher.Filename("build.gradle.kts"),
+  Matcher.Filename("settings.gradle.kts"),
+  Matcher.Filename("build.gradle"),
+  Matcher.Filename("settings.gradle"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value

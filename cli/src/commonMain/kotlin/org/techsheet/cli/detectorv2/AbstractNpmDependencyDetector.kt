@@ -1,15 +1,14 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 
 abstract class AbstractNpmDependencyDetector(
   name: String,
   packageName: String,
   private val apply: (TechSheet, String?) -> TechSheet,
-) : Detector(name) {
-
-  override val matchers: List<Matcher> = listOf(Matcher.Filename("package.json"))
+) : Detector(name, Matcher.Filename("package.json")) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value

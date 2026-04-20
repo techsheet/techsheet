@@ -1,18 +1,18 @@
 package org.techsheet.cli.detectorv2
 
 import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.Language
 import org.techsheet.cli.domain.LanguageType
 import org.techsheet.cli.domain.TechSheet
 
-class ScalaVersionDetector : Detector("Scala (version)") {
-
-  override val matchers: List<Matcher> = listOf(
-    Matcher.Filename("build.sbt"),
-    Matcher.Filename("Build.scala"),
-    Matcher.Filename(".tool-versions"),
-    Matcher.Filename("pom.xml"),
-  )
+class ScalaVersionDetector : Detector(
+  "Scala (version)",
+  Matcher.Filename("build.sbt"),
+  Matcher.Filename("Build.scala"),
+  Matcher.Filename(".tool-versions"),
+  Matcher.Filename("pom.xml"),
+) {
 
   override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     content.value
