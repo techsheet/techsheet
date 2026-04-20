@@ -35,22 +35,25 @@ class Analyzer(
       }
 
   private fun dispatch(ctx: AnalyzerContext, entry: WalkEntry, sheet: TechSheet): TechSheet =
-    hitsFor(ctx, entry)
-      .takeIf { it.isNotEmpty() }
-      ?.let { hits ->
-        val content = contentOf(ctx, entry)
-        hits.fold(sheet) { acc, d -> applyDetector(d, entry.path, content, acc) }
-      }
-      ?: sheet
-
-  private fun hitsFor(ctx: AnalyzerContext, entry: WalkEntry): List<Detector> =
     entry.path.relativeTo(ctx.path).segments.joinToString("/").let { relative ->
-      when {
-        entry.metadata.isRegularFile -> detectors.forFile(relative, entry.path.name, extensionOf(entry.path.name))
-        entry.metadata.isDirectory == true -> detectors.forDirectory(relative)
-        else -> emptyList()
-      }
+      log.d { displayPath(relative, entry.metadata) }
+      hitsFor(entry, relative)
+        .takeIf { it.isNotEmpty() }
+        ?.let { hits ->
+          val content = contentOf(ctx, entry)
+          hits.fold(sheet) { acc, d -> applyDetector(d, entry.path, content, acc) }
+        }
+        ?: sheet.also { log.d { " - No matching detectors" } }
     }
+
+  private fun hitsFor(entry: WalkEntry, relative: String): List<Detector> = when {
+    entry.metadata.isRegularFile -> detectors.forFile(relative, entry.path.name, extensionOf(entry.path.name))
+    entry.metadata.isDirectory == true -> detectors.forDirectory(relative)
+    else -> emptyList()
+  }
+
+  private fun displayPath(relative: String, metadata: FileMetadata): String =
+    if (metadata.isDirectory == true) "Analyzing: ./$relative/" else "Analyzing: ./$relative"
 
   private fun contentOf(ctx: AnalyzerContext, entry: WalkEntry): Lazy<String?> = lazy {
     entry.takeIf { it.metadata.isRegularFile }?.let { readUtf8OrWarn(ctx, it.path) }
@@ -63,9 +66,9 @@ class Analyzer(
 
   private fun applyDetector(d: Detector, path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
     if (d.skipIf(path, sheet)) {
-      sheet.also { log.d { "Detector ${d.name} skipped $path" } }
+      sheet.also { log.d { " - Skipping detector: ${d.name}" } }
     } else {
-      d.onMatch(path, content, sheet).also { log.d { "Detector ${d.name} matched $path" } }
+      d.onMatch(path, content, sheet).also { log.d { " - Running detector: ${d.name}" } }
     }
 
   private fun extensionOf(name: String): String? =
