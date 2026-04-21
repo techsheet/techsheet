@@ -97,7 +97,7 @@ Also, you can use the analyzer directly in your CI jobs:
 <details open>
 <summary>GitLab CI</summary>
 
-```bash
+```yaml
 techsheet:
   image: ghcr.io/techsheet/analyzer:latest
   script:
