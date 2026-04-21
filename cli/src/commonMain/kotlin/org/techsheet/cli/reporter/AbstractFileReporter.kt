@@ -12,10 +12,19 @@ abstract class AbstractFileReporter(
 ) : Reporter {
 
   override fun report(sheet: TechSheet) {
-    val report = TechSheetReport.of(sheet)
+    report(TechSheetReport.of(sheet))
+  }
+
+  fun report(report: TechSheetReport) {
     val content = serialize(report)
-    path.parent?.let { fs.createDirectories(it) }
-    fs.write(path) { writeUtf8(content) }
+
+    path.parent?.also {
+      fs.createDirectories(it)
+    }
+
+    fs.write(path) {
+      writeUtf8(content)
+    }
   }
 
   protected abstract fun serialize(report: TechSheetReport): String

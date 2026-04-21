@@ -2,64 +2,76 @@
 
 # TechSheet.org
 
-**TechSheet is your automated technology detector and inventory:<br>Replace governance chores with a simple CI job.**
+**An open standard and toolchain to report technical insights about software projects in an automated, structured, 
+uniform manner.**
 
 [![Release][release-badge]][release-url]
 [![CI][ci-badge]][ci-url]
-[![License][license-badge]][license-url]
 [![Container][docker-badge]][docker-url]
-[![Kotlin Multiplatform][kmp-badge]][kmp-url]
+[![License][license-badge]][license-url]
 
 </div>
 
 ---
 
-TechSheet scans a repository and identifies what it actually uses. It detects **14+ languages**, **59+ frameworks**, and
-**19+ tools**, including versions where possible.
+*TechSheet provides a [CLI](#cli) to analyze your repositories. It currently detects 
+**[14+ languages](./docs/detectors.md#languages)**, **[59+ frameworks](./docs/detectors.md#frameworks)**, and 
+**[19+ tools](./docs/detectors.md#tools)**, including versions where possible. Additionally, the TechSheet 
+[Server](#server) can be used for storing and aggregating reports as well as gathering insights across teams and 
+projects.*
 
-Run it in CI to generate an up-to-date report on every build. Collect reports across your organization to build a real
-inventory of your stack. It stays current without manual upkeep, so you can drop the spreadsheets and stop pretending
-the Confluence page is accurate. TechSheet is available as a precompiled binary for Linux, macOS, and Windows, a
-distroless Docker image, or a CI snippet you can drop into an existing pipeline.
+## CLI
 
-The goal is simple: make stack visibility and cross-team governance automatic, reliable, and no longer a chore.
+The CLI can be installed and used on various platforms, as a precompiled binary for Linux, OSX and Windows, as a Docker 
+image, a CI job on GitHub / GitLab or as a self-containing JAR.
 
-## Usage
+Simply run analyze at your repository root to generate a report:
 
-### CI job
+```bash
+techsheet analyze
+```
 
-The simplest option is to integrate report generation into a CI job:
+Or use it in your CI jobs:
 
 ```yaml
 # .gitlab-ci.yml
 techsheet:
   image: ghcr.io/techsheet/analyzer:latest
   script:
-    - techsheet analyze --html
+    - techsheet analyze --markdown
   artifacts:
     paths:
-      - techsheet.html
-    when: always
+      - techsheet.md
 ```
 
-## Run locally
+### Reporters
 
-The TechSheet CLI is also available as a precompiled binary for most platforms. Install it and run:
+By default, `analyze` just generates reports to console, but various other reporters are supported. For examples, see 
+[Markdown](./docs/example/techsheet.md), [HTML](./docs/example/techsheet.html), [YAML](./docs/example/techsheet.yml) or 
+[JSON](./docs/example/techsheet.json). For a full list of available reporters, just run:
 
-```sh
-techsheet analyze
+```bash
+techsheet analyze --help
 ```
 
-You can also use the Markdown reporter and commit the resulting `TECHSHEET.md` directly to your repo, for example via a
-pre-commit hook:
+### Detectors
 
-```sh
-techsheet analyze --markdown
-git add TECHSHEET.md
-git commit -m "Update TechSheet"
+The list of detected languages, frameworks, services and tools is constantly growing and improving with each release. 
+Find the full list of detectors [here](./docs/detectors.md) or simply run:
+
+```bash
+techsheet detectors
 ```
 
-## Install
+Missing something? [Open an issue][new-detector-template] or send a PR.
+
+## Server
+
+The TechSheet server can be used to store, aggregate, analyze and gather insights from reports. 
+
+***TBD:** Server is still in early stage development, and therefore not generally available.*
+
+## Installation
 
 The CLI can be installed in several ways. The simplest are Docker or precompiled binaries.
 
@@ -69,18 +81,16 @@ The CLI can be installed in several ways. The simplest are Docker or precompiled
 docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 ```
 
-Images are published to GHCR for every release.
-
 ### Native binary
 
 ```bash
 # macOS (Apple Silicon)
-curl -fsSL -o techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
-chmod +x techsheet
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
+chmod +x /usr/local/bin/techsheet
 
 # Linux x64
-curl -fsSL -o techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
-chmod +x techsheet
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
+chmod +x /usr/local/bin/techsheet
 ```
 
 For Windows, download `techsheet-windows-x64.exe` from the [releases page][release-url].
@@ -92,25 +102,7 @@ curl -fsSL -o techsheet.jar https://github.com/techsheet/techsheet/releases/late
 java -jar techsheet.jar analyze .
 ```
 
-## Available reporters
-
-<!-- TODO: explain available reporters: console, HTML, Markdown, YAML, JSON -->
-
-## What gets detected
-
-TechSheet ships detectors for 30+ languages, frameworks, services, and tools, with more added regularly. Run
-`techsheet detectors` to list what is included in your build.
-
-<details>
-<summary><strong>Full detector matrix</strong></summary>
-
-<!-- existing tables unchanged -->
-
-</details>
-
-Missing something? Detectors are small, pattern-based Kotlin files. [Open an issue][new-detector-template] or send a PR.
-
-## Building from source
+## Development
 
 TechSheet is a [Kotlin Multiplatform][kmp-url] module with JVM and native targets (Linux x64, Windows x64, macOS arm64).
 Requires JDK 21+.
@@ -129,23 +121,22 @@ Requires JDK 21+.
 
 Use `linkDebugExecutable*` instead of `linkReleaseExecutable*` for debug builds.
 
-## How detectors are tested
+## Testing
 
-Detector behavior is validated against small but realistic project trees under
-`cli/src/commonTest/resources/test-projects/`. Each directory is a runnable sample that the analyzer processes exactly
-like a real repository.
+Besides unit tests, behavior is validated against small but realistic project trees under
+`cli/src/jvmTest/resources/test-projects/`. Each directory is a runnable sample that the analyzer processes like a 
+real project.
 
 Adding a fixture:
 
-1. Add a project under `cli/src/commonTest/resources/test-projects/<name>/`
+1. Add a project under `cli/src/jvmTest/resources/test-projects/<name>/`
 2. Add a `testCase("<name>") { ... }` entry to `AnalyzerIntegrationTest.cases`
 3. Run `./gradlew :cli:jvmTest` and `:cli:assemble` if you changed `commonMain`
 
 ## Contributing
 
-* **Bugs and feature requests:** [open an issue][issues-url]
-* **New detectors:** use the ["Propose a new detector" template][new-detector-template]
-* **PRs welcome** with minimal process
+Contributions of any kind are very welcome. Please read the [contribution guidelines](CONTRIBUTING.md) first, then 
+[open an issue][issues-url] or propose a [pull request][pullrequest-url].
 
 ## License
 
@@ -167,10 +158,10 @@ Adding a fixture:
 
 [docker-url]: https://github.com/techsheet/techsheet/pkgs/container/analyzer
 
-[kmp-badge]: https://img.shields.io/badge/kotlin-multiplatform-7F52FF?logo=kotlin&logoColor=white
-
 [kmp-url]: https://kotlinlang.org/docs/multiplatform.html
 
 [issues-url]: https://github.com/techsheet/techsheet/issues
+
+[pullrequest-url]: https://github.com/techsheet/techsheet/pulls
 
 [new-detector-template]: https://github.com/techsheet/techsheet/issues/new?template=new-detector.yml
