@@ -2,8 +2,8 @@
 
 # TechSheet.org
 
-**An open standard and toolchain to report technical insights about software projects in an automated, structured, 
-uniform manner.**
+An **open standard** and toolchain to report **technical insights** about **software projects** in an automated, 
+structured, uniform manner.
 
 [![Release][release-badge]][release-url]
 [![CI][ci-badge]][ci-url]
@@ -11,8 +11,6 @@ uniform manner.**
 [![License][license-badge]][license-url]
 
 </div>
-
----
 
 *TechSheet provides a [CLI](#cli) to analyze your repositories. It currently detects 
 **[14+ languages](./docs/detectors.md#languages)**, **[59+ frameworks](./docs/detectors.md#frameworks)**, and 
