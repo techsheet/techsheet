@@ -42,6 +42,51 @@ techsheet:
       - techsheet.md
 ```
 
+### Installation
+
+The CLI can be installed in several ways. The simplest are Docker or precompiled binaries.
+
+<details open>
+<summary>Docker</summary>
+
+```bash
+docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
+```
+</details>
+
+<details>
+<summary>OSX (precompiled binary)</summary>
+
+```bash
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
+chmod +x /usr/local/bin/techsheet
+```
+</details>
+
+<details>
+<summary>Linux (precompiled binary)</summary>
+
+```bash
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
+chmod +x /usr/local/bin/techsheet
+```
+</details>
+
+<details>
+<summary>Windows (precompiled binary)</summary>
+
+Download `techsheet-windows-x64.exe` from the [releases page][release-url]
+</details>
+
+<details>
+<summary>JVM (jar)</summary>
+
+```bash
+curl -fsSL -o techsheet.jar https://github.com/techsheet/techsheet/releases/latest/download/techsheet.jar
+java -jar techsheet.jar analyze .
+```
+</details>
+
 ### Reporters
 
 By default, `analyze` just generates reports to console, but various other reporters are supported. For examples, see 
@@ -68,37 +113,6 @@ Missing something? [Open an issue][new-detector-template] or send a PR.
 The TechSheet server can be used to store, aggregate, analyze and gather insights from reports. 
 
 ***TBD:** Server is still in early stage development, and therefore not generally available.*
-
-## Installation
-
-The CLI can be installed in several ways. The simplest are Docker or precompiled binaries.
-
-### Docker
-
-```bash
-docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
-```
-
-### Native binary
-
-```bash
-# macOS (Apple Silicon)
-curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
-chmod +x /usr/local/bin/techsheet
-
-# Linux x64
-curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
-chmod +x /usr/local/bin/techsheet
-```
-
-For Windows, download `techsheet-windows-x64.exe` from the [releases page][release-url].
-
-### JVM jar
-
-```bash
-curl -fsSL -o techsheet.jar https://github.com/techsheet/techsheet/releases/latest/download/techsheet.jar
-java -jar techsheet.jar analyze .
-```
 
 ## Development
 
