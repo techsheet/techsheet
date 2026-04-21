@@ -43,37 +43,8 @@ class MarkdownReporter(
     }
   }
 
-  private fun renderTable(headers: List<String>, rows: List<List<String>>): String {
-    val allRows = rows + listOf(List(headers.size) { "" })
-    val widths = IntArray(headers.size) { col ->
-      maxOf(headers[col].length, allRows.maxOf { it[col].length })
-    }
-    return buildString {
-      appendRow(headers, widths)
-      appendSeparator(widths)
-      allRows.forEach { appendRow(it, widths) }
-    }
-  }
-
-  private fun StringBuilder.appendRow(cells: List<String>, widths: IntArray) {
-    append('|')
-    cells.forEachIndexed { i, cell ->
-      append(' ')
-      append(cell.padEnd(widths[i]))
-      append(' ')
-      append('|')
-    }
-    append('\n')
-  }
-
-  private fun StringBuilder.appendSeparator(widths: IntArray) {
-    append('|')
-    widths.forEach { w ->
-      repeat(w + 2) { append('-') }
-      append('|')
-    }
-    append('\n')
-  }
+  private fun renderTable(headers: List<String>, rows: List<List<String>>): String =
+    markdownTable(headers, rows + listOf(List(headers.size) { "" }))
 
   private fun formatMeta(meta: ReportMeta): String {
     val dt = meta.generatedAt.toLocalDateTime(TimeZone.currentSystemDefault())
