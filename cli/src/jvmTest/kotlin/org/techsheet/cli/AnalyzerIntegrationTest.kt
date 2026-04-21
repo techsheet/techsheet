@@ -19,23 +19,26 @@ class AnalyzerIntegrationTest {
   private val cases = listOf(
     testCase("groovy-spring-boot-gradle") {
       TechSheet()
-        .withTool(ToolType.GRADLE_GROOVY, version = "9.4.1")
+        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Groovy DSL")
+        .withTool(ToolType.JVM, version = "26")
         .withTool(ToolType.INTELLIJ_IDEA)
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_WEBFLUX)
-        .withFramework(FrameworkType.JUNIT, version = "5")
+        .withFramework(FrameworkType.JUNIT)
     },
     testCase("kotlin-spring-boot-gradle") {
       TechSheet()
-        .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
+        .withTool(ToolType.JVM, version = "21")
         .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
         .withFramework(FrameworkType.SPRING_MVC)
-        .withFramework(FrameworkType.JUNIT, version = "5")
+        .withFramework(FrameworkType.JUNIT)
         .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
     },
     testCase("java-spring-boot-maven") {
       TechSheet()
         .withTool(ToolType.MAVEN, version = "3.9.14")
+        .withTool(ToolType.JVM, version = "17")
         .withFramework(FrameworkType.SPRING_BOOT, version = "3.5.13")
         .withFramework(FrameworkType.SPRING_SECURITY)
         .withFramework(FrameworkType.SPRING_DATA)
@@ -44,6 +47,9 @@ class AnalyzerIntegrationTest {
     testCase("angular") {
       TechSheet()
         .withLanguage(LanguageType.TYPESCRIPT, version = "5.9.2")
+        .withLanguage(LanguageType.HTML)
+        .withLanguage(LanguageType.SCSS)
+        .withLanguage(LanguageType.MARKDOWN)
         .withTool(ToolType.EDITORCONFIG)
         .withTool(ToolType.NPM)
         .withFramework(FrameworkType.ANGULAR, version = "20.3.0")
@@ -68,6 +74,8 @@ class AnalyzerIntegrationTest {
       TechSheet()
         .withLanguage(LanguageType.SCALA, version = "2.13.18")
         .withLanguage(LanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.HTML)
+        .withLanguage(LanguageType.CSS)
         .withTool(ToolType.SBT, version = "1.12.9")
         .withFramework(FrameworkType.PLAY_FRAMEWORK, version = "3.0.10")
     },
@@ -82,6 +90,8 @@ class AnalyzerIntegrationTest {
     testCase("next-js") {
       TechSheet()
         .withLanguage(LanguageType.TYPESCRIPT, version = "5")
+        .withLanguage(LanguageType.CSS)
+        .withLanguage(LanguageType.MARKDOWN)
         .withTool(ToolType.NPM)
         .withTool(ToolType.ESLINT, version = "9")
         .withFramework(FrameworkType.REACT, version = "19.2.4")
@@ -91,6 +101,7 @@ class AnalyzerIntegrationTest {
     testCase("node-express") {
       TechSheet()
         .withLanguage(LanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.CSS)
         .withTool(ToolType.NPM)
         .withTool(ToolType.NODE)
         .withFramework(FrameworkType.EXPRESS, version = "4.16.1")

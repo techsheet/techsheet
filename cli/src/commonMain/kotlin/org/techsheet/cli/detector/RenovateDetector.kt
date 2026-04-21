@@ -1,16 +1,21 @@
 package org.techsheet.cli.detector
 
+import okio.Path
+import org.techsheet.cli.domain.Matcher
+import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class RenovateDetector : AbstractFilePresentDetector(
+class RenovateDetector : Detector(
   "Renovate",
-  { it.withTool(ToolType.RENOVATE) },
-  "renovate.json",
-  "renovate.json5",
-  ".renovaterc",
-  ".renovaterc.json",
-  ".renovaterc.json5",
-  ) {
-  // Renovate config lives at the project root or under .github/ / .gitlab/
-  override val depth = 1
+  Matcher.Filename("renovate.json"),
+  Matcher.Filename("renovate.json5"),
+  Matcher.Filename(".renovaterc"),
+  Matcher.Filename(".renovaterc.json"),
+  Matcher.Filename(".renovaterc.json5"),
+) {
+
+  override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.RENOVATE)
+
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    sheet.withTool(ToolType.RENOVATE)
 }

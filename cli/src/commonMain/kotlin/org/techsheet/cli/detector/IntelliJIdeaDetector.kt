@@ -1,18 +1,18 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.AnalyzerContext
+import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolType
 
-class IntelliJIdeaDetector : Detector("IntelliJ IDEA") {
+class IntelliJIdeaDetector : Detector(
+  "IntelliJ IDEA",
+  Matcher.DirectoryAt(".idea"),
+  Matcher.Extension(".iml"),
+) {
 
-  private val depth = 3
+  override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasTool(ToolType.INTELLIJ_IDEA)
 
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
-    if (hasIdeaMarker(ctx)) sheet.withTool(ToolType.INTELLIJ_IDEA) else sheet
-
-  // Two independent markers: the .idea/ project dir (at root) and per-module *.iml files
-  // (which live at module roots and survive even when .idea/ is gitignored).
-  private fun hasIdeaMarker(ctx: AnalyzerContext): Boolean =
-    ctx.hasFile(".idea") || ctx.walk(depth).any { it.name.endsWith(".iml") }
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    sheet.withTool(ToolType.INTELLIJ_IDEA)
 }

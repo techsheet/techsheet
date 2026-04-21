@@ -1,24 +1,23 @@
 package org.techsheet.cli.detector
 
-import org.techsheet.cli.AnalyzerContext
+import okio.Path
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 
 abstract class AbstractNpmDependencyDetector(
   name: String,
-  private val packageName: String,
+  packageName: String,
   private val apply: (TechSheet, String?) -> TechSheet,
-) : Detector(name) {
+) : Detector(name, Matcher.Filename("package.json")) {
 
-  protected open val depth: Int = 3
-
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet =
-    ctx.walk(depth)
-      .filter { it.name == "package.json" }
-      .mapNotNull(ctx::readFileContents)
-      .firstNotNullOfOrNull { versionRegex.find(it)?.groupValues?.get(1) }
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    content.value
+      ?.let(versionRegex::find)
+      ?.groupValues
+      ?.getOrNull(1)
       ?.trimStart('^', '~', '>', '=', ' ')
-      ?.also { ctx.log.d { "$name: '$packageName' present in package.json" } }
-      ?.let { apply(sheet, it.ifEmpty { null }) }
+      ?.ifEmpty { null }
+      ?.let { apply(sheet, it) }
       ?: sheet
 
   private val versionRegex = Regex(""""${Regex.escape(packageName)}"\s*:\s*"([^"]+)"""")

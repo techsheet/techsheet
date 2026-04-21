@@ -30,15 +30,38 @@ class ConsoleReporter(
 
   private fun renderBody(sheet: TechSheet): List<String> = buildList {
     val sections = listOfNotNull(
-      flatSection("Languages", sheet.languages) { it.type.title to it.version },
-      categorizedSection("Frameworks", sheet.frameworks, FrameworkCategory.entries, { it.type.category }, { it.title }) {
+      flatSection(
+        "Languages",
+        sheet.languages
+      ) {
         it.type.title to it.version
       },
-      categorizedSection("Services", sheet.services, ServiceCategory.entries, { it.type.category }, { it.title }) {
+      categorizedSection(
+        "Frameworks",
+        sheet.frameworks,
+        FrameworkCategory.entries,
+        { it.type.category },
+        { it.title }) {
         it.type.title to it.version
       },
-      categorizedSection("Tools", sheet.tools, ToolCategory.entries, { it.type.category }, { it.title }) {
+      categorizedSection(
+        "Services",
+        sheet.services,
+        ServiceCategory.entries,
+        { it.type.category },
+        { it.title }
+      ) {
         it.type.title to it.version
+      },
+      categorizedSection(
+        "Tools",
+        sheet.tools,
+        ToolCategory.entries,
+        { it.type.category },
+        { it.title }
+      ) {
+        val label = it.flavor?.let { flavor -> "${it.type.title} ($flavor)" } ?: it.type.title
+        label to it.version
       },
     )
     if (sections.isEmpty()) {

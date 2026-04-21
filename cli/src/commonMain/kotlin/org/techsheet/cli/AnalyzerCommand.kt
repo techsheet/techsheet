@@ -3,7 +3,6 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
-import co.touchlab.kermit.CommonWriter
 import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
@@ -16,6 +15,7 @@ import okio.SYSTEM
 import org.techsheet.cli.reporter.ConsoleReporter
 import org.techsheet.cli.reporter.JsonReporter
 import org.techsheet.cli.reporter.YamlReporter
+import kotlin.time.measureTimedValue
 
 class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
@@ -47,7 +47,7 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     }
 
     val log = Logger(
-      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(CommonWriter())),
+      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(PlainLogWriter())),
       tag = "analyze",
     )
 
@@ -58,26 +58,29 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       log = log,
     )
 
-    log.i { "Starting analysis of project ${ctx.path}" }
+    log.i { "Starting project analysis..." }
 
-    val sheet = Analyzer(log).analyze(ctx)
+    val timed = measureTimedValue { Analyzer(log).analyze(ctx) }
+    val sheet = timed.value
 
-    log.i { "Analysis done, generating report" }
-
-    if (!quiet) {
-      ConsoleReporter(plain = ci).report(sheet)
-    }
+    log.i { "" }
+    log.i { "Project analyzed in ${timed.duration}." }
 
     yaml?.let {
       val target = sourcePath / it.toPath()
-      log.i { "Writing YAML report to $target" }
+      log.i { "Writing YAML report to: $target" }
       YamlReporter(target).report(sheet)
     }
 
     json?.let {
       val target = sourcePath / it.toPath()
-      log.i { "Writing JSON report to $target" }
+      log.i { "Writing JSON report to: $target" }
       JsonReporter(target).report(sheet)
+    }
+
+    if (!quiet) {
+      log.i { "" }
+      ConsoleReporter(plain = ci).report(sheet)
     }
   }
 }

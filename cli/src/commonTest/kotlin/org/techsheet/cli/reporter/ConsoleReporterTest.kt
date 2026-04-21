@@ -19,7 +19,7 @@ class ConsoleReporterTest {
   fun `renders the expected layout`() {
     val sheet = TechSheet()
       .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
-      .withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+      .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
       .withTool(ToolType.INTELLIJ_IDEA)
       .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
       .withFramework(FrameworkType.SPRING_MVC)
@@ -37,7 +37,7 @@ class ConsoleReporterTest {
       "",
       " Tools",
       " Build",
-      "   - Gradle - Kotlin DSL 9.4.1",
+      "   - Gradle (Kotlin DSL) 9.4.1",
       " IDE",
       "   - IntelliJ IDEA",
       "",
@@ -63,24 +63,24 @@ class ConsoleReporterTest {
 
   @Test
   fun `applies ANSI colors in normal mode`() {
-    val sheet = TechSheet().withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+    val sheet = TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
     val sink = mutableListOf<String>()
     ConsoleReporter(plain = false, emit = sink::add).report(sheet)
     assertEquals(" \u001B[1;33mTools\u001B[0m", sink.single { it.endsWith("Tools\u001B[0m") })
     assertEquals(" \u001B[32mBuild\u001B[0m", sink.single { it.contains("Build") })
     assertEquals(
-      "   Gradle - Kotlin DSL \u001B[2m9.4.1\u001B[0m",
+      "   Gradle (Kotlin DSL) \u001B[2m9.4.1\u001B[0m",
       sink.single { it.contains("Gradle") },
     )
   }
 
   @Test
   fun `applies no ANSI colors in plain mode`() {
-    val sheet = TechSheet().withTool(ToolType.GRADLE_KOTLIN, version = "9.4.1")
+    val sheet = TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
     val sink = mutableListOf<String>()
     ConsoleReporter(plain = true, emit = sink::add).report(sheet)
     assertEquals(" Tools", sink.single { it.contains("Tools") })
     assertEquals(" Build", sink.single { it.contains("Build") })
-    assertEquals("   - Gradle - Kotlin DSL 9.4.1", sink.single { it.contains("Gradle") })
+    assertEquals("   - Gradle (Kotlin DSL) 9.4.1", sink.single { it.contains("Gradle") })
   }
 }

@@ -1,59 +1,50 @@
 package org.techsheet.cli.detector
 
 import okio.Path
-import org.techsheet.cli.AnalyzerContext
-import org.techsheet.cli.domain.Tool
-import org.techsheet.cli.domain.ToolType
+import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.ToolType
 
-class GradleDetector : Detector("Gradle") {
+class GradleDetector : Detector(
+  "Gradle",
+  Matcher.Filename("build.gradle.kts"),
+  Matcher.Filename("settings.gradle.kts"),
+  Matcher.Filename("build.gradle"),
+  Matcher.Filename("settings.gradle"),
+  Matcher.Filename("gradlew"),
+  Matcher.Filename(WRAPPER_PROPERTIES),
+) {
 
-  override fun detect(ctx: AnalyzerContext, sheet: TechSheet): TechSheet {
-    val markers = ctx.walk(MAX_DEPTH)
-      .filter { it.name in ALL_MARKERS }
-      .toSet()
+  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+    sheet.withTool(
+      type = ToolType.GRADLE,
+      version = versionFor(path.name, content),
+      flavor = flavorFor(path.name),
+    )
 
-    ctx.log.d("Checking gradle markers: ${markers.joinToString(", ")}")
-
-    val tool = detectType(markers)?.let { type ->
-      Tool(type = type, version = detectVersion(ctx, markers))
-    }
-    return tool?.let(sheet::withTool) ?: sheet
+  private fun flavorFor(name: String): String? = when (name) {
+    in KOTLIN_DSL_FILES -> "Kotlin DSL"
+    in GROOVY_DSL_FILES -> "Groovy DSL"
+    else -> null
   }
 
-  private fun detectType(markers: Set<Path>): ToolType? {
-    val names = markers.mapTo(HashSet()) { it.name }
-    return when {
-      names.any { it in KOTLIN_DSL_FILES } -> ToolType.GRADLE_KOTLIN
-      names.any { it in GROOVY_DSL_FILES } -> ToolType.GRADLE_GROOVY
-      names.any { it in WRAPPER_FILES } -> ToolType.GRADLE
-      else -> null
-    }
-  }
+  private fun versionFor(name: String, content: Lazy<String?>): String? =
+    name.takeIf { it == WRAPPER_PROPERTIES }?.let { versionFromWrapper(content.value) }
 
-  private fun detectVersion(ctx: AnalyzerContext, markers: Set<Path>): String? = markers
-    .firstOrNull { it.name == WRAPPER_PROPERTIES }
-    ?.let(ctx::readFileContents)
+  private fun versionFromWrapper(text: String?): String? = text
     ?.lineSequence()
     ?.map(String::trim)
     ?.firstOrNull { it.startsWith(DISTRIBUTION_URL_KEY) }
     ?.substringAfter(DISTRIBUTION_URL_KEY)
     ?.let(DISTRIBUTION_URL_VERSION::find)
     ?.groupValues
-    ?.get(1)
+    ?.getOrNull(1)
 
-  companion object {
-    private const val MAX_DEPTH = 3
-
-    private const val WRAPPER_PROPERTIES = "gradle-wrapper.properties"
-    private const val DISTRIBUTION_URL_KEY = "distributionUrl="
-
-    private val KOTLIN_DSL_FILES = setOf("build.gradle.kts", "settings.gradle.kts")
-    private val GROOVY_DSL_FILES = setOf("build.gradle", "settings.gradle")
-    private val WRAPPER_FILES = setOf("gradlew", WRAPPER_PROPERTIES)
-
-    private val ALL_MARKERS: Set<String> = KOTLIN_DSL_FILES + GROOVY_DSL_FILES + WRAPPER_FILES
-
-    private val DISTRIBUTION_URL_VERSION = Regex("""gradle-(.+?)-(bin|all)\.zip""")
+  private companion object {
+    const val WRAPPER_PROPERTIES = "gradle-wrapper.properties"
+    const val DISTRIBUTION_URL_KEY = "distributionUrl="
+    val KOTLIN_DSL_FILES = setOf("build.gradle.kts", "settings.gradle.kts")
+    val GROOVY_DSL_FILES = setOf("build.gradle", "settings.gradle")
+    val DISTRIBUTION_URL_VERSION = Regex("""gradle-(.+?)-(bin|all)\.zip""")
   }
 }
