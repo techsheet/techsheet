@@ -14,7 +14,7 @@
 
 ---
 
-TechSheet scans a repository and identifies what it actually uses. It detects **9+ languages**, **59+ frameworks**, and
+TechSheet scans a repository and identifies what it actually uses. It detects **14+ languages**, **59+ frameworks**, and
 **19+ tools**, including versions where possible.
 
 Run it in CI to generate an up-to-date report on every build. Collect reports across your organization to build a real
@@ -34,12 +34,10 @@ The simplest option is to integrate report generation into a CI job:
 # .gitlab-ci.yml
 techsheet:
   image: ghcr.io/techsheet/analyzer:latest
-  stage: docs
   script:
-    - techsheet analyze --json --html
+    - techsheet analyze --html
   artifacts:
     paths:
-      - techsheet.json
       - techsheet.html
     when: always
 ```

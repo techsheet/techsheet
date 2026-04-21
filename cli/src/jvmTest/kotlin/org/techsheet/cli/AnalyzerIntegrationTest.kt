@@ -47,6 +47,9 @@ class AnalyzerIntegrationTest {
     testCase("angular") {
       TechSheet()
         .withLanguage(LanguageType.TYPESCRIPT, version = "5.9.2")
+        .withLanguage(LanguageType.HTML)
+        .withLanguage(LanguageType.SCSS)
+        .withLanguage(LanguageType.MARKDOWN)
         .withTool(ToolType.EDITORCONFIG)
         .withTool(ToolType.NPM)
         .withFramework(FrameworkType.ANGULAR, version = "20.3.0")
@@ -71,6 +74,8 @@ class AnalyzerIntegrationTest {
       TechSheet()
         .withLanguage(LanguageType.SCALA, version = "2.13.18")
         .withLanguage(LanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.HTML)
+        .withLanguage(LanguageType.CSS)
         .withTool(ToolType.SBT, version = "1.12.9")
         .withFramework(FrameworkType.PLAY_FRAMEWORK, version = "3.0.10")
     },
@@ -85,6 +90,8 @@ class AnalyzerIntegrationTest {
     testCase("next-js") {
       TechSheet()
         .withLanguage(LanguageType.TYPESCRIPT, version = "5")
+        .withLanguage(LanguageType.CSS)
+        .withLanguage(LanguageType.MARKDOWN)
         .withTool(ToolType.NPM)
         .withTool(ToolType.ESLINT, version = "9")
         .withFramework(FrameworkType.REACT, version = "19.2.4")
@@ -94,6 +101,7 @@ class AnalyzerIntegrationTest {
     testCase("node-express") {
       TechSheet()
         .withLanguage(LanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.CSS)
         .withTool(ToolType.NPM)
         .withTool(ToolType.NODE)
         .withFramework(FrameworkType.EXPRESS, version = "4.16.1")

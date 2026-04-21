@@ -18,4 +18,9 @@ enum class LanguageType(
   PYTHON("Python", "https://techsheet.org/language/python"),
   CPP("C++", "https://techsheet.org/language/cpp"),
   CSHARP("C#", "https://techsheet.org/language/csharp"),
+  HTML("HTML", "https://techsheet.org/language/html"),
+  CSS("CSS", "https://techsheet.org/language/css"),
+  SCSS("SCSS/SASS", "https://techsheet.org/language/scss"),
+  MARKDOWN("Markdown", "https://techsheet.org/language/markdown"),
+  ASCIIDOC("AsciiDoc", "https://techsheet.org/language/asciidoc"),
 }

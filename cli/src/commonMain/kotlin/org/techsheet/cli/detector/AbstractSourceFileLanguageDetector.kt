@@ -9,8 +9,11 @@ import org.techsheet.cli.domain.TechSheet
 abstract class AbstractSourceFileLanguageDetector(
   name: String,
   private val type: LanguageType,
-  sourceExtension: String,
-) : Detector(name, Matcher.Extension(sourceExtension)) {
+  vararg sourceExtensions: String,
+) : Detector(
+  name,
+  *sourceExtensions.map<String, Matcher> { Matcher.Extension(it) }.toTypedArray(),
+) {
 
   override fun skipIf(path: Path, sheet: TechSheet): Boolean = sheet.hasLanguage(type)
 
