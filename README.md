@@ -44,7 +44,7 @@ techsheet:
 
 ### Installation
 
-The CLI can be installed in several ways. The simplest are Docker or precompiled binaries.
+The CLI can be installed in several ways:
 
 <details open>
 <summary>Docker</summary>
@@ -52,6 +52,7 @@ The CLI can be installed in several ways. The simplest are Docker or precompiled
 ```bash
 docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 ```
+
 </details>
 
 <details>
@@ -61,6 +62,7 @@ docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
 chmod +x /usr/local/bin/techsheet
 ```
+
 </details>
 
 <details>
@@ -70,12 +72,14 @@ chmod +x /usr/local/bin/techsheet
 curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
 chmod +x /usr/local/bin/techsheet
 ```
+
 </details>
 
 <details>
 <summary>Windows (precompiled binary)</summary>
 
 Download `techsheet-windows-x64.exe` from the [releases page][release-url]
+
 </details>
 
 <details>
@@ -85,6 +89,25 @@ Download `techsheet-windows-x64.exe` from the [releases page][release-url]
 curl -fsSL -o techsheet.jar https://github.com/techsheet/techsheet/releases/latest/download/techsheet.jar
 java -jar techsheet.jar analyze .
 ```
+
+</details>
+
+Also, you can use the analyzer directly in your CI jobs:
+
+<details open>
+<summary>GitLab CI</summary>
+
+```bash
+techsheet:
+  image: ghcr.io/techsheet/analyzer:latest
+  script:
+    - techsheet analyze --markdown
+  artifacts:
+    paths:
+      - techsheet.md
+    when: always
+```
+
 </details>
 
 ### Reporters
