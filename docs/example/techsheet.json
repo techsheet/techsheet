@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "meta": {
+    "generatedAt": "2026-04-21T17:48:08.243403Z",
+    "generatorVersion": "0.6.1"
+  },
+  "languages": [
+    {
+      "name": "C#",
+      "url": "https://techsheet.org/language/csharp"
+    },
+    {
+      "name": "C++",
+      "url": "https://techsheet.org/language/cpp"
+    },
+    {
+      "name": "CSS",
+      "url": "https://techsheet.org/language/css"
+    },
+    {
+      "name": "HTML",
+      "url": "https://techsheet.org/language/html"
+    },
+    {
+      "name": "Java",
+      "url": "https://techsheet.org/language/java",
+      "version": "17"
+    },
+    {
+      "name": "JavaScript",
+      "url": "https://techsheet.org/language/javascript"
+    },
+    {
+      "name": "Kotlin",
+      "url": "https://techsheet.org/language/kotlin",
+      "version": "2.3.20"
+    },
+    {
+      "name": "Markdown",
+      "url": "https://techsheet.org/language/markdown"
+    },
+    {
+      "name": "Python",
+      "url": "https://techsheet.org/language/python",
+      "version": "3.12"
+    },
+    {
+      "name": "Scala",
+      "url": "https://techsheet.org/language/scala",
+      "version": "2.13.18"
+    },
+    {
+      "name": "SCSS/SASS",
+      "url": "https://techsheet.org/language/scss"
+    },
+    {
+      "name": "TypeScript",
+      "url": "https://techsheet.org/language/typescript",
+      "version": "5.9.2"
+    }
+  ],
+  "frameworks": [
+    {
+      "name": "Angular",
+      "url": "https://techsheet.org/framework/angular",
+      "category": "Application",
+      "version": "20.3.0"
+    },
+    {
+      "name": "ASP.NET Core",
+      "url": "https://techsheet.org/framework/asp-net-core",
+      "category": "Application",
+      "version": "9.0"
+    },
+    {
+      "name": "Django",
+      "url": "https://techsheet.org/framework/django",
+      "category": "Application"
+    },
+    {
+      "name": "Express",
+      "url": "https://techsheet.org/framework/express",
+      "category": "Application",
+      "version": "4.16.1"
+    },
+    {
+      "name": "FastAPI",
+      "url": "https://techsheet.org/framework/fastapi",
+      "category": "Application",
+      "version": "0.115.0"
+    },
+    {
+      "name": "Flask",
+      "url": "https://techsheet.org/framework/flask",
+      "category": "Application",
+      "version": "3.0.3"
+    },
+    {
+      "name": "Next.js",
+      "url": "https://techsheet.org/framework/nextjs",
+      "category": "Application",
+      "version": "16.2.4"
+    },
+    {
+      "name": "Play Framework",
+      "url": "https://techsheet.org/framework/play-framework",
+      "category": "Application",
+      "version": "3.0.10"
+    },
+    {
+      "name": "Qt",
+      "url": "https://techsheet.org/framework/qt",
+      "category": "Application",
+      "version": "6"
+    },
+    {
+      "name": "React",
+      "url": "https://techsheet.org/framework/react",
+      "category": "Application",
+      "version": "19.2.4"
+    },
+    {
+      "name": "Spring Boot",
+      "url": "https://techsheet.org/framework/spring-boot",
+      "category": "Application",
+      "version": "4.0.5"
+    },
+    {
+      "name": "Spring MVC",
+      "url": "https://techsheet.org/framework/spring-mvc",
+      "category": "Application"
+    },
+    {
+      "name": "Spring WebFlux",
+      "url": "https://techsheet.org/framework/spring-webflux",
+      "category": "Application"
+    },
+    {
+      "name": "Spring Data",
+      "url": "https://techsheet.org/framework/spring-data",
+      "category": "Data"
+    },
+    {
+      "name": "Spring Security",
+      "url": "https://techsheet.org/framework/spring-security",
+      "category": "Security"
+    },
+    {
+      "name": "JUnit",
+      "url": "https://techsheet.org/framework/junit",
+      "category": "Testing",
+      "version": "5.11.4"
+    },
+    {
+      "name": "Playwright",
+      "url": "https://techsheet.org/framework/playwright",
+      "category": "Testing",
+      "version": "1.59.1"
+    },
+    {
+      "name": "Tailwind CSS",
+      "url": "https://techsheet.org/framework/tailwind",
+      "category": "UI",
+      "version": "4"
+    }
+  ],
+  "services": [],
+  "tools": [
+    {
+      "name": "Gradle",
+      "url": "https://techsheet.org/tool/gradle",
+      "category": "Build",
+      "version": "9.4.1",
+      "flavor": "Kotlin DSL"
+    },
+    {
+      "name": "Maven",
+      "url": "https://techsheet.org/tool/maven",
+      "category": "Build",
+      "version": "3.9.14"
+    },
+    {
+      "name": "NPM",
+      "url": "https://techsheet.org/tool/npm",
+      "category": "Build"
+    },
+    {
+      "name": "SBT",
+      "url": "https://techsheet.org/tool/sbt",
+      "category": "Build",
+      "version": "1.12.9"
+    },
+    {
+      "name": "Yarn",
+      "url": "https://techsheet.org/tool/yarn",
+      "category": "Build"
+    },
+    {
+      "name": "CODEOWNERS",
+      "url": "https://techsheet.org/tool/codeowners",
+      "category": "CI"
+    },
+    {
+      "name": "GitHub Actions",
+      "url": "https://techsheet.org/tool/github-actions",
+      "category": "CI"
+    },
+    {
+      "name": "GitLab CI",
+      "url": "https://techsheet.org/tool/gitlab-ci",
+      "category": "CI"
+    },
+    {
+      "name": "Docker",
+      "url": "https://techsheet.org/tool/docker",
+      "category": "Container"
+    },
+    {
+      "name": "Docker Compose",
+      "url": "https://techsheet.org/tool/docker-compose",
+      "category": "Container"
+    },
+    {
+      "name": "EditorConfig",
+      "url": "https://techsheet.org/tool/editorconfig",
+      "category": "Format"
+    },
+    {
+      "name": "ESLint",
+      "url": "https://techsheet.org/tool/eslint",
+      "category": "Format",
+      "version": "9"
+    },
+    {
+      "name": "IntelliJ IDEA",
+      "url": "https://techsheet.org/tool/intellij-idea",
+      "category": "IDE"
+    },
+    {
+      "name": "JVM",
+      "url": "https://techsheet.org/tool/jvm",
+      "category": "Runtime",
+      "version": "26"
+    },
+    {
+      "name": "Node.js",
+      "url": "https://techsheet.org/tool/nodejs",
+      "category": "Runtime"
+    },
+    {
+      "name": "Renovate",
+      "url": "https://techsheet.org/tool/renovate",
+      "category": "Security"
+    },
+    {
+      "name": "Git",
+      "url": "https://techsheet.org/tool/git",
+      "category": "VCS"
+    }
+  ]
+}
