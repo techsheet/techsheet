@@ -14,24 +14,32 @@ import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.reporter.ConsoleReporter
 import org.techsheet.cli.reporter.JsonReporter
+import org.techsheet.cli.reporter.MarkdownReporter
 import org.techsheet.cli.reporter.YamlReporter
 import kotlin.time.measureTimedValue
 
 class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
+
   private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
     .flag()
 
   private val quiet: Boolean by option("-q", "--quiet", help = "Reduce output to a minimum")
     .flag()
 
-  private val ci: Boolean by option("--ci", help = "Render the report without ANSI colors")
+  private val ci: Boolean by option("--ci", help = "Enable CI mode, suppresses colors and interaction")
     .flag()
 
-  private val yaml: String? by option("--yaml", help = "Export YAML report (optionally specify output path with =)")
+  private val yaml: String? by option("-y", "--yaml", help = "Export YAML report (optionally specify output path with =)")
     .optionalValue("techsheet.yml")
 
-  private val json: String? by option("--json", help = "Export JSON report (optionally specify output path with =)")
+  private val json: String? by option("-j", "--json", help = "Export JSON report (optionally specify output path with =)")
     .optionalValue("techsheet.json")
+
+  private val markdown: String? by option("-m", "--markdown", help = "Export Markdown report (optionally specify output path with =)")
+    .optionalValue("techsheet.md")
+
+  private val console: Boolean by option("-c", "--console", help = "Print the console report (implicit when no other reporter is specified)")
+    .flag()
 
   private val source: String by argument(
     name = "source",
@@ -78,7 +86,14 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       JsonReporter(target).report(sheet)
     }
 
-    if (!quiet) {
+    markdown?.let {
+      val target = sourcePath / it.toPath()
+      log.i { "Writing Markdown report to: $target" }
+      MarkdownReporter(target).report(sheet)
+    }
+
+    val anyExplicit = yaml != null || json != null || markdown != null || console
+    if (console || !anyExplicit) {
       log.i { "" }
       ConsoleReporter(plain = ci).report(sheet)
     }
