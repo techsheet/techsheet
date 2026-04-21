@@ -65,6 +65,12 @@ techsheet detectors
 
 Missing something? [Open an issue][new-detector-template] or send a PR.
 
+## Server
+
+The TechSheet server can be used to store, aggregate, analyze and gather insights from reports. 
+
+***TBD:** Server is still in early stage development, and therefore not generally available.*
+
 ## Installation
 
 The CLI can be installed in several ways. The simplest are Docker or precompiled binaries.
@@ -79,12 +85,12 @@ docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 
 ```bash
 # macOS (Apple Silicon)
-curl -fsSL -o /usr/local/bih/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
-chmod +x /usr/local/bih/techsheet
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
+chmod +x /usr/local/bin/techsheet
 
 # Linux x64
-curl -fsSL -o /usr/local/bih/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
-chmod +x /usr/local/bih/techsheet
+curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
+chmod +x /usr/local/bin/techsheet
 ```
 
 For Windows, download `techsheet-windows-x64.exe` from the [releases page][release-url].
@@ -118,18 +124,18 @@ Use `linkDebugExecutable*` instead of `linkReleaseExecutable*` for debug builds.
 ## Testing
 
 Besides unit tests, behavior is validated against small but realistic project trees under
-`cli/src/commonTest/resources/test-projects/`. Each directory is a runnable sample that the analyzer processes like a 
+`cli/src/jvmTest/resources/test-projects/`. Each directory is a runnable sample that the analyzer processes like a 
 real project.
 
 Adding a fixture:
 
-1. Add a project under `cli/src/commonTest/resources/test-projects/<name>/`
+1. Add a project under `cli/src/jvmTest/resources/test-projects/<name>/`
 2. Add a `testCase("<name>") { ... }` entry to `AnalyzerIntegrationTest.cases`
 3. Run `./gradlew :cli:jvmTest` and `:cli:assemble` if you changed `commonMain`
 
 ## Contributing
 
-Contributions of any kind are very welcome. Please read the [contribution guidelines]() first, then 
+Contributions of any kind are very welcome. Please read the [contribution guidelines](CONTRIBUTING.md) first, then 
 [open an issue][issues-url] or propose a [pull request][pullrequest-url].
 
 ## License
@@ -151,6 +157,8 @@ Contributions of any kind are very welcome. Please read the [contribution guidel
 [docker-badge]: https://img.shields.io/badge/ghcr.io-techsheet%2Fanalyzer-2496ED?logo=docker&logoColor=white
 
 [docker-url]: https://github.com/techsheet/techsheet/pkgs/container/analyzer
+
+[kmp-url]: https://kotlinlang.org/docs/multiplatform.html
 
 [issues-url]: https://github.com/techsheet/techsheet/issues
 
