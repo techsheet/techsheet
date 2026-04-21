@@ -3,6 +3,7 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
@@ -46,6 +47,20 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     help = "Project directory to analyze (defaults to current directory)",
   ).default("./")
 
+  override fun help(context: Context): String = """
+    Analyze a project directory and report detected tech stack.
+
+    Walks the given directory looking for manifest files, sources, etc. identify languages, frameworks, services, and tools.
+    By default the result is printed as a console report. Use --markdown, --html, --yaml etc. for other reporting formats.
+
+    Examples:
+
+      analyze                         Analyze project in current dir & print console report (default)
+      analyze --yaml /projects/yx     Analyze specific direcotry and write a YAML report
+      analyze -json=out/stack.json    Write JSON to a custom path
+      analyze -y -j -m .              Export YAML, JSON and Markdown
+      analyze --console --yaml .      Both console and YAML
+  """.trimIndent()
 
   override fun run() {
     val minSeverity = when {

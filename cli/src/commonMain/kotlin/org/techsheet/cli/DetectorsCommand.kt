@@ -1,5 +1,6 @@
 package org.techsheet.cli
 
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
@@ -15,6 +16,10 @@ import org.techsheet.cli.reporter.Style
 class DetectorsCommand : CoreCliktCommand(name = "detectors") {
 
   private val ci: Boolean by option("--ci", help = "Render the output without ANSI colors").flag()
+
+  override fun help(context: Context): String = """
+    List all technologies that techsheet can cureently detect.
+  """.trimIndent()
 
   override fun run() {
     val style = Style(ci)
