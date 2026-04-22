@@ -50,6 +50,18 @@ enum class FrameworkType(
   HTTP4S("http4s", "https://techsheet.org/framework/http4s", FrameworkCategory.APPLICATION),
   APACHE_CXF("Apache CXF", "https://techsheet.org/framework/apache-cxf", FrameworkCategory.APPLICATION),
 
+  // CMS
+  WORDPRESS("WordPress", "https://techsheet.org/framework/wordpress", FrameworkCategory.CMS),
+  JOOMLA("Joomla", "https://techsheet.org/framework/joomla", FrameworkCategory.CMS),
+  DRUPAL("Drupal", "https://techsheet.org/framework/drupal", FrameworkCategory.CMS),
+  MAGENTO("Magento", "https://techsheet.org/framework/magento", FrameworkCategory.CMS),
+  TYPO3("TYPO3", "https://techsheet.org/framework/typo3", FrameworkCategory.CMS),
+  CONTAO("Contao", "https://techsheet.org/framework/contao", FrameworkCategory.CMS),
+  MODX("MODX", "https://techsheet.org/framework/modx", FrameworkCategory.CMS),
+  GRAV("Grav", "https://techsheet.org/framework/grav", FrameworkCategory.CMS),
+  CONCRETE_CMS("Concrete CMS", "https://techsheet.org/framework/concrete-cms", FrameworkCategory.CMS),
+  CRAFT_CMS("Craft CMS", "https://techsheet.org/framework/craft-cms", FrameworkCategory.CMS),
+
   // Concurrency
   PROJECT_REACTOR("Project Reactor", "https://techsheet.org/framework/reactor", FrameworkCategory.CONCURRENCY),
   RXJAVA("RxJava", "https://techsheet.org/framework/rxjava", FrameworkCategory.CONCURRENCY),
@@ -102,6 +114,7 @@ enum class FrameworkType(
 
 enum class FrameworkCategory(val title: String) {
   APPLICATION("Application"),
+  CMS("CMS"),
   CONCURRENCY("Concurrency"),
   DATA("Data"),
   LOGGING("Logging"),

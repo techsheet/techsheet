@@ -113,6 +113,11 @@ class AnalyzerIntegrationTest {
         .withFramework(FrameworkType.LARAVEL, version = "11.5.2")
         .withFramework(FrameworkType.PHPUNIT, version = "10.5")
     },
+    testCase("php-wordpress") {
+      TechSheet()
+        .withLanguage(LanguageType.PHP)
+        .withFramework(FrameworkType.WORDPRESS, version = "6.9.4")
+    },
     testCase("qt-cmake-app") {
       TechSheet()
         .withLanguage(LanguageType.CPP)
