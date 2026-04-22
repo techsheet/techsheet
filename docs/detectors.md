@@ -25,7 +25,7 @@
 
 ## Frameworks
 
-*Currently supporting **74** frameworks:*
+*Currently supporting **84** frameworks:*
 
 | Name               | Category    | URL                                                |
 |--------------------|-------------|----------------------------------------------------|
@@ -66,6 +66,16 @@
 | Vue.js             | Application | https://techsheet.org/framework/vue                |
 | Yii2               | Application | https://techsheet.org/framework/yii2               |
 | Zend Framework     | Application | https://techsheet.org/framework/zend-framework     |
+| Concrete CMS       | CMS         | https://techsheet.org/framework/concrete-cms       |
+| Contao             | CMS         | https://techsheet.org/framework/contao             |
+| Craft CMS          | CMS         | https://techsheet.org/framework/craft-cms          |
+| Drupal             | CMS         | https://techsheet.org/framework/drupal             |
+| Grav               | CMS         | https://techsheet.org/framework/grav               |
+| Joomla             | CMS         | https://techsheet.org/framework/joomla             |
+| Magento            | CMS         | https://techsheet.org/framework/magento            |
+| MODX               | CMS         | https://techsheet.org/framework/modx               |
+| TYPO3              | CMS         | https://techsheet.org/framework/typo3              |
+| WordPress          | CMS         | https://techsheet.org/framework/wordpress          |
 | Akka               | Concurrency | https://techsheet.org/framework/akka               |
 | Arrow              | Concurrency | https://techsheet.org/framework/arrow              |
 | Cats Effect        | Concurrency | https://techsheet.org/framework/cats-effect        |

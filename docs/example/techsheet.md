@@ -1,6 +1,6 @@
 # TechSheet
 
-`v0.7.0` ‧ `22. April 2026 08:05`
+`v0.7.0` ‧ `22. April 2026 17:31`
 
 ## Languages
 
@@ -39,6 +39,7 @@
 | Spring Boot     | `4.0.5`   | Application | https://techsheet.org/framework/spring-boot     |       |
 | Spring MVC      |           | Application | https://techsheet.org/framework/spring-mvc      |       |
 | Spring WebFlux  |           | Application | https://techsheet.org/framework/spring-webflux  |       |
+| WordPress       | `6.9.4`   | CMS         | https://techsheet.org/framework/wordpress       |       |
 | Spring Data     |           | Data        | https://techsheet.org/framework/spring-data     |       |
 | Spring Security |           | Security    | https://techsheet.org/framework/spring-security |       |
 | JUnit           | `5.11.4`  | Testing     | https://techsheet.org/framework/junit           |       |
@@ -53,24 +54,24 @@
 
 ## Tools
 
-| Name                | Version  | Category  | URL                                       | Notes |
-|---------------------|----------|-----------|-------------------------------------------|-------|
-| Composer            |          | Build     | https://techsheet.org/tool/composer       |       |
-| Gradle (Kotlin DSL) | `9.4.1`  | Build     | https://techsheet.org/tool/gradle         |       |
-| Maven               | `3.9.14` | Build     | https://techsheet.org/tool/maven          |       |
-| NPM                 |          | Build     | https://techsheet.org/tool/npm            |       |
-| SBT                 | `1.12.9` | Build     | https://techsheet.org/tool/sbt            |       |
-| Yarn                |          | Build     | https://techsheet.org/tool/yarn           |       |
-| CODEOWNERS          |          | CI        | https://techsheet.org/tool/codeowners     |       |
-| GitHub Actions      |          | CI        | https://techsheet.org/tool/github-actions |       |
-| GitLab CI           |          | CI        | https://techsheet.org/tool/gitlab-ci      |       |
-| Docker              |          | Container | https://techsheet.org/tool/docker         |       |
-| Docker Compose      |          | Container | https://techsheet.org/tool/docker-compose |       |
-| EditorConfig        |          | Format    | https://techsheet.org/tool/editorconfig   |       |
-| ESLint              | `9`      | Format    | https://techsheet.org/tool/eslint         |       |
-| IntelliJ IDEA       |          | IDE       | https://techsheet.org/tool/intellij-idea  |       |
-| JVM                 | `26`     | Runtime   | https://techsheet.org/tool/jvm            |       |
-| Node.js             |          | Runtime   | https://techsheet.org/tool/nodejs         |       |
-| Renovate            |          | Security  | https://techsheet.org/tool/renovate       |       |
-| Git                 |          | VCS       | https://techsheet.org/tool/git            |       |
-|                     |          |           |                                           |       |
+| Name                | Version   | Category  | URL                                       | Notes |
+|---------------------|-----------|-----------|-------------------------------------------|-------|
+| Composer            |           | Build     | https://techsheet.org/tool/composer       |       |
+| Gradle (Kotlin DSL) | `9.4.1`   | Build     | https://techsheet.org/tool/gradle         |       |
+| Maven               | `3.9.14`  | Build     | https://techsheet.org/tool/maven          |       |
+| NPM                 | `10.2.3`  | Build     | https://techsheet.org/tool/npm            |       |
+| SBT                 | `1.12.9`  | Build     | https://techsheet.org/tool/sbt            |       |
+| Yarn                |           | Build     | https://techsheet.org/tool/yarn           |       |
+| CODEOWNERS          |           | CI        | https://techsheet.org/tool/codeowners     |       |
+| GitHub Actions      |           | CI        | https://techsheet.org/tool/github-actions |       |
+| GitLab CI           |           | CI        | https://techsheet.org/tool/gitlab-ci      |       |
+| Docker              |           | Container | https://techsheet.org/tool/docker         |       |
+| Docker Compose      |           | Container | https://techsheet.org/tool/docker-compose |       |
+| EditorConfig        |           | Format    | https://techsheet.org/tool/editorconfig   |       |
+| ESLint              | `9`       | Format    | https://techsheet.org/tool/eslint         |       |
+| IntelliJ IDEA       |           | IDE       | https://techsheet.org/tool/intellij-idea  |       |
+| JVM                 | `26`      | Runtime   | https://techsheet.org/tool/jvm            |       |
+| Node.js             | `20.10.0` | Runtime   | https://techsheet.org/tool/nodejs         |       |
+| Renovate            |           | Security  | https://techsheet.org/tool/renovate       |       |
+| Git                 |           | VCS       | https://techsheet.org/tool/git            |       |
+|                     |           |           |                                           |       |

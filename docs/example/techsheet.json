@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-04-22T06:05:36.635564405Z",
+    "generatedAt": "2026-04-22T15:31:30.124583736Z",
     "generatorVersion": "0.7.0"
   },
   "languages": [
@@ -146,6 +146,12 @@
       "category": "Application"
     },
     {
+      "name": "WordPress",
+      "url": "https://techsheet.org/framework/wordpress",
+      "category": "CMS",
+      "version": "6.9.4"
+    },
+    {
       "name": "Spring Data",
       "url": "https://techsheet.org/framework/spring-data",
       "category": "Data"
@@ -203,7 +209,8 @@
     {
       "name": "NPM",
       "url": "https://techsheet.org/tool/npm",
-      "category": "Build"
+      "category": "Build",
+      "version": "10.2.3"
     },
     {
       "name": "SBT",
@@ -266,7 +273,8 @@
     {
       "name": "Node.js",
       "url": "https://techsheet.org/tool/nodejs",
-      "category": "Runtime"
+      "category": "Runtime",
+      "version": "20.10.0"
     },
     {
       "name": "Renovate",
