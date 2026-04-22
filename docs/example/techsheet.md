@@ -1,6 +1,6 @@
 # TechSheet
 
-`v0.6.1` ‧ `21. April 2026 19:48`
+`v0.7.0` ‧ `22. April 2026 08:05`
 
 ## Languages
 
@@ -14,6 +14,7 @@
 | JavaScript |           | https://techsheet.org/language/javascript |       |
 | Kotlin     | `2.3.20`  | https://techsheet.org/language/kotlin     |       |
 | Markdown   |           | https://techsheet.org/language/markdown   |       |
+| PHP        |           | https://techsheet.org/language/php        |       |
 | Python     | `3.12`    | https://techsheet.org/language/python     |       |
 | Scala      | `2.13.18` | https://techsheet.org/language/scala      |       |
 | SCSS/SASS  |           | https://techsheet.org/language/scss       |       |
@@ -30,6 +31,7 @@
 | Express         | `4.16.1`  | Application | https://techsheet.org/framework/express         |       |
 | FastAPI         | `0.115.0` | Application | https://techsheet.org/framework/fastapi         |       |
 | Flask           | `3.0.3`   | Application | https://techsheet.org/framework/flask           |       |
+| Laravel         | `11.5.2`  | Application | https://techsheet.org/framework/laravel         |       |
 | Next.js         | `16.2.4`  | Application | https://techsheet.org/framework/nextjs          |       |
 | Play Framework  | `3.0.10`  | Application | https://techsheet.org/framework/play-framework  |       |
 | Qt              | `6`       | Application | https://techsheet.org/framework/qt              |       |
@@ -40,6 +42,7 @@
 | Spring Data     |           | Data        | https://techsheet.org/framework/spring-data     |       |
 | Spring Security |           | Security    | https://techsheet.org/framework/spring-security |       |
 | JUnit           | `5.11.4`  | Testing     | https://techsheet.org/framework/junit           |       |
+| PHPUnit         | `10.5`    | Testing     | https://techsheet.org/framework/phpunit         |       |
 | Playwright      | `1.59.1`  | Testing     | https://techsheet.org/framework/playwright      |       |
 | Tailwind CSS    | `4`       | UI          | https://techsheet.org/framework/tailwind        |       |
 |                 |           |             |                                                 |       |
@@ -52,6 +55,7 @@
 
 | Name                | Version  | Category  | URL                                       | Notes |
 |---------------------|----------|-----------|-------------------------------------------|-------|
+| Composer            |          | Build     | https://techsheet.org/tool/composer       |       |
 | Gradle (Kotlin DSL) | `9.4.1`  | Build     | https://techsheet.org/tool/gradle         |       |
 | Maven               | `3.9.14` | Build     | https://techsheet.org/tool/maven          |       |
 | NPM                 |          | Build     | https://techsheet.org/tool/npm            |       |
