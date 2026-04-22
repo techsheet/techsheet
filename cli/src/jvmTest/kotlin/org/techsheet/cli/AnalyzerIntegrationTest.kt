@@ -106,6 +106,13 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.NODE)
         .withFramework(FrameworkType.EXPRESS, version = "4.16.1")
     },
+    testCase("php-laravel") {
+      TechSheet()
+        .withLanguage(LanguageType.PHP)
+        .withTool(ToolType.COMPOSER)
+        .withFramework(FrameworkType.LARAVEL, version = "11.5.2")
+        .withFramework(FrameworkType.PHPUNIT, version = "10.5")
+    },
     testCase("qt-cmake-app") {
       TechSheet()
         .withLanguage(LanguageType.CPP)
