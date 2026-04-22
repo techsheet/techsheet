@@ -106,6 +106,27 @@ class AnalyzerIntegrationTest {
         .withTool(ToolType.NODE)
         .withFramework(FrameworkType.EXPRESS, version = "4.16.1")
     },
+    testCase("php-laravel") {
+      TechSheet()
+        .withLanguage(LanguageType.PHP)
+        .withTool(ToolType.COMPOSER)
+        .withFramework(FrameworkType.LARAVEL, version = "11.5.2")
+        .withFramework(FrameworkType.PHPUNIT, version = "10.5")
+    },
+    testCase("php-wordpress") {
+      TechSheet()
+        .withLanguage(LanguageType.CSS)
+        .withLanguage(LanguageType.HTML)
+        .withLanguage(LanguageType.JAVASCRIPT)
+        .withLanguage(LanguageType.MARKDOWN)
+        .withLanguage(LanguageType.PHP)
+        .withLanguage(LanguageType.SCSS)
+        .withTool(ToolType.COMPOSER)
+        .withTool(ToolType.NPM, version = "10.2.3")
+        .withTool(ToolType.NODE, version = "20.10.0")
+        .withFramework(FrameworkType.WORDPRESS, version = "6.9.4")
+        .withFramework(FrameworkType.PHPUNIT, version = "3|^4|^5|^6|^7|^8|^9")
+    },
     testCase("qt-cmake-app") {
       TechSheet()
         .withLanguage(LanguageType.CPP)

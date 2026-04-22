@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class JooqDetector : AbstractJvmDependencyDetector(
+class JooqDetector : AbstractJvmFrameworkDetector(
   name = "jOOQ",
   framework = FrameworkType.JOOQ,
   coordinates = listOf(Coordinate("org.jooq")),

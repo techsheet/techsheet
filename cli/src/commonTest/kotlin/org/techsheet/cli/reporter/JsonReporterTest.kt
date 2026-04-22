@@ -1,6 +1,6 @@
 package org.techsheet.cli.reporter
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.serialization.json.Json
 import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem

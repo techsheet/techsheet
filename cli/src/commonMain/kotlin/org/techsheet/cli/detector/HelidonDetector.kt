@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class HelidonDetector : AbstractJvmDependencyDetector(
+class HelidonDetector : AbstractJvmFrameworkDetector(
   name = "Helidon",
   framework = FrameworkType.HELIDON,
   coordinates = listOf(Coordinate("io.helidon")),

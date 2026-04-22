@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class KotlinxCoroutinesDetector : AbstractJvmDependencyDetector(
+class KotlinxCoroutinesDetector : AbstractJvmFrameworkDetector(
   name = "Kotlinx Coroutines",
   framework = FrameworkType.KOTLINX_COROUTINES,
   coordinates = listOf(

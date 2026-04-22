@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class StrutsDetector : AbstractJvmDependencyDetector(
+class StrutsDetector : AbstractJvmFrameworkDetector(
   name = "Struts",
   framework = FrameworkType.STRUTS,
   coordinates = listOf(

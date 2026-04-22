@@ -70,19 +70,27 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     appendLine("`v$CLI_VERSION`")
     appendMarkdownSection(
       this, "Languages", LANGUAGE_HEADERS,
-      LanguageType.entries.map { listOf(it.title, it.url) },
+      LanguageType.entries
+        .map { listOf(it.title, it.url) }
+        .sortedBy { it[0].lowercase() },
     )
     appendMarkdownSection(
       this, "Frameworks", CATEGORIZED_HEADERS,
-      FrameworkType.entries.map { listOf(it.title, it.category.title, it.url) },
+      FrameworkType.entries
+        .map { listOf(it.title, it.category.title, it.url) }
+        .sortedWith(compareBy({ it[1].lowercase() }, { it[0].lowercase() })),
     )
     appendMarkdownSection(
       this, "Services", CATEGORIZED_HEADERS,
-      ServiceType.entries.map { listOf(it.title, it.category.title, it.url) },
+      ServiceType.entries
+        .map { listOf(it.title, it.category.title, it.url) }
+        .sortedWith(compareBy({ it[1].lowercase() }, { it[0].lowercase() })),
     )
     appendMarkdownSection(
       this, "Tools", CATEGORIZED_HEADERS,
-      ToolType.entries.map { listOf(it.title, it.category.title, it.url) },
+      ToolType.entries
+        .map { listOf(it.title, it.category.title, it.url) }
+        .sortedWith(compareBy({ it[1].lowercase() }, { it[0].lowercase() })),
     )
   }
 
@@ -95,7 +103,9 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     sb.appendLine()
     sb.appendLine("## $title")
     sb.appendLine()
-    sb.append(markdownTable(headers, rows.sortedBy { it.first().lowercase() }))
+    sb.appendLine("*Currently supporting **${rows.size}** ${title.lowercase()}:*")
+    sb.appendLine()
+    sb.append(markdownTable(headers, rows))
   }
 
   // ---------- Plain (--ci): bulleted list with category subheaders ----------
@@ -183,7 +193,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     nameWidth: Int,
     categoryWidth: Int,
   ): List<String> = rows.takeIf { it.isNotEmpty() }
-    ?.sortedBy { it.name.lowercase() }
+    ?.sortedWith(compareBy({ it.category?.lowercase().orEmpty() }, { it.name.lowercase() }))
     ?.let { sorted ->
       buildList {
         add(sectionTitle(style, header, sorted.size))

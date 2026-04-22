@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class AkkaDetector : AbstractJvmDependencyDetector(
+class AkkaDetector : AbstractJvmFrameworkDetector(
   name = "Akka",
   framework = FrameworkType.AKKA,
   coordinates = listOf(

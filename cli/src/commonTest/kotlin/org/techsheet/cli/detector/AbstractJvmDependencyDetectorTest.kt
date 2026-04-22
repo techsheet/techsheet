@@ -16,7 +16,7 @@ private const val SPRING_PLUGIN = "org.springframework.boot"
 private class TestDetector(
   coordinates: List<Coordinate>,
   pluginIds: List<String> = emptyList(),
-) : AbstractJvmDependencyDetector(
+) : AbstractJvmFrameworkDetector(
   name = "Test",
   framework = FrameworkType.SPRING_BOOT,
   coordinates = coordinates,

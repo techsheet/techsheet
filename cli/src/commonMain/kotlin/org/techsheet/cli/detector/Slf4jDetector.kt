@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class Slf4jDetector : AbstractJvmDependencyDetector(
+class Slf4jDetector : AbstractJvmFrameworkDetector(
   name = "SLF4J",
   framework = FrameworkType.SLF4J,
   coordinates = listOf(Coordinate("org.slf4j")),

@@ -1,7 +1,5 @@
 package org.techsheet.cli.reporter
 
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import okio.FileSystem
 import okio.Path
 import okio.SYSTEM
@@ -46,13 +44,8 @@ class MarkdownReporter(
   private fun renderTable(headers: List<String>, rows: List<List<String>>): String =
     markdownTable(headers, rows + listOf(List(headers.size) { "" }))
 
-  private fun formatMeta(meta: ReportMeta): String {
-    val dt = meta.generatedAt.toLocalDateTime(TimeZone.currentSystemDefault())
-    val month = MONTH_NAMES[dt.month.ordinal]
-    val hh = dt.hour.toString().padStart(2, '0')
-    val mm = dt.minute.toString().padStart(2, '0')
-    return "`v${meta.generatorVersion}` ‧ `${dt.dayOfMonth}. $month ${dt.year} $hh:$mm`"
-  }
+  private fun formatMeta(meta: ReportMeta): String =
+    "`v${meta.generatorVersion}` ‧ `${meta.generatedAt.formatHuman()}`"
 
   private fun languageRow(e: LanguageEntry): List<String> =
     listOf(e.name, version(e.version), e.url, "")
@@ -76,9 +69,5 @@ class MarkdownReporter(
     private val SERVICE_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
     private val TOOL_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
 
-    private val MONTH_NAMES = listOf(
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December",
-    )
   }
 }

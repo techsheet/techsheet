@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class PlayDetector : AbstractJvmDependencyDetector(
+class PlayDetector : AbstractJvmFrameworkDetector(
   name = "Play Framework",
   framework = FrameworkType.PLAY_FRAMEWORK,
   // Play 3.x+ lives under `org.playframework`; Play 2.x used `com.typesafe.play`.

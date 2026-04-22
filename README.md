@@ -1,6 +1,6 @@
 <div align="center">
 
-# TechSheet.org
+# <a href="#"><img src="./docs/logo/techsheet-logo.svg" style="height:1em;"></a> TechSheet.org
 
 An **open standard** and toolchain to report **technical insights** about **software projects** in an automated, 
 structured, uniform manner.
@@ -13,8 +13,8 @@ structured, uniform manner.
 </div>
 
 *TechSheet provides a [CLI](#cli) to analyze your repositories. It currently detects 
-**[14+ languages](./docs/detectors.md#languages)**, **[59+ frameworks](./docs/detectors.md#frameworks)**, and 
-**[19+ tools](./docs/detectors.md#tools)**, including versions where possible. Additionally, the TechSheet 
+**[14+ languages](./docs/detectors.md#languages)**, **[84+ frameworks](./docs/detectors.md#frameworks)**, and 
+**[20+ tools](./docs/detectors.md#tools)**, including versions where possible. Additionally, the TechSheet 
 [Server](#server) can be used for storing and aggregating reports as well as gathering insights across teams and 
 projects.*
 

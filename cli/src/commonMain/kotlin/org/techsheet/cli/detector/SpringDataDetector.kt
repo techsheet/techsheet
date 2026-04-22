@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class SpringDataDetector : AbstractJvmDependencyDetector(
+class SpringDataDetector : AbstractJvmFrameworkDetector(
   name = "Spring Data",
   framework = FrameworkType.SPRING_DATA,
   coordinates = listOf(

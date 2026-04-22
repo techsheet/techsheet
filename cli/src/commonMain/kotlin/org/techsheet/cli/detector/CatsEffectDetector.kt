@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class CatsEffectDetector : AbstractJvmDependencyDetector(
+class CatsEffectDetector : AbstractJvmFrameworkDetector(
   name = "Cats Effect",
   framework = FrameworkType.CATS_EFFECT,
   coordinates = listOf(

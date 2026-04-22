@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class JUnitDetector : AbstractJvmDependencyDetector(
+class JUnitDetector : AbstractJvmFrameworkDetector(
   name = "JUnit",
   framework = FrameworkType.JUNIT,
   coordinates = listOf(

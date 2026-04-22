@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-04-21T17:48:08.243403Z",
-    "generatorVersion": "0.6.1"
+    "generatedAt": "2026-04-22T15:31:30.124583736Z",
+    "generatorVersion": "0.7.0"
   },
   "languages": [
     {
@@ -38,6 +38,10 @@
     {
       "name": "Markdown",
       "url": "https://techsheet.org/language/markdown"
+    },
+    {
+      "name": "PHP",
+      "url": "https://techsheet.org/language/php"
     },
     {
       "name": "Python",
@@ -96,6 +100,12 @@
       "version": "3.0.3"
     },
     {
+      "name": "Laravel",
+      "url": "https://techsheet.org/framework/laravel",
+      "category": "Application",
+      "version": "11.5.2"
+    },
+    {
       "name": "Next.js",
       "url": "https://techsheet.org/framework/nextjs",
       "category": "Application",
@@ -136,6 +146,12 @@
       "category": "Application"
     },
     {
+      "name": "WordPress",
+      "url": "https://techsheet.org/framework/wordpress",
+      "category": "CMS",
+      "version": "6.9.4"
+    },
+    {
       "name": "Spring Data",
       "url": "https://techsheet.org/framework/spring-data",
       "category": "Data"
@@ -150,6 +166,12 @@
       "url": "https://techsheet.org/framework/junit",
       "category": "Testing",
       "version": "5.11.4"
+    },
+    {
+      "name": "PHPUnit",
+      "url": "https://techsheet.org/framework/phpunit",
+      "category": "Testing",
+      "version": "10.5"
     },
     {
       "name": "Playwright",
@@ -167,6 +189,11 @@
   "services": [],
   "tools": [
     {
+      "name": "Composer",
+      "url": "https://techsheet.org/tool/composer",
+      "category": "Build"
+    },
+    {
       "name": "Gradle",
       "url": "https://techsheet.org/tool/gradle",
       "category": "Build",
@@ -182,7 +209,8 @@
     {
       "name": "NPM",
       "url": "https://techsheet.org/tool/npm",
-      "category": "Build"
+      "category": "Build",
+      "version": "10.2.3"
     },
     {
       "name": "SBT",
@@ -245,7 +273,8 @@
     {
       "name": "Node.js",
       "url": "https://techsheet.org/tool/nodejs",
-      "category": "Runtime"
+      "category": "Runtime",
+      "version": "20.10.0"
     },
     {
       "name": "Renovate",

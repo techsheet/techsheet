@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class RxJavaDetector : AbstractJvmDependencyDetector(
+class RxJavaDetector : AbstractJvmFrameworkDetector(
   name = "RxJava",
   framework = FrameworkType.RXJAVA,
   coordinates = listOf(
