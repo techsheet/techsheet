@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class SpringSecurityDetector : AbstractJvmDependencyDetector(
+class SpringSecurityDetector : AbstractJvmFrameworkDetector(
   name = "Spring Security",
   framework = FrameworkType.SPRING_SECURITY,
   coordinates = listOf(

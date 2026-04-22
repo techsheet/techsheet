@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class PhalconDetector : AbstractPhpDependencyDetector(
+class PhalconDetector : AbstractPhpFrameworkDetector(
   name = "Phalcon",
   framework = FrameworkType.PHALCON,
   packageNames = listOf("phalcon/cphalcon"),

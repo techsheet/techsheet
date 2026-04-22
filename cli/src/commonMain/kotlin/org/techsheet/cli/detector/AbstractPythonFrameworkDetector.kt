@@ -10,7 +10,7 @@ import org.techsheet.cli.domain.TechSheet
  * manifests (requirements*.txt, pyproject.toml, Pipfile, setup.py, setup.cfg)
  * for a given package name and, where possible, extracts its version.
  */
-abstract class AbstractPythonDependencyDetector(
+abstract class AbstractPythonFrameworkDetector(
   name: String,
   private val framework: FrameworkType,
   packageName: String,

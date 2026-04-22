@@ -10,7 +10,7 @@ import kotlin.test.assertTrue
 
 private class PhpTestDetector(
   packageNames: List<String> = listOf("laravel/framework"),
-) : AbstractPhpDependencyDetector(
+) : AbstractPhpFrameworkDetector(
   name = "Test",
   framework = FrameworkType.LARAVEL,
   packageNames = packageNames,
@@ -28,7 +28,7 @@ private fun TechSheet.laravelVersion(): String? =
 
 private fun TechSheet.hasLaravel(): Boolean = hasFramework(FrameworkType.LARAVEL)
 
-class AbstractPhpDependencyDetectorTest {
+class AbstractPhpFrameworkDetectorTest {
 
   // ---------- composer.json ----------
 

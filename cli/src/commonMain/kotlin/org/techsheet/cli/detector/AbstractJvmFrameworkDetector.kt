@@ -6,11 +6,6 @@ import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 
 /**
- * Identifier for a JVM artifact. `artifactId == null` means "any artifact under `groupId`".
- */
-data class Coordinate(val groupId: String, val artifactId: String? = null)
-
-/**
  * Base for JVM framework/library detectors. Inspects common JVM build manifests —
  * Maven POMs, Gradle scripts (Groovy + Kotlin DSL), Gradle version catalogs, sbt builds —
  * for references to a set of Maven coordinates and/or Gradle plugin ids, and extracts a
@@ -21,7 +16,7 @@ data class Coordinate(val groupId: String, val artifactId: String? = null)
  * `alias(libs.plugins.foo)` referencing `libs.versions.toml`) is NOT handled via shared
  * state; each file emits what it can and `TechSheet.withFramework` smart-merges.
  */
-abstract class AbstractJvmDependencyDetector(
+abstract class AbstractJvmFrameworkDetector(
   name: String,
   private val framework: FrameworkType,
   private val coordinates: List<Coordinate>,
@@ -218,3 +213,8 @@ abstract class AbstractJvmDependencyDetector(
     val CATALOG_VERSION_REF = Regex("""\bversion\.ref\s*=\s*"([^"]+)"""")
   }
 }
+
+/**
+ * Identifier for a JVM artifact. `artifactId == null` means "any artifact under `groupId`".
+ */
+data class Coordinate(val groupId: String, val artifactId: String? = null)

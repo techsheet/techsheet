@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class HibernateDetector : AbstractJvmDependencyDetector(
+class HibernateDetector : AbstractJvmFrameworkDetector(
   name = "Hibernate",
   framework = FrameworkType.HIBERNATE,
   coordinates = listOf(

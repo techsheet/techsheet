@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class WireMockDetector : AbstractJvmDependencyDetector(
+class WireMockDetector : AbstractJvmFrameworkDetector(
   name = "WireMock",
   framework = FrameworkType.WIREMOCK,
   coordinates = listOf(

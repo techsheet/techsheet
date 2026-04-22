@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class JakartaEeDetector : AbstractJvmDependencyDetector(
+class JakartaEeDetector : AbstractJvmFrameworkDetector(
   name = "Jakarta EE",
   framework = FrameworkType.JAKARTA_EE,
   coordinates = listOf(

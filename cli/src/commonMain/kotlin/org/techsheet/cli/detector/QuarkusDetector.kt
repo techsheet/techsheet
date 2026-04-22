@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class QuarkusDetector : AbstractJvmDependencyDetector(
+class QuarkusDetector : AbstractJvmFrameworkDetector(
   name = "Quarkus",
   framework = FrameworkType.QUARKUS,
   coordinates = listOf(

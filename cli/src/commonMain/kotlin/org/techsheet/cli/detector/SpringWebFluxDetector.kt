@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
 
-class SpringWebFluxDetector : AbstractJvmDependencyDetector(
+class SpringWebFluxDetector : AbstractJvmFrameworkDetector(
   name = "Spring WebFlux",
   framework = FrameworkType.SPRING_WEBFLUX,
   coordinates = listOf(
