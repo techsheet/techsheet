@@ -4,7 +4,7 @@ package org.techsheet.cli.report
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import kotlinx.serialization.json.Json
 import org.techsheet.cli.domain.FrameworkEntry
 import org.techsheet.cli.domain.LanguageEntry

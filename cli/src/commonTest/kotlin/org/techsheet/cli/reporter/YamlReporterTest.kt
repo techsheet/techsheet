@@ -2,7 +2,7 @@ package org.techsheet.cli.reporter
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem
 import org.techsheet.cli.domain.FrameworkEntry

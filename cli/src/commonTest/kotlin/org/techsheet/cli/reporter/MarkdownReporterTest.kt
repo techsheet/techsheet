@@ -1,10 +1,10 @@
 package org.techsheet.cli.reporter
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
+import kotlin.time.Instant
 import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem
 import org.techsheet.cli.domain.FrameworkEntry
@@ -183,10 +183,7 @@ class MarkdownReporterTest {
 }
 
 // Constructed so that toLocalDateTime(currentSystemDefault()) round-trips to
-// 2026-04-21T17:37 regardless of the runner's time zone. The fromEpochSeconds
-// hop bridges kotlin.time.Instant (returned by toInstant in kotlinx-datetime
-// 0.6.2) back to kotlinx.datetime.Instant (the type ReportMeta uses).
+// 2026-04-21T17:37 regardless of the runner's time zone.
 private val META_INSTANT: Instant =
   LocalDateTime(2026, Month.APRIL, 21, 17, 37)
     .toInstant(TimeZone.currentSystemDefault())
-    .let { Instant.fromEpochSeconds(it.epochSeconds, it.nanosecondsOfSecond) }
