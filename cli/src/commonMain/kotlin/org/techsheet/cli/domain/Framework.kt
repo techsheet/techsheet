@@ -24,6 +24,16 @@ enum class FrameworkType(
   SPRING_MVC("Spring MVC", "https://techsheet.org/framework/spring-mvc", FrameworkCategory.APPLICATION),
   SPRING_WEBFLUX("Spring WebFlux", "https://techsheet.org/framework/spring-webflux", FrameworkCategory.APPLICATION),
   PLAY_FRAMEWORK("Play Framework", "https://techsheet.org/framework/play-framework", FrameworkCategory.APPLICATION),
+  LARAVEL("Laravel", "https://techsheet.org/framework/laravel", FrameworkCategory.APPLICATION),
+  SYMFONY("Symfony", "https://techsheet.org/framework/symfony", FrameworkCategory.APPLICATION),
+  CODEIGNITER("CodeIgniter", "https://techsheet.org/framework/codeigniter", FrameworkCategory.APPLICATION),
+  ZEND_FRAMEWORK("Zend Framework", "https://techsheet.org/framework/zend-framework", FrameworkCategory.APPLICATION),
+  YII2("Yii2", "https://techsheet.org/framework/yii2", FrameworkCategory.APPLICATION),
+  CAKEPHP("CakePHP", "https://techsheet.org/framework/cakephp", FrameworkCategory.APPLICATION),
+  SLIM("Slim", "https://techsheet.org/framework/slim", FrameworkCategory.APPLICATION),
+  PHALCON("Phalcon", "https://techsheet.org/framework/phalcon", FrameworkCategory.APPLICATION),
+  LUMEN("Lumen", "https://techsheet.org/framework/lumen", FrameworkCategory.APPLICATION),
+  FUELPHP("FuelPHP", "https://techsheet.org/framework/fuelphp", FrameworkCategory.APPLICATION),
   DJANGO("Django", "https://techsheet.org/framework/django", FrameworkCategory.APPLICATION),
   FLASK("Flask", "https://techsheet.org/framework/flask", FrameworkCategory.APPLICATION),
   FASTAPI("FastAPI", "https://techsheet.org/framework/fastapi", FrameworkCategory.APPLICATION),
@@ -48,9 +58,12 @@ enum class FrameworkType(
   ZIO("ZIO", "https://techsheet.org/framework/zio", FrameworkCategory.CONCURRENCY),
   CATS_EFFECT("Cats Effect", "https://techsheet.org/framework/cats-effect", FrameworkCategory.CONCURRENCY),
   ARROW("Arrow", "https://techsheet.org/framework/arrow", FrameworkCategory.CONCURRENCY),
+  REACTPHP("ReactPHP", "https://techsheet.org/framework/reactphp", FrameworkCategory.CONCURRENCY),
 
   // Data
   SPRING_DATA("Spring Data", "https://techsheet.org/framework/spring-data", FrameworkCategory.DATA),
+  DOCTRINE("Doctrine", "https://techsheet.org/framework/doctrine", FrameworkCategory.DATA),
+  ELOQUENT("Eloquent", "https://techsheet.org/framework/eloquent", FrameworkCategory.DATA),
   EXPOSED("Exposed", "https://techsheet.org/framework/exposed", FrameworkCategory.DATA),
   HIBERNATE("Hibernate", "https://techsheet.org/framework/hibernate", FrameworkCategory.DATA),
   JOOQ("jOOQ", "https://techsheet.org/framework/jooq", FrameworkCategory.DATA),
@@ -64,12 +77,14 @@ enum class FrameworkType(
   SLF4J("SLF4J", "https://techsheet.org/framework/slf4j", FrameworkCategory.LOGGING),
   LOGBACK("Logback", "https://techsheet.org/framework/logback", FrameworkCategory.LOGGING),
   LOG4J2("Log4j2", "https://techsheet.org/framework/log4j2", FrameworkCategory.LOGGING),
+  MONOLOG("Monolog", "https://techsheet.org/framework/monolog", FrameworkCategory.LOGGING),
 
   // Security
   SPRING_SECURITY("Spring Security", "https://techsheet.org/framework/spring-security", FrameworkCategory.SECURITY),
 
   // Testing
   PLAYWRIGHT("Playwright", "https://techsheet.org/framework/playwright", FrameworkCategory.TESTING),
+  PHPUNIT("PHPUnit", "https://techsheet.org/framework/phpunit", FrameworkCategory.TESTING),
   JUNIT("JUnit", "https://techsheet.org/framework/junit", FrameworkCategory.TESTING),
   MOCKITO("Mockito", "https://techsheet.org/framework/mockito", FrameworkCategory.TESTING),
   ASSERTJ("AssertJ", "https://techsheet.org/framework/assertj", FrameworkCategory.TESTING),

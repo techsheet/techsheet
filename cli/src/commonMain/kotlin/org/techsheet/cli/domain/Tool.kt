@@ -18,6 +18,7 @@ enum class ToolType(
   NPM("NPM", "https://techsheet.org/tool/npm", ToolCategory.BUILD),
   YARN("Yarn", "https://techsheet.org/tool/yarn", ToolCategory.BUILD),
   SBT("SBT", "https://techsheet.org/tool/sbt", ToolCategory.BUILD),
+  COMPOSER("Composer", "https://techsheet.org/tool/composer", ToolCategory.BUILD),
 
   // CI
   GITLAB_CI("GitLab CI", "https://techsheet.org/tool/gitlab-ci", ToolCategory.CI),
