@@ -1,6 +1,6 @@
 <div align="center">
 
-# TechSheet.org
+# <a href="#"><img src="./docs/logo/techsheet-logo.svg" style="height:1em;"></a> TechSheet.org
 
 An **open standard** and toolchain to report **technical insights** about **software projects** in an automated, 
 structured, uniform manner.
