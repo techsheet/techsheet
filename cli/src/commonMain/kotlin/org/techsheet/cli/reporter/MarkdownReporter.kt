@@ -3,12 +3,9 @@ package org.techsheet.cli.reporter
 import okio.FileSystem
 import okio.Path
 import okio.SYSTEM
-import org.techsheet.cli.domain.FrameworkEntry
-import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.ReportMeta
-import org.techsheet.cli.domain.ServiceEntry
-import org.techsheet.cli.domain.TechSheetReport
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.cli.domain.*
+import org.techsheet.cli.util.MarkdownRenderer
+import org.techsheet.cli.util.formatDefault
 
 class MarkdownReporter(
   path: Path,
@@ -19,55 +16,38 @@ class MarkdownReporter(
     appendLine("# TechSheet")
     appendLine()
     appendLine(formatMeta(report.meta))
-    appendSection(this, "Languages", LANGUAGE_HEADERS, report.languages.map(::languageRow))
-    appendSection(this, "Frameworks", FRAMEWORK_HEADERS, report.frameworks.map(::frameworkRow))
-    appendSection(this, "Services", SERVICE_HEADERS, report.services.map(::serviceRow))
-    appendSection(this, "Tools", TOOL_HEADERS, report.tools.map(::toolRow))
+    appendSection("Languages", LANGUAGE_SECTION_HEADERS, report.languages.map { it.asTableRow() })
+    appendSection("Frameworks", FRAMEWORK_SECTION_HEADERS, report.frameworks.map { it.asTableRow() })
+    appendSection("Services", SERVICE_SECTION_HEADERS, report.services.map { it.asTableRow() })
+    appendSection("Tools", TOOL_SECTION_HEADERS, report.tools.map { it.asTableRow() })
   }
 
-  private fun appendSection(
-    sb: StringBuilder,
-    title: String,
-    headers: List<String>,
-    rows: List<List<String>>,
-  ) {
-    sb.appendLine()
-    sb.appendLine("## $title")
-    sb.appendLine()
+  private fun StringBuilder.appendSection(title: String, headers: List<String>, rows: List<List<String>>) {
+    appendLine()
+    appendLine("## $title")
+    appendLine()
     if (rows.isEmpty()) {
-      sb.appendLine("*No ${title.lowercase()}*")
+      appendLine("*No ${title.lowercase()}*")
     } else {
-      sb.append(renderTable(headers, rows))
+      val placeholder = List(headers.size) { "" }
+      append(MarkdownRenderer.markdownTable(headers, rows + listOf(placeholder)))
     }
   }
 
-  private fun renderTable(headers: List<String>, rows: List<List<String>>): String =
-    markdownTable(headers, rows + listOf(List(headers.size) { "" }))
-
   private fun formatMeta(meta: ReportMeta): String =
-    "`v${meta.generatorVersion}` ‧ `${meta.generatedAt.formatHuman()}`"
+    "`${meta.generatedAt.formatDefault()}` ‧ `v${meta.generatorVersion}`"
 
-  private fun languageRow(e: LanguageEntry): List<String> =
-    listOf(e.name, version(e.version), e.url, "")
+  private fun LanguageEntry.asTableRow() =
+    listOf(name, version(version), url, "")
 
-  private fun frameworkRow(e: FrameworkEntry): List<String> =
-    listOf(e.name, version(e.version), e.category, e.url, "")
+  private fun FrameworkEntry.asTableRow() =
+    listOf(name, version(version), category, url, "")
 
-  private fun serviceRow(e: ServiceEntry): List<String> =
-    listOf(e.name, version(e.version), e.category, e.url, "")
+  private fun ServiceEntry.asTableRow() =
+    listOf(name, version(version), category, url, "")
 
-  private fun toolRow(e: ToolEntry): List<String> {
-    val name = e.flavor?.let { "${e.name} ($it)" } ?: e.name
-    return listOf(name, version(e.version), e.category, e.url, "")
-  }
+  private fun ToolEntry.asTableRow() =
+    listOf(displayName(), version(version), category, url, "")
 
   private fun version(v: String?): String = v?.let { "`$it`" } ?: ""
-
-  companion object {
-    private val LANGUAGE_HEADERS = listOf("Name", "Version", "URL", "Notes")
-    private val FRAMEWORK_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
-    private val SERVICE_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
-    private val TOOL_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
-
-  }
 }

@@ -29,7 +29,7 @@ class MarkdownReporterTest {
     val expected = """
       |# TechSheet
       |
-      |`v0.6.1` ‧ `21. April 2026 17:37`
+      |`21. April 2026 17:37` ‧ `v0.6.1`
       |
       |## Languages
       |
@@ -62,7 +62,7 @@ class MarkdownReporterTest {
     val expected = """
       |# TechSheet
       |
-      |`v0.6.1` ‧ `21. April 2026 17:37`
+      |`21. April 2026 17:37` ‧ `v0.6.1`
       |
       |## Languages
       |
@@ -123,7 +123,7 @@ class MarkdownReporterTest {
     val expected = """
       |# TechSheet
       |
-      |`v0.6.1` ‧ `21. April 2026 17:37`
+      |`21. April 2026 17:37` ‧ `v0.6.1`
       |
       |## Languages
       |

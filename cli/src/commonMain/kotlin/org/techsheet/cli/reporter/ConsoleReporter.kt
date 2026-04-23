@@ -5,18 +5,19 @@ import org.techsheet.cli.domain.FrameworkCategory
 import org.techsheet.cli.domain.ServiceCategory
 import org.techsheet.cli.domain.TechSheet
 import org.techsheet.cli.domain.ToolCategory
+import org.techsheet.cli.util.AnsiStyle
 
 class ConsoleReporter(
-  private val plain: Boolean = false,
+  plain: Boolean = false,
   private val emit: (String) -> Unit = ::println,
 ) : Reporter {
 
-  private val style = Style(plain)
+  private val style = AnsiStyle(plain)
   private val itemPrefix = if (plain) "- " else ""
 
   override fun report(sheet: TechSheet) {
     val body = renderBody(sheet)
-    val width = maxOf(MIN_WIDTH, body.maxOf { Style.visibleLength(it) } + 2)
+    val width = maxOf(MIN_WIDTH, body.maxOf { AnsiStyle.visibleLength(it) } + 2)
     val lines = buildList {
       add("")
       add(topRule(width))
@@ -112,12 +113,12 @@ class ConsoleReporter(
   }
 
   private fun summary(sheet: TechSheet): String {
-    val parts = buildList {
-      add(pluralize(sheet.languages.size, "language", "languages"))
-      add(pluralize(sheet.frameworks.size, "framework", "frameworks"))
-      if (sheet.services.isNotEmpty()) add(pluralize(sheet.services.size, "service", "services"))
-      add(pluralize(sheet.tools.size, "tool", "tools"))
-    }
+    val parts = listOf(
+      pluralize(sheet.languages.size, "language", "languages"),
+      pluralize(sheet.frameworks.size, "framework", "frameworks"),
+      pluralize(sheet.services.size, "service", "services"),
+      pluralize(sheet.tools.size, "tool", "tools"),
+    )
     return " " + style.dim("Total: " + parts.joinToString(" · "))
   }
 

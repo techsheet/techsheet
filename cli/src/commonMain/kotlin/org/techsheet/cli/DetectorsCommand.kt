@@ -18,8 +18,8 @@ import org.techsheet.cli.domain.ServiceCategory
 import org.techsheet.cli.domain.ServiceType
 import org.techsheet.cli.domain.ToolCategory
 import org.techsheet.cli.domain.ToolType
-import org.techsheet.cli.reporter.Style
-import org.techsheet.cli.reporter.markdownTable
+import org.techsheet.cli.util.AnsiStyle
+import org.techsheet.cli.util.MarkdownRenderer
 
 class DetectorsCommand : CoreCliktCommand(name = "detectors") {
 
@@ -52,7 +52,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
       return
     }
 
-    val style = Style(ci)
+    val style = AnsiStyle(ci)
 
     buildList {
       add("")
@@ -105,12 +105,12 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     sb.appendLine()
     sb.appendLine("*Currently supporting **${rows.size}** ${title.lowercase()}:*")
     sb.appendLine()
-    sb.append(markdownTable(headers, rows))
+    sb.append(MarkdownRenderer.markdownTable(headers, rows))
   }
 
   // ---------- Plain (--ci): bulleted list with category subheaders ----------
 
-  private fun bulletList(style: Style): List<String> = buildList {
+  private fun bulletList(style: AnsiStyle): List<String> = buildList {
     addAll(flatSection(style, "Languages", LanguageType.entries.map { it.title }))
     addAll(
       categorizedSection(
@@ -135,7 +135,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     )
   }
 
-  private fun flatSection(style: Style, header: String, items: List<String>): List<String> =
+  private fun flatSection(style: AnsiStyle, header: String, items: List<String>): List<String> =
     items.takeIf { it.isNotEmpty() }
       ?.sortedBy(String::lowercase)
       ?.let { sorted ->
@@ -148,7 +148,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
       .orEmpty()
 
   private fun <T, C : Enum<C>> categorizedSection(
-    style: Style,
+    style: AnsiStyle,
     header: String,
     items: List<T>,
     order: List<C>,
@@ -173,7 +173,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
 
   // ---------- Colored (default): aligned columns with an inline category cell ----------
 
-  private fun table(style: Style): List<String> {
+  private fun table(style: AnsiStyle): List<String> {
     val sections = listOf(
       "Languages" to LanguageType.entries.map { Row(it.title, category = null, it.url) },
       "Frameworks" to FrameworkType.entries.map { Row(it.title, it.category.title, it.url) },
@@ -187,7 +187,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
   }
 
   private fun flatTable(
-    style: Style,
+    style: AnsiStyle,
     header: String,
     rows: List<Row>,
     nameWidth: Int,
@@ -203,7 +203,7 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
     }
     .orEmpty()
 
-  private fun tableRow(style: Style, row: Row, nameWidth: Int, categoryWidth: Int): String {
+  private fun tableRow(style: AnsiStyle, row: Row, nameWidth: Int, categoryWidth: Int): String {
     val nameCol = row.name.padEnd(nameWidth)
     val categoryCol = row.category?.let(style::green).orEmpty().padVisibleEnd(categoryWidth)
     val urlCol = style.dim(row.url)
@@ -211,11 +211,11 @@ class DetectorsCommand : CoreCliktCommand(name = "detectors") {
   }
 
   private fun String.padVisibleEnd(target: Int): String =
-    this + " ".repeat(maxOf(0, target - Style.visibleLength(this)))
+    this + " ".repeat(maxOf(0, target - AnsiStyle.visibleLength(this)))
 
   // ---------- Shared ----------
 
-  private fun sectionTitle(style: Style, title: String, count: Int): String =
+  private fun sectionTitle(style: AnsiStyle, title: String, count: Int): String =
     " ${style.yellowBold(title)} ${style.dim("($count)")}"
 
   private data class Row(val name: String, val category: String?, val url: String)

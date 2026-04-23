@@ -41,7 +41,7 @@ class ConsoleReporterTest {
       " IDE",
       "   - IntelliJ IDEA",
       "",
-      " Total: 1 language · 2 frameworks · 2 tools",
+      " Total: 1 language · 2 frameworks · 0 services · 2 tools",
       "─".repeat(60),
       "",
     )

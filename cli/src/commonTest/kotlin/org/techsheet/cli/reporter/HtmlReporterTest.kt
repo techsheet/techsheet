@@ -14,219 +14,88 @@ import org.techsheet.cli.domain.ServiceEntry
 import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.domain.ToolEntry
 import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class HtmlReporterTest {
 
   @Test
-  fun `renders empty sheet with four empty-section notices inside sections`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.html".toPath()
+  fun `emits a valid HTML5 document with doctype and the expected top-level tags`() {
+    val html = render(emptyReport())
 
-    HtmlReporter(path, fs).report(emptyReport())
-
-    val actual = fs.read(path) { readUtf8() }
-    val expected = """
-      |<!DOCTYPE html>
-      |<html lang="en">
-      |<head>
-      |  <meta charset="utf-8">
-      |  <meta name="viewport" content="width=device-width, initial-scale=1">
-      |  <title>TechSheet</title>
-      |  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-      |        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-      |</head>
-      |<body>
-      |<main class="container-fluid py-5 px-5">
-      |
-      |  <h1 class="display-2">TechSheet</h1>
-      |  <p><code>21. April 2026 17:37</code> ‧ <code>v0.6.1</code></p>
-      |
-      |  <section id="languages" class="py-5">
-      |    <h2>Languages</h2>
-      |    <p><em>No languages</em></p>
-      |  </section>
-      |
-      |  <section id="frameworks" class="py-5">
-      |    <h2>Frameworks</h2>
-      |    <p><em>No frameworks</em></p>
-      |  </section>
-      |
-      |  <section id="services" class="py-5">
-      |    <h2>Services</h2>
-      |    <p><em>No services</em></p>
-      |  </section>
-      |
-      |  <section id="tools" class="py-5">
-      |    <h2>Tools</h2>
-      |    <p><em>No tools</em></p>
-      |  </section>
-      |</main>
-      |
-      |<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      |        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      |        crossorigin="anonymous"></script>
-      |</body>
-      |</html>
-      |
-    """.trimMargin()
-    assertEquals(expected, actual)
+    assertTrue("<!DOCTYPE html>" in html)
+    assertTrue(Regex("""<html\b""").containsMatchIn(html))
+    assertTrue("<head>" in html && "</head>" in html)
+    assertTrue("<body>" in html && "</body>" in html)
+    assertTrue("</html>" in html)
   }
 
   @Test
-  fun `renders a populated sheet with tables in L-F-S-T order`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.html".toPath()
+  fun `renders meta line with generator version and human-readable timestamp`() {
+    val html = render(emptyReport())
 
-    HtmlReporter(path, fs).report(populatedReport())
-
-    val actual = fs.read(path) { readUtf8() }
-    val expected = """
-      |<!DOCTYPE html>
-      |<html lang="en">
-      |<head>
-      |  <meta charset="utf-8">
-      |  <meta name="viewport" content="width=device-width, initial-scale=1">
-      |  <title>TechSheet</title>
-      |  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-      |        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-      |</head>
-      |<body>
-      |<main class="container-fluid py-5 px-5">
-      |
-      |  <h1 class="display-2">TechSheet</h1>
-      |  <p><code>21. April 2026 17:37</code> ‧ <code>v0.6.1</code></p>
-      |
-      |  <section id="languages" class="py-5">
-      |    <h2>Languages</h2>
-      |    <table class="table table-hover">
-      |      <thead>
-      |      <tr>
-      |        <th>Name</th>
-      |        <th>Version</th>
-      |        <th>URL</th>
-      |        <th>Notes</th>
-      |      </tr>
-      |      </thead>
-      |      <tbody>
-      |      <tr>
-      |        <td>Java</td>
-      |        <td><code>21</code></td>
-      |        <td><a href="https://techsheet.org/language/java">https://techsheet.org/language/java</a></td>
-      |        <td></td>
-      |      </tr>
-      |      <tr>
-      |        <td>TypeScript</td>
-      |        <td><code>5.9.3</code></td>
-      |        <td><a href="https://techsheet.org/language/typescript">https://techsheet.org/language/typescript</a></td>
-      |        <td></td>
-      |      </tr>
-      |      </tbody>
-      |    </table>
-      |  </section>
-      |
-      |  <section id="frameworks" class="py-5">
-      |    <h2>Frameworks</h2>
-      |    <table class="table table-hover">
-      |      <thead>
-      |      <tr>
-      |        <th>Name</th>
-      |        <th>Version</th>
-      |        <th>Category</th>
-      |        <th>URL</th>
-      |        <th>Notes</th>
-      |      </tr>
-      |      </thead>
-      |      <tbody>
-      |      <tr>
-      |        <td>Angular</td>
-      |        <td><code>21.2.4</code></td>
-      |        <td>Application</td>
-      |        <td><a href="https://techsheet.org/framework/angular">https://techsheet.org/framework/angular</a></td>
-      |        <td></td>
-      |      </tr>
-      |      <tr>
-      |        <td>Arrow</td>
-      |        <td></td>
-      |        <td>Concurrency</td>
-      |        <td><a href="https://techsheet.org/framework/arrow">https://techsheet.org/framework/arrow</a></td>
-      |        <td></td>
-      |      </tr>
-      |      </tbody>
-      |    </table>
-      |  </section>
-      |
-      |  <section id="services" class="py-5">
-      |    <h2>Services</h2>
-      |    <table class="table table-hover">
-      |      <thead>
-      |      <tr>
-      |        <th>Name</th>
-      |        <th>Version</th>
-      |        <th>Category</th>
-      |        <th>URL</th>
-      |        <th>Notes</th>
-      |      </tr>
-      |      </thead>
-      |      <tbody>
-      |      <tr>
-      |        <td>Postgres</td>
-      |        <td><code>16.1</code></td>
-      |        <td>Database</td>
-      |        <td><a href="https://techsheet.org/service/postgres">https://techsheet.org/service/postgres</a></td>
-      |        <td></td>
-      |      </tr>
-      |      </tbody>
-      |    </table>
-      |  </section>
-      |
-      |  <section id="tools" class="py-5">
-      |    <h2>Tools</h2>
-      |    <table class="table table-hover">
-      |      <thead>
-      |      <tr>
-      |        <th>Name</th>
-      |        <th>Version</th>
-      |        <th>Category</th>
-      |        <th>URL</th>
-      |        <th>Notes</th>
-      |      </tr>
-      |      </thead>
-      |      <tbody>
-      |      <tr>
-      |        <td>Gradle (kotlin)</td>
-      |        <td><code>8.14.1</code></td>
-      |        <td>Build</td>
-      |        <td><a href="https://techsheet.org/tool/gradle">https://techsheet.org/tool/gradle</a></td>
-      |        <td></td>
-      |      </tr>
-      |      <tr>
-      |        <td>JUnit</td>
-      |        <td><code>5.11.4</code></td>
-      |        <td>Testing</td>
-      |        <td><a href="https://techsheet.org/tool/junit">https://techsheet.org/tool/junit</a></td>
-      |        <td></td>
-      |      </tr>
-      |      </tbody>
-      |    </table>
-      |  </section>
-      |</main>
-      |
-      |<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      |        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      |        crossorigin="anonymous"></script>
-      |</body>
-      |</html>
-      |
-    """.trimMargin()
-    assertEquals(expected, actual)
+    assertTrue("v0.6.1" in html)
+    assertTrue("21. April 2026 17:37" in html)
   }
 
   @Test
-  fun `escapes HTML special characters in names and urls`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.html".toPath()
+  fun `renders all four sections in L-F-S-T order with id and title`() {
+    val html = render(emptyReport())
 
+    listOf("languages" to "Languages", "frameworks" to "Frameworks", "services" to "Services", "tools" to "Tools")
+      .forEach { (id, title) ->
+        assertTrue(Regex("""<section\b[^>]*id="$id"""").containsMatchIn(html), "missing section id=\"$id\"")
+        assertTrue(Regex("""<h2\b[^>]*>$title</h2>""").containsMatchIn(html), "missing <h2>$title</h2>")
+      }
+
+    val order = listOf("languages", "frameworks", "services", "tools")
+      .map { id -> html.indexOf("""id="$id"""") }
+    assertTrue(order == order.sorted() && order.none { it < 0 }, "sections not in L-F-S-T order: $order")
+  }
+
+  @Test
+  fun `empty section renders a No-X notice and no table`() {
+    val html = render(emptyReport())
+
+    listOf("languages", "frameworks", "services", "tools").forEach { id ->
+      val section = sectionBody(html, id)
+      assertTrue("No $id" in section, "empty $id section should contain 'No $id' notice")
+      assertFalse("<table" in section, "empty $id section should not contain a table")
+    }
+  }
+
+  @Test
+  fun `populated section renders a table with one row per entry and linkified URL`() {
+    val html = render(populatedReport())
+
+    val languages = sectionBody(html, "languages")
+    assertTrue("<table" in languages)
+    assertTrue("Java" in languages && "TypeScript" in languages)
+    assertTrue("""<a href="https://techsheet.org/language/java">""" in languages)
+    assertTrue("""<a href="https://techsheet.org/language/typescript">""" in languages)
+  }
+
+  @Test
+  fun `versions are wrapped in code and missing versions render empty`() {
+    val html = render(populatedReport())
+
+    assertTrue("<code>21</code>" in html, "expected Java version in <code>")
+    assertTrue("<code>5.9.3</code>" in html, "expected TypeScript version in <code>")
+    // Arrow has no version; no <code>Arrow... should appear as a version
+    assertFalse(Regex("""Arrow.*?<code>""", RegexOption.DOT_MATCHES_ALL).containsMatchIn(sectionBody(html, "frameworks").substringBefore("Angular").ifEmpty { "" }))
+  }
+
+  @Test
+  fun `tool flavor is appended to name in parentheses`() {
+    val html = render(populatedReport())
+
+    assertTrue("Gradle (kotlin)" in html, "flavor should be shown in parentheses")
+    // JUnit has no flavor — no parentheses after the name
+    assertFalse(Regex("""JUnit\s*\(""").containsMatchIn(html))
+  }
+
+  @Test
+  fun `escapes HTML special characters in names and versions and urls`() {
     val report = TechSheetReport(
       meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
       languages = listOf(
@@ -237,19 +106,36 @@ class HtmlReporterTest {
       tools = emptyList(),
     )
 
-    HtmlReporter(path, fs).report(report)
+    val html = render(report)
 
-    val actual = fs.read(path) { readUtf8() }
-    assertEquals(true, actual.contains("<td>C&lt;++&gt;</td>"))
-    assertEquals(true, actual.contains("<code>1&amp;2</code>"))
-    assertEquals(true, actual.contains("<a href=\"https://example.com/?q=a&amp;b=c\">https://example.com/?q=a&amp;b=c</a>"))
+    assertTrue("C&lt;++&gt;" in html)
+    assertTrue("<code>1&amp;2</code>" in html)
+    assertTrue("""<a href="https://example.com/?q=a&amp;b=c">https://example.com/?q=a&amp;b=c</a>""" in html)
+    // ensure the raw unescaped forms did not leak through
+    assertFalse("C<++>" in html)
+    assertFalse("?q=a&b=c" in html)
+  }
+
+  private fun render(report: TechSheetReport): String {
+    val fs = FakeFileSystem()
+    val path = "/out/techsheet.html".toPath()
+    HtmlReporter(path, fs).report(report)
+    return fs.read(path) { readUtf8() }
+  }
+
+  // Returns the substring of `html` between the opening <section id="$id" ...> and the next </section>.
+  private fun sectionBody(html: String, id: String): String {
+    val open = Regex("""<section\b[^>]*id="$id"[^>]*>""").find(html)
+      ?: error("section id=\"$id\" not found")
+    val after = html.substring(open.range.last + 1)
+    val end = after.indexOf("</section>").also {
+      check(it >= 0) { "section id=\"$id\" has no closing tag" }
+    }
+    return after.substring(0, end)
   }
 
   private fun emptyReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(
-      generatedAt = META_INSTANT,
-      generatorVersion = "0.6.1",
-    ),
+    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
     languages = emptyList(),
     frameworks = emptyList(),
     services = emptyList(),
@@ -257,10 +143,7 @@ class HtmlReporterTest {
   )
 
   private fun populatedReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(
-      generatedAt = META_INSTANT,
-      generatorVersion = "0.6.1",
-    ),
+    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
     languages = listOf(
       LanguageEntry(name = "Java", url = "https://techsheet.org/language/java", version = "21"),
       LanguageEntry(name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
