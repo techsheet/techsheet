@@ -1,7 +1,0 @@
-stages:
-  - test
-  - docs
-
-techsheet:
-  image: ghcr.io/techsheet/analyzer:latest
-  stage: docs
