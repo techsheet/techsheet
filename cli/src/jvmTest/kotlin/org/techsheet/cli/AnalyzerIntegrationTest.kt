@@ -3,175 +3,111 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
-import okio.Path.Companion.toOkioPath
+import okio.FileSystem
+import okio.Path
+import okio.Path.Companion.toPath
+import okio.SYSTEM
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.ToolType
-import org.techsheet.cli.domain.LanguageType
-import org.techsheet.cli.domain.TechSheet
-import java.nio.file.Paths
+import org.techsheet.cli.domain.ReportMeta
+import org.techsheet.cli.domain.TechSheetReport
+import org.techsheet.cli.reporter.YamlReporter
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
+import kotlin.test.fail
+import kotlin.time.Instant
 
 class AnalyzerIntegrationTest {
 
-  private val cases = listOf(
-    testCase("groovy-spring-boot-gradle") {
-      TechSheet()
-        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Groovy DSL")
-        .withTool(ToolType.JVM, version = "26")
-        .withTool(ToolType.INTELLIJ_IDEA)
-        .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
-        .withFramework(FrameworkType.SPRING_WEBFLUX)
-        .withFramework(FrameworkType.JUNIT)
-    },
-    testCase("kotlin-spring-boot-gradle") {
-      TechSheet()
-        .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
-        .withTool(ToolType.JVM, version = "21")
-        .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
-        .withFramework(FrameworkType.SPRING_MVC)
-        .withFramework(FrameworkType.JUNIT)
-        .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
-    },
-    testCase("java-spring-boot-maven") {
-      TechSheet()
-        .withTool(ToolType.MAVEN, version = "3.9.14")
-        .withTool(ToolType.JVM, version = "17")
-        .withFramework(FrameworkType.SPRING_BOOT, version = "3.5.13")
-        .withFramework(FrameworkType.SPRING_SECURITY)
-        .withFramework(FrameworkType.SPRING_DATA)
-        .withLanguage(LanguageType.JAVA, version = "17")
-    },
-    testCase("angular") {
-      TechSheet()
-        .withLanguage(LanguageType.TYPESCRIPT, version = "5.9.2")
-        .withLanguage(LanguageType.HTML)
-        .withLanguage(LanguageType.SCSS)
-        .withLanguage(LanguageType.MARKDOWN)
-        .withTool(ToolType.EDITORCONFIG)
-        .withTool(ToolType.NPM)
-        .withFramework(FrameworkType.ANGULAR, version = "20.3.0")
-        .withTool(ToolType.VS_CODE)
-    },
-    testCase("python_django") {
-      TechSheet()
-        .withLanguage(LanguageType.PYTHON)
-        .withFramework(FrameworkType.DJANGO)
-    },
-    testCase("python_flask") {
-      TechSheet()
-        .withLanguage(LanguageType.PYTHON)
-        .withFramework(FrameworkType.FLASK, version = "3.0.3")
-    },
-    testCase("python_fastapi") {
-      TechSheet()
-        .withLanguage(LanguageType.PYTHON, version = "3.12")
-        .withFramework(FrameworkType.FASTAPI, version = "0.115.0")
-    },
-    testCase("play-scala-seed") {
-      TechSheet()
-        .withLanguage(LanguageType.SCALA, version = "2.13.18")
-        .withLanguage(LanguageType.JAVASCRIPT)
-        .withLanguage(LanguageType.HTML)
-        .withLanguage(LanguageType.CSS)
-        .withTool(ToolType.SBT, version = "1.12.9")
-        .withFramework(FrameworkType.PLAY_FRAMEWORK, version = "3.0.10")
-    },
-    testCase("playwright") {
-      TechSheet()
-        .withLanguage(LanguageType.TYPESCRIPT)
-        .withTool(ToolType.GITHUB_ACTIONS)
-        .withTool(ToolType.NPM)
-        .withTool(ToolType.YARN)
-        .withFramework(FrameworkType.PLAYWRIGHT, version = "1.59.1")
-    },
-    testCase("next-js") {
-      TechSheet()
-        .withLanguage(LanguageType.TYPESCRIPT, version = "5")
-        .withLanguage(LanguageType.CSS)
-        .withLanguage(LanguageType.MARKDOWN)
-        .withTool(ToolType.NPM)
-        .withTool(ToolType.ESLINT, version = "9")
-        .withFramework(FrameworkType.REACT, version = "19.2.4")
-        .withFramework(FrameworkType.NEXT, version = "16.2.4")
-        .withFramework(FrameworkType.TAILWIND, version = "4")
-    },
-    testCase("node-express") {
-      TechSheet()
-        .withLanguage(LanguageType.JAVASCRIPT)
-        .withLanguage(LanguageType.CSS)
-        .withTool(ToolType.NPM)
-        .withTool(ToolType.NODE)
-        .withFramework(FrameworkType.EXPRESS, version = "4.16.1")
-    },
-    testCase("php-laravel") {
-      TechSheet()
-        .withLanguage(LanguageType.PHP)
-        .withTool(ToolType.COMPOSER)
-        .withFramework(FrameworkType.LARAVEL, version = "11.5.2")
-        .withFramework(FrameworkType.PHPUNIT, version = "10.5")
-    },
-    testCase("php-wordpress") {
-      TechSheet()
-        .withLanguage(LanguageType.CSS)
-        .withLanguage(LanguageType.HTML)
-        .withLanguage(LanguageType.JAVASCRIPT)
-        .withLanguage(LanguageType.MARKDOWN)
-        .withLanguage(LanguageType.PHP)
-        .withLanguage(LanguageType.SCSS)
-        .withTool(ToolType.COMPOSER)
-        .withTool(ToolType.NPM, version = "10.2.3")
-        .withTool(ToolType.NODE, version = "20.10.0")
-        .withFramework(FrameworkType.WORDPRESS, version = "6.9.4")
-        .withFramework(FrameworkType.PHPUNIT, version = "3|^4|^5|^6|^7|^8|^9")
-    },
-    testCase("qt-cmake-app") {
-      TechSheet()
-        .withLanguage(LanguageType.CPP)
-        .withFramework(FrameworkType.QT, version = "6")
-    },
-    testCase("asp-net-core-app") {
-      TechSheet()
-        .withLanguage(LanguageType.CSHARP)
-        .withFramework(FrameworkType.ASP_NET_CORE, version = "9.0")
-    },
-    testCase("ci-tools") {
-      TechSheet()
-        .withTool(ToolType.GITLAB_CI)
-        .withTool(ToolType.CODEOWNERS)
-        .withTool(ToolType.DOCKER)
-        .withTool(ToolType.DOCKER_COMPOSE)
-        .withTool(ToolType.EDITORCONFIG)
-        .withTool(ToolType.RENOVATE)
-    },
-  )
-
+  private val fs = FileSystem.SYSTEM
   private val log = Logger(
     config = StaticConfig(minSeverity = Severity.Warn),
     tag = "analyzer-it",
   )
 
+  // Gradle runs tests with the module directory (cli/) as the working directory;
+  // the test-projects submodule sits one level up at the repository root.
+  private val testProjectsRoot = "../test-projects".toPath()
+
+  // Deterministic meta so the generated actual.yml is reproducible across runs.
+  private val fixedMeta = ReportMeta(
+    generatedAt = Instant.parse("2000-01-01T00:00:00Z"),
+    generatorVersion = "test",
+  )
+
   @TestFactory
-  fun `analyze test projects`(): List<DynamicTest> = cases.map { case ->
-    DynamicTest.dynamicTest(case.name) {
-      val ctx = AnalyzerContext(path = fixturePath("test-projects/${case.name}"), log = log)
-      val actual = Analyzer(log).analyze(ctx)
-      assertEquals(case.expected, actual, "Unexpected tech sheet for test project '${case.name}'")
+  fun `analyze test projects`(): List<DynamicTest> {
+    val fixtures = fs.list(testProjectsRoot)
+      .filter { fs.metadataOrNull(it)?.isDirectory == true }
+      .filterNot { it.name.startsWith(".") }
+      .sortedBy { it.name }
+
+    if (fixtures.isEmpty()) {
+      return listOf(DynamicTest.dynamicTest("discover fixtures") {
+        fail("No fixture directories found under $testProjectsRoot")
+      })
+    }
+
+    return fixtures.map { dir ->
+      DynamicTest.dynamicTest(dir.name) { verify(dir) }
     }
   }
 
-  private data class Case(val name: String, val expected: TechSheet)
+  private fun verify(dir: Path) {
+    val expectedFile = dir / "techsheet.expected.yml"
+    val actualFile = dir / "techsheet.actual.yml"
 
-  private fun testCase(name: String, block: () -> TechSheet): Case =
-    Case(name = name, expected = block())
+    val ctx = AnalyzerContext(path = dir, log = log)
+    val sheet = Analyzer(log).analyze(ctx)
+    val report = TechSheetReport.of(sheet).copy(meta = fixedMeta)
+    YamlReporter(actualFile, fs).report(report)
 
-  private fun fixturePath(resource: String): okio.Path {
-    val url = assertNotNull(
-      this::class.java.classLoader.getResource(resource),
-      "Test fixture not found on classpath: $resource",
+    assertTrue(fs.exists(expectedFile), "missing $expectedFile")
+    assertTrue(fs.exists(actualFile), "actual file $actualFile was not written")
+
+    val expected = stripMeta(fs.read(expectedFile) { readUtf8() })
+    val actual = stripMeta(fs.read(actualFile) { readUtf8() })
+
+    assertEquals(
+      expected,
+      actual,
+      "techsheet.actual.yml does not match techsheet.expected.yml (meta block ignored)\n${diff(expected, actual)}",
     )
-    return Paths.get(url.toURI()).toOkioPath()
+  }
+
+  // The `meta:` block holds a timestamp and generator version that are not part of
+  // the detected tech sheet. Strip it from both sides so expected files can keep the
+  // block (for readability) or omit it entirely — either way matches.
+  private fun stripMeta(yaml: String): String {
+    val out = StringBuilder()
+    var inMeta = false
+    for (line in yaml.lines()) {
+      if (line.startsWith("meta:")) {
+        inMeta = true
+        continue
+      }
+      if (inMeta) {
+        if (line.isEmpty() || line.startsWith(" ") || line.startsWith("\t")) continue
+        inMeta = false
+      }
+      out.append(line).append('\n')
+    }
+    return out.toString()
+  }
+
+  private fun diff(expected: String, actual: String): String {
+    val exp = expected.lines()
+    val act = actual.lines()
+    val sb = StringBuilder()
+    val max = maxOf(exp.size, act.size)
+    for (i in 0 until max) {
+      val e = exp.getOrNull(i)
+      val a = act.getOrNull(i)
+      if (e != a) {
+        if (e != null) sb.appendLine("- [${i + 1}] $e")
+        if (a != null) sb.appendLine("+ [${i + 1}] $a")
+      }
+    }
+    return sb.toString()
   }
 }
