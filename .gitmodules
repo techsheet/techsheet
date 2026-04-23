@@ -1,0 +1,3 @@
+[submodule "test-projects"]
+	path = test-projects
+	url = git@github.com:techsheet/test-projects.git

@@ -19,3 +19,4 @@ plugins {
 }
 
 include(":cli")
+include(":test-projects")
