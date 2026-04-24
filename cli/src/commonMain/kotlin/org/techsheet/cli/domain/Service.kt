@@ -6,10 +6,14 @@ data class Service(
 )
 
 enum class ServiceType(
-  val title: String,
-  val url: String,
+  override val key: String,
+  override val title: String,
   val category: ServiceCategory,
-)
+) : Technology {
+  ;
+
+  override val type: String = "service"
+}
 
 enum class ServiceCategory(val title: String) {
   DATABASE("Database"),

@@ -23,4 +23,23 @@ enum class LanguageType(
   SCSS("SCSS/SASS", "https://techsheet.org/language/scss"),
   MARKDOWN("Markdown", "https://techsheet.org/language/markdown"),
   ASCIIDOC("AsciiDoc", "https://techsheet.org/language/asciidoc"),
+  override val key: String,
+  override val title: String,
+) : Technology {
+  JAVA("java", "Java"),
+  KOTLIN("kotlin", "Kotlin"),
+  SCALA("scala", "Scala"),
+  JAVASCRIPT("javascript", "JavaScript"),
+  TYPESCRIPT("typescript", "TypeScript"),
+  PHP("php", "PHP"),
+  PYTHON("python", "Python"),
+  CPP("cpp", "C++"),
+  CSHARP("csharp", "C#"),
+  HTML("html", "HTML"),
+  CSS("css", "CSS"),
+  SCSS("scss", "SCSS/SASS"),
+  MARKDOWN("markdown", "Markdown"),
+  ASCIIDOC("asciidoc", "AsciiDoc");
+
+  override val type: String = "language"
 }
