@@ -16,6 +16,7 @@ class HtmlReporter(
     appendLine("""<html lang="en">""")
     appendLine("<head>")
     appendLine("""  <meta charset="utf-8">""")
+    appendLine("""  <meta name="generator" content="TechSheet.org CLI ${report.meta.generatorVersion}">""")
     appendLine("""  <meta name="viewport" content="width=device-width, initial-scale=1">""")
     appendLine("  <title>TechSheet</title>")
     appendLine("""  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"""")
