@@ -56,34 +56,47 @@ docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 </details>
 
 <details>
-<summary>OSX (precompiled binary)</summary>
+<summary>Apple macOS</summary>
+
+Download the precompiled binary from releases:
 
 ```bash
-curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
-chmod +x /usr/local/bin/techsheet
+sudo curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
+sudo chmod +x /usr/local/bin/techsheet
 ```
+
+***Note:** We only build for Apple silicon (ARM) cpu's. If you use an older Intel Mac, please use Docker, JAR, or build 
+from source.*
 
 </details>
 
 <details>
-<summary>Linux (precompiled binary)</summary>
+<summary>Linux</summary>
+
+Download the precompiled binary from releases:
 
 ```bash
-curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
-chmod +x /usr/local/bin/techsheet
+sudo curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-linux-x64
+sudo chmod +x /usr/local/bin/techsheet
 ```
+
+***Note:** We only build for 64 bit platforms.*
 
 </details>
 
 <details>
-<summary>Windows (precompiled binary)</summary>
+<summary>Windows</summary>
 
 Download `techsheet-windows-x64.exe` from the [releases page][release-url]
 
+***Note:** We currently don't support any package managers or installers for Windows, as there's no demand.*
+
 </details>
 
 <details>
-<summary>JVM (jar)</summary>
+<summary>JVM</summary>
+
+Download the JAR and execute it:
 
 ```bash
 curl -fsSL -o techsheet.jar https://github.com/techsheet/techsheet/releases/latest/download/techsheet.jar
