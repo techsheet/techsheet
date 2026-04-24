@@ -33,6 +33,7 @@ class Detectors(val all: List<Detector> = ALL) {
       MavenDetector(),
       JavaDetector(),
       KotlinDetector(),
+      GroovyDetector(),
       ScalaDetector(),
       JavaScriptDetector(),
       TypeScriptDetector(),
