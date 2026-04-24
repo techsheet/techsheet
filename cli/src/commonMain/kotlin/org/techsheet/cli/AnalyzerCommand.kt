@@ -17,6 +17,7 @@ import okio.IOException
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.reporter.ConsoleReporter
+import org.techsheet.cli.reporter.HtmlReporter
 import org.techsheet.cli.reporter.JsonReporter
 import org.techsheet.cli.reporter.MarkdownReporter
 import org.techsheet.cli.reporter.YamlReporter
@@ -53,6 +54,12 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     help = "Export Markdown report (optionally specify output path with =)"
   )
     .optionalValue("techsheet.md")
+
+  private val html: String? by option(
+    "--html",
+    help = "Export HTML report (optionally specify output path with =)"
+  )
+    .optionalValue("techsheet.html")
 
   private val console: Boolean by option(
     "-c",
@@ -126,7 +133,13 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       writeReport("Markdown", target) { MarkdownReporter(target).report(sheet) }
     }
 
-    val anyExplicit = yaml != null || json != null || markdown != null || console
+    html?.let {
+      val target = sourcePath / it.toPath()
+      log.i { "Writing HTML report to: $target" }
+      writeReport("HTML", target) { HtmlReporter(target).report(sheet) }
+    }
+
+    val anyExplicit = yaml != null || json != null || markdown != null || html != null || console
     if (console || !anyExplicit) {
       log.i { "" }
       ConsoleReporter(plain = ci).report(sheet)

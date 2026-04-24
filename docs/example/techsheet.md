@@ -1,6 +1,6 @@
 # TechSheet
 
-`v0.7.0` ‧ `22. April 2026 17:31`
+`23. April 2026 16:31` ‧ `v0.8.0`
 
 ## Languages
 

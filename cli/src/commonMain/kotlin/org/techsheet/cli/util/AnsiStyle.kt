@@ -1,6 +1,6 @@
-package org.techsheet.cli.reporter
+package org.techsheet.cli.util
 
-internal class Style(private val plain: Boolean) {
+internal class AnsiStyle(private val plain: Boolean) {
 
   fun cyan(s: String): String = wrap(s, "\u001B[36m")
   fun yellowBold(s: String): String = wrap(s, "\u001B[1;33m")

@@ -13,5 +13,6 @@ cd "$(dirname "$0")/.."
 ./gradlew :cli:jvmRun --args="detectors --markdown=../docs/detectors.md"
 ./gradlew :cli:jvmRun --args="analyze ../ \
   --markdown=docs/example/techsheet.md \
+  --html=docs/example/techsheet.html \
   --yaml=docs/example/techsheet.yml \
   --json=docs/example/techsheet.json"

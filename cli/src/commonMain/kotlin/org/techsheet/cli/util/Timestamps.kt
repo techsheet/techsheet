@@ -1,4 +1,4 @@
-package org.techsheet.cli.reporter
+package org.techsheet.cli.util
 
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
@@ -10,13 +10,7 @@ import kotlinx.datetime.format.char
 import kotlinx.datetime.offsetAt
 import kotlin.time.Instant
 
-/**
- * Project-wide human-readable timestamp format used for any date/time shown to a person
- * (e.g. report meta lines). Renders in the system's local time zone.
- *
- * Example: `21. April 2026 17:37`.
- */
-internal val HUMAN_DATE_TIME: DateTimeFormat<DateTimeComponents> = DateTimeComponents.Format {
+internal val DEFAULT_DATE_TIME_FORMAT: DateTimeFormat<DateTimeComponents> = DateTimeComponents.Format {
   day(Padding.NONE)
   chars(". ")
   monthName(MonthNames.ENGLISH_FULL)
@@ -28,6 +22,5 @@ internal val HUMAN_DATE_TIME: DateTimeFormat<DateTimeComponents> = DateTimeCompo
   minute()
 }
 
-internal fun Instant.formatHuman(): String =
-  format(HUMAN_DATE_TIME, TimeZone.currentSystemDefault().offsetAt(this))
-
+internal fun Instant.formatDefault(): String =
+  format(DEFAULT_DATE_TIME_FORMAT, TimeZone.currentSystemDefault().offsetAt(this))
