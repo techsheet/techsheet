@@ -65,14 +65,15 @@ class HtmlReporterTest {
   }
 
   @Test
-  fun `populated section renders a table with one row per entry and linkified URL`() {
+  fun `populated section renders a table with linked names and id cells`() {
     val html = render(populatedReport())
 
     val languages = sectionBody(html, "languages")
     assertTrue("<table" in languages)
-    assertTrue("Java" in languages && "TypeScript" in languages)
-    assertTrue("""<a href="https://techsheet.org/language/java">""" in languages)
-    assertTrue("""<a href="https://techsheet.org/language/typescript">""" in languages)
+    assertTrue("""<a href="https://techsheet.org/language/java">Java</a>""" in languages)
+    assertTrue("""<a href="https://techsheet.org/language/typescript">TypeScript</a>""" in languages)
+    assertTrue("<code>language.java</code>" in languages)
+    assertTrue("<code>language.typescript</code>" in languages)
   }
 
   @Test
@@ -99,7 +100,7 @@ class HtmlReporterTest {
     val report = TechSheetReport(
       meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
       languages = listOf(
-        LanguageEntry(name = "C<++>", url = "https://example.com/?q=a&b=c", version = "1&2"),
+        LanguageEntry(id = "language.cpp", name = "C<++>", url = "https://example.com/?q=a&b=c", version = "1&2"),
       ),
       frameworks = emptyList(),
       services = emptyList(),
@@ -108,9 +109,8 @@ class HtmlReporterTest {
 
     val html = render(report)
 
-    assertTrue("C&lt;++&gt;" in html)
+    assertTrue("""<a href="https://example.com/?q=a&amp;b=c">C&lt;++&gt;</a>""" in html)
     assertTrue("<code>1&amp;2</code>" in html)
-    assertTrue("""<a href="https://example.com/?q=a&amp;b=c">https://example.com/?q=a&amp;b=c</a>""" in html)
     // ensure the raw unescaped forms did not leak through
     assertFalse("C<++>" in html)
     assertFalse("?q=a&b=c" in html)
@@ -145,19 +145,19 @@ class HtmlReporterTest {
   private fun populatedReport(): TechSheetReport = TechSheetReport(
     meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
     languages = listOf(
-      LanguageEntry(name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-      LanguageEntry(name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
+      LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
+      LanguageEntry(id = "language.typescript", name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
     ),
     frameworks = listOf(
-      FrameworkEntry(name = "Angular", url = "https://techsheet.org/framework/angular", category = "Application", version = "21.2.4"),
-      FrameworkEntry(name = "Arrow", url = "https://techsheet.org/framework/arrow", category = "Concurrency", version = null),
+      FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
+      FrameworkEntry(id = "framework.arrow", name = "Arrow", category = "Concurrency", url = "https://techsheet.org/framework/arrow", version = null),
     ),
     services = listOf(
-      ServiceEntry(name = "Postgres", url = "https://techsheet.org/service/postgres", category = "Database", version = "16.1"),
+      ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
     ),
     tools = listOf(
-      ToolEntry(name = "Gradle", url = "https://techsheet.org/tool/gradle", category = "Build", version = "8.14.1", flavor = "kotlin"),
-      ToolEntry(name = "JUnit", url = "https://techsheet.org/tool/junit", category = "Testing", version = "5.11.4", flavor = null),
+      ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
+      ToolEntry(id = "tool.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/tool/junit", version = "5.11.4", flavor = null),
     ),
   )
 }

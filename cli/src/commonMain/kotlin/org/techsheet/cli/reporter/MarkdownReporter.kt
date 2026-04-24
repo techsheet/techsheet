@@ -38,16 +38,16 @@ class MarkdownReporter(
     "`${meta.generatedAt.formatDefault()}` ‧ `v${meta.generatorVersion}`"
 
   private fun LanguageEntry.asTableRow() =
-    listOf(name, version(version), url, "")
+    listOf("[$name]($url)", version(version), "`$id`", "")
 
   private fun FrameworkEntry.asTableRow() =
-    listOf(name, version(version), category, url, "")
+    listOf("[$name]($url)", version(version), category, "`$id`", "")
 
   private fun ServiceEntry.asTableRow() =
-    listOf(name, version(version), category, url, "")
+    listOf("[$name]($url)", version(version), category, "`$id`", "")
 
   private fun ToolEntry.asTableRow() =
-    listOf(displayName(), version(version), category, url, "")
+    listOf("[${displayName()}]($url)", version(version), category, "`$id`", "")
 
   private fun version(v: String?): String = v?.let { "`$it`" } ?: ""
 }
