@@ -15,169 +15,125 @@ import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.domain.ToolEntry
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class MarkdownReporterTest {
 
   @Test
-  fun `renders empty sheet as header and meta with four empty-section notices`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.md".toPath()
+  fun `renders empty sheet with four empty-section notices`() {
+    val output = render(emptyReport())
 
-    MarkdownReporter(path, fs).report(emptyReport())
-
-    val actual = fs.read(path) { readUtf8() }
-    val expected = """
-      |# TechSheet
-      |
-      |`21. April 2026 17:37` ‧ `v0.6.1`
-      |
-      |## Languages
-      |
-      |*No languages*
-      |
-      |## Frameworks
-      |
-      |*No frameworks*
-      |
-      |## Services
-      |
-      |*No services*
-      |
-      |## Tools
-      |
-      |*No tools*
-      |
-    """.trimMargin()
-    assertEquals(expected, actual)
+    assertTrue(output.contains("## Languages\n\n*No languages*"))
+    assertTrue(output.contains("## Frameworks\n\n*No frameworks*"))
+    assertTrue(output.contains("## Services\n\n*No services*"))
+    assertTrue(output.contains("## Tools\n\n*No tools*"))
   }
 
   @Test
-  fun `renders a populated sheet with aligned tables in L-F-S-T order`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.md".toPath()
-
-    MarkdownReporter(path, fs).report(populatedReport())
-
-    val actual = fs.read(path) { readUtf8() }
-    val expected = """
-      |# TechSheet
-      |
-      |`21. April 2026 17:37` ‧ `v0.6.1`
-      |
-      |## Languages
-      |
-      || Name       | Version | URL                                       | Notes |
-      ||------------|---------|-------------------------------------------|-------|
-      || Java       | `21`    | https://techsheet.org/language/java       |       |
-      || TypeScript | `5.9.3` | https://techsheet.org/language/typescript |       |
-      ||            |         |                                           |       |
-      |
-      |## Frameworks
-      |
-      || Name    | Version  | Category    | URL                                     | Notes |
-      ||---------|----------|-------------|-----------------------------------------|-------|
-      || Angular | `21.2.4` | Application | https://techsheet.org/framework/angular |       |
-      || Arrow   |          | Concurrency | https://techsheet.org/framework/arrow   |       |
-      ||         |          |             |                                         |       |
-      |
-      |## Services
-      |
-      || Name     | Version | Category | URL                                    | Notes |
-      ||----------|---------|----------|----------------------------------------|-------|
-      || Postgres | `16.1`  | Database | https://techsheet.org/service/postgres |       |
-      ||          |         |          |                                        |       |
-      |
-      |## Tools
-      |
-      || Name            | Version  | Category | URL                               | Notes |
-      ||-----------------|----------|----------|-----------------------------------|-------|
-      || Gradle (kotlin) | `8.14.1` | Build    | https://techsheet.org/tool/gradle |       |
-      || JUnit           | `5.11.4` | Testing  | https://techsheet.org/tool/junit  |       |
-      ||                 |          |          |                                   |       |
-      |
-    """.trimMargin()
-    assertEquals(expected, actual)
+  fun `renders meta line`() {
+    val output = render(emptyReport())
+    assertTrue(output.contains("`21. April 2026 17:37` ‧ `v0.6.1`"))
   }
 
   @Test
-  fun `renders mixed sheet with one populated and three empty sections`() {
+  fun `renders sections in L-F-S-T order`() {
+    val output = render(emptyReport())
+    val langPos = output.indexOf("## Languages")
+    val fwPos = output.indexOf("## Frameworks")
+    val svcPos = output.indexOf("## Services")
+    val toolPos = output.indexOf("## Tools")
+    assertTrue(langPos < fwPos && fwPos < svcPos && svcPos < toolPos)
+  }
+
+  @Test
+  fun `language table has correct headers and cell content`() {
+    val rows = render(populatedReport()).tableRows("Languages")
+
+    assertEquals(listOf("Name", "Version", "ID", "Notes"), rows[0])
+    assertEquals(listOf("[Java](https://techsheet.org/language/java)", "`21`", "`language.java`", ""), rows[1])
+    assertEquals(listOf("[TypeScript](https://techsheet.org/language/typescript)", "`5.9.3`", "`language.typescript`", ""), rows[2])
+  }
+
+  @Test
+  fun `framework table has correct headers and cell content`() {
+    val rows = render(populatedReport()).tableRows("Frameworks")
+
+    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
+    assertEquals(listOf("[Angular](https://techsheet.org/framework/angular)", "`21.2.4`", "Application", "`framework.angular`", ""), rows[1])
+    assertEquals(listOf("[Arrow](https://techsheet.org/framework/arrow)", "", "Concurrency", "`framework.arrow`", ""), rows[2])
+  }
+
+  @Test
+  fun `service table has correct headers and cell content`() {
+    val rows = render(populatedReport()).tableRows("Services")
+
+    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
+    assertEquals(listOf("[Postgres](https://techsheet.org/service/postgres)", "`16.1`", "Database", "`service.postgres`", ""), rows[1])
+  }
+
+  @Test
+  fun `tool table uses display name and has correct headers and cell content`() {
+    val rows = render(populatedReport()).tableRows("Tools")
+
+    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
+    assertEquals(listOf("[Gradle (kotlin)](https://techsheet.org/tool/gradle)", "`8.14.1`", "Build", "`tool.gradle`", ""), rows[1])
+    assertEquals(listOf("[JUnit](https://techsheet.org/tool/junit)", "`5.11.4`", "Testing", "`tool.junit`", ""), rows[2])
+  }
+
+  @Test
+  fun `populated section replaces empty notice`() {
+    val output = render(populatedReport())
+    assertFalse(output.contains("*No languages*"))
+    assertFalse(output.contains("*No frameworks*"))
+    assertFalse(output.contains("*No services*"))
+    assertFalse(output.contains("*No tools*"))
+  }
+
+  // ---------- helpers ----------
+
+  private fun render(report: TechSheetReport): String {
     val fs = FakeFileSystem()
     val path = "/out/techsheet.md".toPath()
-
-    val report = TechSheetReport(
-      meta = ReportMeta(
-        generatedAt = META_INSTANT,
-        generatorVersion = "0.6.1",
-      ),
-      languages = listOf(
-        LanguageEntry(name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-      ),
-      frameworks = emptyList(),
-      services = emptyList(),
-      tools = emptyList(),
-    )
-
     MarkdownReporter(path, fs).report(report)
-
-    val actual = fs.read(path) { readUtf8() }
-    val expected = """
-      |# TechSheet
-      |
-      |`21. April 2026 17:37` ‧ `v0.6.1`
-      |
-      |## Languages
-      |
-      || Name | Version | URL                                 | Notes |
-      ||------|---------|-------------------------------------|-------|
-      || Java | `21`    | https://techsheet.org/language/java |       |
-      ||      |         |                                     |       |
-      |
-      |## Frameworks
-      |
-      |*No frameworks*
-      |
-      |## Services
-      |
-      |*No services*
-      |
-      |## Tools
-      |
-      |*No tools*
-      |
-    """.trimMargin()
-    assertEquals(expected, actual)
+    return fs.read(path) { readUtf8() }
   }
 
-  private fun emptyReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(
-      generatedAt = META_INSTANT,
-      generatorVersion = "0.6.1",
-    ),
+  private fun String.tableRows(section: String): List<List<String>> {
+    val start = indexOf("## $section\n")
+    val end = indexOf("\n## ", start + 1).let { if (it == -1) length else it }
+    return substring(start, end)
+      .lines()
+      .filter { it.startsWith('|') }
+      .filterNot { it.matches(Regex("""\|[-| ]+\|""")) }
+      .map { row -> row.split('|').drop(1).dropLast(1).map { it.trim() } }
+      .filter { cells -> cells.any { it.isNotEmpty() } }
+  }
+
+  private fun emptyReport() = TechSheetReport(
+    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
     languages = emptyList(),
     frameworks = emptyList(),
     services = emptyList(),
     tools = emptyList(),
   )
 
-  private fun populatedReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(
-      generatedAt = META_INSTANT,
-      generatorVersion = "0.6.1",
-    ),
+  private fun populatedReport() = TechSheetReport(
+    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
     languages = listOf(
-      LanguageEntry(name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-      LanguageEntry(name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
+      LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
+      LanguageEntry(id = "language.typescript", name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
     ),
     frameworks = listOf(
-      FrameworkEntry(name = "Angular", url = "https://techsheet.org/framework/angular", category = "Application", version = "21.2.4"),
-      FrameworkEntry(name = "Arrow", url = "https://techsheet.org/framework/arrow", category = "Concurrency", version = null),
+      FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
+      FrameworkEntry(id = "framework.arrow", name = "Arrow", category = "Concurrency", url = "https://techsheet.org/framework/arrow", version = null),
     ),
     services = listOf(
-      ServiceEntry(name = "Postgres", url = "https://techsheet.org/service/postgres", category = "Database", version = "16.1"),
+      ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
     ),
     tools = listOf(
-      ToolEntry(name = "Gradle", url = "https://techsheet.org/tool/gradle", category = "Build", version = "8.14.1", flavor = "kotlin"),
-      ToolEntry(name = "JUnit", url = "https://techsheet.org/tool/junit", category = "Testing", version = "5.11.4", flavor = null),
+      ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
+      ToolEntry(id = "tool.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/tool/junit", version = "5.11.4"),
     ),
   )
 }

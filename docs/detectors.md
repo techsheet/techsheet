@@ -4,7 +4,7 @@
 
 ## Languages
 
-*Currently supporting **14** languages:*
+*Currently supporting **15** languages:*
 
 | Name       | URL                                       |
 |------------|-------------------------------------------|
@@ -12,6 +12,7 @@
 | C#         | https://techsheet.org/language/csharp     |
 | C++        | https://techsheet.org/language/cpp        |
 | CSS        | https://techsheet.org/language/css        |
+| Groovy     | https://techsheet.org/language/groovy     |
 | HTML       | https://techsheet.org/language/html       |
 | Java       | https://techsheet.org/language/java       |
 | JavaScript | https://techsheet.org/language/javascript |

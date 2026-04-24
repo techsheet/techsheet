@@ -31,10 +31,10 @@ abstract class AbstractFileReporter(
   protected abstract fun serialize(report: TechSheetReport): String
 
   companion object {
-    internal val LANGUAGE_SECTION_HEADERS = listOf("Name", "Version", "URL", "Notes")
-    internal val FRAMEWORK_SECTION_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
-    internal val SERVICE_SECTION_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
-    internal val TOOL_SECTION_HEADERS = listOf("Name", "Version", "Category", "URL", "Notes")
+    internal val LANGUAGE_SECTION_HEADERS = listOf("Name", "Version", "ID", "Notes")
+    internal val FRAMEWORK_SECTION_HEADERS = listOf("Name", "Version", "Category", "ID", "Notes")
+    internal val SERVICE_SECTION_HEADERS = listOf("Name", "Version", "Category", "ID", "Notes")
+    internal val TOOL_SECTION_HEADERS = listOf("Name", "Version", "Category", "ID", "Notes")
   }
 }
 

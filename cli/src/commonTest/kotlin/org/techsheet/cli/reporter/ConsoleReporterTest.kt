@@ -28,18 +28,18 @@ class ConsoleReporterTest {
       "─".repeat(5) + " TechSheet v${org.techsheet.cli.CLI_VERSION} " + "─".repeat(60 - 16 - org.techsheet.cli.CLI_VERSION.length - 2),
       "",
       " Languages",
-      "   - Kotlin 2.2.21",
+      "   - Kotlin  2.2.21  language.kotlin",
       "",
       " Frameworks",
       " Application",
-      "   - Spring Boot 4.0.5",
-      "   - Spring MVC",
+      "   - Spring Boot  4.0.5  framework.spring-boot",
+      "   - Spring MVC          framework.spring-mvc",
       "",
       " Tools",
       " Build",
-      "   - Gradle (Kotlin DSL) 9.4.1",
+      "   - Gradle (Kotlin DSL)  9.4.1  tool.gradle",
       " IDE",
-      "   - IntelliJ IDEA",
+      "   - IntelliJ IDEA               tool.intellij-idea",
       "",
       " Total: 1 language · 2 frameworks · 0 services · 2 tools",
       "─".repeat(60),
@@ -69,7 +69,7 @@ class ConsoleReporterTest {
     assertEquals(" \u001B[1;33mTools\u001B[0m", sink.single { it.endsWith("Tools\u001B[0m") })
     assertEquals(" \u001B[32mBuild\u001B[0m", sink.single { it.contains("Build") })
     assertEquals(
-      "   Gradle (Kotlin DSL) \u001B[2m9.4.1\u001B[0m",
+      "   Gradle (Kotlin DSL)  \u001B[2m9.4.1\u001B[0m  \u001B[2mtool.gradle\u001B[0m",
       sink.single { it.contains("Gradle") },
     )
   }
@@ -81,6 +81,6 @@ class ConsoleReporterTest {
     ConsoleReporter(plain = true, emit = sink::add).report(sheet)
     assertEquals(" Tools", sink.single { it.contains("Tools") })
     assertEquals(" Build", sink.single { it.contains("Build") })
-    assertEquals("   - Gradle (Kotlin DSL) 9.4.1", sink.single { it.contains("Gradle") })
+    assertEquals("   - Gradle (Kotlin DSL)  9.4.1  tool.gradle", sink.single { it.contains("Gradle") })
   }
 }

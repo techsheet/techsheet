@@ -72,20 +72,22 @@ class HtmlReporter(
     "<p><code>${escape(meta.generatedAt.formatDefault())}</code> ‧ <code>v${escape(meta.generatorVersion)}</code></p>"
 
   private fun LanguageEntry.asTableRow() =
-    listOf(escape(name), version(version), link(url), "")
+    listOf(link(url, name), version(version), id(id), "")
 
   private fun FrameworkEntry.asTableRow() =
-    listOf(escape(name), version(version), escape(category), link(url), "")
+    listOf(link(url, name), version(version), escape(category), id(id), "")
 
   private fun ServiceEntry.asTableRow() =
-    listOf(escape(name), version(version), escape(category), link(url), "")
+    listOf(link(url, name), version(version), escape(category), id(id), "")
 
   private fun ToolEntry.asTableRow() =
-    listOf(escape(displayName()), version(version), escape(category), link(url), "")
+    listOf(link(url, displayName()), version(version), escape(category), id(id), "")
 
   private fun version(v: String?): String = v?.let { "<code>${escape(it)}</code>" } ?: ""
 
-  private fun link(url: String): String = escape(url).let { """<a href="$it">$it</a>""" }
+  private fun link(url: String, label: String): String = """<a href="${escape(url)}">${escape(label)}</a>"""
+
+  private fun id(id: String): String = "<code>${escape(id)}</code>"
 
   private fun escape(s: String): String =
     s.replace("&", "&amp;")

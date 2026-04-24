@@ -1,63 +1,81 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-04-23T14:31:30.090797Z",
+    "generatedAt": "2026-04-24T14:51:00.859135717Z",
     "generatorVersion": "0.8.0"
   },
   "languages": [
     {
+      "id": "language.csharp",
       "name": "C#",
       "url": "https://techsheet.org/language/csharp"
     },
     {
+      "id": "language.cpp",
       "name": "C++",
       "url": "https://techsheet.org/language/cpp"
     },
     {
+      "id": "language.css",
       "name": "CSS",
       "url": "https://techsheet.org/language/css"
     },
     {
+      "id": "language.groovy",
+      "name": "Groovy",
+      "url": "https://techsheet.org/language/groovy"
+    },
+    {
+      "id": "language.html",
       "name": "HTML",
       "url": "https://techsheet.org/language/html"
     },
     {
+      "id": "language.java",
       "name": "Java",
       "url": "https://techsheet.org/language/java",
       "version": "17"
     },
     {
+      "id": "language.javascript",
       "name": "JavaScript",
       "url": "https://techsheet.org/language/javascript"
     },
     {
+      "id": "language.kotlin",
       "name": "Kotlin",
       "url": "https://techsheet.org/language/kotlin",
       "version": "2.3.20"
     },
     {
+      "id": "language.markdown",
       "name": "Markdown",
       "url": "https://techsheet.org/language/markdown"
     },
     {
+      "id": "language.php",
       "name": "PHP",
       "url": "https://techsheet.org/language/php"
     },
     {
+      "id": "language.python",
       "name": "Python",
       "url": "https://techsheet.org/language/python",
       "version": "3.12"
     },
     {
+      "id": "language.scala",
       "name": "Scala",
       "url": "https://techsheet.org/language/scala",
       "version": "2.13.18"
     },
     {
+      "id": "language.scss",
       "name": "SCSS/SASS",
       "url": "https://techsheet.org/language/scss"
     },
     {
+      "id": "language.typescript",
       "name": "TypeScript",
       "url": "https://techsheet.org/language/typescript",
       "version": "5.9.2"
@@ -65,226 +83,265 @@
   ],
   "frameworks": [
     {
+      "id": "framework.angular",
       "name": "Angular",
-      "url": "https://techsheet.org/framework/angular",
       "category": "Application",
+      "url": "https://techsheet.org/framework/angular",
       "version": "20.3.0"
     },
     {
+      "id": "framework.asp-net-core",
       "name": "ASP.NET Core",
-      "url": "https://techsheet.org/framework/asp-net-core",
       "category": "Application",
+      "url": "https://techsheet.org/framework/asp-net-core",
       "version": "9.0"
     },
     {
+      "id": "framework.django",
       "name": "Django",
-      "url": "https://techsheet.org/framework/django",
-      "category": "Application"
+      "category": "Application",
+      "url": "https://techsheet.org/framework/django"
     },
     {
+      "id": "framework.express",
       "name": "Express",
-      "url": "https://techsheet.org/framework/express",
       "category": "Application",
+      "url": "https://techsheet.org/framework/express",
       "version": "4.16.1"
     },
     {
+      "id": "framework.fastapi",
       "name": "FastAPI",
-      "url": "https://techsheet.org/framework/fastapi",
       "category": "Application",
+      "url": "https://techsheet.org/framework/fastapi",
       "version": "0.115.0"
     },
     {
+      "id": "framework.flask",
       "name": "Flask",
-      "url": "https://techsheet.org/framework/flask",
       "category": "Application",
+      "url": "https://techsheet.org/framework/flask",
       "version": "3.0.3"
     },
     {
+      "id": "framework.laravel",
       "name": "Laravel",
-      "url": "https://techsheet.org/framework/laravel",
       "category": "Application",
+      "url": "https://techsheet.org/framework/laravel",
       "version": "11.5.2"
     },
     {
+      "id": "framework.nextjs",
       "name": "Next.js",
-      "url": "https://techsheet.org/framework/nextjs",
       "category": "Application",
+      "url": "https://techsheet.org/framework/nextjs",
       "version": "16.2.4"
     },
     {
+      "id": "framework.play-framework",
       "name": "Play Framework",
-      "url": "https://techsheet.org/framework/play-framework",
       "category": "Application",
+      "url": "https://techsheet.org/framework/play-framework",
       "version": "3.0.10"
     },
     {
+      "id": "framework.qt",
       "name": "Qt",
-      "url": "https://techsheet.org/framework/qt",
       "category": "Application",
+      "url": "https://techsheet.org/framework/qt",
       "version": "6"
     },
     {
+      "id": "framework.react",
       "name": "React",
-      "url": "https://techsheet.org/framework/react",
       "category": "Application",
+      "url": "https://techsheet.org/framework/react",
       "version": "19.2.4"
     },
     {
+      "id": "framework.spring-boot",
       "name": "Spring Boot",
-      "url": "https://techsheet.org/framework/spring-boot",
       "category": "Application",
+      "url": "https://techsheet.org/framework/spring-boot",
       "version": "4.0.5"
     },
     {
+      "id": "framework.spring-mvc",
       "name": "Spring MVC",
-      "url": "https://techsheet.org/framework/spring-mvc",
-      "category": "Application"
+      "category": "Application",
+      "url": "https://techsheet.org/framework/spring-mvc"
     },
     {
+      "id": "framework.spring-webflux",
       "name": "Spring WebFlux",
-      "url": "https://techsheet.org/framework/spring-webflux",
-      "category": "Application"
+      "category": "Application",
+      "url": "https://techsheet.org/framework/spring-webflux"
     },
     {
+      "id": "framework.wordpress",
       "name": "WordPress",
-      "url": "https://techsheet.org/framework/wordpress",
       "category": "CMS",
+      "url": "https://techsheet.org/framework/wordpress",
       "version": "6.9.4"
     },
     {
+      "id": "framework.spring-data",
       "name": "Spring Data",
-      "url": "https://techsheet.org/framework/spring-data",
-      "category": "Data"
+      "category": "Data",
+      "url": "https://techsheet.org/framework/spring-data"
     },
     {
+      "id": "framework.spring-security",
       "name": "Spring Security",
-      "url": "https://techsheet.org/framework/spring-security",
-      "category": "Security"
+      "category": "Security",
+      "url": "https://techsheet.org/framework/spring-security"
     },
     {
+      "id": "framework.junit",
       "name": "JUnit",
-      "url": "https://techsheet.org/framework/junit",
       "category": "Testing",
+      "url": "https://techsheet.org/framework/junit",
       "version": "5.11.4"
     },
     {
+      "id": "framework.phpunit",
       "name": "PHPUnit",
-      "url": "https://techsheet.org/framework/phpunit",
       "category": "Testing",
+      "url": "https://techsheet.org/framework/phpunit",
       "version": "10.5"
     },
     {
+      "id": "framework.playwright",
       "name": "Playwright",
-      "url": "https://techsheet.org/framework/playwright",
       "category": "Testing",
+      "url": "https://techsheet.org/framework/playwright",
       "version": "1.59.1"
     },
     {
+      "id": "framework.tailwind",
       "name": "Tailwind CSS",
-      "url": "https://techsheet.org/framework/tailwind",
       "category": "UI",
+      "url": "https://techsheet.org/framework/tailwind",
       "version": "4"
     }
   ],
   "services": [],
   "tools": [
     {
+      "id": "tool.composer",
       "name": "Composer",
-      "url": "https://techsheet.org/tool/composer",
-      "category": "Build"
+      "category": "Build",
+      "url": "https://techsheet.org/tool/composer"
     },
     {
+      "id": "tool.gradle",
       "name": "Gradle",
-      "url": "https://techsheet.org/tool/gradle",
       "category": "Build",
+      "url": "https://techsheet.org/tool/gradle",
       "version": "9.4.1",
       "flavor": "Kotlin DSL"
     },
     {
+      "id": "tool.maven",
       "name": "Maven",
-      "url": "https://techsheet.org/tool/maven",
       "category": "Build",
+      "url": "https://techsheet.org/tool/maven",
       "version": "3.9.14"
     },
     {
+      "id": "tool.npm",
       "name": "NPM",
-      "url": "https://techsheet.org/tool/npm",
       "category": "Build",
+      "url": "https://techsheet.org/tool/npm",
       "version": "10.2.3"
     },
     {
+      "id": "tool.sbt",
       "name": "SBT",
-      "url": "https://techsheet.org/tool/sbt",
       "category": "Build",
+      "url": "https://techsheet.org/tool/sbt",
       "version": "1.12.9"
     },
     {
+      "id": "tool.yarn",
       "name": "Yarn",
-      "url": "https://techsheet.org/tool/yarn",
-      "category": "Build"
+      "category": "Build",
+      "url": "https://techsheet.org/tool/yarn"
     },
     {
+      "id": "tool.codeowners",
       "name": "CODEOWNERS",
-      "url": "https://techsheet.org/tool/codeowners",
-      "category": "CI"
+      "category": "CI",
+      "url": "https://techsheet.org/tool/codeowners"
     },
     {
+      "id": "tool.github-actions",
       "name": "GitHub Actions",
-      "url": "https://techsheet.org/tool/github-actions",
-      "category": "CI"
+      "category": "CI",
+      "url": "https://techsheet.org/tool/github-actions"
     },
     {
+      "id": "tool.gitlab-ci",
       "name": "GitLab CI",
-      "url": "https://techsheet.org/tool/gitlab-ci",
-      "category": "CI"
+      "category": "CI",
+      "url": "https://techsheet.org/tool/gitlab-ci"
     },
     {
+      "id": "tool.docker",
       "name": "Docker",
-      "url": "https://techsheet.org/tool/docker",
-      "category": "Container"
+      "category": "Container",
+      "url": "https://techsheet.org/tool/docker"
     },
     {
+      "id": "tool.docker-compose",
       "name": "Docker Compose",
-      "url": "https://techsheet.org/tool/docker-compose",
-      "category": "Container"
+      "category": "Container",
+      "url": "https://techsheet.org/tool/docker-compose"
     },
     {
+      "id": "tool.editorconfig",
       "name": "EditorConfig",
-      "url": "https://techsheet.org/tool/editorconfig",
-      "category": "Format"
+      "category": "Format",
+      "url": "https://techsheet.org/tool/editorconfig"
     },
     {
+      "id": "tool.eslint",
       "name": "ESLint",
-      "url": "https://techsheet.org/tool/eslint",
       "category": "Format",
+      "url": "https://techsheet.org/tool/eslint",
       "version": "9"
     },
     {
+      "id": "tool.intellij-idea",
       "name": "IntelliJ IDEA",
-      "url": "https://techsheet.org/tool/intellij-idea",
-      "category": "IDE"
+      "category": "IDE",
+      "url": "https://techsheet.org/tool/intellij-idea"
     },
     {
+      "id": "tool.jvm",
       "name": "JVM",
-      "url": "https://techsheet.org/tool/jvm",
       "category": "Runtime",
+      "url": "https://techsheet.org/tool/jvm",
       "version": "26"
     },
     {
+      "id": "tool.nodejs",
       "name": "Node.js",
-      "url": "https://techsheet.org/tool/nodejs",
       "category": "Runtime",
+      "url": "https://techsheet.org/tool/nodejs",
       "version": "20.10.0"
     },
     {
+      "id": "tool.renovate",
       "name": "Renovate",
-      "url": "https://techsheet.org/tool/renovate",
-      "category": "Security"
+      "category": "Security",
+      "url": "https://techsheet.org/tool/renovate"
     },
     {
+      "id": "tool.git",
       "name": "Git",
-      "url": "https://techsheet.org/tool/git",
-      "category": "VCS"
+      "category": "VCS",
+      "url": "https://techsheet.org/tool/git"
     }
   ]
 }

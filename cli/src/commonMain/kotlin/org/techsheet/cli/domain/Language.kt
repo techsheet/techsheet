@@ -6,21 +6,24 @@ data class Language(
 )
 
 enum class LanguageType(
-  val title: String,
-  val url: String
-) {
-  JAVA("Java", "https://techsheet.org/language/java"),
-  KOTLIN("Kotlin", "https://techsheet.org/language/kotlin"),
-  SCALA("Scala", "https://techsheet.org/language/scala"),
-  JAVASCRIPT("JavaScript", "https://techsheet.org/language/javascript"),
-  TYPESCRIPT("TypeScript", "https://techsheet.org/language/typescript"),
-  PHP("PHP", "https://techsheet.org/language/php"),
-  PYTHON("Python", "https://techsheet.org/language/python"),
-  CPP("C++", "https://techsheet.org/language/cpp"),
-  CSHARP("C#", "https://techsheet.org/language/csharp"),
-  HTML("HTML", "https://techsheet.org/language/html"),
-  CSS("CSS", "https://techsheet.org/language/css"),
-  SCSS("SCSS/SASS", "https://techsheet.org/language/scss"),
-  MARKDOWN("Markdown", "https://techsheet.org/language/markdown"),
-  ASCIIDOC("AsciiDoc", "https://techsheet.org/language/asciidoc"),
+  override val key: String,
+  override val title: String,
+) : Technology {
+  JAVA("java", "Java"),
+  KOTLIN("kotlin", "Kotlin"),
+  GROOVY("groovy", "Groovy"),
+  SCALA("scala", "Scala"),
+  JAVASCRIPT("javascript", "JavaScript"),
+  TYPESCRIPT("typescript", "TypeScript"),
+  PHP("php", "PHP"),
+  PYTHON("python", "Python"),
+  CPP("cpp", "C++"),
+  CSHARP("csharp", "C#"),
+  HTML("html", "HTML"),
+  CSS("css", "CSS"),
+  SCSS("scss", "SCSS/SASS"),
+  MARKDOWN("markdown", "Markdown"),
+  ASCIIDOC("asciidoc", "AsciiDoc");
+
+  override val type: String = "language"
 }

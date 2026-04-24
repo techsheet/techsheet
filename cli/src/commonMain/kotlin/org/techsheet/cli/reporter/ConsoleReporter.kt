@@ -33,36 +33,31 @@ class ConsoleReporter(
     val sections = listOfNotNull(
       flatSection(
         "Languages",
-        sheet.languages
-      ) {
-        it.type.title to it.version
-      },
+        sheet.languages,
+      ) { Entry(it.type.id, it.type.title, it.version) },
       categorizedSection(
         "Frameworks",
         sheet.frameworks,
         FrameworkCategory.entries,
         { it.type.category },
-        { it.title }) {
-        it.type.title to it.version
-      },
+        { it.title },
+      ) { Entry(it.type.id, it.type.title, it.version) },
       categorizedSection(
         "Services",
         sheet.services,
         ServiceCategory.entries,
         { it.type.category },
-        { it.title }
-      ) {
-        it.type.title to it.version
-      },
+        { it.title },
+      ) { Entry(it.type.id, it.type.title, it.version) },
       categorizedSection(
         "Tools",
         sheet.tools,
         ToolCategory.entries,
         { it.type.category },
-        { it.title }
+        { it.title },
       ) {
-        val label = it.flavor?.let { flavor -> "${it.type.title} ($flavor)" } ?: it.type.title
-        label to it.version
+        val label = it.flavor?.let { f -> "${it.type.title} ($f)" } ?: it.type.title
+        Entry(it.type.id, label, it.version)
       },
     )
     if (sections.isEmpty()) {
@@ -76,11 +71,14 @@ class ConsoleReporter(
   private fun <T> flatSection(
     header: String,
     items: List<T>,
-    asEntry: (T) -> Pair<String, String?>,
-  ): List<String>? = items.takeIf { it.isNotEmpty() }?.let {
+    asEntry: (T) -> Entry,
+  ): List<String>? = items.takeIf { it.isNotEmpty() }?.let { list ->
+    val entries = list.map(asEntry)
+    val nameWidth = entries.maxOf { it.name.length }
+    val versionWidth = entries.maxOf { (it.version ?: "").length }
     buildList {
       add(sectionHeader(header))
-      it.forEach { add(itemLine(asEntry(it))) }
+      entries.forEach { add(itemLine(it, nameWidth, versionWidth)) }
     }
   }
 
@@ -90,27 +88,34 @@ class ConsoleReporter(
     order: List<C>,
     categoryOf: (T) -> C,
     categoryTitle: (C) -> String,
-    asEntry: (T) -> Pair<String, String?>,
-  ): List<String>? = items.takeIf { it.isNotEmpty() }?.let {
+    asEntry: (T) -> Entry,
+  ): List<String>? = items.takeIf { it.isNotEmpty() }?.let { list ->
+    val mapped = list.map { categoryOf(it) to asEntry(it) }
+    val nameWidth = mapped.maxOf { it.second.name.length }
+    val versionWidth = mapped.maxOf { (it.second.version ?: "").length }
+    val grouped = mapped.groupBy({ it.first }, { it.second })
     buildList {
       add(sectionHeader(header))
-      val grouped = it.groupBy(categoryOf)
       order.forEach { category ->
-        grouped[category]?.let { group ->
+        grouped[category]?.let { entries ->
           add(" ${style.green(categoryTitle(category))}")
-          group.forEach { add(itemLine(asEntry(it))) }
+          entries.forEach { add(itemLine(it, nameWidth, versionWidth)) }
         }
       }
     }
   }
 
-  private fun sectionHeader(text: String): String = " ${style.yellowBold(text)}"
-
-  private fun itemLine(entry: Pair<String, String?>): String {
-    val (title, version) = entry
-    val versionPart = version?.let { " ${style.dim(it)}" }.orEmpty()
-    return "   $itemPrefix$title$versionPart"
+  private fun itemLine(entry: Entry, nameWidth: Int, versionWidth: Int): String {
+    val namePart = entry.name.padEnd(nameWidth)
+    val versionPart = if (versionWidth > 0) {
+      val v = entry.version
+      if (v != null) "  ${style.dim(v.padEnd(versionWidth))}"
+      else "  " + " ".repeat(versionWidth)
+    } else ""
+    return "   $itemPrefix$namePart$versionPart  ${style.dim(entry.id)}"
   }
+
+  private fun sectionHeader(text: String): String = " ${style.yellowBold(text)}"
 
   private fun summary(sheet: TechSheet): String {
     val parts = listOf(
@@ -130,6 +135,8 @@ class ConsoleReporter(
     val tail = "─".repeat(width - LEAD_DASHES - title.length)
     return style.cyan("─".repeat(LEAD_DASHES) + title + tail)
   }
+
+  private data class Entry(val id: String, val name: String, val version: String?)
 
   companion object {
     private const val MIN_WIDTH = 60

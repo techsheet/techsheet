@@ -7,46 +7,48 @@ data class Tool(
 )
 
 enum class ToolType(
-  val title: String,
-  val url: String,
-  val category: ToolCategory
-) {
+  override val key: String,
+  override val title: String,
+  val category: ToolCategory,
+) : Technology {
 
   // Build
-  GRADLE("Gradle", "https://techsheet.org/tool/gradle", ToolCategory.BUILD),
-  MAVEN("Maven", "https://techsheet.org/tool/maven", ToolCategory.BUILD),
-  NPM("NPM", "https://techsheet.org/tool/npm", ToolCategory.BUILD),
-  YARN("Yarn", "https://techsheet.org/tool/yarn", ToolCategory.BUILD),
-  SBT("SBT", "https://techsheet.org/tool/sbt", ToolCategory.BUILD),
-  COMPOSER("Composer", "https://techsheet.org/tool/composer", ToolCategory.BUILD),
+  GRADLE("gradle", "Gradle", ToolCategory.BUILD),
+  MAVEN("maven", "Maven", ToolCategory.BUILD),
+  NPM("npm", "NPM", ToolCategory.BUILD),
+  YARN("yarn", "Yarn", ToolCategory.BUILD),
+  SBT("sbt", "SBT", ToolCategory.BUILD),
+  COMPOSER("composer", "Composer", ToolCategory.BUILD),
 
   // CI
-  GITLAB_CI("GitLab CI", "https://techsheet.org/tool/gitlab-ci", ToolCategory.CI),
-  GITHUB_ACTIONS("GitHub Actions", "https://techsheet.org/tool/github-actions", ToolCategory.CI),
-  CODEOWNERS("CODEOWNERS", "https://techsheet.org/tool/codeowners", ToolCategory.CI),
+  GITLAB_CI("gitlab-ci", "GitLab CI", ToolCategory.CI),
+  GITHUB_ACTIONS("github-actions", "GitHub Actions", ToolCategory.CI),
+  CODEOWNERS("codeowners", "CODEOWNERS", ToolCategory.CI),
 
   // Container
-  DOCKER("Docker", "https://techsheet.org/tool/docker", ToolCategory.CONTAINER),
-  DOCKER_COMPOSE("Docker Compose", "https://techsheet.org/tool/docker-compose", ToolCategory.CONTAINER),
+  DOCKER("docker", "Docker", ToolCategory.CONTAINER),
+  DOCKER_COMPOSE("docker-compose", "Docker Compose", ToolCategory.CONTAINER),
 
   // Runtime
-  JVM("JVM", "https://techsheet.org/tool/jvm", ToolCategory.RUNTIME),
-  NODE("Node.js", "https://techsheet.org/tool/nodejs", ToolCategory.RUNTIME),
+  JVM("jvm", "JVM", ToolCategory.RUNTIME),
+  NODE("nodejs", "Node.js", ToolCategory.RUNTIME),
 
   // VCS
-  GIT("Git", "https://techsheet.org/tool/git", ToolCategory.VCS),
+  GIT("git", "Git", ToolCategory.VCS),
 
   // Format
-  EDITORCONFIG("EditorConfig", "https://techsheet.org/tool/editorconfig", ToolCategory.FORMAT),
-  ESLINT("ESLint", "https://techsheet.org/tool/eslint", ToolCategory.FORMAT),
-  PRETTIER("Prettier", "https://techsheet.org/tool/prettier", ToolCategory.FORMAT),
+  EDITORCONFIG("editorconfig", "EditorConfig", ToolCategory.FORMAT),
+  ESLINT("eslint", "ESLint", ToolCategory.FORMAT),
+  PRETTIER("prettier", "Prettier", ToolCategory.FORMAT),
 
   // Security
-  RENOVATE("Renovate", "https://techsheet.org/tool/renovate", ToolCategory.SECURITY),
+  RENOVATE("renovate", "Renovate", ToolCategory.SECURITY),
 
   // IDE
-  INTELLIJ_IDEA("IntelliJ IDEA", "https://techsheet.org/tool/intellij-idea", ToolCategory.IDE),
-  VS_CODE("Visual Studio Code", "https://techsheet.org/tool/vscode", ToolCategory.IDE),
+  INTELLIJ_IDEA("intellij-idea", "IntelliJ IDEA", ToolCategory.IDE),
+  VS_CODE("vscode", "Visual Studio Code", ToolCategory.IDE);
+
+  override val type: String = "tool"
 }
 
 enum class ToolCategory(val title: String) {

@@ -38,7 +38,7 @@ class JsonReporterTest {
         generatorVersion = "0.6.1",
       ),
       languages = listOf(
-        LanguageEntry(name = "Bash", url = "https://techsheet.org/language/bash", version = null),
+        LanguageEntry(id = "language.bash", name = "Bash", url = "https://techsheet.org/language/bash", version = null),
       ),
       frameworks = emptyList(),
       services = emptyList(),
@@ -61,15 +61,15 @@ private val SAMPLE_REPORT = TechSheetReport(
     generatorVersion = "0.6.1",
   ),
   languages = listOf(
-    LanguageEntry(name = "Java", url = "https://techsheet.org/language/java", version = "21"),
+    LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
   ),
   frameworks = listOf(
-    FrameworkEntry(name = "Angular", url = "https://techsheet.org/framework/angular", category = "Application", version = "21.2.4"),
+    FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
   ),
   services = listOf(
-    ServiceEntry(name = "Postgres", url = "https://techsheet.org/service/postgres", category = "Database", version = "16.1"),
+    ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
   ),
   tools = listOf(
-    ToolEntry(name = "Gradle", url = "https://techsheet.org/tool/gradle", category = "Build", version = "8.14.1", flavor = "kotlin"),
+    ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
   ),
 )
