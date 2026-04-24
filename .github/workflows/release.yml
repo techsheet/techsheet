@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   packages: write
+  id-token: write  # required for cosign keyless signing via GitHub OIDC
 
 jobs:
   build:
@@ -73,6 +74,7 @@ jobs:
         with:
           name: release-assets
           path: dist
+      - uses: sigstore/cosign-installer@3454372f43399081ed03b604cb2d021dabca52bb # v3.8.2
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -84,6 +86,9 @@ jobs:
           cp dist/cli/windows-x64/techsheet.exe release/techsheet-windows-x64.exe
           cp dist/cli/macos-arm64/techsheet     release/techsheet-macos-arm64
           cp dist/cli/jvm/techsheet.jar         release/techsheet.jar
+          for f in release/techsheet-linux-x64 release/techsheet-windows-x64.exe release/techsheet-macos-arm64 release/techsheet.jar; do
+            cosign sign-blob --yes "$f" --bundle "${f}.sigstore.json"
+          done
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes \
