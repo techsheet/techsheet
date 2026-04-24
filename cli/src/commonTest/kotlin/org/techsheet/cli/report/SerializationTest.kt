@@ -29,20 +29,21 @@ class SerializationTest {
         generatorVersion = "0.5.0",
       ),
       languages = listOf(
-          LanguageEntry(name = "Kotlin", url = "https://techsheet.org/language/kotlin", version = "2.2.21"),
+          LanguageEntry(id = "language.kotlin", name = "Kotlin", url = "https://techsheet.org/language/kotlin", version = "2.2.21"),
       ),
       frameworks = listOf(
           FrameworkEntry(
+              id = "framework.spring-boot",
               name = "Spring Boot",
-              url = "https://techsheet.org/framework/spring-boot",
               category = "Application",
+              url = "https://techsheet.org/framework/spring-boot",
               version = "4.0.5"
           ),
-          FrameworkEntry(name = "JUnit", url = "https://techsheet.org/framework/junit", category = "Testing"),
+          FrameworkEntry(id = "framework.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/framework/junit"),
       ),
       services = emptyList(),
       tools = listOf(
-          ToolEntry(name = "Git", url = "https://techsheet.org/tool/git", category = "VCS"),
+          ToolEntry(id = "tool.git", name = "Git", category = "VCS", url = "https://techsheet.org/tool/git"),
       ),
   )
 
@@ -52,8 +53,10 @@ class SerializationTest {
     assertContains(output, """"schema": 1""")
     assertContains(output, """"generatedAt": "2026-04-17T20:15:00Z"""")
     assertContains(output, """"generatorVersion": "0.5.0"""")
+    assertContains(output, """"id": "language.kotlin"""")
     assertContains(output, """"name": "Kotlin"""")
     assertContains(output, """"version": "2.2.21"""")
+    assertContains(output, """"id": "framework.spring-boot"""")
     assertContains(output, """"category": "Application"""")
     assertContains(output, """"category": "Testing"""")
     assertContains(output, """"category": "VCS"""")

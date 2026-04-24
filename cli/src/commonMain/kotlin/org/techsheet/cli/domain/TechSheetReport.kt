@@ -25,6 +25,7 @@ data class TechSheetReport(
       ),
       languages = sheet.languages.map {
         LanguageEntry(
+          id = it.type.id,
           name = it.type.title,
           url = it.type.url,
           version = it.version,
@@ -32,25 +33,28 @@ data class TechSheetReport(
       },
       frameworks = sheet.frameworks.map {
         FrameworkEntry(
+          id = it.type.id,
           name = it.type.title,
-          url = it.type.url,
           category = it.type.category.title,
+          url = it.type.url,
           version = it.version,
         )
       },
       services = sheet.services.map {
         ServiceEntry(
+          id = it.type.id,
           name = it.type.title,
-          url = it.type.url,
           category = it.type.category.title,
+          url = it.type.url,
           version = it.version,
         )
       },
       tools = sheet.tools.map {
         ToolEntry(
+          id = it.type.id,
           name = it.type.title,
-          url = it.type.url,
           category = it.type.category.title,
+          url = it.type.url,
           version = it.version,
           flavor = it.flavor,
         )
@@ -67,6 +71,7 @@ data class ReportMeta(
 
 @Serializable
 data class LanguageEntry(
+  val id: String,
   val name: String,
   val url: String,
   val version: String? = null,
@@ -74,25 +79,28 @@ data class LanguageEntry(
 
 @Serializable
 data class FrameworkEntry(
+  val id: String,
   val name: String,
-  val url: String,
   val category: String,
+  val url: String,
   val version: String? = null,
 )
 
 @Serializable
 data class ServiceEntry(
+  val id: String,
   val name: String,
-  val url: String,
   val category: String,
+  val url: String,
   val version: String? = null,
 )
 
 @Serializable
 data class ToolEntry(
+  val id: String,
   val name: String,
-  val url: String,
   val category: String,
+  val url: String,
   val version: String? = null,
   val flavor: String? = null,
 )
