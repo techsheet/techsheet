@@ -38,7 +38,24 @@ enum class LanguageType(
   ERLANG("erlang", "Erlang"),
   CLOJURE("clojure", "Clojure"),
   FSHARP("fsharp", "F#"),
-  R("r", "R");
+  R("r", "R"),
+  ZIG("zig", "Zig"),
+  JULIA("julia", "Julia"),
+  NIM("nim", "Nim"),
+  CRYSTAL("crystal", "Crystal"),
+  SOLIDITY("solidity", "Solidity"),
+  POWERSHELL("powershell", "PowerShell"),
+  BATCH("batch", "Batch"),
+  AWK("awk", "Awk"),
+  TCL("tcl", "Tcl"),
+  ASSEMBLY("assembly", "Assembly"),
+  VHDL("vhdl", "VHDL"),
+  CUDA("cuda", "CUDA"),
+  OCAML("ocaml", "OCaml"),
+  RACKET("racket", "Racket"),
+  APEX("apex", "Apex"),
+  COLDFUSION("coldfusion", "ColdFusion"),
+  SQL("sql", "SQL");
 
   override val type: String = "language"
 }
