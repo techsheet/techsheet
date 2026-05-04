@@ -8,8 +8,8 @@ body:
       value: |
         ## Before filing
 
-        Please check the [detectors list](../../blob/master/docs/detectors.md). If a detector exists, but doesn't work
-        as expected, please file a **Detector Malfunction** issue instead.
+        Please check the [detectors list](https://github.com/techsheet/techsheet/blob/master/docs/detectors.md). If a
+        detector exists, but doesn't work as expected, please file a **Detector Malfunction** issue instead.
 
         ## Issue Title
 
