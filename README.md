@@ -14,7 +14,7 @@ structured, uniform manner.
 </div>
 
 *TechSheet provides a [CLI](#cli) to analyze your repositories. It currently detects 
-**[30+ languages](./docs/detectors.md#languages)**, **[84+ frameworks](./docs/detectors.md#frameworks)**, and 
+**[47+ languages](./docs/detectors.md#languages)**, **[84+ frameworks](./docs/detectors.md#frameworks)**, and 
 **[34+ tools](./docs/detectors.md#tools)**, including versions where possible. Additionally, the TechSheet 
 [Server](#server) can be used for storing and aggregating reports as well as gathering insights across teams and 
 projects.*

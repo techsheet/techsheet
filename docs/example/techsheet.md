@@ -1,11 +1,12 @@
 # TechSheet
 
-`4. May 2026 15:01` ‧ `v1.0.0`
+`4. May 2026 15:27` ‧ `v1.0.0`
 
 ## Languages
 
 | Name                                                    | Version   | ID                    | Notes |
 |---------------------------------------------------------|-----------|-----------------------|-------|
+| [Batch](https://techsheet.org/language/batch)           |           | `language.batch`      |       |
 | [C#](https://techsheet.org/language/csharp)             |           | `language.csharp`     |       |
 | [C++](https://techsheet.org/language/cpp)               |           | `language.cpp`        |       |
 | [CSS](https://techsheet.org/language/css)               |           | `language.css`        |       |
@@ -19,6 +20,7 @@
 | [Python](https://techsheet.org/language/python)         | `3.12`    | `language.python`     |       |
 | [Scala](https://techsheet.org/language/scala)           | `2.13.18` | `language.scala`      |       |
 | [SCSS/SASS](https://techsheet.org/language/scss)        |           | `language.scss`       |       |
+| [Shell](https://techsheet.org/language/shell)           |           | `language.shell`      |       |
 | [TypeScript](https://techsheet.org/language/typescript) | `5.9.2`   | `language.typescript` |       |
 |                                                         |           |                       |       |
 

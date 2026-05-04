@@ -4,25 +4,57 @@
 
 ## Languages
 
-*Currently supporting **15** languages:*
+*Currently supporting **47** languages:*
 
-| Name       | URL                                       |
-|------------|-------------------------------------------|
-| AsciiDoc   | https://techsheet.org/language/asciidoc   |
-| C#         | https://techsheet.org/language/csharp     |
-| C++        | https://techsheet.org/language/cpp        |
-| CSS        | https://techsheet.org/language/css        |
-| Groovy     | https://techsheet.org/language/groovy     |
-| HTML       | https://techsheet.org/language/html       |
-| Java       | https://techsheet.org/language/java       |
-| JavaScript | https://techsheet.org/language/javascript |
-| Kotlin     | https://techsheet.org/language/kotlin     |
-| Markdown   | https://techsheet.org/language/markdown   |
-| PHP        | https://techsheet.org/language/php        |
-| Python     | https://techsheet.org/language/python     |
-| Scala      | https://techsheet.org/language/scala      |
-| SCSS/SASS  | https://techsheet.org/language/scss       |
-| TypeScript | https://techsheet.org/language/typescript |
+| Name         | URL                                         |
+|--------------|---------------------------------------------|
+| ABAP         | https://techsheet.org/language/abap         |
+| Apex         | https://techsheet.org/language/apex         |
+| AsciiDoc     | https://techsheet.org/language/asciidoc     |
+| Assembly     | https://techsheet.org/language/assembly     |
+| Awk          | https://techsheet.org/language/awk          |
+| Batch        | https://techsheet.org/language/batch        |
+| C#           | https://techsheet.org/language/csharp       |
+| C++          | https://techsheet.org/language/cpp          |
+| Clojure      | https://techsheet.org/language/clojure      |
+| COBOL        | https://techsheet.org/language/cobol        |
+| ColdFusion   | https://techsheet.org/language/coldfusion   |
+| Crystal      | https://techsheet.org/language/crystal      |
+| CSS          | https://techsheet.org/language/css          |
+| CUDA         | https://techsheet.org/language/cuda         |
+| Elixir       | https://techsheet.org/language/elixir       |
+| Erlang       | https://techsheet.org/language/erlang       |
+| F#           | https://techsheet.org/language/fsharp       |
+| Fortran      | https://techsheet.org/language/fortran      |
+| Groovy       | https://techsheet.org/language/groovy       |
+| Haskell      | https://techsheet.org/language/haskell      |
+| HTML         | https://techsheet.org/language/html         |
+| Java         | https://techsheet.org/language/java         |
+| JavaScript   | https://techsheet.org/language/javascript   |
+| Julia        | https://techsheet.org/language/julia        |
+| Kotlin       | https://techsheet.org/language/kotlin       |
+| Lua          | https://techsheet.org/language/lua          |
+| Markdown     | https://techsheet.org/language/markdown     |
+| Nim          | https://techsheet.org/language/nim          |
+| OCaml        | https://techsheet.org/language/ocaml        |
+| Pascal       | https://techsheet.org/language/pascal       |
+| Perl         | https://techsheet.org/language/perl         |
+| PHP          | https://techsheet.org/language/php          |
+| PL/SQL       | https://techsheet.org/language/plsql        |
+| PowerShell   | https://techsheet.org/language/powershell   |
+| Python       | https://techsheet.org/language/python       |
+| R            | https://techsheet.org/language/r            |
+| Racket       | https://techsheet.org/language/racket       |
+| Scala        | https://techsheet.org/language/scala        |
+| SCSS/SASS    | https://techsheet.org/language/scss         |
+| Shell        | https://techsheet.org/language/shell        |
+| Solidity     | https://techsheet.org/language/solidity     |
+| SQL          | https://techsheet.org/language/sql          |
+| Tcl          | https://techsheet.org/language/tcl          |
+| TypeScript   | https://techsheet.org/language/typescript   |
+| VHDL         | https://techsheet.org/language/vhdl         |
+| Visual Basic | https://techsheet.org/language/visual-basic |
+| Zig          | https://techsheet.org/language/zig          |
 
 ## Frameworks
 

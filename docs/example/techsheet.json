@@ -1,10 +1,15 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-05-04T13:01:20.681300840Z",
+    "generatedAt": "2026-05-04T13:27:20.291915847Z",
     "generatorVersion": "1.0.0"
   },
   "languages": [
+    {
+      "id": "language.batch",
+      "name": "Batch",
+      "url": "https://techsheet.org/language/batch"
+    },
     {
       "id": "language.csharp",
       "name": "C#",
@@ -73,6 +78,11 @@
       "id": "language.scss",
       "name": "SCSS/SASS",
       "url": "https://techsheet.org/language/scss"
+    },
+    {
+      "id": "language.shell",
+      "name": "Shell",
+      "url": "https://techsheet.org/language/shell"
     },
     {
       "id": "language.typescript",
