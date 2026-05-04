@@ -3,6 +3,9 @@ package org.techsheet.cli.detector
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
 
+/**
+ * JVM dependency detector specialised for [org.techsheet.cli.domain.FrameworkType]
+ */
 abstract class AbstractJvmFrameworkDetector(
   name: String,
   framework: FrameworkType,

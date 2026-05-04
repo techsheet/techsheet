@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.LanguageType
 
-class ScssDetector : AbstractSourceFileLanguageDetector(
+class ScssDetector : AbstractLanguageDetector(
   name = "SCSS/SASS",
   type = LanguageType.SCSS,
   ".scss",

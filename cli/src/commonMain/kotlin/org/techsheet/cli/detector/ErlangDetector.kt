@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.LanguageType
 
-class ErlangDetector : AbstractSourceFileLanguageDetector(
+class ErlangDetector : AbstractLanguageDetector(
   name = "Erlang",
   type = LanguageType.ERLANG,
   ".erl",

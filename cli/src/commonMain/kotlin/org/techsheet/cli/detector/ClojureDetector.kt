@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.LanguageType
 
-class ClojureDetector : AbstractSourceFileLanguageDetector(
+class ClojureDetector : AbstractLanguageDetector(
   name = "Clojure",
   type = LanguageType.CLOJURE,
   ".clj", ".cljs",

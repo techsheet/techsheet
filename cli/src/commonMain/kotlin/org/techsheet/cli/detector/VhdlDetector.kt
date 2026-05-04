@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.LanguageType
 
-class VhdlDetector : AbstractSourceFileLanguageDetector(
+class VhdlDetector : AbstractLanguageDetector(
   name = "VHDL",
   type = LanguageType.VHDL,
   ".vhd", ".vhdl",

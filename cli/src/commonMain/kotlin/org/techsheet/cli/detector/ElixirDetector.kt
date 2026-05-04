@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.LanguageType
 
-class ElixirDetector : AbstractSourceFileLanguageDetector(
+class ElixirDetector : AbstractLanguageDetector(
   name = "Elixir",
   type = LanguageType.ELIXIR,
   ".ex", ".exs",
