@@ -4,7 +4,8 @@ plugins {
 
 allprojects {
   group = "org.techsheet"
-  version = rootProject.file("version.txt")
-    .readText()
+  version = providers.fileContents(rootProject.layout.projectDirectory.file("version.txt"))
+    .asText
+    .get()
     .trim()
 }
