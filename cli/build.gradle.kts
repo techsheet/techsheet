@@ -67,6 +67,7 @@ kotlin {
 val generateVersion by tasks.registering {
   val output = layout.buildDirectory.file("generated/version/org/techsheet/cli/CliVersion.kt")
   val ver = project.version.toString()
+  inputs.property("version", ver)
   outputs.file(output)
   doLast {
     output.get().asFile.apply {

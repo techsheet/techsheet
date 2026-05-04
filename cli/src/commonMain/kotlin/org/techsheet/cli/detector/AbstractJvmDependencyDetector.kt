@@ -4,6 +4,11 @@ import okio.Path
 import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 
+/**
+ * Detects technologies by matching [coordinates] and/or [pluginIds] in JVM build tools, i.e. pom.xml or build.gradle.kts
+ *
+ * Prefer specific implementations like [AbstractJvmFrameworkDetector] over this.
+ */
 abstract class AbstractJvmDependencyDetector(
   name: String,
   private val apply: (TechSheet, String?) -> TechSheet,

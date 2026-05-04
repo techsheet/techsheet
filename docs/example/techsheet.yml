@@ -1,7 +1,7 @@
 schema: 1
 meta:
-  generatedAt: "2026-05-04T13:01:20.628947678Z"
-  generatorVersion: "1.0.0"
+  generatedAt: "2026-05-04T14:02:37.717441261Z"
+  generatorVersion: "1.1.1"
 languages:
   - id: "language.csharp"
     name: "C#"
@@ -46,6 +46,9 @@ languages:
   - id: "language.scss"
     name: "SCSS/SASS"
     url: "https://techsheet.org/language/scss"
+  - id: "language.shell"
+    name: "Shell"
+    url: "https://techsheet.org/language/shell"
   - id: "language.typescript"
     name: "TypeScript"
     url: "https://techsheet.org/language/typescript"

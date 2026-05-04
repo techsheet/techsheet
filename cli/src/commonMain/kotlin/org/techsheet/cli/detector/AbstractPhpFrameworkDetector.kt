@@ -6,13 +6,10 @@ import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.TechSheet
 
 /**
- * Base for PHP framework/library detectors. Inspects Composer manifests
- * (`composer.json`, `composer.lock`) for one or more package coordinates and
- * extracts a version where possible.
+ * Base for PHP framework/library detectors
  *
- * Regex over JSON parsing is a deliberate choice — consistent with the other
- * dependency detectors and tolerant of slightly malformed manifests that a
- * strict parser would reject.
+ * Inspects Composer manifests (`composer.json`, `composer.lock`) for one or more package coordinates and extracts a
+ * version where possible.
  */
 abstract class AbstractPhpFrameworkDetector(
   name: String,

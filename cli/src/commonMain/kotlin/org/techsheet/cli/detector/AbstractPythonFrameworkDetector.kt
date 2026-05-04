@@ -6,8 +6,9 @@ import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.TechSheet
 
 /**
- * Base for Python framework/library detectors. Inspects common Python dependency
- * manifests (requirements*.txt, pyproject.toml, Pipfile, setup.py, setup.cfg)
+ * Base for Python framework/library detectors
+ *
+ * Inspects common Python dependency manifests (requirements*.txt, pyproject.toml, Pipfile, setup.py, setup.cfg)
  * for a given package name and, where possible, extracts its version.
  */
 abstract class AbstractPythonFrameworkDetector(
