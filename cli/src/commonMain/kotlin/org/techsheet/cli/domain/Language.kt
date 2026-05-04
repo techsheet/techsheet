@@ -23,9 +23,22 @@ enum class LanguageType(
   CSS("css", "CSS"),
   SCSS("scss", "SCSS/SASS"),
   MARKDOWN("markdown", "Markdown"),
-  ASCIIDOC("asciidoc", "AsciiDoc");
   ASCIIDOC("asciidoc", "AsciiDoc"),
   SHELL("shell", "Shell"),
+  PERL("perl", "Perl"),
+  COBOL("cobol", "COBOL"),
+  FORTRAN("fortran", "Fortran"),
+  PASCAL("pascal", "Pascal"),
+  VISUAL_BASIC("visual-basic", "Visual Basic"),
+  ABAP("abap", "ABAP"),
+  PLSQL("plsql", "PL/SQL"),
+  LUA("lua", "Lua"),
+  HASKELL("haskell", "Haskell"),
+  ELIXIR("elixir", "Elixir"),
+  ERLANG("erlang", "Erlang"),
+  CLOJURE("clojure", "Clojure"),
+  FSHARP("fsharp", "F#"),
+  R("r", "R");
 
   override val type: String = "language"
 }
