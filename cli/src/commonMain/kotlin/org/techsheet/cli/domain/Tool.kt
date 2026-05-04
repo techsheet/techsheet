@@ -55,6 +55,8 @@ enum class ToolType(
   CODEIUM("codeium", "Codeium", ToolCategory.AI),
   GEMINI("gemini", "Gemini", ToolCategory.AI),
   CODEX("codex", "OpenAI Codex", ToolCategory.AI),
+  KIRO("kiro", "Kiro", ToolCategory.AI),
+  PLANDEX("plandex", "Plandex", ToolCategory.AI),
 
   // IDE
   INTELLIJ_IDEA("intellij-idea", "IntelliJ IDEA", ToolCategory.IDE),

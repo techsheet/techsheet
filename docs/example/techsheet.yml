@@ -1,6 +1,6 @@
 schema: 1
 meta:
-  generatedAt: "2026-05-04T07:50:23.819408997Z"
+  generatedAt: "2026-05-04T08:25:50.018410263Z"
   generatorVersion: "0.9.1"
 languages:
   - id: "language.csharp"

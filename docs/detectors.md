@@ -124,7 +124,7 @@
 
 ## Tools
 
-*Currently supporting **30** tools:*
+*Currently supporting **32** tools:*
 
 | Name               | Category  | URL                                       |
 |--------------------|-----------|-------------------------------------------|
@@ -136,7 +136,9 @@
 | Cursor             | AI        | https://techsheet.org/tool/cursor         |
 | Gemini             | AI        | https://techsheet.org/tool/gemini         |
 | GitHub Copilot     | AI        | https://techsheet.org/tool/github-copilot |
+| Kiro               | AI        | https://techsheet.org/tool/kiro           |
 | OpenAI Codex       | AI        | https://techsheet.org/tool/codex          |
+| Plandex            | AI        | https://techsheet.org/tool/plandex        |
 | Windsurf           | AI        | https://techsheet.org/tool/windsurf       |
 | Composer           | Build     | https://techsheet.org/tool/composer       |
 | Gradle             | Build     | https://techsheet.org/tool/gradle         |

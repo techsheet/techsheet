@@ -162,6 +162,8 @@ class Detectors(val all: List<Detector> = ALL) {
       CodeiumDetector(),
       GeminiDetector(),
       CodexDetector(),
+      KiroDetector(),
+      PlandexDetector(),
       IntelliJIdeaDetector(),
       VsCodeDetector(),
     )
