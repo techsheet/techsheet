@@ -86,4 +86,11 @@ tasks.named<Jar>("jvmJar") {
 
 tasks.named<Test>("jvmTest") {
   useJUnitPlatform()
+  testLogging {
+    events("failed")
+    showExceptions = true
+    showCauses = true
+    showStackTraces = false
+    exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+  }
 }

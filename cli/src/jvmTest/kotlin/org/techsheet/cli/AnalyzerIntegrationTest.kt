@@ -68,11 +68,7 @@ class AnalyzerIntegrationTest {
     val expected = stripMeta(fs.read(expectedFile) { readUtf8() })
     val actual = stripMeta(fs.read(actualFile) { readUtf8() })
 
-    assertEquals(
-      expected,
-      actual,
-      "techsheet.actual.yml does not match techsheet.expected.yml (meta block ignored)\n${diff(expected, actual)}",
-    )
+    assertEquals(expected, actual, "techsheet.actual.yml does not match techsheet.expected.yml (meta block ignored)")
   }
 
   // The `meta:` block holds a timestamp and generator version that are not part of
@@ -93,21 +89,5 @@ class AnalyzerIntegrationTest {
       out.append(line).append('\n')
     }
     return out.toString()
-  }
-
-  private fun diff(expected: String, actual: String): String {
-    val exp = expected.lines()
-    val act = actual.lines()
-    val sb = StringBuilder()
-    val max = maxOf(exp.size, act.size)
-    for (i in 0 until max) {
-      val e = exp.getOrNull(i)
-      val a = act.getOrNull(i)
-      if (e != a) {
-        if (e != null) sb.appendLine("- [${i + 1}] $e")
-        if (a != null) sb.appendLine("+ [${i + 1}] $a")
-      }
-    }
-    return sb.toString()
   }
 }
