@@ -1,6 +1,6 @@
 # TechSheet
 
-`4. May 2026 11:00` ‧ `v0.9.1`
+`4. May 2026 14:53` ‧ `v1.0.0`
 
 ## Languages
 
@@ -71,6 +71,7 @@
 | [Docker Compose](https://techsheet.org/tool/docker-compose) |           | Container | `tool.docker-compose` |       |
 | [EditorConfig](https://techsheet.org/tool/editorconfig)     |           | Format    | `tool.editorconfig`   |       |
 | [ESLint](https://techsheet.org/tool/eslint)                 | `9`       | Format    | `tool.eslint`         |       |
+| [ktlint](https://techsheet.org/tool/ktlint)                 | `14.2.0`  | Format    | `tool.ktlint`         |       |
 | [IntelliJ IDEA](https://techsheet.org/tool/intellij-idea)   |           | IDE       | `tool.intellij-idea`  |       |
 | [JVM](https://techsheet.org/tool/jvm)                       | `26`      | Runtime   | `tool.jvm`            |       |
 | [Node.js](https://techsheet.org/tool/nodejs)                | `20.10.0` | Runtime   | `tool.nodejs`         |       |

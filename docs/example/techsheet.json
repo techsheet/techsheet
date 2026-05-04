@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-05-04T09:00:30.400623750Z",
-    "generatorVersion": "0.9.1"
+    "generatedAt": "2026-05-04T12:53:32.083545634Z",
+    "generatorVersion": "1.0.0"
   },
   "languages": [
     {
@@ -316,6 +316,13 @@
       "category": "Format",
       "url": "https://techsheet.org/tool/eslint",
       "version": "9"
+    },
+    {
+      "id": "tool.ktlint",
+      "name": "ktlint",
+      "category": "Format",
+      "url": "https://techsheet.org/tool/ktlint",
+      "version": "14.2.0"
     },
     {
       "id": "tool.intellij-idea",

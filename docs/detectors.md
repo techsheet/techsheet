@@ -1,6 +1,6 @@
 # TechSheet Detectors
 
-`v0.9.1`
+`v1.0.0`
 
 ## Languages
 
@@ -124,7 +124,7 @@
 
 ## Tools
 
-*Currently supporting **32** tools:*
+*Currently supporting **34** tools:*
 
 | Name               | Category  | URL                                       |
 |--------------------|-----------|-------------------------------------------|
@@ -151,8 +151,10 @@
 | GitLab CI          | CI        | https://techsheet.org/tool/gitlab-ci      |
 | Docker             | Container | https://techsheet.org/tool/docker         |
 | Docker Compose     | Container | https://techsheet.org/tool/docker-compose |
+| Detekt             | Format    | https://techsheet.org/tool/detekt         |
 | EditorConfig       | Format    | https://techsheet.org/tool/editorconfig   |
 | ESLint             | Format    | https://techsheet.org/tool/eslint         |
+| ktlint             | Format    | https://techsheet.org/tool/ktlint         |
 | Prettier           | Format    | https://techsheet.org/tool/prettier       |
 | IntelliJ IDEA      | IDE       | https://techsheet.org/tool/intellij-idea  |
 | Visual Studio Code | IDE       | https://techsheet.org/tool/vscode         |
