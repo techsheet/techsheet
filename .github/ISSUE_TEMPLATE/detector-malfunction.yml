@@ -1,0 +1,74 @@
+name: Detector Malfunction
+description: Report a malfunction of a detector, e.g. a framework or a language is incorrectly recognized.
+title: "[detector] "
+labels: [ "detector-malfunction" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Before filing
+
+        A reproducible test project makes this actionable. Please:
+
+        1. Add or extend a project in the [test-projects](https://github.com/techsheet/test-projects) repo that
+           demonstrates the mislabeling, either a new directory or a new file in an existing one.
+        2. Set `techsheet.expected.yml` to what the output *should* be.
+        3. Open a PR there, then link it below.
+
+        Once a fixture is in place the fix can be verified automatically.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - "False negative: Should be detected, but is NOT"
+        - "False positive: Shouldn NOT be detected, but is"
+    validations:
+      required: true
+
+  - type: input
+    id: detector
+    attributes:
+      label: Affected detector
+      description: Name the affected detectors class or name, if possible
+      placeholder: e.g. org.techsheet.cli.detector.SpringBootDetector, DockerDetector, Vue.js
+    validations:
+      required: false
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed output
+      description: Paste the relevant section of the YAML report, or describe what TechSheet currently produces.
+      render: yaml
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output
+      description: Describe what yould be in the YAML report instead.
+      render: yaml
+    validations:
+      required: false
+
+  - type: input
+    id: test-project-pr
+    attributes:
+      label: test-projects PR
+      description: Link to the PR (or branch) in the test-projects repo that reproduces this case.
+      placeholder: https://github.com/techsheet/test-projects/pull/…
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked that this detector exists in the [detectors list](../../blob/master/docs/detectors.md). If not, request a new detector instead.
+          required: true
+        - label: I have opened (or plan to open) a PR in test-projects with a reproducing fixture
+          required: false

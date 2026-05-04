@@ -1,4 +1,4 @@
-name: New detector request
+name: Detector Request
 description: Propose a new language, framework, service, or tool for TechSheet to detect.
 title: "[detector] "
 labels: ["detector-request"]
@@ -6,8 +6,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before filing, please check the tables in the [README](../../blob/master/README.md#detectors)
-        — your detector might already be planned or shipped.
+        ## Before filing
+
+        Please check the [detectors list](../../blob/master/docs/detectors.md). If a detector exists, but doesn't work
+        as expected, please file a **Detector Malfunction** issue instead.
 
   - type: dropdown
     id: kind
@@ -18,7 +20,7 @@ body:
         - Language
         - Framework (application, data, security, testing, UI)
         - Service (database, queue, server)
-        - Tool (build, CI, container, format, IDE, runtime, security, VCS)
+        - Tool (AI, build, CI, container, format, IDE, runtime, security, VCS)
         - Other
     validations:
       required: true
