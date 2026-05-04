@@ -51,7 +51,10 @@ fi
 
 echo "$NEW_VERSION" > version.txt
 
-git add version.txt
+# Update generated docs before committing
+"$(dirname "$0")/update-docs.sh"
+
+git add version.txt docs/
 git commit -m "Release v$NEW_VERSION"
 git tag "v$NEW_VERSION"
 git push origin master "v$NEW_VERSION"
