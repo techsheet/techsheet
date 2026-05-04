@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "meta": {
-    "generatedAt": "2026-05-04T07:20:43.184851683Z",
+    "generatedAt": "2026-05-04T08:25:50.068668094Z",
     "generatorVersion": "0.9.1"
   },
   "languages": [
@@ -227,6 +227,12 @@
   ],
   "services": [],
   "tools": [
+    {
+      "id": "tool.claude",
+      "name": "Claude",
+      "category": "AI",
+      "url": "https://techsheet.org/tool/claude"
+    },
     {
       "id": "tool.composer",
       "name": "Composer",

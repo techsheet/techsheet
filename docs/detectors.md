@@ -124,10 +124,22 @@
 
 ## Tools
 
-*Currently supporting **20** tools:*
+*Currently supporting **32** tools:*
 
 | Name               | Category  | URL                                       |
 |--------------------|-----------|-------------------------------------------|
+| Aider              | AI        | https://techsheet.org/tool/aider          |
+| Amazon Q           | AI        | https://techsheet.org/tool/amazon-q       |
+| Claude             | AI        | https://techsheet.org/tool/claude         |
+| Codeium            | AI        | https://techsheet.org/tool/codeium        |
+| Continue           | AI        | https://techsheet.org/tool/continue       |
+| Cursor             | AI        | https://techsheet.org/tool/cursor         |
+| Gemini             | AI        | https://techsheet.org/tool/gemini         |
+| GitHub Copilot     | AI        | https://techsheet.org/tool/github-copilot |
+| Kiro               | AI        | https://techsheet.org/tool/kiro           |
+| OpenAI Codex       | AI        | https://techsheet.org/tool/codex          |
+| Plandex            | AI        | https://techsheet.org/tool/plandex        |
+| Windsurf           | AI        | https://techsheet.org/tool/windsurf       |
 | Composer           | Build     | https://techsheet.org/tool/composer       |
 | Gradle             | Build     | https://techsheet.org/tool/gradle         |
 | Maven              | Build     | https://techsheet.org/tool/maven          |
