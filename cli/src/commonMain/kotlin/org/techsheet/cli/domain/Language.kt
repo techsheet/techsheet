@@ -24,6 +24,8 @@ enum class LanguageType(
   SCSS("scss", "SCSS/SASS"),
   MARKDOWN("markdown", "Markdown"),
   ASCIIDOC("asciidoc", "AsciiDoc");
+  ASCIIDOC("asciidoc", "AsciiDoc"),
+  SHELL("shell", "Shell"),
 
   override val type: String = "language"
 }

@@ -46,6 +46,7 @@ class Detectors(val all: List<Detector> = ALL) {
       ScssDetector(),
       MarkdownDetector(),
       AsciiDocDetector(),
+      ShellDetector(),
       JavaVersionDetector(),
       JVMDetector(),
       KotlinVersionDetector(),
