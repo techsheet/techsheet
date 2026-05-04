@@ -1,6 +1,6 @@
 name: Detector Malfunction
 description: Report a malfunction of a detector, e.g. a framework or a language is incorrectly recognized.
-title: "[detector] "
+title: "[detector] ..."
 labels: [ "detector-malfunction" ]
 body:
   - type: markdown
@@ -16,6 +16,11 @@ body:
         3. Open a PR there, then link it below.
 
         Once a fixture is in place the fix can be verified automatically.
+
+        ## Issue Title
+
+        Please name the issue after the failing detector, i.e. `[detector] Java`, if you know which detector is failing.
+        Otherwise, pick a meaningful ditle after the prefix.
 
   - type: dropdown
     id: type
@@ -60,6 +65,14 @@ body:
       label: test-projects PR
       description: Link to the PR (or branch) in the test-projects repo that reproduces this case.
       placeholder: https://github.com/techsheet/test-projects/pull/…
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional context that might help diagnose or fix the issue.
     validations:
       required: false
 

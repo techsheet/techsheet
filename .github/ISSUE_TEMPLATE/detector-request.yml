@@ -1,7 +1,7 @@
 name: Detector Request
 description: Propose a new language, framework, service, or tool for TechSheet to detect.
-title: "[detector] "
-labels: ["detector-request"]
+title: "[detector] ..."
+labels: [ "detector-request" ]
 body:
   - type: markdown
     attributes:
@@ -10,6 +10,12 @@ body:
 
         Please check the [detectors list](../../blob/master/docs/detectors.md). If a detector exists, but doesn't work
         as expected, please file a **Detector Malfunction** issue instead.
+
+        ## Issue Title
+
+        Please name the issue `[detector] {technology name}` where `{technology-name}` is what you want to have
+        detected, i.e. `[detector] Java`, `[detector] Angular`, `[detector] GitLab CI`. Add additional context in notes
+        section, if needed.
 
   - type: dropdown
     id: kind
@@ -25,15 +31,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: name
-    attributes:
-      label: Name
-      description: Name of the language, framework, service, or tool.
-      placeholder: e.g. Svelte, PostgreSQL, pnpm, Ruby
-    validations:
-      required: true
-
   - type: textarea
     id: detection
     attributes:
@@ -43,5 +40,13 @@ body:
         file extensions, directory layout, dependency names, version sources.
       placeholder: |
         e.g. `svelte.config.js` at project root, or a `"svelte"` entry in package.json.
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional context, edge cases, or related technologies worth mentioning.
     validations:
       required: false
