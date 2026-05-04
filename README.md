@@ -9,6 +9,7 @@ structured, uniform manner.
 [![CI][ci-badge]][ci-url]
 [![Container][docker-badge]][docker-url]
 [![License][license-badge]][license-url]
+[![OSSF-Scorecard][ossf-badge]][ossf-url]
 
 </div>
 
@@ -171,15 +172,18 @@ Use `linkDebugExecutable*` instead of `linkReleaseExecutable*` for debug builds.
 
 ## Testing
 
-Besides unit tests, behavior is validated against small but realistic project trees under
-`cli/src/jvmTest/resources/test-projects/`. Each directory is a runnable sample that the analyzer processes like a 
-real project.
+Besides unit tests, behavior is validated against realistic project trees in the
+[`test-projects`](https://github.com/techsheet/test-projects) submodule. Each directory is a minimal but realistic
+project that the analyzer processes like a real repo. The test compares the output against a checked-in
+`techsheet.expected.yml`; a `techsheet.actual.yml` is written on each run for diff inspection. All directories are
+auto-discovered — no code changes needed to register a new fixture.
 
 Adding a fixture:
 
-1. Add a project under `cli/src/jvmTest/resources/test-projects/<name>/`
-2. Add a `testCase("<name>") { ... }` entry to `AnalyzerIntegrationTest.cases`
-3. Run `./gradlew :cli:jvmTest` and `:cli:assemble` if you changed `commonMain`
+1. Add or extend a project in the [`test-projects`](https://github.com/techsheet/test-projects) repo (via PR)
+2. Add or update `techsheet.expected.yml` in that project directory
+3. Update the submodule pointer in this repo
+4. Run `./gradlew :cli:jvmTest` and `:cli:assemble` if you changed `commonMain`
 
 ## Contributing
 
@@ -190,15 +194,15 @@ Contributions of any kind are very welcome. Please read the [contribution guidel
 
 [Apache License 2.0](LICENSE)
 
-[release-badge]: https://img.shields.io/github/v/release/techsheet/techsheet?label=release&color=blue
+[release-badge]: https://img.shields.io/github/v/release/techsheet/techsheet?include_prereleases&label=Release
 
 [release-url]: https://github.com/techsheet/techsheet/releases/latest
 
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/techsheet/techsheet/ci.yml?label=ci
+[ci-badge]: https://github.com/techsheet/techsheet/actions/workflows/ci.yml/badge.svg
 
 [ci-url]: https://github.com/techsheet/techsheet/actions/workflows/ci.yml
 
-[license-badge]: https://img.shields.io/badge/license-Apache%202.0-blue.svg
+[license-badge]: https://img.shields.io/github/license/techsheet/techsheet?label=License
 
 [license-url]: LICENSE
 
@@ -213,3 +217,7 @@ Contributions of any kind are very welcome. Please read the [contribution guidel
 [pullrequest-url]: https://github.com/techsheet/techsheet/pulls
 
 [new-detector-template]: https://github.com/techsheet/techsheet/issues/new?template=new-detector.yml
+
+[ossf-badge]: https://img.shields.io/ossf-scorecard/github.com/techsheet/techsheet?label=OpenSSF
+
+[ossf-url]: https://scorecard.dev/viewer/?uri=github.com/techsheet/techsheet
