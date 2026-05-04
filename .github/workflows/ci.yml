@@ -19,3 +19,9 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - run: ./gradlew build --no-daemon
+      - uses: dorny/test-reporter@dc9a6ca9ae7e39a464e5215f4ed49af1f1a5c06c # v2.1.0
+        if: always()
+        with:
+          name: Tests
+          path: '**/build/test-results/**/*.xml'
+          reporter: java-junit
