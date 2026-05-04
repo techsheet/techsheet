@@ -1,12 +1,11 @@
 # TechSheet
 
-`4. May 2026 15:27` ‧ `v1.0.0`
+`4. May 2026 16:02` ‧ `v1.1.1`
 
 ## Languages
 
 | Name                                                    | Version   | ID                    | Notes |
 |---------------------------------------------------------|-----------|-----------------------|-------|
-| [Batch](https://techsheet.org/language/batch)           |           | `language.batch`      |       |
 | [C#](https://techsheet.org/language/csharp)             |           | `language.csharp`     |       |
 | [C++](https://techsheet.org/language/cpp)               |           | `language.cpp`        |       |
 | [CSS](https://techsheet.org/language/css)               |           | `language.css`        |       |

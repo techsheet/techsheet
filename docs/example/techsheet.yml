@@ -1,11 +1,8 @@
 schema: 1
 meta:
-  generatedAt: "2026-05-04T13:27:20.242722060Z"
-  generatorVersion: "1.0.0"
+  generatedAt: "2026-05-04T14:02:37.717441261Z"
+  generatorVersion: "1.1.1"
 languages:
-  - id: "language.batch"
-    name: "Batch"
-    url: "https://techsheet.org/language/batch"
   - id: "language.csharp"
     name: "C#"
     url: "https://techsheet.org/language/csharp"
