@@ -37,8 +37,10 @@ enum class ToolType(
   GIT("git", "Git", ToolCategory.VCS),
 
   // Format
+  DETEKT("detekt", "Detekt", ToolCategory.FORMAT),
   EDITORCONFIG("editorconfig", "EditorConfig", ToolCategory.FORMAT),
   ESLINT("eslint", "ESLint", ToolCategory.FORMAT),
+  KTLINT("ktlint", "ktlint", ToolCategory.FORMAT),
   PRETTIER("prettier", "Prettier", ToolCategory.FORMAT),
 
   // Security
