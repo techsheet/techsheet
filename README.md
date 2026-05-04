@@ -9,6 +9,7 @@ structured, uniform manner.
 [![CI][ci-badge]][ci-url]
 [![Container][docker-badge]][docker-url]
 [![License][license-badge]][license-url]
+[![OSSF-Scorecard][ossf-badge]][ossf-url]
 
 </div>
 
@@ -190,15 +191,15 @@ Contributions of any kind are very welcome. Please read the [contribution guidel
 
 [Apache License 2.0](LICENSE)
 
-[release-badge]: https://img.shields.io/github/v/release/techsheet/techsheet?label=release&color=blue
+[release-badge]: https://img.shields.io/github/v/release/techsheet/techsheet?include_prereleases&label=Release
 
 [release-url]: https://github.com/techsheet/techsheet/releases/latest
 
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/techsheet/techsheet/ci.yml?label=ci
+[ci-badge]: https://github.com/techsheet/techsheet/actions/workflows/ci.yml/badge.svg
 
 [ci-url]: https://github.com/techsheet/techsheet/actions/workflows/ci.yml
 
-[license-badge]: https://img.shields.io/badge/license-Apache%202.0-blue.svg
+[license-badge]: https://img.shields.io/github/license/techsheet/techsheet?label=License
 
 [license-url]: LICENSE
 
@@ -213,3 +214,7 @@ Contributions of any kind are very welcome. Please read the [contribution guidel
 [pullrequest-url]: https://github.com/techsheet/techsheet/pulls
 
 [new-detector-template]: https://github.com/techsheet/techsheet/issues/new?template=new-detector.yml
+
+[ossf-badge]: https://img.shields.io/ossf-scorecard/github.com/techsheet/techsheet?label=OpenSSF
+
+[ossf-url]: https://scorecard.dev/viewer/?uri=github.com/techsheet/techsheet
