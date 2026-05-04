@@ -11,6 +11,16 @@ cd "$(dirname "$0")/.."
 # relative to the project root).
 
 ./gradlew :cli:jvmRun --args="detectors --markdown=../docs/detectors.md"
+
+languages=$(grep -m1 "Currently supporting.*languages" docs/detectors.md | grep -o '[0-9]\+')
+frameworks=$(grep -m1 "Currently supporting.*frameworks" docs/detectors.md | grep -o '[0-9]\+')
+tools=$(grep -m1 "Currently supporting.*tools" docs/detectors.md | grep -o '[0-9]\+')
+sed -i \
+  -e "s/\[[0-9]*+ languages\]/[${languages}+ languages]/" \
+  -e "s/\[[0-9]*+ frameworks\]/[${frameworks}+ frameworks]/" \
+  -e "s/\[[0-9]*+ tools\]/[${tools}+ tools]/" \
+  README.md
+
 ./gradlew :cli:jvmRun --args="analyze ../ \
   --markdown=docs/example/techsheet.md \
   --html=docs/example/techsheet.html \
