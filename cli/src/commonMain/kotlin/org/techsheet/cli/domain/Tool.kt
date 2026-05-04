@@ -44,6 +44,18 @@ enum class ToolType(
   // Security
   RENOVATE("renovate", "Renovate", ToolCategory.SECURITY),
 
+  // AI
+  CLAUDE("claude", "Claude", ToolCategory.AI),
+  GITHUB_COPILOT("github-copilot", "GitHub Copilot", ToolCategory.AI),
+  CURSOR("cursor", "Cursor", ToolCategory.AI),
+  WINDSURF("windsurf", "Windsurf", ToolCategory.AI),
+  AIDER("aider", "Aider", ToolCategory.AI),
+  CONTINUE("continue", "Continue", ToolCategory.AI),
+  AMAZON_Q("amazon-q", "Amazon Q", ToolCategory.AI),
+  CODEIUM("codeium", "Codeium", ToolCategory.AI),
+  GEMINI("gemini", "Gemini", ToolCategory.AI),
+  CODEX("codex", "OpenAI Codex", ToolCategory.AI),
+
   // IDE
   INTELLIJ_IDEA("intellij-idea", "IntelliJ IDEA", ToolCategory.IDE),
   VS_CODE("vscode", "Visual Studio Code", ToolCategory.IDE);
@@ -52,6 +64,7 @@ enum class ToolType(
 }
 
 enum class ToolCategory(val title: String) {
+  AI("AI"),
   BUILD("Build"),
   CI("CI"),
   CONTAINER("Container"),
