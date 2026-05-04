@@ -1,6 +1,6 @@
 schema: 1
 meta:
-  generatedAt: "2026-05-04T07:20:43.120491619Z"
+  generatedAt: "2026-05-04T07:50:23.819408997Z"
   generatorVersion: "0.9.1"
 languages:
   - id: "language.csharp"
@@ -153,6 +153,10 @@ frameworks:
     version: "4"
 services: []
 tools:
+  - id: "tool.claude"
+    name: "Claude"
+    category: "AI"
+    url: "https://techsheet.org/tool/claude"
   - id: "tool.composer"
     name: "Composer"
     category: "Build"

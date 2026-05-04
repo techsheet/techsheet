@@ -1,6 +1,6 @@
 # TechSheet
 
-`4. May 2026 09:20` ‧ `v0.9.1`
+`4. May 2026 09:50` ‧ `v0.9.1`
 
 ## Languages
 
@@ -57,6 +57,7 @@
 
 | Name                                                        | Version   | Category  | ID                    | Notes |
 |-------------------------------------------------------------|-----------|-----------|-----------------------|-------|
+| [Claude](https://techsheet.org/tool/claude)                 |           | AI        | `tool.claude`         |       |
 | [Composer](https://techsheet.org/tool/composer)             |           | Build     | `tool.composer`       |       |
 | [Gradle (Kotlin DSL)](https://techsheet.org/tool/gradle)    | `9.4.1`   | Build     | `tool.gradle`         |       |
 | [Maven](https://techsheet.org/tool/maven)                   | `3.9.14`  | Build     | `tool.maven`          |       |
