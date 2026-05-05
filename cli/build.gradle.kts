@@ -8,6 +8,11 @@ base {
 }
 
 kotlin {
+  compilerOptions {
+    optIn.add("kotlin.uuid.ExperimentalUuidApi")
+    optIn.add("kotlinx.serialization.ExperimentalSerializationApi")
+  }
+
   jvm {
     mainRun {
       mainClass.set("org.techsheet.cli.MainKt")
