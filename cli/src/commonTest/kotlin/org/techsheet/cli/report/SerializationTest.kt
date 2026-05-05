@@ -1,14 +1,12 @@
-@file:OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
-
 package org.techsheet.cli.report
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import kotlin.time.Instant
 import kotlinx.serialization.json.Json
+import kotlin.uuid.Uuid
 import org.techsheet.cli.domain.FrameworkEntry
 import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.ReportMeta
+import org.techsheet.cli.domain.Project
 import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.domain.ToolEntry
 import kotlin.test.Test
@@ -24,10 +22,7 @@ class SerializationTest {
   }
 
   private val report = TechSheetReport(
-      meta = ReportMeta(
-        generatedAt = Instant.parse("2026-04-17T20:15:00Z"),
-        generatorVersion = "0.5.0",
-      ),
+      project = Project(id = Uuid.parse("00000000-0000-0000-0000-000000000000"), name = "Test Project"),
       languages = listOf(
           LanguageEntry(id = "language.kotlin", name = "Kotlin", url = "https://techsheet.org/language/kotlin", version = "2.2.21"),
       ),
@@ -51,8 +46,8 @@ class SerializationTest {
   fun `serializes to pretty-printed JSON`() {
     val output = json.encodeToString(report)
     assertContains(output, """"schema": 1""")
-    assertContains(output, """"generatedAt": "2026-04-17T20:15:00Z"""")
-    assertContains(output, """"generatorVersion": "0.5.0"""")
+    assertContains(output, """"id": "00000000-0000-0000-0000-000000000000"""")
+    assertContains(output, """"name": "Test Project"""")
     assertContains(output, """"id": "language.kotlin"""")
     assertContains(output, """"name": "Kotlin"""")
     assertContains(output, """"version": "2.2.21"""")
@@ -87,8 +82,7 @@ class SerializationTest {
   fun `serializes to YAML`() {
     val output = yaml.encodeToString(TechSheetReport.serializer(), report)
     assertContains(output, "schema: 1")
-    assertContains(output, """generatedAt: "2026-04-17T20:15:00Z"""")
-    assertContains(output, """generatorVersion: "0.5.0"""")
+    assertContains(output, """"00000000-0000-0000-0000-000000000000"""")
     assertContains(output, "name: \"Kotlin\"")
     assertContains(output, "category: \"Application\"")
     assertContains(output, "category: \"VCS\"")

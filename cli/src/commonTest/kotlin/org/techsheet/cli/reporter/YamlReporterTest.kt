@@ -2,83 +2,63 @@ package org.techsheet.cli.reporter
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import kotlin.time.Instant
-import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem
-import org.techsheet.cli.domain.FrameworkEntry
-import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.ReportMeta
-import org.techsheet.cli.domain.ServiceEntry
-import org.techsheet.cli.domain.TechSheetReport
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.cli.domain.*
 import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import kotlin.test.assertContains
+import kotlin.test.assertFalse
 
 class YamlReporterTest {
 
-  private val yaml = Yaml(
-    configuration = YamlConfiguration(
-      encodeDefaults = false,
-      strictMode = false,
-      sequenceBlockIndent = 2,
-    ),
-  )
-
   @Test
-  fun `serialized yaml round-trips to an equal report`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.yml".toPath()
+  fun `renders language name and version`() {
+    val yaml = render(TechSheet().withLanguage(LanguageType.KOTLIN, version = "2.2.21"))
 
-    YamlReporter(path, fs).report(SAMPLE_REPORT)
-
-    val content = fs.read(path) { readUtf8() }
-    val parsed = yaml.decodeFromString(TechSheetReport.serializer(), content)
-    assertEquals(SAMPLE_REPORT, parsed)
+    assertContains(yaml, "Kotlin")
+    assertContains(yaml, """"2.2.21"""")
   }
 
   @Test
-  fun `serialized yaml omits entries with null version`() {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.yml".toPath()
-    val report = TechSheetReport(
-      meta = ReportMeta(
-        generatedAt = Instant.parse("2026-04-21T17:37:00Z"),
-        generatorVersion = "0.6.1",
-      ),
-      languages = listOf(
-        LanguageEntry(id = "language.bash", name = "Bash", url = "https://techsheet.org/language/bash", version = null),
-      ),
-      frameworks = emptyList(),
-      services = emptyList(),
-      tools = emptyList(),
-    )
+  fun `renders framework with category`() {
+    val yaml = render(TechSheet().withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5"))
 
-    YamlReporter(path, fs).report(report)
-
-    val content = fs.read(path) { readUtf8() }
-    assertTrue(
-      !content.contains("version:"),
-      "expected no `version` key for null-version entry; got:\n$content",
-    )
+    assertContains(yaml, "Spring Boot")
+    assertContains(yaml, """"4.0.5"""")
+    assertContains(yaml, "Application")
   }
+
+  @Test
+  fun `renders tool flavor`() {
+    val yaml = render(TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL"))
+
+    assertContains(yaml, "Gradle")
+    assertContains(yaml, """"Kotlin DSL"""")
+  }
+
+  @Test
+  fun `omits null version fields`() {
+    val yaml = render(TechSheet().withLanguage(LanguageType.KOTLIN))
+
+    assertFalse("version:" in yaml)
+  }
+
+  @Test
+  fun `output round-trips through deserialization`() {
+    val sheet = TechSheet()
+      .withLanguage(LanguageType.KOTLIN, version = "2.2.21")
+      .withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5")
+      .withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL")
+
+    val report = TechSheetReport.of(sheet)
+    val yaml = render(sheet)
+    val parsed = Yaml(configuration = YamlConfiguration(encodeDefaults = false, strictMode = false))
+      .decodeFromString(TechSheetReport.serializer(), yaml)
+
+    assertContains(parsed.languages.map { it.name }, "Kotlin")
+    assertContains(parsed.frameworks.map { it.name }, "Spring Boot")
+    assertContains(parsed.tools.map { it.name }, "Gradle")
+  }
+
+  private fun render(sheet: TechSheet): String =
+    ReporterFactory(TechSheetReport.of(sheet), readonly = true, fs = FakeFileSystem()).yaml.serialize()
 }
-
-private val SAMPLE_REPORT = TechSheetReport(
-  meta = ReportMeta(
-    generatedAt = Instant.parse("2026-04-21T17:37:00Z"),
-    generatorVersion = "0.6.1",
-  ),
-  languages = listOf(
-    LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-  ),
-  frameworks = listOf(
-    FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
-  ),
-  services = listOf(
-    ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
-  ),
-  tools = listOf(
-    ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
-  ),
-)

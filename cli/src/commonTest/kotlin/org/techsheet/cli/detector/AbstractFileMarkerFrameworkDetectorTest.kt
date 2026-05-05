@@ -49,14 +49,14 @@ class AbstractFileMarkerFrameworkDetectorTest {
     val sheet = ContentMatchNoVersion().onMatch(
       "config.php".toPath(), lazy { "<?php // unrelated config" }, TechSheet.empty(),
     )
-    assertEquals(TechSheet.empty(), sheet)
+    assertTrue(sheet.isEmpty())
   }
 
   @Test fun `content-gated marker leaves sheet unchanged when content is null`() {
     val sheet = ContentMatchNoVersion().onMatch(
       "config.php".toPath(), lazy { null }, TechSheet.empty(),
     )
-    assertEquals(TechSheet.empty(), sheet)
+    assertTrue(sheet.isEmpty())
   }
 
   @Test fun `content-gated marker captures version from group 1`() {

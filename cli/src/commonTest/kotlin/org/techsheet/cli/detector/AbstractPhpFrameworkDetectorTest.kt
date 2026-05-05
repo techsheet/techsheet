@@ -26,8 +26,6 @@ private fun analyzePhp(
 private fun TechSheet.laravelVersion(): String? =
   frameworks.firstOrNull { it.type == FrameworkType.LARAVEL }?.version
 
-private fun TechSheet.hasLaravel(): Boolean = hasFramework(FrameworkType.LARAVEL)
-
 class AbstractPhpFrameworkDetectorTest {
 
   // ---------- composer.json ----------
@@ -62,7 +60,7 @@ class AbstractPhpFrameworkDetectorTest {
 
   @Test fun `composer json missing package leaves sheet unchanged`() {
     val json = """{"require":{"symfony/console":"^6.0"}}"""
-    assertEquals(TechSheet.empty(), analyzePhp("composer.json", json))
+    assertTrue(analyzePhp("composer.json", json).isEmpty())
   }
 
   @Test fun `composer json with multiple package names matches any one`() {
@@ -71,7 +69,7 @@ class AbstractPhpFrameworkDetectorTest {
       "composer.json", json,
       packageNames = listOf("symfony/framework-bundle", "symfony/symfony"),
     )
-    assertTrue(sheet.hasLaravel())
+    assertTrue(sheet.hasFramework(FrameworkType.LARAVEL))
     assertEquals("5.4", sheet.laravelVersion())
   }
 
@@ -81,7 +79,7 @@ class AbstractPhpFrameworkDetectorTest {
   }
 
   @Test fun `empty composer json leaves sheet unchanged`() {
-    assertEquals(TechSheet.empty(), analyzePhp("composer.json", ""))
+    assertTrue(analyzePhp("composer.json", "").isEmpty())
   }
 
   // ---------- composer.lock ----------

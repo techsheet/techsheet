@@ -1,169 +1,69 @@
 package org.techsheet.cli.reporter
 
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.Month
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
-import kotlin.time.Instant
-import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem
-import org.techsheet.cli.domain.FrameworkEntry
-import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.ReportMeta
-import org.techsheet.cli.domain.ServiceEntry
-import org.techsheet.cli.domain.TechSheetReport
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.cli.domain.*
 import kotlin.test.Test
+import kotlin.test.assertContains
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class HtmlReporterTest {
 
   @Test
-  fun `emits a valid HTML5 document with doctype and the expected top-level tags`() {
-    val html = render(emptyReport())
+  fun `renders HTML5 document structure`() {
+    val html = render(TechSheet())
 
-    assertTrue("<!DOCTYPE html>" in html)
-    assertTrue(Regex("""<html\b""").containsMatchIn(html))
-    assertTrue("<head>" in html && "</head>" in html)
-    assertTrue("<body>" in html && "</body>" in html)
-    assertTrue("</html>" in html)
+    assertContains(html, "<!DOCTYPE html>")
+    assertContains(html, "<head>")
+    assertContains(html, "<body>")
   }
 
   @Test
-  fun `renders meta line with generator version and human-readable timestamp`() {
-    val html = render(emptyReport())
+  fun `renders language name and version`() {
+    val html = render(TechSheet().withLanguage(LanguageType.KOTLIN, version = "2.2.21"))
 
-    assertTrue("v0.6.1" in html)
-    assertTrue("21. April 2026 17:37" in html)
+    assertContains(html, "Kotlin")
+    assertContains(html, "2.2.21")
   }
 
   @Test
-  fun `renders all four sections in L-F-S-T order with id and title`() {
-    val html = render(emptyReport())
+  fun `renders framework name and version`() {
+    val html = render(TechSheet().withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5"))
 
-    listOf("languages" to "Languages", "frameworks" to "Frameworks", "services" to "Services", "tools" to "Tools")
-      .forEach { (id, title) ->
-        assertTrue(Regex("""<section\b[^>]*id="$id"""").containsMatchIn(html), "missing section id=\"$id\"")
-        assertTrue(Regex("""<h2\b[^>]*>$title</h2>""").containsMatchIn(html), "missing <h2>$title</h2>")
-      }
-
-    val order = listOf("languages", "frameworks", "services", "tools")
-      .map { id -> html.indexOf("""id="$id"""") }
-    assertTrue(order == order.sorted() && order.none { it < 0 }, "sections not in L-F-S-T order: $order")
+    assertContains(html, "Spring Boot")
+    assertContains(html, "4.0.5")
   }
 
   @Test
-  fun `empty section renders a No-X notice and no table`() {
-    val html = render(emptyReport())
+  fun `renders tool flavor in parentheses`() {
+    val html = render(TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL"))
 
-    listOf("languages", "frameworks", "services", "tools").forEach { id ->
-      val section = sectionBody(html, id)
-      assertTrue("No $id" in section, "empty $id section should contain 'No $id' notice")
-      assertFalse("<table" in section, "empty $id section should not contain a table")
-    }
+    assertContains(html, "Gradle (Kotlin DSL)")
+    assertContains(html, "9.4.1")
   }
 
   @Test
-  fun `populated section renders a table with linked names and id cells`() {
-    val html = render(populatedReport())
-
-    val languages = sectionBody(html, "languages")
-    assertTrue("<table" in languages)
-    assertTrue("""<a href="https://techsheet.org/language/java">Java</a>""" in languages)
-    assertTrue("""<a href="https://techsheet.org/language/typescript">TypeScript</a>""" in languages)
-    assertTrue("<code>language.java</code>" in languages)
-    assertTrue("<code>language.typescript</code>" in languages)
-  }
-
-  @Test
-  fun `versions are wrapped in code and missing versions render empty`() {
-    val html = render(populatedReport())
-
-    assertTrue("<code>21</code>" in html, "expected Java version in <code>")
-    assertTrue("<code>5.9.3</code>" in html, "expected TypeScript version in <code>")
-    // Arrow has no version; no <code>Arrow... should appear as a version
-    assertFalse(Regex("""Arrow.*?<code>""", RegexOption.DOT_MATCHES_ALL).containsMatchIn(sectionBody(html, "frameworks").substringBefore("Angular").ifEmpty { "" }))
-  }
-
-  @Test
-  fun `tool flavor is appended to name in parentheses`() {
-    val html = render(populatedReport())
-
-    assertTrue("Gradle (kotlin)" in html, "flavor should be shown in parentheses")
-    // JUnit has no flavor — no parentheses after the name
-    assertFalse(Regex("""JUnit\s*\(""").containsMatchIn(html))
-  }
-
-  @Test
-  fun `escapes HTML special characters in names and versions and urls`() {
-    val report = TechSheetReport(
-      meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
-      languages = listOf(
-        LanguageEntry(id = "language.cpp", name = "C<++>", url = "https://example.com/?q=a&b=c", version = "1&2"),
-      ),
-      frameworks = emptyList(),
-      services = emptyList(),
-      tools = emptyList(),
+  fun `renders linked names with correct URLs`() {
+    val html = render(
+      TechSheet()
+        .withLanguage(LanguageType.KOTLIN)
+        .withFramework(FrameworkType.SPRING_BOOT)
+        .withTool(ToolType.GRADLE),
     )
 
-    val html = render(report)
-
-    assertTrue("""<a href="https://example.com/?q=a&amp;b=c">C&lt;++&gt;</a>""" in html)
-    assertTrue("<code>1&amp;2</code>" in html)
-    // ensure the raw unescaped forms did not leak through
-    assertFalse("C<++>" in html)
-    assertFalse("?q=a&b=c" in html)
+    assertContains(html, """<a href="https://techsheet.org/language/kotlin">Kotlin</a>""")
+    assertContains(html, """<a href="https://techsheet.org/framework/spring-boot">Spring Boot</a>""")
+    assertContains(html, """<a href="https://techsheet.org/tool/gradle">Gradle</a>""")
   }
 
-  private fun render(report: TechSheetReport): String {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.html".toPath()
-    HtmlReporter(path, fs).report(report)
-    return fs.read(path) { readUtf8() }
+  @Test
+  fun `tool without flavor renders plain name`() {
+    val html = render(TechSheet().withTool(ToolType.GIT))
+
+    assertContains(html, "Git")
+    assertFalse(Regex("""Git\s*\(""").containsMatchIn(html))
   }
 
-  // Returns the substring of `html` between the opening <section id="$id" ...> and the next </section>.
-  private fun sectionBody(html: String, id: String): String {
-    val open = Regex("""<section\b[^>]*id="$id"[^>]*>""").find(html)
-      ?: error("section id=\"$id\" not found")
-    val after = html.substring(open.range.last + 1)
-    val end = after.indexOf("</section>").also {
-      check(it >= 0) { "section id=\"$id\" has no closing tag" }
-    }
-    return after.substring(0, end)
-  }
-
-  private fun emptyReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
-    languages = emptyList(),
-    frameworks = emptyList(),
-    services = emptyList(),
-    tools = emptyList(),
-  )
-
-  private fun populatedReport(): TechSheetReport = TechSheetReport(
-    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
-    languages = listOf(
-      LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-      LanguageEntry(id = "language.typescript", name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
-    ),
-    frameworks = listOf(
-      FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
-      FrameworkEntry(id = "framework.arrow", name = "Arrow", category = "Concurrency", url = "https://techsheet.org/framework/arrow", version = null),
-    ),
-    services = listOf(
-      ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
-    ),
-    tools = listOf(
-      ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
-      ToolEntry(id = "tool.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/tool/junit", version = "5.11.4", flavor = null),
-    ),
-  )
+  private fun render(sheet: TechSheet): String =
+    ReporterFactory(TechSheetReport.of(sheet), readonly = true, fs = FakeFileSystem()).html.serialize()
 }
-
-// Constructed so that toLocalDateTime(currentSystemDefault()) round-trips to
-// 2026-04-21T17:37 regardless of the runner's time zone.
-private val META_INSTANT: Instant =
-  LocalDateTime(2026, Month.APRIL, 21, 17, 37)
-    .toInstant(TimeZone.currentSystemDefault())

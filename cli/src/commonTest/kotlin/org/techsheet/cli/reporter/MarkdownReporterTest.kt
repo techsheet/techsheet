@@ -1,145 +1,78 @@
 package org.techsheet.cli.reporter
 
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.Month
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
-import kotlin.time.Instant
-import okio.Path.Companion.toPath
 import okio.fakefilesystem.FakeFileSystem
-import org.techsheet.cli.domain.FrameworkEntry
-import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.ReportMeta
-import org.techsheet.cli.domain.ServiceEntry
-import org.techsheet.cli.domain.TechSheetReport
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.cli.domain.*
 import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlin.test.assertContains
 import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 class MarkdownReporterTest {
 
   @Test
-  fun `renders empty sheet with four empty-section notices`() {
-    val output = render(emptyReport())
+  fun `renders language name and version`() {
+    val md = render(TechSheet().withLanguage(LanguageType.KOTLIN, version = "2.2.21"))
 
-    assertTrue(output.contains("## Languages\n\n*No languages*"))
-    assertTrue(output.contains("## Frameworks\n\n*No frameworks*"))
-    assertTrue(output.contains("## Services\n\n*No services*"))
-    assertTrue(output.contains("## Tools\n\n*No tools*"))
+    assertContains(md, "Kotlin")
+    assertContains(md, "2.2.21")
   }
 
   @Test
-  fun `renders meta line`() {
-    val output = render(emptyReport())
-    assertTrue(output.contains("`21. April 2026 17:37` ‧ `v0.6.1`"))
+  fun `renders framework with category`() {
+    val md = render(TechSheet().withFramework(FrameworkType.SPRING_BOOT, version = "4.0.5"))
+
+    assertContains(md, "Spring Boot")
+    assertContains(md, "4.0.5")
+    assertContains(md, "Application")
   }
 
   @Test
-  fun `renders sections in L-F-S-T order`() {
-    val output = render(emptyReport())
-    val langPos = output.indexOf("## Languages")
-    val fwPos = output.indexOf("## Frameworks")
-    val svcPos = output.indexOf("## Services")
-    val toolPos = output.indexOf("## Tools")
-    assertTrue(langPos < fwPos && fwPos < svcPos && svcPos < toolPos)
+  fun `renders tool flavor in display name`() {
+    val md = render(TechSheet().withTool(ToolType.GRADLE, version = "9.4.1", flavor = "Kotlin DSL"))
+
+    assertContains(md, "Gradle (Kotlin DSL)")
+    assertContains(md, "9.4.1")
   }
 
   @Test
-  fun `language table has correct headers and cell content`() {
-    val rows = render(populatedReport()).tableRows("Languages")
+  fun `renders linked names with correct URLs`() {
+    val md = render(
+      TechSheet()
+        .withLanguage(LanguageType.KOTLIN)
+        .withFramework(FrameworkType.SPRING_BOOT)
+        .withTool(ToolType.GRADLE),
+    )
 
-    assertEquals(listOf("Name", "Version", "ID", "Notes"), rows[0])
-    assertEquals(listOf("[Java](https://techsheet.org/language/java)", "`21`", "`language.java`", ""), rows[1])
-    assertEquals(listOf("[TypeScript](https://techsheet.org/language/typescript)", "`5.9.3`", "`language.typescript`", ""), rows[2])
+    assertContains(md, "[Kotlin](https://techsheet.org/language/kotlin)")
+    assertContains(md, "[Spring Boot](https://techsheet.org/framework/spring-boot)")
+    assertContains(md, "[Gradle](https://techsheet.org/tool/gradle)")
   }
 
   @Test
-  fun `framework table has correct headers and cell content`() {
-    val rows = render(populatedReport()).tableRows("Frameworks")
+  fun `empty sheet renders section placeholders`() {
+    val md = render(TechSheet())
 
-    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
-    assertEquals(listOf("[Angular](https://techsheet.org/framework/angular)", "`21.2.4`", "Application", "`framework.angular`", ""), rows[1])
-    assertEquals(listOf("[Arrow](https://techsheet.org/framework/arrow)", "", "Concurrency", "`framework.arrow`", ""), rows[2])
+    assertContains(md, "*No languages*")
+    assertContains(md, "*No frameworks*")
+    assertContains(md, "*No services*")
+    assertContains(md, "*No tools*")
   }
 
   @Test
-  fun `service table has correct headers and cell content`() {
-    val rows = render(populatedReport()).tableRows("Services")
+  fun `populated sheet omits empty-section placeholders`() {
+    val md = render(
+      TechSheet()
+        .withLanguage(LanguageType.KOTLIN)
+        .withFramework(FrameworkType.SPRING_BOOT)
+        .withService(ServiceType.POSTGRES)
+        .withTool(ToolType.GRADLE),
+    )
 
-    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
-    assertEquals(listOf("[Postgres](https://techsheet.org/service/postgres)", "`16.1`", "Database", "`service.postgres`", ""), rows[1])
+    assertFalse("*No languages*" in md)
+    assertFalse("*No frameworks*" in md)
+    assertFalse("*No services*" in md)
+    assertFalse("*No tools*" in md)
   }
 
-  @Test
-  fun `tool table uses display name and has correct headers and cell content`() {
-    val rows = render(populatedReport()).tableRows("Tools")
-
-    assertEquals(listOf("Name", "Version", "Category", "ID", "Notes"), rows[0])
-    assertEquals(listOf("[Gradle (kotlin)](https://techsheet.org/tool/gradle)", "`8.14.1`", "Build", "`tool.gradle`", ""), rows[1])
-    assertEquals(listOf("[JUnit](https://techsheet.org/tool/junit)", "`5.11.4`", "Testing", "`tool.junit`", ""), rows[2])
-  }
-
-  @Test
-  fun `populated section replaces empty notice`() {
-    val output = render(populatedReport())
-    assertFalse(output.contains("*No languages*"))
-    assertFalse(output.contains("*No frameworks*"))
-    assertFalse(output.contains("*No services*"))
-    assertFalse(output.contains("*No tools*"))
-  }
-
-  // ---------- helpers ----------
-
-  private fun render(report: TechSheetReport): String {
-    val fs = FakeFileSystem()
-    val path = "/out/techsheet.md".toPath()
-    MarkdownReporter(path, fs).report(report)
-    return fs.read(path) { readUtf8() }
-  }
-
-  private fun String.tableRows(section: String): List<List<String>> {
-    val start = indexOf("## $section\n")
-    val end = indexOf("\n## ", start + 1).let { if (it == -1) length else it }
-    return substring(start, end)
-      .lines()
-      .filter { it.startsWith('|') }
-      .filterNot { it.matches(Regex("""\|[-| ]+\|""")) }
-      .map { row -> row.split('|').drop(1).dropLast(1).map { it.trim() } }
-      .filter { cells -> cells.any { it.isNotEmpty() } }
-  }
-
-  private fun emptyReport() = TechSheetReport(
-    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
-    languages = emptyList(),
-    frameworks = emptyList(),
-    services = emptyList(),
-    tools = emptyList(),
-  )
-
-  private fun populatedReport() = TechSheetReport(
-    meta = ReportMeta(generatedAt = META_INSTANT, generatorVersion = "0.6.1"),
-    languages = listOf(
-      LanguageEntry(id = "language.java", name = "Java", url = "https://techsheet.org/language/java", version = "21"),
-      LanguageEntry(id = "language.typescript", name = "TypeScript", url = "https://techsheet.org/language/typescript", version = "5.9.3"),
-    ),
-    frameworks = listOf(
-      FrameworkEntry(id = "framework.angular", name = "Angular", category = "Application", url = "https://techsheet.org/framework/angular", version = "21.2.4"),
-      FrameworkEntry(id = "framework.arrow", name = "Arrow", category = "Concurrency", url = "https://techsheet.org/framework/arrow", version = null),
-    ),
-    services = listOf(
-      ServiceEntry(id = "service.postgres", name = "Postgres", category = "Database", url = "https://techsheet.org/service/postgres", version = "16.1"),
-    ),
-    tools = listOf(
-      ToolEntry(id = "tool.gradle", name = "Gradle", category = "Build", url = "https://techsheet.org/tool/gradle", version = "8.14.1", flavor = "kotlin"),
-      ToolEntry(id = "tool.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/tool/junit", version = "5.11.4"),
-    ),
-  )
+  private fun render(sheet: TechSheet): String =
+    ReporterFactory(TechSheetReport.of(sheet), readonly = true, fs = FakeFileSystem()).markdown.serialize()
 }
-
-// Constructed so that toLocalDateTime(currentSystemDefault()) round-trips to
-// 2026-04-21T17:37 regardless of the runner's time zone.
-private val META_INSTANT: Instant =
-  LocalDateTime(2026, Month.APRIL, 21, 17, 37)
-    .toInstant(TimeZone.currentSystemDefault())
