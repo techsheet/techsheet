@@ -10,6 +10,7 @@ enum class ServiceType(
   override val title: String,
   val category: ServiceCategory,
 ) : Technology {
+  POSTGRES("postgres", "PostgreSQL", ServiceCategory.DATABASE),
   ;
 
   override val type: String = "service"

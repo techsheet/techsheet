@@ -1,6 +1,7 @@
 package org.techsheet.cli.domain
 
 data class TechSheet(
+  val project: Project = Project(name = Project.DEFAULT_NAME),
   val languages: List<Language> = emptyList(),
   val frameworks: List<Framework> = emptyList(),
   val services: List<Service> = emptyList(),
@@ -54,6 +55,8 @@ data class TechSheet(
   fun hasFramework(type: FrameworkType): Boolean = frameworks.any { it.type == type }
   fun hasService(type: ServiceType): Boolean = services.any { it.type == type }
   fun hasTool(type: ToolType): Boolean = tools.any { it.type == type }
+
+  fun isEmpty(): Boolean = languages.isEmpty() && frameworks.isEmpty() && services.isEmpty() && tools.isEmpty()
 
   operator fun plus(other: TechSheet): TechSheet =
     other.languages.fold(this, TechSheet::withLanguage)

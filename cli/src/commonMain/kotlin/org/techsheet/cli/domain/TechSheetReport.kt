@@ -1,17 +1,12 @@
 package org.techsheet.cli.domain
 
-import kotlin.time.Clock
-import kotlin.time.Instant
 import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
-import org.techsheet.cli.CLI_VERSION
 
-@OptIn(ExperimentalSerializationApi::class)
 @Serializable
 data class TechSheetReport(
   @EncodeDefault(EncodeDefault.Mode.ALWAYS) val schema: Int = 1,
-  val meta: ReportMeta,
+  val project: Project,
   val languages: List<LanguageEntry>,
   val frameworks: List<FrameworkEntry>,
   val services: List<ServiceEntry>,
@@ -19,10 +14,7 @@ data class TechSheetReport(
 ) {
   companion object {
     fun of(sheet: TechSheet): TechSheetReport = TechSheetReport(
-      meta = ReportMeta(
-        generatedAt = Clock.System.now(),
-        generatorVersion = CLI_VERSION,
-      ),
+      project = sheet.project,
       languages = sheet.languages.map {
         LanguageEntry(
           id = it.type.id,
@@ -62,12 +54,6 @@ data class TechSheetReport(
     )
   }
 }
-
-@Serializable
-data class ReportMeta(
-  val generatedAt: Instant,
-  val generatorVersion: String,
-)
 
 @Serializable
 data class LanguageEntry(
