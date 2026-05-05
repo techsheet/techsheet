@@ -20,7 +20,7 @@ fi
 for dir in test-projects/*/; do
   name="$(basename "$dir")"
   echo "==> $name"
-  ./gradlew -q :cli:jvmRun --args="analyze ../test-projects/$name --yaml=techsheet.expected.yml"
+  ./gradlew -q :cli:jvmRun --args="analyze ../test-projects/$name -q --file=../test-projects/$name/techsheet.expected.yml"
 done
 
 echo
