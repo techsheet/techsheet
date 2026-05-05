@@ -16,10 +16,8 @@ import okio.FileSystem
 import okio.IOException
 import okio.Path.Companion.toPath
 import okio.SYSTEM
-import org.techsheet.cli.reporter.ConsoleReporter
-import org.techsheet.cli.reporter.HtmlReporter
-import org.techsheet.cli.reporter.JsonReporter
-import org.techsheet.cli.reporter.MarkdownReporter
+import org.techsheet.cli.domain.TechSheetReport
+import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
 import kotlin.time.measureTimedValue
 
@@ -34,39 +32,51 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   private val ci: Boolean by option("--ci", help = "Enable CI mode, suppresses colors and interaction")
     .flag()
 
-  private val yaml: String? by option(
-    "-y",
-    "--yaml",
-    help = "Export YAML report (optionally specify output path with =)"
-  )
-    .optionalValue("techsheet.yml")
+  private val readOnly: Boolean by option("-r", "--read-only", help = "Skip writing the YAML report (implied by --ci)")
+    .flag()
 
-  private val json: String? by option(
-    "-j",
-    "--json",
+  private val file: String? by option(
+    "--file",
+    help = "Path to the techsheet.yml file (default: techsheet.yml inside the source directory)"
+  )
+
+  private val reportJson: String? by option(
+    "--report-json",
     help = "Export JSON report (optionally specify output path with =)"
   )
     .optionalValue("techsheet.json")
 
-  private val markdown: String? by option(
-    "-m",
-    "--markdown",
+  private val reportMarkdown: String? by option(
+    "--report-markdown",
     help = "Export Markdown report (optionally specify output path with =)"
   )
     .optionalValue("techsheet.md")
 
-  private val html: String? by option(
-    "--html",
+  private val reportHtml: String? by option(
+    "--report-html",
     help = "Export HTML report (optionally specify output path with =)"
   )
     .optionalValue("techsheet.html")
 
-  private val console: Boolean by option(
-    "-c",
-    "--console",
-    help = "Print the console report (implicit when no other reporter is specified)"
-  )
-    .flag()
+  private val outputYaml: Boolean by option(
+    "--output-yaml",
+    help = "Print YAML to stdout instead of the console report"
+  ).flag()
+
+  private val outputJson: Boolean by option(
+    "--output-json",
+    help = "Print JSON to stdout instead of the console report"
+  ).flag()
+
+  private val outputMarkdown: Boolean by option(
+    "--output-markdown",
+    help = "Print Markdown to stdout instead of the console report"
+  ).flag()
+
+  private val outputHtml: Boolean by option(
+    "--output-html",
+    help = "Print HTML to stdout instead of the console report"
+  ).flag()
 
   private val source: String by argument(
     name = "source",
@@ -76,19 +86,22 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   override fun help(context: Context): String = """
     Analyze a project directory and report detected tech stack.
 
-    Walks the given directory looking for manifest files, sources, etc. identify languages, frameworks, services, and tools.
-    By default the result is printed as a console report. Use --markdown, --html, --yaml etc. for other reporting formats.
+    Walks the given directory looking for manifest files, sources, etc. to identify languages,
+    frameworks, services, and tools. Results are always written to techsheet.yml (or --file) and
+    printed as a console report.
 
     Examples:
 
-      analyze                         Analyze current directory & print console report (default)
-      analyze /projects/yx --yaml     Analyze specific directory and write a YAML report
-      analyze --json=out/stack.json   Write JSON report to a custom path
-      analyze -y -j -m                Export YAML, JSON and Markdown
-      analyze --console --yaml        Both console and YAML
+      analyze                                         Analyze current directory, write techsheet.yml & console report
+      analyze /projects/myapp                         Analyze a specific directory
+      analyze --file=custom-techsheet.yml             Write to a custom YAML path
+      analyze --output-json                           Print JSON to stdout instead of the console report
+      analyze --output-json --report-html             Print JSON to stdout and also write HTML to file
+      analyze --report-json=out/stack.json            Also write a JSON report file
   """.trimIndent()
 
   override fun run() {
+
     val minSeverity = when {
       verbose -> Severity.Debug
       quiet -> Severity.Warn
@@ -100,7 +113,16 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       tag = "analyze",
     )
 
-    val sourcePath = FileSystem.SYSTEM.canonicalize(source.toPath())
+    val fs = FileSystem.SYSTEM
+
+    val activeOutputs = listOf(outputYaml, outputJson, outputMarkdown, outputHtml)
+      .filter { it }
+
+    if (activeOutputs.size > 1) {
+      throw CliktError("Only one --output-* flag may be active at a time")
+    }
+
+    val sourcePath = fs.canonicalize(source.toPath())
 
     val ctx = AnalyzerContext(
       path = sourcePath,
@@ -108,45 +130,54 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
     )
 
     log.i { "Starting project analysis..." }
+    val sheet = measureTimedValue { Analyzer(log).analyze(ctx) }
+      .also { log.i { "Project analyzed in ${it.duration}." } }
+      .value
 
-    val timed = measureTimedValue { Analyzer(log).analyze(ctx) }
-    val sheet = timed.value
+    //FIXME: Include user data from existing report once implemented
+    val reporters = ReporterFactory(
+      report = TechSheetReport.of(sheet),
+      readonly = readOnly || ci,
+      fs = fs
+    )
 
-    log.i { "" }
-    log.i { "Project analyzed in ${timed.duration}." }
+    val targetFile = file?.toPath(normalize = true) ?: (sourcePath / YamlReporter.DEFAULT_FILE_NAME)
 
-    yaml?.let {
-      val target = sourcePath / it.toPath()
-      log.i { "Writing YAML report to: $target" }
-      writeReport("YAML", target) { YamlReporter(target).report(sheet) }
+    if (!reporters.readonly) {
+      log.i { "Writing YAML report to: $targetFile" }
+      catchErrors("YAML", targetFile) { reporters.yaml.report(targetFile) }
     }
 
-    json?.let {
-      val target = sourcePath / it.toPath()
+    reportJson?.let {
+      val target = it.toPath(normalize = true)
       log.i { "Writing JSON report to: $target" }
-      writeReport("JSON", target) { JsonReporter(target).report(sheet) }
+      catchErrors("JSON", target) { reporters.json.report(target) }
     }
 
-    markdown?.let {
-      val target = sourcePath / it.toPath()
+    reportMarkdown?.let {
+      val target = it.toPath(normalize = true)
       log.i { "Writing Markdown report to: $target" }
-      writeReport("Markdown", target) { MarkdownReporter(target).report(sheet) }
+      catchErrors("Markdown", target) { reporters.markdown.report(target) }
     }
 
-    html?.let {
-      val target = sourcePath / it.toPath()
+    reportHtml?.let {
+      val target = it.toPath(normalize = true)
       log.i { "Writing HTML report to: $target" }
-      writeReport("HTML", target) { HtmlReporter(target).report(sheet) }
+      catchErrors("HTML", target) { reporters.html.report(target) }
     }
 
-    val anyExplicit = yaml != null || json != null || markdown != null || html != null || console
-    if (console || !anyExplicit) {
-      log.i { "" }
-      ConsoleReporter(plain = ci).report(sheet)
+    when {
+      outputYaml -> reporters.yaml.output()
+      outputJson -> reporters.json.output()
+      outputMarkdown -> reporters.markdown.output()
+      outputHtml -> reporters.html.output()
+      else -> if(!quiet) {
+        reporters.console.output()
+      }
     }
   }
 
-  private inline fun writeReport(format: String, target: okio.Path, write: () -> Unit) {
+  private inline fun catchErrors(format: String, target: okio.Path, write: () -> Unit) {
     try {
       write()
     } catch (e: FileNotFoundException) {

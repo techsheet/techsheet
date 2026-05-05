@@ -4,22 +4,25 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import okio.FileSystem
 import okio.Path
-import okio.SYSTEM
 import org.techsheet.cli.domain.TechSheetReport
 
 class YamlReporter(
-  path: Path,
-  fs: FileSystem = FileSystem.SYSTEM,
-) : AbstractFileReporter(path, fs) {
+  private val report: TechSheetReport,
+  fs: FileSystem,
+) : Reporter(fs) {
 
   private val yaml = Yaml(
     configuration = YamlConfiguration(
       encodeDefaults = false,
-      strictMode = false,
+      strictMode = true,
       sequenceBlockIndent = 2,
     ),
   )
 
-  override fun serialize(report: TechSheetReport): String =
+  override fun serialize(): String =
     yaml.encodeToString(TechSheetReport.serializer(), report) + "\n"
+
+  companion object {
+    const val DEFAULT_FILE_NAME = "techsheet.yml"
+  }
 }

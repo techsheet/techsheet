@@ -2,21 +2,19 @@ package org.techsheet.cli.reporter
 
 import okio.FileSystem
 import okio.Path
-import okio.SYSTEM
 import org.techsheet.cli.domain.*
-import org.techsheet.cli.util.formatDefault
 
 class HtmlReporter(
-  path: Path,
-  fs: FileSystem = FileSystem.SYSTEM,
-) : AbstractFileReporter(path, fs) {
+  private val report: TechSheetReport,
+  fs: FileSystem,
+) : Reporter(fs) {
 
-  override fun serialize(report: TechSheetReport): String = buildString {
+  override fun serialize(): String = buildString {
     appendLine("<!DOCTYPE html>")
     appendLine("""<html lang="en">""")
     appendLine("<head>")
     appendLine("""  <meta charset="utf-8">""")
-    appendLine("""  <meta name="generator" content="TechSheet.org CLI ${report.meta.generatorVersion}">""")
+    appendLine("""  <meta name="generator" content="TechSheet.org CLI">""")
     appendLine("""  <meta name="viewport" content="width=device-width, initial-scale=1">""")
     appendLine("  <title>TechSheet</title>")
     appendLine("""  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"""")
@@ -26,7 +24,6 @@ class HtmlReporter(
     appendLine("""<main class="container-fluid py-5 px-5">""")
     appendLine()
     appendLine("""  <h1 class="display-2">TechSheet</h1>""")
-    appendLine("  ${formatMeta(report.meta)}")
     appendLine()
     appendSection("languages", "Languages", LANGUAGE_SECTION_HEADERS, report.languages.map { it.asTableRow() })
     appendLine()
@@ -67,9 +64,6 @@ class HtmlReporter(
     }
     appendLine("  </section>")
   }
-
-  private fun formatMeta(meta: ReportMeta): String =
-    "<p><code>${escape(meta.generatedAt.formatDefault())}</code> ‧ <code>v${escape(meta.generatorVersion)}</code></p>"
 
   private fun LanguageEntry.asTableRow() =
     listOf(link(url, name), version(version), id(id), "")

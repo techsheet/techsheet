@@ -1,70 +1,49 @@
 package org.techsheet.cli.reporter
 
+import okio.FileSystem
+import okio.Path
 import org.techsheet.cli.CLI_VERSION
-import org.techsheet.cli.domain.FrameworkCategory
-import org.techsheet.cli.domain.ServiceCategory
-import org.techsheet.cli.domain.TechSheet
-import org.techsheet.cli.domain.ToolCategory
+import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.util.AnsiStyle
 
 class ConsoleReporter(
+  private val report: TechSheetReport,
+  fs: FileSystem,
   plain: Boolean = false,
-  private val emit: (String) -> Unit = ::println,
-) : Reporter {
+) : Reporter(fs) {
 
   private val style = AnsiStyle(plain)
   private val itemPrefix = if (plain) "- " else ""
 
-  override fun report(sheet: TechSheet) {
-    val body = renderBody(sheet)
+  override fun serialize(): String {
+    val body = renderBody()
     val width = maxOf(MIN_WIDTH, body.maxOf { AnsiStyle.visibleLength(it) } + 2)
-    val lines = buildList {
+
+    return buildList {
       add("")
       add(topRule(width))
       add("")
       addAll(body)
       add(style.cyan("─".repeat(width)))
       add("")
-    }
-    lines.forEach(emit)
+    }.joinToString("\n")
   }
 
-  private fun renderBody(sheet: TechSheet): List<String> = buildList {
+  override fun report(targetFile: Path): Nothing =
+    throw UnsupportedOperationException("ConsoleReporter does not support file output")
+
+  private fun renderBody(): List<String> = buildList {
     val sections = listOfNotNull(
-      flatSection(
-        "Languages",
-        sheet.languages,
-      ) { Entry(it.type.id, it.type.title, it.version) },
-      categorizedSection(
-        "Frameworks",
-        sheet.frameworks,
-        FrameworkCategory.entries,
-        { it.type.category },
-        { it.title },
-      ) { Entry(it.type.id, it.type.title, it.version) },
-      categorizedSection(
-        "Services",
-        sheet.services,
-        ServiceCategory.entries,
-        { it.type.category },
-        { it.title },
-      ) { Entry(it.type.id, it.type.title, it.version) },
-      categorizedSection(
-        "Tools",
-        sheet.tools,
-        ToolCategory.entries,
-        { it.type.category },
-        { it.title },
-      ) {
-        val label = it.flavor?.let { f -> "${it.type.title} ($f)" } ?: it.type.title
-        Entry(it.type.id, label, it.version)
-      },
+      flatSection("Languages", report.languages) { Entry(it.id, it.name, it.version) },
+      categorizedSection("Frameworks", report.frameworks, { it.category }) { Entry(it.id, it.name, it.version) },
+      categorizedSection("Services", report.services, { it.category }) { Entry(it.id, it.name, it.version) },
+      categorizedSection("Tools", report.tools, { it.category }) { Entry(it.id, displayName(it.name, it.flavor), it.version) },
     )
     if (sections.isEmpty()) {
       add(" Nothing detected.")
     } else {
       sections.forEach { addAll(it); add("") }
-      add(summary(sheet))
+      add(summary())
     }
   }
 
@@ -82,12 +61,10 @@ class ConsoleReporter(
     }
   }
 
-  private fun <T, C : Enum<C>> categorizedSection(
+  private fun <T> categorizedSection(
     header: String,
     items: List<T>,
-    order: List<C>,
-    categoryOf: (T) -> C,
-    categoryTitle: (C) -> String,
+    categoryOf: (T) -> String,
     asEntry: (T) -> Entry,
   ): List<String>? = items.takeIf { it.isNotEmpty() }?.let { list ->
     val mapped = list.map { categoryOf(it) to asEntry(it) }
@@ -96,9 +73,9 @@ class ConsoleReporter(
     val grouped = mapped.groupBy({ it.first }, { it.second })
     buildList {
       add(sectionHeader(header))
-      order.forEach { category ->
+      grouped.keys.sorted().forEach { category ->
         grouped[category]?.let { entries ->
-          add(" ${style.green(categoryTitle(category))}")
+          add(" ${style.green(category)}")
           entries.forEach { add(itemLine(it, nameWidth, versionWidth)) }
         }
       }
@@ -117,12 +94,15 @@ class ConsoleReporter(
 
   private fun sectionHeader(text: String): String = " ${style.yellowBold(text)}"
 
-  private fun summary(sheet: TechSheet): String {
+  private fun displayName(name: String, flavor: String?): String =
+    flavor?.let { "$name ($it)" } ?: name
+
+  private fun summary(): String {
     val parts = listOf(
-      pluralize(sheet.languages.size, "language", "languages"),
-      pluralize(sheet.frameworks.size, "framework", "frameworks"),
-      pluralize(sheet.services.size, "service", "services"),
-      pluralize(sheet.tools.size, "tool", "tools"),
+      pluralize(report.languages.size, "language", "languages"),
+      pluralize(report.frameworks.size, "framework", "frameworks"),
+      pluralize(report.services.size, "service", "services"),
+      pluralize(report.tools.size, "tool", "tools"),
     )
     return " " + style.dim("Total: " + parts.joinToString(" · "))
   }
