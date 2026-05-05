@@ -1,7 +1,5 @@
 # TechSheet
 
-`4. May 2026 16:15` ‧ `v1.2.0`
-
 ## Languages
 
 | Name                                                    | Version   | ID                    | Notes |

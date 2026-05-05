@@ -1,8 +1,8 @@
 {
-  "schema": 1,
-  "meta": {
-    "generatedAt": "2026-05-04T14:15:10.538640931Z",
-    "generatorVersion": "1.2.0"
+  "schema": 2,
+  "project": {
+    "id": "c7d2be65-447a-4c29-9840-566fa561587b",
+    "name": "unknown-project"
   },
   "languages": [
     {

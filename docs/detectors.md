@@ -149,10 +149,11 @@
 
 ## Services
 
-*Currently supporting **0** services:*
+*Currently supporting **1** services:*
 
-| Name | Category | URL |
-|------|----------|-----|
+| Name       | Category | URL                                    |
+|------------|----------|----------------------------------------|
+| PostgreSQL | Database | https://techsheet.org/service/postgres |
 
 ## Tools
 

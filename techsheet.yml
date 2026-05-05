@@ -1,7 +1,7 @@
 schema: 2
 project:
-  id: "c7d2be65-447a-4c29-9840-566fa561587b"
-  name: "unknown-project"
+  id: "805f9d16-295e-461d-babb-95608cd2cc38"
+  name: "TechSheet"
 languages:
   - id: "language.csharp"
     name: "C#"

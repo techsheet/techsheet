@@ -22,7 +22,11 @@ sed -i \
   README.md
 
 ./gradlew :cli:jvmRun --args="analyze ../ \
-  --markdown=docs/example/techsheet.md \
-  --html=docs/example/techsheet.html \
-  --yaml=docs/example/techsheet.yml \
-  --json=docs/example/techsheet.json"
+  --file=../techsheet.yml"
+
+./gradlew :cli:jvmRun --args="analyze ../ \
+  -q \
+  --file=../docs/example/techsheet.yml \
+  --report-markdown=../docs/example/techsheet.md \
+  --report-html=../docs/example/techsheet.html \
+  --report-json=../docs/example/techsheet.json"
