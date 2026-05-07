@@ -1,3 +1,8 @@
+@file:OptIn(KotlinNativeCacheApi::class)
+
+import org.jetbrains.kotlin.gradle.plugin.mpp.DisableCacheInKotlinVersion
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeCacheApi
+
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.kotlinSerialization)
@@ -24,6 +29,10 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+        disableNativeCache(
+          version = DisableCacheInKotlinVersion.`2_3_20`,
+          reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
+        )
       }
     }
   }
@@ -33,6 +42,10 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+        disableNativeCache(
+          version = DisableCacheInKotlinVersion.`2_3_20`,
+          reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
+        )
       }
     }
   }
@@ -42,6 +55,10 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+        disableNativeCache(
+          version = DisableCacheInKotlinVersion.`2_3_20`,
+          reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
+        )
       }
     }
   }
@@ -60,10 +77,12 @@ kotlin {
     }
     commonTest.dependencies {
       implementation(libs.kotlin.test)
+      implementation(libs.kotest.assertions.core)
       implementation(libs.okio.fakefilesystem)
     }
     jvmTest.dependencies {
       implementation(libs.kotlin.test.junit5)
+      implementation(libs.kotest.assertions.core)
       implementation(libs.junit.jupiter)
     }
   }

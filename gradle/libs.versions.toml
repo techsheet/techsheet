@@ -9,7 +9,7 @@ kotlinx-serialization = "1.9.0"
 okio = "3.16.2"
 
 [libraries]
-clikt = { module = "com.github.ajalt.clikt:clikt-core", version.ref = "clikt" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
 kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }

@@ -53,8 +53,6 @@ class AnalyzerIntegrationTest {
     val ctx = AnalyzerContext(path = dir, log = log)
     val sheet = Analyzer(log).analyze(ctx)
 
-    //TODO: YamlReporter(actualFile, fs).report(TechSheetReport.of(sheet))
-
     ReporterFactory(TechSheetReport.of(sheet), readonly = false, fs = fs)
       .yaml
       .report(actualFile)

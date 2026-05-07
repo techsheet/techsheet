@@ -3,9 +3,9 @@ package org.techsheet.cli
 import co.touchlab.kermit.Logger
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.StaticConfig
+import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.CliktError
 import com.github.ajalt.clikt.core.Context
-import com.github.ajalt.clikt.core.CoreCliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
 import com.github.ajalt.clikt.parameters.options.flag
@@ -19,21 +19,33 @@ import okio.SYSTEM
 import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
+import org.techsheet.cli.util.ConsolePrinter
 import kotlin.time.measureTimedValue
 
-class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
+class AnalyzerCommand : CliktCommand(name = "analyze") {
 
-  private val verbose: Boolean by option("-v", "--verbose", help = "Enable verbose output")
-    .flag()
+  private val verbose: Boolean by option(
+    "-v",
+    "--verbose",
+    help = "Enable verbose output"
+  ).flag()
 
-  private val quiet: Boolean by option("-q", "--quiet", help = "Reduce output to a minimum")
-    .flag()
+  private val quiet: Boolean by option(
+    "-q",
+    "--quiet",
+    help = "Reduce output to a minimum"
+  ).flag()
 
-  private val ci: Boolean by option("--ci", help = "Enable CI mode, suppresses colors and interaction")
-    .flag()
+  private val ci: Boolean by option(
+    "--ci",
+    help = "Enable CI mode, suppresses colors and interaction"
+  ).flag()
 
-  private val readOnly: Boolean by option("-r", "--read-only", help = "Skip writing the YAML report (implied by --ci)")
-    .flag()
+  private val readOnly: Boolean by option(
+    "-r",
+    "--read-only",
+    help = "Skip writing the YAML report (implied by --ci)"
+  ).flag()
 
   private val file: String? by option(
     "--file",
@@ -86,18 +98,8 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
   override fun help(context: Context): String = """
     Analyze a project directory and report detected tech stack.
 
-    Walks the given directory looking for manifest files, sources, etc. to identify languages,
-    frameworks, services, and tools. Results are always written to techsheet.yml (or --file) and
+    Detects used languages, frameworks, services, and tools. Results are written to techsheet.yml (or --file) and
     printed as a console report.
-
-    Examples:
-
-      analyze                                         Analyze current directory, write techsheet.yml & console report
-      analyze /projects/myapp                         Analyze a specific directory
-      analyze --file=custom-techsheet.yml             Write to a custom YAML path
-      analyze --output-json                           Print JSON to stdout instead of the console report
-      analyze --output-json --report-html             Print JSON to stdout and also write HTML to file
-      analyze --report-json=out/stack.json            Also write a JSON report file
   """.trimIndent()
 
   override fun run() {
@@ -135,9 +137,10 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       .value
 
     //FIXME: Include user data from existing report once implemented
+    val report = TechSheetReport.of(sheet)
     val reporters = ReporterFactory(
-      report = TechSheetReport.of(sheet),
-      readonly = readOnly || ci,
+      report = report,
+      readonly = readOnly,
       fs = fs
     )
 
@@ -166,14 +169,19 @@ class AnalyzerCommand : CoreCliktCommand(name = "analyze") {
       catchErrors("HTML", target) { reporters.html.report(target) }
     }
 
+    val stdout = when {
+      outputYaml -> reporters.yaml.serialize()
+      outputJson -> reporters.json.serialize()
+      outputMarkdown -> reporters.markdown.serialize()
+      outputHtml -> reporters.html.serialize()
+      else -> null
+    }
+
     when {
-      outputYaml -> reporters.yaml.output()
-      outputJson -> reporters.json.output()
-      outputMarkdown -> reporters.markdown.output()
-      outputHtml -> reporters.html.output()
-      else -> if(!quiet) {
-        reporters.console.output()
-      }
+      stdout != null ->
+        echo(stdout, true)
+      !quiet ->
+        ConsolePrinter(color = !ci).printReport(report)
     }
   }
 

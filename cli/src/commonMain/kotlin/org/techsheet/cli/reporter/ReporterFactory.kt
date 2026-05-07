@@ -18,6 +18,4 @@ data class ReporterFactory(
   val markdown: Reporter by lazy { MarkdownReporter(report, fs) }
 
   val html: Reporter by lazy { HtmlReporter(report, fs) }
-
-  val console: Reporter by lazy { ConsoleReporter(report, fs, plain = readonly) }
 }
