@@ -77,12 +77,10 @@ kotlin {
     }
     commonTest.dependencies {
       implementation(libs.kotlin.test)
-      implementation(libs.kotest.assertions.core)
       implementation(libs.okio.fakefilesystem)
     }
     jvmTest.dependencies {
       implementation(libs.kotlin.test.junit5)
-      implementation(libs.kotest.assertions.core)
       implementation(libs.junit.jupiter)
     }
   }

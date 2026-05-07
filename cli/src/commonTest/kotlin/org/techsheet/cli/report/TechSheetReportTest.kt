@@ -21,8 +21,6 @@ class TechSheetReportTest {
     val report = TechSheetReport.of(sheet)
 
     assertEquals(1, report.schema)
-    assertNotNull(report.project.id)
-    assertEquals(Project.DEFAULT_NAME, report.project.name)
 
     assertEquals(2, report.languages.size)
     assertEquals("language.javascript", report.languages[0].id)

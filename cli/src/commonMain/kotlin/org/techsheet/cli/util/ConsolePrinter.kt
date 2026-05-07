@@ -65,7 +65,7 @@ class ConsolePrinter(val terminal: Terminal) {
     printFooter()
   }
 
-  private fun printHeader() {
+  fun printHeader() {
     terminal.println("")
     terminal.println(
       buildList {

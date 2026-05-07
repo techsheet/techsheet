@@ -1,9 +1,10 @@
 package org.techsheet.cli
 
+import com.github.ajalt.clikt.core.context
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 
 fun main(args: Array<String>) =
   TechsheetCli()
-    .subcommands(AnalyzerCommand(), DetectorsCommand())
+    .subcommands(AnalyzerCommand(), InitCommand(), DetectorsCommand())
     .main(args)

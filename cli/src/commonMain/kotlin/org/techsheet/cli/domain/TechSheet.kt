@@ -1,7 +1,7 @@
 package org.techsheet.cli.domain
 
 data class TechSheet(
-  val project: Project = Project(name = Project.DEFAULT_NAME),
+  val project: Project? = null,
   val languages: List<Language> = emptyList(),
   val frameworks: List<Framework> = emptyList(),
   val services: List<Service> = emptyList(),

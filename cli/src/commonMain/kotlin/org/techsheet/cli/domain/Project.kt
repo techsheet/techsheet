@@ -5,18 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Project(
-  val id: Uuid = Uuid.random(),
+  val id: Uuid,
   val name: String,
   val description: String? = null,
   val team: ProjectTeam? = null,
   val urls: List<ProjectUrl>? = null,
   val server: ProjectServer? = null,
-) {
-  companion object {
-
-    const val DEFAULT_NAME = "unknown-project"
-  }
-}
+)
 
 @Serializable
 data class ProjectTeam(
