@@ -15,11 +15,12 @@ cd "$(dirname "$0")/.."
 languages=$(grep -m1 "Currently supporting.*languages" docs/detectors.md | grep -o '[0-9]\+')
 frameworks=$(grep -m1 "Currently supporting.*frameworks" docs/detectors.md | grep -o '[0-9]\+')
 tools=$(grep -m1 "Currently supporting.*tools" docs/detectors.md | grep -o '[0-9]\+')
-sed -i \
+sed -i.bak \
   -e "s/\[[0-9]*+ languages\]/[${languages}+ languages]/" \
   -e "s/\[[0-9]*+ frameworks\]/[${frameworks}+ frameworks]/" \
   -e "s/\[[0-9]*+ tools\]/[${tools}+ tools]/" \
   README.md
+rm -f README.md.bak
 
 ./gradlew :cli:jvmRun --args="analyze ../ \
   --markdown=docs/example/techsheet.md \
