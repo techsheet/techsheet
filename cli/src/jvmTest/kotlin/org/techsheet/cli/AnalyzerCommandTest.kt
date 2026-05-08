@@ -1,26 +1,23 @@
 package org.techsheet.cli
 
-import com.github.ajalt.clikt.core.parse
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
-import java.nio.file.Files
+import com.github.ajalt.clikt.testing.test
 import java.nio.file.Path
 import kotlin.io.path.exists
 import kotlin.io.path.readText
 import kotlin.test.Test
 import kotlin.test.assertContains
-import kotlin.test.assertFails
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
-class AnalyzerCommandTest {
+class AnalyzerCommandTest : AbstractCommandTest() {
 
   // ###### default behaviour
 
   @Test
   fun `default mode prints console report to stdout`() {
-    val stdout = run(emptyDir())
-    assertContains(stdout, "───── TechSheet")
+    val output = run(emptyDir())
+    assertContains(output, "───── TechSheet")
   }
 
   @Test
@@ -32,18 +29,18 @@ class AnalyzerCommandTest {
 
   @Test
   fun `default mode logs progress`() {
-    val stdout = run(emptyDir())
-    assertContains(stdout, "Starting project analysis")
-    assertContains(stdout, "Project analyzed in")
+    val output = run(emptyDir())
+    assertContains(output, "Starting project analysis")
+    assertContains(output, "Project analyzed in")
   }
 
   // ###### verbosity flags
 
   @Test
   fun `-q suppresses logs and console report`() {
-    val stdout = run("-q", emptyDir())
-    assertFalse("Starting project analysis" in stdout)
-    assertFalse("───── TechSheet" in stdout)
+    val output = run("-q", emptyDir())
+    assertFalse("Starting project analysis" in output)
+    assertFalse("───── TechSheet" in output)
   }
 
   @Test
@@ -53,7 +50,7 @@ class AnalyzerCommandTest {
     assertTrue(Path.of(dir, "techsheet.yml").exists())
   }
 
-  // ###### read-only / ci
+  // ###### --read-only
 
   @Test
   fun `--read-only skips writing YAML file`() {
@@ -64,8 +61,8 @@ class AnalyzerCommandTest {
 
   @Test
   fun `--read-only still prints console report`() {
-    val stdout = run("--read-only", emptyDir())
-    assertContains(stdout, "───── TechSheet")
+    val output = run("--read-only", emptyDir())
+    assertContains(output, "───── TechSheet")
   }
 
   @Test
@@ -73,20 +70,6 @@ class AnalyzerCommandTest {
     val dir = emptyDir()
     run("-r", dir)
     assertFalse(Path.of(dir, "techsheet.yml").exists())
-  }
-
-  @Test
-  fun `--ci skips writing YAML file`() {
-    val dir = emptyDir()
-    run("--ci", dir)
-    assertFalse(Path.of(dir, "techsheet.yml").exists())
-  }
-
-  @Test
-  fun `--ci prints console report in plain mode (no ANSI)`() {
-    val stdout = run("--ci", emptyDir())
-    assertContains(stdout, "───── TechSheet")
-    assertFalse("[" in stdout, "expected no ANSI escape codes with --ci")
   }
 
   // ###### --file
@@ -128,17 +111,17 @@ class AnalyzerCommandTest {
 
   @Test
   fun `--report- does not suppress console report`() {
-    val stdout = run("--report-json=${tempFile("t.json")}", emptyDir())
-    assertTrue("───── TechSheet" in stdout, "--report-* should not suppress console report")
+    val output = run("--report-json=${tempFile("t.json")}", emptyDir())
+    assertTrue("───── TechSheet" in output, "--report-* should not suppress console report")
   }
 
   // ###### --output-* (stdout)
 
   @Test
   fun `--output-yaml prints YAML to stdout instead of console`() {
-    val stdout = run("--output-yaml", emptyDir())
-    assertContains(stdout, "schema:")
-    assertFalse("───── TechSheet" in stdout)
+    val output = run("--output-yaml", emptyDir())
+    assertContains(output, "schema:")
+    assertFalse("───── TechSheet" in output)
   }
 
   @Test
@@ -150,62 +133,42 @@ class AnalyzerCommandTest {
 
   @Test
   fun `--output-json prints JSON to stdout instead of console`() {
-    val stdout = run("--output-json", emptyDir())
-    assertContains(stdout, """"schema"""")
-    assertFalse("───── TechSheet" in stdout)
+    val output = run("--output-json", emptyDir())
+    assertContains(output, """"schema"""")
+    assertFalse("───── TechSheet" in output)
   }
 
   @Test
   fun `--output-markdown prints Markdown to stdout instead of console`() {
-    val stdout = run("--output-markdown", emptyDir())
-    assertContains(stdout, "# TechSheet")
-    assertFalse("───── TechSheet" in stdout)
+    val output = run("--output-markdown", emptyDir())
+    assertContains(output, "# TechSheet")
+    assertFalse("───── TechSheet" in output)
   }
 
   @Test
   fun `--output-html prints HTML to stdout instead of console`() {
-    val stdout = run("--output-html", emptyDir())
-    assertContains(stdout, "<!DOCTYPE html>")
-    assertFalse("───── TechSheet" in stdout)
+    val output = run("--output-html", emptyDir())
+    assertContains(output, "<!DOCTYPE html>")
+    assertFalse("───── TechSheet" in output)
   }
 
   @Test
   fun `combining two --output- flags fails with error`() {
-    assertFails {
-      AnalyzerCommand().parse(arrayOf("--output-json", "--output-yaml", emptyDir()))
-    }
+    val result = AnalyzerCommand().test("--output-json --output-yaml ${emptyDir()}")
+    assertNotEquals(0, result.statusCode)
   }
 
   @Test
   fun `--output-json combined with --report-html writes HTML file and prints JSON`() {
     val htmlFile = tempFile("techsheet.html")
-    val stdout = run("--output-json", "--report-html=$htmlFile", emptyDir())
-    assertContains(stdout, """"schema"""")
+    val output = run("--output-json", "--report-html=$htmlFile", emptyDir())
+    assertContains(output, """"schema"""")
     assertTrue(htmlFile.exists())
     assertContains(htmlFile.readText(), "<!DOCTYPE html>")
   }
 
   // ###### helpers
 
-  private fun run(vararg args: String): String = captureStdout {
-    AnalyzerCommand().parse(arrayOf(*args))
-  }
-
-  private fun captureStdout(block: () -> Unit): String {
-    val buffer = ByteArrayOutputStream()
-    val original = System.out
-    System.setOut(PrintStream(buffer))
-    try {
-      block()
-    } finally {
-      System.setOut(original)
-    }
-    return buffer.toString()
-  }
-
-  private fun emptyDir(): String =
-    Files.createTempDirectory("techsheet-cmd-test").toString()
-
-  private fun tempFile(name: String): Path =
-    Files.createTempDirectory("techsheet-cmd-test").resolve(name)
+  private fun run(vararg args: String): String =
+    AnalyzerCommand().test(args.joinToString(" ")).output
 }

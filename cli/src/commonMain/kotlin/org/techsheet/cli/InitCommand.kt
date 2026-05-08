@@ -3,17 +3,21 @@ package org.techsheet.cli
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.CliktError
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.terminal
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.options.prompt
+import com.github.ajalt.mordant.rendering.TextColors.brightWhite
+import com.github.ajalt.mordant.rendering.TextStyles.dim
+import com.github.ajalt.mordant.terminal.prompt
 import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.domain.*
 import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
+import org.techsheet.cli.util.ConsolePrinter
 import kotlin.uuid.Uuid
 
 class InitCommand : CliktCommand(name = "init") {
@@ -25,21 +29,6 @@ class InitCommand : CliktCommand(name = "init") {
     "--file",
     help = "Path to write the techsheet.yml (default: ${YamlReporter.DEFAULT_FILE_NAME} inside the source directory)",
   )
-
-  private val name: String by option("--name", help = "Project name")
-    .prompt("Project name")
-
-  private val description: String? by option("--description", help = "Project description")
-    .prompt("Description", default = null)
-
-  private val teamName: String? by option("--team", help = "Team name")
-    .prompt("Team name", default = null)
-
-  private val websiteUrl: String? by option("--website", help = "Website URL")
-    .prompt("Website URL", default = null)
-
-  private val repoUrl: String? by option("--repo", help = "Repository URL")
-    .prompt("Repository URL", default = null)
 
   private val source: String by argument(
     name = "source",
@@ -54,12 +43,38 @@ class InitCommand : CliktCommand(name = "init") {
 
   override fun run() {
     val fs = FileSystem.SYSTEM
+
+    ConsolePrinter(terminal).printHeader()
+    buildList {
+      add(
+        brightWhite(
+          "This wizard helps with creating a new techsheet.yml within your project and runs an initial analysis."
+        )
+      )
+      add(
+        dim(
+          "Please fill the following properties to start:"
+        )
+      )
+    }.forEach { terminal.println(it) }
+
     val sourcePath = fs.canonicalize(source.toPath())
     val targetFile = file?.toPath(normalize = true) ?: (sourcePath / YamlReporter.DEFAULT_FILE_NAME)
 
     if (fs.exists(targetFile) && !force) {
       throw CliktError("$targetFile already exists. Use --force to overwrite.")
     }
+
+    val name = terminal.prompt("Project name")
+      ?: throw CliktError("Please provide a valid project name")
+
+    val description = terminal.prompt("Project description")
+
+    val teamName = terminal.prompt("Team name")
+
+    val websiteUrl = terminal.prompt("Website URL")
+
+    val repoUrl = terminal.prompt("Repository URL")
 
     val project = Project(
       id = Uuid.random(),

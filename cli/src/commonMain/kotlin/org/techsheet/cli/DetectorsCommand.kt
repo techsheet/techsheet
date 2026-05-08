@@ -3,7 +3,7 @@ package org.techsheet.cli
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.CliktError
 import com.github.ajalt.clikt.core.Context
-import com.github.ajalt.clikt.parameters.options.flag
+import com.github.ajalt.clikt.core.terminal
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.optionalValue
 import okio.FileNotFoundException
@@ -20,15 +20,14 @@ import org.techsheet.cli.util.MarkdownRenderer
 
 class DetectorsCommand : CliktCommand(name = "detectors") {
 
-  private val ci: Boolean by option("--ci", help = "Render the output without ANSI colors").flag()
-
   private val markdown: String? by option(
     "-m", "--markdown",
     help = "Write the detector list as Markdown (optionally specify output path with =)",
   ).optionalValue("detectors.md")
 
   override fun help(context: Context): String = """
-    List all technologies that techsheet can cureently detect.
+    List all technologies that techsheet can currently detect. Colors and formatting are stripped automatically when
+    stdout is not a TTY. Set NO_COLOR=1 to force plain text in any environment.
   """.trimIndent()
 
   override fun run() {
@@ -45,11 +44,11 @@ class DetectorsCommand : CliktCommand(name = "detectors") {
         val detail = listOfNotNull(e::class.simpleName, e.message).joinToString(": ")
         throw CliktError("Unexpected error writing Markdown detector list to $target: $detail")
       }
-      println("Wrote Markdown detector list to $target")
+      echo("Wrote Markdown detector list to $target")
       return
     }
 
-    ConsolePrinter(!ci).printDetectors()
+    ConsolePrinter(terminal).printDetectors()
   }
 
   //FIXME: Extract markdown rendering

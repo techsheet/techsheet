@@ -6,6 +6,7 @@ import co.touchlab.kermit.StaticConfig
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.CliktError
 import com.github.ajalt.clikt.core.Context
+import com.github.ajalt.clikt.core.terminal
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
 import com.github.ajalt.clikt.parameters.options.flag
@@ -36,15 +37,10 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     help = "Reduce output to a minimum"
   ).flag()
 
-  private val ci: Boolean by option(
-    "--ci",
-    help = "Enable CI mode, suppresses colors and interaction"
-  ).flag()
-
   private val readOnly: Boolean by option(
     "-r",
     "--read-only",
-    help = "Skip writing the YAML report (implied by --ci)"
+    help = "Skip writing the YAML report"
   ).flag()
 
   private val file: String? by option(
@@ -99,7 +95,8 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     Analyze a project directory and report detected tech stack.
 
     Detects used languages, frameworks, services, and tools. Results are written to techsheet.yml (or --file) and
-    printed as a console report.
+    printed as a console report. Colors and formatting are stripped automatically when stdout is not a TTY. Set
+    NO_COLOR=1 to force plain text in any environment.
   """.trimIndent()
 
   override fun run() {
@@ -111,7 +108,7 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     }
 
     val log = Logger(
-      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(PlainLogWriter())),
+      config = StaticConfig(minSeverity = minSeverity, logWriterList = listOf(PlainLogWriter(terminal))),
       tag = "analyze",
     )
 
@@ -140,7 +137,7 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     val report = TechSheetReport.of(sheet)
     val reporters = ReporterFactory(
       report = report,
-      readonly = readOnly || ci,
+      readonly = readOnly,
       fs = fs
     )
 
@@ -181,7 +178,7 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
       stdout != null ->
         echo(stdout, true)
       !quiet ->
-        ConsolePrinter(color = !ci).printReport(report)
+        ConsolePrinter(terminal).printReport(report)
     }
   }
 
