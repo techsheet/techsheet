@@ -59,7 +59,13 @@ docker run --rm -v "$PWD:/workspace" ghcr.io/techsheet/analyzer
 <details>
 <summary>Apple macOS</summary>
 
-Download the precompiled binary from releases:
+Install using homebrew:
+
+```bash
+brew install techsheet/tap/techsheet-cli
+```
+
+...or download the precompiled binary from releases:
 
 ```bash
 sudo curl -fsSL -o /usr/local/bin/techsheet https://github.com/techsheet/techsheet/releases/latest/download/techsheet-macos-arm64
