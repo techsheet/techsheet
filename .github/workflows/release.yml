@@ -25,8 +25,9 @@ jobs:
         run: ./gradlew :cli:assemble --no-daemon
       - name: Stage release assets
         run: |
-          mkdir -p dist/cli/linux-x64 dist/cli/windows-x64 dist/cli/macos-arm64 dist/cli/jvm
+          mkdir -p dist/cli/linux-x64 dist/cli/linux-arm64 dist/cli/windows-x64 dist/cli/macos-arm64 dist/cli/jvm
           cp cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
+          cp cli/build/bin/linuxArm64/releaseExecutable/techsheet-cli.kexe dist/cli/linux-arm64/techsheet
           cp cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
           cp cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
           cp cli/build/libs/techsheet-cli-jvm.jar                          dist/cli/jvm/techsheet.jar
@@ -83,10 +84,11 @@ jobs:
         run: |
           mkdir -p release
           cp dist/cli/linux-x64/techsheet       release/techsheet-linux-x64
+          cp dist/cli/linux-arm64/techsheet     release/techsheet-linux-arm64
           cp dist/cli/windows-x64/techsheet.exe release/techsheet-windows-x64.exe
           cp dist/cli/macos-arm64/techsheet     release/techsheet-macos-arm64
           cp dist/cli/jvm/techsheet.jar         release/techsheet.jar
-          for f in release/techsheet-linux-x64 release/techsheet-windows-x64.exe release/techsheet-macos-arm64 release/techsheet.jar; do
+          for f in release/techsheet-linux-x64 release/techsheet-linux-arm64 release/techsheet-windows-x64.exe release/techsheet-macos-arm64 release/techsheet.jar; do
             cosign sign-blob --yes "$f" --bundle "${f}.sigstore.json"
           done
           gh release create "$TAG" \
