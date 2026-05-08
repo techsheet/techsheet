@@ -51,7 +51,6 @@ class ConsolePrinter(val terminal: Terminal) {
   fun printDetectors() {
     printHeader()
 
-    terminal.println("")
     terminal.println(dim("The following technologies are currently detected:"))
 
     printDetectorSection("Languages", LanguageType.entries)
@@ -75,6 +74,7 @@ class ConsolePrinter(val terminal: Terminal) {
         add(cyan("───────────────────────────────────────"))
       }.joinToString(" ")
     )
+    terminal.println("")
   }
 
   private fun printFooter() {

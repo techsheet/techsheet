@@ -45,7 +45,7 @@ class SerializationTest {
   @Test
   fun `serializes to pretty-printed JSON`() {
     val output = json.encodeToString(report)
-    assertContains(output, """"schema": 1""")
+    assertContains(output, """"schema": 2""")
     assertContains(output, """"id": "00000000-0000-0000-0000-000000000000"""")
     assertContains(output, """"name": "Test Project"""")
     assertContains(output, """"id": "language.kotlin"""")
@@ -81,7 +81,7 @@ class SerializationTest {
   @Test
   fun `serializes to YAML`() {
     val output = yaml.encodeToString(TechSheetReport.serializer(), report)
-    assertContains(output, "schema: 1")
+    assertContains(output, "schema: 2")
     assertContains(output, """"00000000-0000-0000-0000-000000000000"""")
     assertContains(output, "name: \"Kotlin\"")
     assertContains(output, "category: \"Application\"")

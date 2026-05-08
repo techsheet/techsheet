@@ -27,10 +27,10 @@ class ConsolePrinterTest {
     }
 
     assertContains(output, "\u001B[36m─────\u001B[39m \u001B[96;1mTechSheet\u001B[39;22m \u001B[3;2mv")
-    assertContains(output, "\u001B[93;1m Languages\u001B[39;22m \u001B[33;3m(2)\u001B[39;23m")
+    assertContains(output, "\u001B[93;1mLanguages\u001B[39;22m \u001B[33;3m(2)\u001B[39;23m")
     assertContains(output, "\u001B[97m  Kotlin\u001B[39m \u001B[37;3m2.3.20\u001B[39;23m")
-    assertContains(output, "\u001B[93;1m Frameworks\u001B[39;22m \u001B[33;3m(3)\u001B[39;23m")
-    assertContains(output, "\u001B[92;1m  Application\u001B[39;22m \u001B[32;3m(2)\u001B[39;23m")
+    assertContains(output, "\u001B[93;1mFrameworks\u001B[39;22m \u001B[33;3m(3)\u001B[39;23m")
+    assertContains(output, "\u001B[92;1m Application\u001B[39;22m \u001B[32;3m(2)\u001B[39;23m")
     assertContains(output, "\u001B[36m──────────────────────────────────────────────────────────────\u001B[39m")
   }
 

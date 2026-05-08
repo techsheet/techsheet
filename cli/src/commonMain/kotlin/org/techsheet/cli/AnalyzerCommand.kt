@@ -140,7 +140,7 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     val report = TechSheetReport.of(sheet)
     val reporters = ReporterFactory(
       report = report,
-      readonly = readOnly,
+      readonly = readOnly || ci,
       fs = fs
     )
 

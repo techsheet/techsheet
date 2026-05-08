@@ -20,7 +20,7 @@ class TechSheetReportTest {
 
     val report = TechSheetReport.of(sheet)
 
-    assertEquals(1, report.schema)
+    assertEquals(2, report.schema)
 
     assertEquals(2, report.languages.size)
     assertEquals("language.javascript", report.languages[0].id)

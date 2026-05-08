@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class TechSheetReport(
   @EncodeDefault(EncodeDefault.Mode.ALWAYS)
   val schema: Int = 2,
-  val project: Project?,
+  val project: Project? = null,
   val languages: List<LanguageEntry>,
   val frameworks: List<FrameworkEntry>,
   val services: List<ServiceEntry>,
