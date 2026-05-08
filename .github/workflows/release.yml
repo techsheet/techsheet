@@ -93,3 +93,15 @@ jobs:
             --title "$TAG" \
             --generate-notes \
             release/*
+
+  bump-homebrew:
+    needs: [release]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bump Homebrew formula
+        uses: dawidd6/action-homebrew-bump-formula@v7
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          tap: techsheet/tap
+          formula: techsheet-cli
+          no_fork: true
