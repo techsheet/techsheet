@@ -23,6 +23,15 @@ kotlin {
     }
   }
 
+  linuxArm64 {
+    binaries {
+      executable {
+        baseName = "techsheet-cli"
+        entryPoint = "org.techsheet.cli.main"
+      }
+    }
+  }
+
   mingwX64 {
     binaries {
       executable {
