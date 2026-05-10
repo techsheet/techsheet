@@ -4,11 +4,11 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import kotlinx.serialization.json.Json
 import kotlin.uuid.Uuid
-import org.techsheet.schema.Framework
-import org.techsheet.schema.Language
-import org.techsheet.schema.Project
-import org.techsheet.schema.TechSheet
-import org.techsheet.schema.Tool
+import org.techsheet.core.Framework
+import org.techsheet.core.Language
+import org.techsheet.core.Project
+import org.techsheet.core.TechSheet
+import org.techsheet.core.Tool
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertFalse

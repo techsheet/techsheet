@@ -1,4 +1,4 @@
-package org.techsheet.schema
+package org.techsheet.core
 
 /**
  * Common properties shared by all technology entries in a [TechSheet]

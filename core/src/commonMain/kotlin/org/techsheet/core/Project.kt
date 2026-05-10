@@ -1,4 +1,4 @@
-package org.techsheet.schema
+package org.techsheet.core
 
 import kotlin.uuid.Uuid
 import kotlinx.serialization.Serializable

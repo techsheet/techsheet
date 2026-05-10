@@ -1,4 +1,4 @@
-package org.techsheet.schema
+package org.techsheet.core
 
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable

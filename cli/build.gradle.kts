@@ -1,5 +1,6 @@
-@file:OptIn(KotlinNativeCacheApi::class)
+@file:OptIn(KotlinNativeCacheApi::class, ExperimentalKotlinGradlePluginApi::class)
 
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.plugin.mpp.DisableCacheInKotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeCacheApi
 
@@ -74,7 +75,7 @@ kotlin {
       kotlin.srcDir(layout.buildDirectory.dir("generated/version"))
     }
     commonMain.dependencies {
-      implementation(projects.schema)
+      implementation(projects.core)
       implementation(libs.clikt)
       implementation(libs.kermit)
       implementation(libs.okio)

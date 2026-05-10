@@ -3,7 +3,7 @@ package org.techsheet.cli.reporter
 import kotlinx.serialization.json.Json
 import okio.fakefilesystem.FakeFileSystem
 import org.techsheet.cli.domain.*
-import org.techsheet.schema.TechSheet
+import org.techsheet.core.TechSheet
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertFalse

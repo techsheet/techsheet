@@ -1,7 +1,7 @@
 package org.techsheet.cli.reporter
 
 import okio.FileSystem
-import org.techsheet.schema.TechSheet
+import org.techsheet.core.TechSheet
 
 data class ReporterFactory(
     val techSheet: TechSheet,

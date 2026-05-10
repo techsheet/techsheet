@@ -1,11 +1,11 @@
 package org.techsheet.cli.domain
 
-import org.techsheet.schema.Framework
-import org.techsheet.schema.Language
-import org.techsheet.schema.Project
-import org.techsheet.schema.Service
-import org.techsheet.schema.TechSheet
-import org.techsheet.schema.Tool
+import org.techsheet.core.Framework
+import org.techsheet.core.Language
+import org.techsheet.core.Project
+import org.techsheet.core.Service
+import org.techsheet.core.TechSheet
+import org.techsheet.core.Tool
 
 data class DetectionResult(
   val project: Project? = null,

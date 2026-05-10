@@ -2,7 +2,7 @@ package org.techsheet.cli.reporter
 
 import kotlinx.serialization.json.Json
 import okio.FileSystem
-import org.techsheet.schema.TechSheet
+import org.techsheet.core.TechSheet
 
 class JsonReporter(
     private val techSheet: TechSheet,

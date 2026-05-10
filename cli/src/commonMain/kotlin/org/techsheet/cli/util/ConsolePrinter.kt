@@ -8,7 +8,11 @@ import com.github.ajalt.mordant.table.table
 import com.github.ajalt.mordant.terminal.Terminal
 import org.techsheet.cli.CLI_VERSION
 import org.techsheet.cli.domain.*
-import org.techsheet.schema.*
+import org.techsheet.core.Framework
+import org.techsheet.core.Language
+import org.techsheet.core.Service
+import org.techsheet.core.TechSheet
+import org.techsheet.core.Tool
 
 class ConsolePrinter(val terminal: Terminal) {
 

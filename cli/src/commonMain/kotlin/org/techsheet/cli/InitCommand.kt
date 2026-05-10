@@ -15,9 +15,9 @@ import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.domain.*
-import org.techsheet.schema.Project
-import org.techsheet.schema.ProjectTeam
-import org.techsheet.schema.ProjectUrl
+import org.techsheet.core.Project
+import org.techsheet.core.ProjectTeam
+import org.techsheet.core.ProjectUrl
 import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
 import org.techsheet.cli.util.ConsolePrinter

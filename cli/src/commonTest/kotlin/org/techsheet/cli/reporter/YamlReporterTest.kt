@@ -4,7 +4,7 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import okio.fakefilesystem.FakeFileSystem
 import org.techsheet.cli.domain.*
-import org.techsheet.schema.TechSheet
+import org.techsheet.core.TechSheet
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertFalse

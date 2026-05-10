@@ -18,6 +18,6 @@ plugins {
   id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
+include(":core")
 include(":cli")
-include(":schema")
 include(":test-projects")

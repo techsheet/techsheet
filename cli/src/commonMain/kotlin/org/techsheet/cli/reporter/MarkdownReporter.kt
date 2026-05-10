@@ -1,12 +1,16 @@
 package org.techsheet.cli.reporter
 
 import okio.FileSystem
-import org.techsheet.schema.*
 import org.techsheet.cli.util.MarkdownRenderer
+import org.techsheet.core.Framework
+import org.techsheet.core.Language
+import org.techsheet.core.Service
+import org.techsheet.core.TechSheet
+import org.techsheet.core.Tool
 
 class MarkdownReporter(
-    private val techSheet: TechSheet,
-    fs: FileSystem,
+  private val techSheet: TechSheet,
+  fs: FileSystem,
 ) : Reporter(fs) {
 
   override fun serialize(): String = buildString {

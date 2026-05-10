@@ -1,9 +1,9 @@
-package org.techsheet.schema
+package org.techsheet.core
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Service(
+data class Framework(
   override val id: String,
   override val name: String,
   override val url: String? = null,

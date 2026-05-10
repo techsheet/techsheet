@@ -3,7 +3,7 @@ package org.techsheet.cli.reporter
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import okio.FileSystem
-import org.techsheet.schema.TechSheet
+import org.techsheet.core.TechSheet
 
 class YamlReporter(
   private val techSheet: TechSheet,

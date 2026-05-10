@@ -2,7 +2,7 @@ package org.techsheet.cli.reporter
 
 import okio.FileSystem
 import okio.Path
-import org.techsheet.schema.Tool
+import org.techsheet.core.Tool
 
 abstract class Reporter(
   private val fs: FileSystem,
