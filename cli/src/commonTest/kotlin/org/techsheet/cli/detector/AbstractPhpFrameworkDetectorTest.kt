@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path.Companion.toPath
 import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -20,10 +20,10 @@ private fun analyzePhp(
   filename: String,
   content: String,
   packageNames: List<String> = listOf("laravel/framework"),
-): TechSheet = PhpTestDetector(packageNames)
-  .onMatch(filename.toPath(), lazy { content }, TechSheet.empty())
+): DetectionResult = PhpTestDetector(packageNames)
+  .onMatch(filename.toPath(), lazy { content }, DetectionResult())
 
-private fun TechSheet.laravelVersion(): String? =
+private fun DetectionResult.laravelVersion(): String? =
   frameworks.firstOrNull { it.type == FrameworkType.LARAVEL }?.version
 
 class AbstractPhpFrameworkDetectorTest {
@@ -58,19 +58,19 @@ class AbstractPhpFrameworkDetectorTest {
     assertEquals("9.1", analyzePhp("composer.json", json).laravelVersion())
   }
 
-  @Test fun `composer json missing package leaves sheet unchanged`() {
+  @Test fun `composer json missing package leaves result unchanged`() {
     val json = """{"require":{"symfony/console":"^6.0"}}"""
     assertTrue(analyzePhp("composer.json", json).isEmpty())
   }
 
   @Test fun `composer json with multiple package names matches any one`() {
     val json = """{"require":{"symfony/symfony":"^5.4"}}"""
-    val sheet = analyzePhp(
+    val result = analyzePhp(
       "composer.json", json,
       packageNames = listOf("symfony/framework-bundle", "symfony/symfony"),
     )
-    assertTrue(sheet.hasFramework(FrameworkType.LARAVEL))
-    assertEquals("5.4", sheet.laravelVersion())
+    assertTrue(result.hasFramework(FrameworkType.LARAVEL))
+    assertEquals("5.4", result.laravelVersion())
   }
 
   @Test fun `malformed composer json is tolerated`() {
@@ -78,7 +78,7 @@ class AbstractPhpFrameworkDetectorTest {
     assertEquals("11.0", analyzePhp("composer.json", json).laravelVersion())
   }
 
-  @Test fun `empty composer json leaves sheet unchanged`() {
+  @Test fun `empty composer json leaves result unchanged`() {
     assertTrue(analyzePhp("composer.json", "").isEmpty())
   }
 
@@ -112,7 +112,7 @@ class AbstractPhpFrameworkDetectorTest {
     assertEquals("11.5.2", analyzePhp("composer.lock", lock).laravelVersion())
   }
 
-  @Test fun `composer lock without target package leaves sheet unchanged`() {
+  @Test fun `composer lock without target package leaves result unchanged`() {
     val lock = """
       {
         "packages": [

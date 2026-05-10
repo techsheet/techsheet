@@ -2,9 +2,9 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.Language
+import org.techsheet.cli.domain.DetectedLanguage
 import org.techsheet.cli.domain.LanguageType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 class PythonVersionDetector : Detector(
   "Python (version)",
@@ -13,11 +13,11 @@ class PythonVersionDetector : Detector(
   Matcher.Filename("pyproject.toml"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.let { extractVersion(path.name, it) }
-      ?.let { sheet.withLanguage(Language(LanguageType.PYTHON, it)) }
-      ?: sheet
+      ?.let { result.withLanguage(DetectedLanguage(LanguageType.PYTHON, it)) }
+      ?: result
 
   private fun extractVersion(filename: String, text: String): String? = when (filename) {
     ".python-version" -> PYTHON_VERSION_FILE.find(text)?.groupValues?.getOrNull(1)

@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 
 class NodeDetector : Detector(
@@ -12,9 +12,9 @@ class NodeDetector : Detector(
   Matcher.Filename("package.json"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     when (path.name) {
-      ".nvmrc", ".node-version" -> sheet.withTool(
+      ".nvmrc", ".node-version" -> result.withTool(
         ToolType.NODE,
         content.value?.trim()?.ifEmpty { null },
       )
@@ -23,13 +23,13 @@ class NodeDetector : Detector(
           val version = ENGINES_NODE.find(text)?.groupValues?.getOrNull(1)
             ?.trimStart('^', '~', '>', '=', ' ')
           when {
-            version != null -> sheet.withTool(ToolType.NODE, version)
-            NODE_SCRIPT.containsMatchIn(text) -> sheet.withTool(ToolType.NODE)
-            else -> sheet
+            version != null -> result.withTool(ToolType.NODE, version)
+            NODE_SCRIPT.containsMatchIn(text) -> result.withTool(ToolType.NODE)
+            else -> result
           }
         }
-        ?: sheet
-      else -> sheet
+        ?: result
+      else -> result
     }
 
   private companion object {

@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import okio.Path.Companion.toPath
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -33,37 +33,37 @@ private class ContentMatchWithVersion : AbstractFileMarkerFrameworkDetector(
 class AbstractFileMarkerFrameworkDetectorTest {
 
   @Test fun `filename-only marker registers framework with no version`() {
-    val sheet = FilenameOnlyMarker().onMatch("manage.py".toPath(), lazy { null }, TechSheet.empty())
-    assertTrue(sheet.hasFramework(FrameworkType.DJANGO))
-    assertNull(sheet.frameworks.first { it.type == FrameworkType.DJANGO }.version)
+    val result = FilenameOnlyMarker().onMatch("manage.py".toPath(), lazy { null }, DetectionResult())
+    assertTrue(result.hasFramework(FrameworkType.DJANGO))
+    assertNull(result.frameworks.first { it.type == FrameworkType.DJANGO }.version)
   }
 
   @Test fun `content-gated marker registers when content contains the signal`() {
-    val sheet = ContentMatchNoVersion().onMatch(
-      "config.php".toPath(), lazy { "<?php define('MARKER_TOKEN', true);" }, TechSheet.empty(),
+    val result = ContentMatchNoVersion().onMatch(
+      "config.php".toPath(), lazy { "<?php define('MARKER_TOKEN', true);" }, DetectionResult(),
     )
-    assertTrue(sheet.hasFramework(FrameworkType.DJANGO))
+    assertTrue(result.hasFramework(FrameworkType.DJANGO))
   }
 
-  @Test fun `content-gated marker leaves sheet unchanged when content lacks the signal`() {
-    val sheet = ContentMatchNoVersion().onMatch(
-      "config.php".toPath(), lazy { "<?php // unrelated config" }, TechSheet.empty(),
+  @Test fun `content-gated marker leaves result unchanged when content lacks the signal`() {
+    val result = ContentMatchNoVersion().onMatch(
+      "config.php".toPath(), lazy { "<?php // unrelated config" }, DetectionResult(),
     )
-    assertTrue(sheet.isEmpty())
+    assertTrue(result.isEmpty())
   }
 
-  @Test fun `content-gated marker leaves sheet unchanged when content is null`() {
-    val sheet = ContentMatchNoVersion().onMatch(
-      "config.php".toPath(), lazy { null }, TechSheet.empty(),
+  @Test fun `content-gated marker leaves result unchanged when content is null`() {
+    val result = ContentMatchNoVersion().onMatch(
+      "config.php".toPath(), lazy { null }, DetectionResult(),
     )
-    assertTrue(sheet.isEmpty())
+    assertTrue(result.isEmpty())
   }
 
   @Test fun `content-gated marker captures version from group 1`() {
     val versionPhp = "<?php\n\$wp_version = '6.5.2';\n\$wp_db_version = 57155;\n"
-    val sheet = ContentMatchWithVersion().onMatch(
-      "version.php".toPath(), lazy { versionPhp }, TechSheet.empty(),
+    val result = ContentMatchWithVersion().onMatch(
+      "version.php".toPath(), lazy { versionPhp }, DetectionResult(),
     )
-    assertEquals("6.5.2", sheet.frameworks.first { it.type == FrameworkType.WORDPRESS }.version)
+    assertEquals("6.5.2", result.frameworks.first { it.type == FrameworkType.WORDPRESS }.version)
   }
 }

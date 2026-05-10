@@ -3,20 +3,20 @@ package org.techsheet.cli.detector
 import okio.Path
 import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 class AspNetCoreDetector : Detector("ASP.NET Core", Matcher.Extension(".csproj")) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.takeIf { WEB_SDK.containsMatchIn(it) || ASPNETCORE_FRAMEWORK.containsMatchIn(it) }
       ?.let { text ->
-        sheet.withFramework(
+        result.withFramework(
           FrameworkType.ASP_NET_CORE,
           version = TARGET_FRAMEWORK.find(text)?.groupValues?.getOrNull(1),
         )
       }
-      ?: sheet
+      ?: result
 
   private companion object {
     val WEB_SDK = Regex("""Sdk\s*=\s*["']Microsoft\.NET\.Sdk\.Web["']""")

@@ -1,6 +1,6 @@
 package org.techsheet.cli.domain
 
-data class Service(
+data class DetectedService(
   val type: ServiceType,
   val version: String?,
 )
@@ -9,7 +9,7 @@ enum class ServiceType(
   override val key: String,
   override val title: String,
   val category: ServiceCategory,
-) : Technology {
+) : DetectedTechnology {
   POSTGRES("postgres", "PostgreSQL", ServiceCategory.DATABASE),
   ;
 

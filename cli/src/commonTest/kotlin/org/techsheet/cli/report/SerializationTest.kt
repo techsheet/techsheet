@@ -4,11 +4,11 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import kotlinx.serialization.json.Json
 import kotlin.uuid.Uuid
-import org.techsheet.cli.domain.FrameworkEntry
-import org.techsheet.cli.domain.LanguageEntry
-import org.techsheet.cli.domain.Project
-import org.techsheet.cli.domain.TechSheetReport
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.schema.Framework
+import org.techsheet.schema.Language
+import org.techsheet.schema.Project
+import org.techsheet.schema.TechSheet
+import org.techsheet.schema.Tool
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertFalse
@@ -21,30 +21,30 @@ class SerializationTest {
     explicitNulls = false
   }
 
-  private val report = TechSheetReport(
+  private val techSheet = TechSheet(
       project = Project(id = Uuid.parse("00000000-0000-0000-0000-000000000000"), name = "Test Project"),
       languages = listOf(
-          LanguageEntry(id = "language.kotlin", name = "Kotlin", url = "https://techsheet.org/language/kotlin", version = "2.2.21"),
+          Language(id = "language.kotlin", name = "Kotlin", url = "https://techsheet.org/language/kotlin", version = "2.2.21"),
       ),
       frameworks = listOf(
-          FrameworkEntry(
+          Framework(
               id = "framework.spring-boot",
               name = "Spring Boot",
               category = "Application",
               url = "https://techsheet.org/framework/spring-boot",
               version = "4.0.5"
           ),
-          FrameworkEntry(id = "framework.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/framework/junit"),
+          Framework(id = "framework.junit", name = "JUnit", category = "Testing", url = "https://techsheet.org/framework/junit"),
       ),
       services = emptyList(),
       tools = listOf(
-          ToolEntry(id = "tool.git", name = "Git", category = "VCS", url = "https://techsheet.org/tool/git"),
+          Tool(id = "tool.git", name = "Git", category = "VCS", url = "https://techsheet.org/tool/git"),
       ),
   )
 
   @Test
   fun `serializes to pretty-printed JSON`() {
-    val output = json.encodeToString(report)
+    val output = json.encodeToString(techSheet)
     assertContains(output, """"schema": 2""")
     assertContains(output, """"id": "00000000-0000-0000-0000-000000000000"""")
     assertContains(output, """"name": "Test Project"""")
@@ -59,7 +59,7 @@ class SerializationTest {
 
   @Test
   fun `omits null versions`() {
-    val output = json.encodeToString(report)
+    val output = json.encodeToString(techSheet)
     val gitSection = output.substringAfter(""""name": "Git"""")
       .substringBefore("}")
     assertFalse(gitSection.contains("version"))
@@ -67,7 +67,7 @@ class SerializationTest {
 
   @Test
   fun `empty services list serializes as empty array`() {
-    val output = json.encodeToString(report)
+    val output = json.encodeToString(techSheet)
     assertContains(output, """"services": []""")
   }
 
@@ -80,7 +80,7 @@ class SerializationTest {
 
   @Test
   fun `serializes to YAML`() {
-    val output = yaml.encodeToString(TechSheetReport.serializer(), report)
+    val output = yaml.encodeToString(TechSheet.serializer(), techSheet)
     assertContains(output, "schema: 2")
     assertContains(output, """"00000000-0000-0000-0000-000000000000"""")
     assertContains(output, "name: \"Kotlin\"")
@@ -90,7 +90,7 @@ class SerializationTest {
 
   @Test
   fun `YAML omits null versions`() {
-    val output = yaml.encodeToString(TechSheetReport.serializer(), report)
+    val output = yaml.encodeToString(TechSheet.serializer(), techSheet)
     val lines = output.lines()
     val gitLine = lines.indexOfFirst { it.contains("name: \"Git\"") }
     val nextEntry = lines.drop(gitLine + 1).indexOfFirst { it.trimStart().startsWith("- ") || !it.startsWith(" ") }

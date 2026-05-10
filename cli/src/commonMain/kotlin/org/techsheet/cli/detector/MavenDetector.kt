@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 
 class MavenDetector : Detector(
@@ -12,8 +12,8 @@ class MavenDetector : Detector(
   Matcher.Filename(WRAPPER_PROPERTIES),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-    sheet.withTool(ToolType.MAVEN, versionFor(path.name, content))
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+    result.withTool(ToolType.MAVEN, versionFor(path.name, content))
 
   private fun versionFor(name: String, content: Lazy<String?>): String? =
     name.takeIf { it == WRAPPER_PROPERTIES }?.let { versionFromWrapper(content.value) }

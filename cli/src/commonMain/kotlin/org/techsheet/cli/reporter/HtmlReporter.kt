@@ -1,11 +1,10 @@
 package org.techsheet.cli.reporter
 
 import okio.FileSystem
-import okio.Path
-import org.techsheet.cli.domain.*
+import org.techsheet.schema.*
 
 class HtmlReporter(
-  private val report: TechSheetReport,
+  private val techSheet: TechSheet,
   fs: FileSystem,
 ) : Reporter(fs) {
 
@@ -25,13 +24,13 @@ class HtmlReporter(
     appendLine()
     appendLine("""  <h1 class="display-2">TechSheet</h1>""")
     appendLine()
-    appendSection("languages", "Languages", LANGUAGE_SECTION_HEADERS, report.languages.map { it.asTableRow() })
+    appendSection("languages", "Languages", LANGUAGE_SECTION_HEADERS, techSheet.languages.map { it.asTableRow() })
     appendLine()
-    appendSection("frameworks", "Frameworks", FRAMEWORK_SECTION_HEADERS, report.frameworks.map { it.asTableRow() })
+    appendSection("frameworks", "Frameworks", FRAMEWORK_SECTION_HEADERS, techSheet.frameworks.map { it.asTableRow() })
     appendLine()
-    appendSection("services", "Services", SERVICE_SECTION_HEADERS, report.services.map { it.asTableRow() })
+    appendSection("services", "Services", SERVICE_SECTION_HEADERS, techSheet.services.map { it.asTableRow() })
     appendLine()
-    appendSection("tools", "Tools", TOOL_SECTION_HEADERS, report.tools.map { it.asTableRow() })
+    appendSection("tools", "Tools", TOOL_SECTION_HEADERS, techSheet.tools.map { it.asTableRow() })
     appendLine("</main>")
     appendLine()
     appendLine("""<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"""")
@@ -65,17 +64,17 @@ class HtmlReporter(
     appendLine("  </section>")
   }
 
-  private fun LanguageEntry.asTableRow() =
-    listOf(link(url, name), version(version), id(id), "")
+  private fun Language.asTableRow() =
+    listOf(link(url ?: "", name), version(version), id(id), "")
 
-  private fun FrameworkEntry.asTableRow() =
-    listOf(link(url, name), version(version), escape(category), id(id), "")
+  private fun Framework.asTableRow() =
+    listOf(link(url ?: "", name), version(version), escape(category ?: ""), id(id), "")
 
-  private fun ServiceEntry.asTableRow() =
-    listOf(link(url, name), version(version), escape(category), id(id), "")
+  private fun Service.asTableRow() =
+    listOf(link(url ?: "", name), version(version), escape(category ?: ""), id(id), "")
 
-  private fun ToolEntry.asTableRow() =
-    listOf(link(url, displayName()), version(version), escape(category), id(id), "")
+  private fun Tool.asTableRow() =
+    listOf(link(url ?: "", displayName()), version(version), escape(category ?: ""), id(id), "")
 
   private fun version(v: String?): String = v?.let { "<code>${escape(it)}</code>" } ?: ""
 

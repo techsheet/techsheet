@@ -5,5 +5,5 @@ import org.techsheet.cli.domain.ToolType
 class PrettierDetector : AbstractNpmDependencyDetector(
   name = "Prettier",
   packageName = "prettier",
-  apply = { sheet, version -> sheet.withTool(ToolType.PRETTIER, version) },
+  apply = { result, version -> result.withTool(ToolType.PRETTIER, version) },
 )

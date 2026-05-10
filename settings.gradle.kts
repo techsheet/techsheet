@@ -19,4 +19,5 @@ plugins {
 }
 
 include(":cli")
+include(":schema")
 include(":test-projects")

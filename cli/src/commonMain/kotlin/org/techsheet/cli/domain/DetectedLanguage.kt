@@ -1,6 +1,6 @@
 package org.techsheet.cli.domain
 
-data class Language(
+data class DetectedLanguage(
   val type: LanguageType,
   val version: String?,
 )
@@ -8,7 +8,7 @@ data class Language(
 enum class LanguageType(
   override val key: String,
   override val title: String,
-) : Technology {
+) : DetectedTechnology {
   JAVA("java", "Java"),
   KOTLIN("kotlin", "Kotlin"),
   GROOVY("groovy", "Groovy"),

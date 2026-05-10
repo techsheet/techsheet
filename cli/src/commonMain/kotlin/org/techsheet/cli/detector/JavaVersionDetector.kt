@@ -2,9 +2,9 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.Language
+import org.techsheet.cli.domain.DetectedLanguage
 import org.techsheet.cli.domain.LanguageType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 class JavaVersionDetector : Detector(
   "Java (version)",
@@ -15,11 +15,11 @@ class JavaVersionDetector : Detector(
   Matcher.Filename("settings.gradle"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.let { extractVersion(path.name, it) }
-      ?.let { sheet.withLanguage(Language(LanguageType.JAVA, it)) }
-      ?: sheet
+      ?.let { result.withLanguage(DetectedLanguage(LanguageType.JAVA, it)) }
+      ?: result
 
   private fun extractVersion(filename: String, text: String): String? = when (filename) {
     "pom.xml" -> POM_SOURCE.find(text)?.groupValues?.getOrNull(1)

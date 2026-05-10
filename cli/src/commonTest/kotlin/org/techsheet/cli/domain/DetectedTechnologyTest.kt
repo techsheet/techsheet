@@ -3,9 +3,9 @@ package org.techsheet.cli.domain
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class TechnologyTest {
+class DetectedTechnologyTest {
 
-  private val all: List<Technology> =
+  private val all: List<DetectedTechnology> =
     LanguageType.entries + FrameworkType.entries + ServiceType.entries + ToolType.entries
 
   @Test

@@ -6,12 +6,9 @@ import co.touchlab.kermit.StaticConfig
 import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toPath
-import okio.SYSTEM
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
-import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.reporter.ReporterFactory
-import org.techsheet.cli.reporter.YamlReporter
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.fail
@@ -51,9 +48,9 @@ class AnalyzerIntegrationTest {
     val actualFile = dir / "techsheet.actual.yml"
 
     val ctx = AnalyzerContext(path = dir, log = log)
-    val sheet = Analyzer(log).analyze(ctx)
+    val result = Analyzer(log).analyze(ctx)
 
-    ReporterFactory(TechSheetReport.of(sheet), readonly = false, fs = fs)
+    ReporterFactory(result.toTechSheet(), readonly = false, fs = fs)
       .yaml
       .report(actualFile)
 

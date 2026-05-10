@@ -10,7 +10,7 @@ import okio.Path.Companion.toOkioPath
 import org.techsheet.cli.detector.Detector
 import org.techsheet.cli.detector.Detectors
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import java.nio.file.Files
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -31,7 +31,7 @@ class AnalyzerDispatchTest {
     val root = projectWith("pom.xml", "<project/>")
 
     class Observer : Detector("observer", Matcher.Filename("pom.xml")) {
-      override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet = sheet
+      override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult = result
     }
 
     val fs = CountingFs()
@@ -44,12 +44,12 @@ class AnalyzerDispatchTest {
     val root = projectWith("pom.xml", "<project/>")
 
     class A : Detector("a", Matcher.Filename("pom.xml")) {
-      override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-        sheet.also { content.value }
+      override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+        result.also { content.value }
     }
     class B : Detector("b", Matcher.Filename("pom.xml")) {
-      override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-        sheet.also { content.value }
+      override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+        result.also { content.value }
     }
 
     val fs = CountingFs()

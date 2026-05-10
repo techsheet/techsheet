@@ -1,6 +1,6 @@
 package org.techsheet.cli.domain
 
-interface Technology {
+interface DetectedTechnology {
   val title: String
   val key: String
   val type: String

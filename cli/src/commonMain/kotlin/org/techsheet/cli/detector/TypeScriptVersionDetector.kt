@@ -2,9 +2,9 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.Language
+import org.techsheet.cli.domain.DetectedLanguage
 import org.techsheet.cli.domain.LanguageType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 class TypeScriptVersionDetector : Detector(
   "TypeScript (version)",
@@ -12,11 +12,11 @@ class TypeScriptVersionDetector : Detector(
   Matcher.Filename(".tool-versions"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.let { extractVersion(path.name, it) }
-      ?.let { sheet.withLanguage(Language(LanguageType.TYPESCRIPT, it)) }
-      ?: sheet
+      ?.let { result.withLanguage(DetectedLanguage(LanguageType.TYPESCRIPT, it)) }
+      ?: result
 
   private fun extractVersion(filename: String, text: String): String? = when (filename) {
     "package.json" -> PACKAGE_JSON_TYPESCRIPT.find(text)?.groupValues?.getOrNull(1)

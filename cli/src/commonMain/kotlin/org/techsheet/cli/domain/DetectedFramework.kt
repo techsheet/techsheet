@@ -1,6 +1,6 @@
 package org.techsheet.cli.domain
 
-data class Framework(
+data class DetectedFramework(
   val type: FrameworkType,
   val version: String?,
 )
@@ -10,7 +10,7 @@ enum class FrameworkType(
   override val title: String,
   val category: FrameworkCategory,
   val languages: List<LanguageType> = emptyList(),
-) : Technology {
+) : DetectedTechnology {
 
   // Application
   ANGULAR("angular", "Angular", FrameworkCategory.APPLICATION, listOf(LanguageType.TYPESCRIPT)),

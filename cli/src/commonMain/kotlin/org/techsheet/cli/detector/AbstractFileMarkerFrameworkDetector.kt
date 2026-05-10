@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import okio.Path
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Base for framework detectors keyed off a single file marker.
@@ -20,13 +20,13 @@ abstract class AbstractFileMarkerFrameworkDetector(
   private val contentMatch: Regex? = null,
 ) : Detector(name, marker) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     if (contentMatch == null) {
-      sheet.withFramework(framework)
+      result.withFramework(framework)
     } else {
       content.value
         ?.let(contentMatch::find)
-        ?.let { sheet.withFramework(framework, it.groupValues.getOrNull(1)?.ifEmpty { null }) }
-        ?: sheet
+        ?.let { result.withFramework(framework, it.groupValues.getOrNull(1)?.ifEmpty { null }) }
+        ?: result
     }
 }

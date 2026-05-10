@@ -9,21 +9,20 @@ import kotlin.test.assertContains
 
 class ConsolePrinterTest {
 
-  val report = TechSheetReport.of(
-    TechSheet()
-      .withLanguage(LanguageType.KOTLIN, "2.3.20")
-      .withLanguage(LanguageType.TYPESCRIPT)
-      .withFramework(FrameworkType.SPRING_BOOT, "4.0.0")
-      .withFramework(FrameworkType.SPRING_WEBFLUX)
-      .withFramework(FrameworkType.SPRING_DATA)
-      .withService(ServiceType.POSTGRES)
-      .withTool(ToolType.INTELLIJ_IDEA)
-  )
+  val techSheet = DetectionResult()
+    .withLanguage(LanguageType.KOTLIN, "2.3.20")
+    .withLanguage(LanguageType.TYPESCRIPT)
+    .withFramework(FrameworkType.SPRING_BOOT, "4.0.0")
+    .withFramework(FrameworkType.SPRING_WEBFLUX)
+    .withFramework(FrameworkType.SPRING_DATA)
+    .withService(ServiceType.POSTGRES)
+    .withTool(ToolType.INTELLIJ_IDEA)
+    .toTechSheet()
 
   @Test
   fun `prints formatted report`() {
     val output = recordOutput(AnsiLevel.TRUECOLOR) {
-      it.printReport(report)
+      it.printReport(techSheet)
     }
 
     assertContains(output, "\u001B[36m─────\u001B[39m \u001B[96;1mTechSheet\u001B[39;22m \u001B[3;2mv")
@@ -37,7 +36,7 @@ class ConsolePrinterTest {
   @Test
   fun `prints unformatted report`() {
     val output = recordOutput(AnsiLevel.NONE) {
-      it.printReport(report)
+      it.printReport(techSheet)
     }
 
     assertContains(output, "───── TechSheet v")

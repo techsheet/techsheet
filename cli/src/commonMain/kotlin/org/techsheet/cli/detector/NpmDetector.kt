@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 
 class NpmDetector : Detector(
@@ -12,11 +12,11 @@ class NpmDetector : Detector(
   Matcher.Filename("npm-shrinkwrap.json"),
 ) {
 
-  override fun skipIf(path: Path, sheet: TechSheet): Boolean =
-    sheet.tools.any { it.type == ToolType.NPM && it.version != null }
+  override fun skipIf(path: Path, result: DetectionResult): Boolean =
+    result.tools.any { it.type == ToolType.NPM && it.version != null }
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-    sheet.withTool(ToolType.NPM, version = versionFor(path.name, content))
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+    result.withTool(ToolType.NPM, version = versionFor(path.name, content))
 
   private fun versionFor(name: String, content: Lazy<String?>): String? =
     name.takeIf { it == "package.json" }

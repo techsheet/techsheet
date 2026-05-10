@@ -29,6 +29,8 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+      }
+      all {
         disableNativeCache(
           version = DisableCacheInKotlinVersion.`2_3_20`,
           reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
@@ -42,6 +44,8 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+      }
+      all {
         disableNativeCache(
           version = DisableCacheInKotlinVersion.`2_3_20`,
           reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
@@ -55,6 +59,8 @@ kotlin {
       executable {
         baseName = "techsheet-cli"
         entryPoint = "org.techsheet.cli.main"
+      }
+      all {
         disableNativeCache(
           version = DisableCacheInKotlinVersion.`2_3_20`,
           reason = "clikt + clikt-mordant export duplicate selfAndAncestors symbol"
@@ -68,6 +74,7 @@ kotlin {
       kotlin.srcDir(layout.buildDirectory.dir("generated/version"))
     }
     commonMain.dependencies {
+      implementation(projects.schema)
       implementation(libs.clikt)
       implementation(libs.kermit)
       implementation(libs.okio)

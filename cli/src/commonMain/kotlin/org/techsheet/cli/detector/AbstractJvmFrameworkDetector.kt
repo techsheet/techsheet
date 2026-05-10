@@ -1,7 +1,7 @@
 package org.techsheet.cli.detector
 
 import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * JVM dependency detector specialised for [org.techsheet.cli.domain.FrameworkType]
@@ -13,7 +13,7 @@ abstract class AbstractJvmFrameworkDetector(
   pluginIds: List<String> = emptyList(),
 ) : AbstractJvmDependencyDetector(
   name = name,
-  apply = { sheet: TechSheet, version: String? -> sheet.withFramework(framework, version) },
+  apply = { result: DetectionResult, version: String? -> result.withFramework(framework, version) },
   coordinates = coordinates,
   pluginIds = pluginIds,
 )

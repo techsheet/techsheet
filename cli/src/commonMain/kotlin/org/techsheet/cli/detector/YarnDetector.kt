@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 
 class YarnDetector : Detector(
@@ -13,17 +13,17 @@ class YarnDetector : Detector(
   Matcher.Filename("package.json"),
 ) {
 
-  override fun skipIf(path: Path, sheet: TechSheet): Boolean =
-    sheet.tools.any { it.type == ToolType.YARN && it.version != null }
+  override fun skipIf(path: Path, result: DetectionResult): Boolean =
+    result.tools.any { it.type == ToolType.YARN && it.version != null }
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     when (path.name) {
-      "yarn.lock", ".yarnrc" -> sheet.withTool(ToolType.YARN)
-      ".yarnrc.yml" -> sheet.withTool(ToolType.YARN, version = versionFromYarnrcYml(content.value))
+      "yarn.lock", ".yarnrc" -> result.withTool(ToolType.YARN)
+      ".yarnrc.yml" -> result.withTool(ToolType.YARN, version = versionFromYarnrcYml(content.value))
       "package.json" -> versionFromPackageJson(content.value)
-        ?.let { sheet.withTool(ToolType.YARN, version = it) }
-        ?: sheet
-      else -> sheet
+        ?.let { result.withTool(ToolType.YARN, version = it) }
+        ?: result
+      else -> result
     }
 
   private fun versionFromYarnrcYml(text: String?): String? =

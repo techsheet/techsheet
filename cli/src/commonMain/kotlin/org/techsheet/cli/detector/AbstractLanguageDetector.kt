@@ -2,9 +2,9 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.Language
+import org.techsheet.cli.domain.DetectedLanguage
 import org.techsheet.cli.domain.LanguageType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Detects a language by matching source file extensions
@@ -25,9 +25,9 @@ abstract class AbstractLanguageDetector(
 
   protected open val skipFiles: List<String> = emptyList()
 
-  override fun skipIf(path: Path, sheet: TechSheet): Boolean =
-    path.name in skipFiles || sheet.hasLanguage(type)
+  override fun skipIf(path: Path, result: DetectionResult): Boolean =
+    path.name in skipFiles || result.hasLanguage(type)
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-    sheet.withLanguage(Language(type, version = null))
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+    result.withLanguage(DetectedLanguage(type, version = null))
 }

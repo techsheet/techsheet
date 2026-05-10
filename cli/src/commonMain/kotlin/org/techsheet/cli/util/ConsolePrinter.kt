@@ -8,40 +8,41 @@ import com.github.ajalt.mordant.table.table
 import com.github.ajalt.mordant.terminal.Terminal
 import org.techsheet.cli.CLI_VERSION
 import org.techsheet.cli.domain.*
+import org.techsheet.schema.*
 
 class ConsolePrinter(val terminal: Terminal) {
 
   constructor(color: Boolean) :
     this(Terminal(ansiLevel = if (color) null else AnsiLevel.NONE))
 
-  fun printReport(report: TechSheetReport) {
+  fun printReport(techSheet: TechSheet) {
     printHeader()
 
-    printSectionHeader("Languages", report.languages.size)
-    report.languages
+    printSectionHeader("Languages", techSheet.languages.size)
+    techSheet.languages
       .forEach { printLanguage(it) }
 
-    printSectionHeader("Frameworks", report.frameworks.size)
-    report.frameworks
+    printSectionHeader("Frameworks", techSheet.frameworks.size)
+    techSheet.frameworks
       .groupBy { it.category }
       .forEach { (category, frameworks) ->
-        printCategoryHeader(category, frameworks.size)
+        printCategoryHeader(category ?: "", frameworks.size)
         frameworks.forEach { printFramework(it) }
       }
 
-    printSectionHeader("Services", report.services.size)
-    report.services
+    printSectionHeader("Services", techSheet.services.size)
+    techSheet.services
       .groupBy { it.category }
       .forEach { (category, services) ->
-        printCategoryHeader(category, services.size)
+        printCategoryHeader(category ?: "", services.size)
         services.forEach { printService(it) }
       }
 
-    printSectionHeader("Tools", report.tools.size)
-    report.tools
+    printSectionHeader("Tools", techSheet.tools.size)
+    techSheet.tools
       .groupBy { it.category }
       .forEach { (category, tools) ->
-        printCategoryHeader(category, tools.size)
+        printCategoryHeader(category ?: "", tools.size)
         tools.forEach { printTool(it) }
       }
 
@@ -103,16 +104,16 @@ class ConsolePrinter(val terminal: Terminal) {
     )
   }
 
-  private fun printLanguage(lang: LanguageEntry) =
+  private fun printLanguage(lang: Language) =
     printEntry(lang.name, lang.version)
 
-  private fun printFramework(framework: FrameworkEntry) =
+  private fun printFramework(framework: Framework) =
     printEntry(framework.name, framework.version)
 
-  private fun printService(service: ServiceEntry) =
+  private fun printService(service: Service) =
     printEntry(service.name, service.version)
 
-  private fun printTool(tool: ToolEntry) =
+  private fun printTool(tool: Tool) =
     printEntry(tool.name, tool.version)
 
   private fun printEntry(name: String, version: String?) {
@@ -125,7 +126,7 @@ class ConsolePrinter(val terminal: Terminal) {
     )
   }
 
-  private fun printDetectorSection(header: String, technologies: List<Technology>) {
+  private fun printDetectorSection(header: String, technologies: List<DetectedTechnology>) {
     printSectionHeader(header, technologies.size)
     terminal.println(table {
       column(2) { width = ColumnWidth.Expand() }

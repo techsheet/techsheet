@@ -17,7 +17,6 @@ import okio.FileSystem
 import okio.IOException
 import okio.Path.Companion.toPath
 import okio.SYSTEM
-import org.techsheet.cli.domain.TechSheetReport
 import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
 import org.techsheet.cli.util.ConsolePrinter
@@ -129,14 +128,14 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
     )
 
     log.i { "Starting project analysis..." }
-    val sheet = measureTimedValue { Analyzer(log).analyze(ctx) }
+    val result = measureTimedValue { Analyzer(log).analyze(ctx) }
       .also { log.i { "Project analyzed in ${it.duration}." } }
       .value
 
     //FIXME: Include user data from existing report once implemented
-    val report = TechSheetReport.of(sheet)
+    val techSheet = result.toTechSheet()
     val reporters = ReporterFactory(
-      report = report,
+      techSheet = techSheet,
       readonly = readOnly,
       fs = fs
     )
@@ -178,7 +177,7 @@ class AnalyzerCommand : CliktCommand(name = "analyze") {
       stdout != null ->
         echo(stdout, true)
       !quiet ->
-        ConsolePrinter(terminal).printReport(report)
+        ConsolePrinter(terminal).printReport(techSheet)
     }
   }
 

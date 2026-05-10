@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import okio.Path
 import org.techsheet.cli.domain.FrameworkType
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Base for PHP framework/library detectors
@@ -21,9 +21,9 @@ abstract class AbstractPhpFrameworkDetector(
   Matcher.Filename("composer.lock"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value?.let { text ->
-      packageNames.fold(sheet) { acc, pkg ->
+      packageNames.fold(result) { acc, pkg ->
         when (path.name) {
           "composer.lock" -> lockVersionRegex(pkg).find(text)
           else -> manifestVersionRegex(pkg).find(text)
@@ -34,7 +34,7 @@ abstract class AbstractPhpFrameworkDetector(
           ?.let { acc.withFramework(framework, it) }
           ?: acc
       }
-    } ?: sheet
+    } ?: result
 
   private fun manifestVersionRegex(pkg: String): Regex =
     Regex(""""${Regex.escape(pkg)}"\s*:\s*"([^"]+)"""")

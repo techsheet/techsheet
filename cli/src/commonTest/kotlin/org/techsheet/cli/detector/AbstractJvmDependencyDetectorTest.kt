@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path.Companion.toPath
 import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -28,13 +28,13 @@ private fun analyze(
   content: String,
   coordinates: List<Coordinate> = listOf(Coordinate(SPRING_GROUP, SPRING_ARTIFACT)),
   pluginIds: List<String> = emptyList(),
-): TechSheet = TestDetector(coordinates, pluginIds)
-  .onMatch(filename.toPath(), lazy { content }, TechSheet.empty())
+): DetectionResult = TestDetector(coordinates, pluginIds)
+  .onMatch(filename.toPath(), lazy { content }, DetectionResult())
 
-private fun TechSheet.springBootVersion(): String? =
+private fun DetectionResult.springBootVersion(): String? =
   frameworks.firstOrNull { it.type == FrameworkType.SPRING_BOOT }?.version
 
-private fun TechSheet.hasSpringBoot(): Boolean = hasFramework(FrameworkType.SPRING_BOOT)
+private fun DetectionResult.hasSpringBoot(): Boolean = hasFramework(FrameworkType.SPRING_BOOT)
 
 class AbstractJvmDependencyDetectorTest {
 
@@ -83,11 +83,11 @@ class AbstractJvmDependencyDetectorTest {
         </parent>
       </project>
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "pom.xml", pom,
       coordinates = listOf(Coordinate(SPRING_GROUP, "spring-boot-starter-parent")),
     )
-    assertEquals("3.5.0", sheet.springBootVersion())
+    assertEquals("3.5.0", result.springBootVersion())
   }
 
   @Test fun `pom group-only coordinate matches any artifact in group`() {
@@ -102,11 +102,11 @@ class AbstractJvmDependencyDetectorTest {
         </dependencies>
       </project>
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "pom.xml", pom,
       coordinates = listOf(Coordinate(SPRING_GROUP, artifactId = null)),
     )
-    assertEquals("4.0.0", sheet.springBootVersion())
+    assertEquals("4.0.0", result.springBootVersion())
   }
 
   @Test fun `pom version missing yields null but still emits framework`() {
@@ -120,9 +120,9 @@ class AbstractJvmDependencyDetectorTest {
         </dependencies>
       </project>
     """.trimIndent()
-    val sheet = analyze("pom.xml", pom)
-    assertTrue(sheet.hasSpringBoot())
-    assertNull(sheet.springBootVersion())
+    val result = analyze("pom.xml", pom)
+    assertTrue(result.hasSpringBoot())
+    assertNull(result.springBootVersion())
   }
 
   @Test fun `pom skips unrelated coordinates`() {
@@ -152,9 +152,9 @@ class AbstractJvmDependencyDetectorTest {
         </dependencies>
       </project>
     """.trimIndent()
-    val sheet = analyze("pom.xml", pom)
-    assertTrue(sheet.hasSpringBoot())
-    assertNull(sheet.springBootVersion())
+    val result = analyze("pom.xml", pom)
+    assertTrue(result.hasSpringBoot())
+    assertNull(result.springBootVersion())
   }
 
   // ---------- Gradle (Kotlin DSL + Groovy DSL) ----------
@@ -174,9 +174,9 @@ class AbstractJvmDependencyDetectorTest {
         implementation("org.springframework.boot:spring-boot-starter")
       }
     """.trimIndent()
-    val sheet = analyze("build.gradle.kts", script)
-    assertTrue(sheet.hasSpringBoot())
-    assertNull(sheet.springBootVersion())
+    val result = analyze("build.gradle.kts", script)
+    assertTrue(result.hasSpringBoot())
+    assertNull(result.springBootVersion())
   }
 
   @Test fun `gradle kts resolves dollar-var reference`() {
@@ -215,8 +215,8 @@ class AbstractJvmDependencyDetectorTest {
         id 'org.springframework.boot' version '4.0.5'
       }
     """.trimIndent()
-    val sheet = analyze("build.gradle", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
-    assertEquals("4.0.5", sheet.springBootVersion())
+    val result = analyze("build.gradle", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
+    assertEquals("4.0.5", result.springBootVersion())
   }
 
   @Test fun `gradle plugin id with inline version`() {
@@ -225,8 +225,8 @@ class AbstractJvmDependencyDetectorTest {
         id("org.springframework.boot") version "3.2.0"
       }
     """.trimIndent()
-    val sheet = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
-    assertEquals("3.2.0", sheet.springBootVersion())
+    val result = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
+    assertEquals("3.2.0", result.springBootVersion())
   }
 
   @Test fun `gradle plugin id without version still emits framework`() {
@@ -235,9 +235,9 @@ class AbstractJvmDependencyDetectorTest {
         id("org.springframework.boot")
       }
     """.trimIndent()
-    val sheet = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
-    assertTrue(sheet.hasSpringBoot())
-    assertNull(sheet.springBootVersion())
+    val result = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
+    assertTrue(result.hasSpringBoot())
+    assertNull(result.springBootVersion())
   }
 
   @Test fun `gradle group-only coordinate matches any artifact`() {
@@ -246,11 +246,11 @@ class AbstractJvmDependencyDetectorTest {
         implementation("org.springframework.boot:spring-boot-starter-webflux:4.0.5")
       }
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "build.gradle.kts", script,
       coordinates = listOf(Coordinate(SPRING_GROUP)),
     )
-    assertEquals("4.0.5", sheet.springBootVersion())
+    assertEquals("4.0.5", result.springBootVersion())
   }
 
   @Test fun `gradle alias reference does not match group-id`() {
@@ -260,8 +260,8 @@ class AbstractJvmDependencyDetectorTest {
         alias(libs.plugins.springBoot)
       }
     """.trimIndent()
-    val sheet = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
-    assertFalse(sheet.hasSpringBoot())
+    val result = analyze("build.gradle.kts", script, coordinates = emptyList(), pluginIds = listOf(SPRING_PLUGIN))
+    assertFalse(result.hasSpringBoot())
   }
 
   @Test fun `gradle ignores unrelated coordinates`() {
@@ -302,12 +302,12 @@ class AbstractJvmDependencyDetectorTest {
       [plugins]
       springBoot = { id = "org.springframework.boot", version.ref = "sb" }
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "libs.versions.toml", toml,
       coordinates = emptyList(),
       pluginIds = listOf(SPRING_PLUGIN),
     )
-    assertEquals("4.0.5", sheet.springBootVersion())
+    assertEquals("4.0.5", result.springBootVersion())
   }
 
   @Test fun `catalog plugin with id and inline version`() {
@@ -315,12 +315,12 @@ class AbstractJvmDependencyDetectorTest {
       [plugins]
       springBoot = { id = "org.springframework.boot", version = "3.1.0" }
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "libs.versions.toml", toml,
       coordinates = emptyList(),
       pluginIds = listOf(SPRING_PLUGIN),
     )
-    assertEquals("3.1.0", sheet.springBootVersion())
+    assertEquals("3.1.0", result.springBootVersion())
   }
 
   @Test fun `catalog multi-line inline table is parsed`() {
@@ -343,9 +343,9 @@ class AbstractJvmDependencyDetectorTest {
       [libraries]
       springBootStarter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "nope" }
     """.trimIndent()
-    val sheet = analyze("libs.versions.toml", toml)
-    assertTrue(sheet.hasSpringBoot())
-    assertNull(sheet.springBootVersion())
+    val result = analyze("libs.versions.toml", toml)
+    assertTrue(result.hasSpringBoot())
+    assertNull(result.springBootVersion())
   }
 
   @Test fun `catalog unrelated entries are skipped`() {
@@ -372,33 +372,33 @@ class AbstractJvmDependencyDetectorTest {
     val build = """
       libraryDependencies += "org.typelevel" %% "cats-core" % "2.10.0"
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "build.sbt", build,
       coordinates = listOf(Coordinate("org.typelevel", "cats-core")),
     )
-    assertEquals("2.10.0", sheet.springBootVersion())
+    assertEquals("2.10.0", result.springBootVersion())
   }
 
   @Test fun `sbt plugins file detects addSbtPlugin`() {
     val plugins = """
       addSbtPlugin("org.playframework" % "sbt-plugin" % "3.0.1")
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "plugins.sbt", plugins,
       coordinates = listOf(Coordinate("org.playframework", "sbt-plugin")),
     )
-    assertEquals("3.0.1", sheet.springBootVersion())
+    assertEquals("3.0.1", result.springBootVersion())
   }
 
   @Test fun `sbt group-only coordinate matches any artifact`() {
     val build = """
       libraryDependencies += "org.springframework.boot" % "spring-boot-starter-web" % "3.4.0"
     """.trimIndent()
-    val sheet = analyze(
+    val result = analyze(
       "build.sbt", build,
       coordinates = listOf(Coordinate(SPRING_GROUP)),
     )
-    assertEquals("3.4.0", sheet.springBootVersion())
+    assertEquals("3.4.0", result.springBootVersion())
   }
 
   @Test fun `sbt ignores unrelated coordinates`() {
@@ -428,14 +428,14 @@ class AbstractJvmDependencyDetectorTest {
         implementation("org.springframework.boot:spring-boot-starter:3.2.5")
       }
     """.trimIndent()
-    val afterPom = detector.onMatch("pom.xml".toPath(), lazy { pomLow }, TechSheet.empty())
+    val afterPom = detector.onMatch("pom.xml".toPath(), lazy { pomLow }, DetectionResult())
     val afterBoth = detector.onMatch("build.gradle.kts".toPath(), lazy { gradleHigh }, afterPom)
     assertEquals("3.2.5", afterBoth.springBootVersion())
   }
 
   @Test fun `null content is a no-op`() {
     val detector = TestDetector(listOf(Coordinate(SPRING_GROUP, SPRING_ARTIFACT)))
-    val result = detector.onMatch("pom.xml".toPath(), lazy<String?> { null }, TechSheet.empty())
+    val result = detector.onMatch("pom.xml".toPath(), lazy<String?> { null }, DetectionResult())
     assertFalse(result.hasSpringBoot())
   }
 }

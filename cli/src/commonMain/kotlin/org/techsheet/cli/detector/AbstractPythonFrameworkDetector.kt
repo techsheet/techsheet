@@ -3,7 +3,7 @@ package org.techsheet.cli.detector
 import okio.Path
 import org.techsheet.cli.domain.Matcher
 import org.techsheet.cli.domain.FrameworkType
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Base for Python framework/library detectors
@@ -25,11 +25,11 @@ abstract class AbstractPythonFrameworkDetector(
   Matcher.Filename("setup.cfg"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.takeIf(presenceRegex::containsMatchIn)
-      ?.let { sheet.withFramework(framework, versionRegex.find(it)?.groupValues?.getOrNull(1)) }
-      ?: sheet
+      ?.let { result.withFramework(framework, versionRegex.find(it)?.groupValues?.getOrNull(1)) }
+      ?: result
 
   // `\b…\b(?!-)` so `django` does not match `django-crispy-forms`, `django-rest-framework`,
   // etc. — hyphenated ecosystem packages form a word boundary with `-` but are not the package

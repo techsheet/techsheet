@@ -4,7 +4,7 @@ import org.techsheet.cli.domain.ToolType
 
 class KtlintDetector : AbstractJvmDependencyDetector(
   name = "ktlint",
-  apply = { sheet, version -> sheet.withTool(ToolType.KTLINT, version) },
+  apply = { result, version -> result.withTool(ToolType.KTLINT, version) },
   coordinates = listOf(
     Coordinate("com.pinterest", "ktlint"),
     Coordinate("com.pinterest.ktlint"),

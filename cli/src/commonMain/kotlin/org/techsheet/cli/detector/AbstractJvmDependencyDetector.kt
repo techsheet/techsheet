@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Detects technologies by matching [coordinates] and/or [pluginIds] in JVM build tools, i.e. pom.xml or build.gradle.kts
@@ -11,7 +11,7 @@ import org.techsheet.cli.domain.TechSheet
  */
 abstract class AbstractJvmDependencyDetector(
   name: String,
-  private val apply: (TechSheet, String?) -> TechSheet,
+  private val apply: (DetectionResult, String?) -> DetectionResult,
   private val coordinates: List<Coordinate>,
   private val pluginIds: List<String> = emptyList(),
 ) : Detector(
@@ -26,19 +26,19 @@ abstract class AbstractJvmDependencyDetector(
   Matcher.Filename("plugins.sbt"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value?.let { text ->
       when (path.name) {
-        "pom.xml" -> parsePom(text, sheet)
-        "libs.versions.toml" -> parseCatalog(text, sheet)
-        "build.sbt", "plugins.sbt" -> parseSbt(text, sheet)
-        else -> parseGradle(text, sheet)
+        "pom.xml" -> parsePom(text, result)
+        "libs.versions.toml" -> parseCatalog(text, result)
+        "build.sbt", "plugins.sbt" -> parseSbt(text, result)
+        else -> parseGradle(text, result)
       }
-    } ?: sheet
+    } ?: result
 
   // ---------- Maven POM ----------
 
-  private fun parsePom(text: String, sheet: TechSheet): TechSheet =
+  private fun parsePom(text: String, result: DetectionResult): DetectionResult =
     POM_BLOCK
       .findAll(text)
       .map { it.groupValues[1] }
@@ -47,11 +47,11 @@ abstract class AbstractJvmDependencyDetector(
       .takeIf { it.isNotEmpty() }
       ?.let { blocks ->
         val props = pomProperties(text)
-        blocks.fold(sheet) { acc, block ->
+        blocks.fold(result) { acc, block ->
           apply(acc, resolvePomVersion(block, props))
         }
       }
-      ?: sheet
+      ?: result
 
   private fun matchesPomBlock(coord: Coordinate, block: String): Boolean =
     Regex("""<groupId>\s*${Regex.escape(coord.groupId)}\s*</groupId>""").containsMatchIn(block)
@@ -79,7 +79,7 @@ abstract class AbstractJvmDependencyDetector(
 
   // ---------- Gradle (Kotlin DSL + Groovy DSL) ----------
 
-  private fun parseGradle(text: String, sheet: TechSheet): TechSheet =
+  private fun parseGradle(text: String, result: DetectionResult): DetectionResult =
     (coordinates.asSequence().flatMap { coord ->
       // Groups: 1 = quote char, 2 = version (optional).
       gradleCoordinateRegex(coord).findAll(text).map { it.groupValues.getOrNull(2)?.trim() }
@@ -91,9 +91,9 @@ abstract class AbstractJvmDependencyDetector(
       .takeIf { it.isNotEmpty() }
       ?.let { hits ->
         val props = gradleProperties(text)
-        hits.fold(sheet) { acc, raw -> apply(acc, resolveGradleVersion(raw, props)) }
+        hits.fold(result) { acc, raw -> apply(acc, resolveGradleVersion(raw, props)) }
       }
-      ?: sheet
+      ?: result
 
   private fun gradleCoordinateRegex(coord: Coordinate): Regex {
     val group = Regex.escape(coord.groupId)
@@ -118,12 +118,12 @@ abstract class AbstractJvmDependencyDetector(
 
   // ---------- Gradle version catalog (libs.versions.toml) ----------
 
-  private fun parseCatalog(text: String, sheet: TechSheet): TechSheet =
+  private fun parseCatalog(text: String, result: DetectionResult): DetectionResult =
     (catalogLibraryVersions(text) + catalogPluginVersions(text))
       .toList()
       .takeIf { it.isNotEmpty() }
-      ?.fold(sheet) { acc, version -> apply(acc, version) }
-      ?: sheet
+      ?.fold(result) { acc, version -> apply(acc, version) }
+      ?: result
 
   private fun catalogLibraryVersions(text: String): Sequence<String?> =
     catalogEntries(text, TOML_LIBRARIES_SECTION)
@@ -164,13 +164,13 @@ abstract class AbstractJvmDependencyDetector(
 
   // ---------- sbt ----------
 
-  private fun parseSbt(text: String, sheet: TechSheet): TechSheet =
+  private fun parseSbt(text: String, result: DetectionResult): DetectionResult =
     coordinates.asSequence()
       .flatMap { coord -> sbtCoordinateRegex(coord).findAll(text).map { it.groupValues[1] } }
       .toList()
       .takeIf { it.isNotEmpty() }
-      ?.fold(sheet) { acc, version -> apply(acc, version) }
-      ?: sheet
+      ?.fold(result) { acc, version -> apply(acc, version) }
+      ?: result
 
   private fun sbtCoordinateRegex(coord: Coordinate): Regex {
     val group = Regex.escape(coord.groupId)

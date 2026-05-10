@@ -1,6 +1,6 @@
 package org.techsheet.cli.domain
 
-data class Tool(
+data class DetectedTool(
   val type: ToolType,
   val version: String? = null,
   val flavor: String? = null,
@@ -10,7 +10,7 @@ enum class ToolType(
   override val key: String,
   override val title: String,
   val category: ToolCategory,
-) : Technology {
+) : DetectedTechnology {
 
   // Build
   GRADLE("gradle", "Gradle", ToolCategory.BUILD),

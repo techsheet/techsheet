@@ -15,6 +15,9 @@ import okio.FileSystem
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.techsheet.cli.domain.*
+import org.techsheet.schema.Project
+import org.techsheet.schema.ProjectTeam
+import org.techsheet.schema.ProjectUrl
 import org.techsheet.cli.reporter.ReporterFactory
 import org.techsheet.cli.reporter.YamlReporter
 import org.techsheet.cli.util.ConsolePrinter
@@ -94,8 +97,8 @@ class InitCommand : CliktCommand(name = "init") {
       ).ifEmpty { null },
     )
 
-    val report = TechSheetReport.of(TechSheet(project = project))
-    ReporterFactory(report = report, readonly = false, fs = fs).yaml.report(targetFile)
+    val techSheet = DetectionResult(project = project).toTechSheet()
+    ReporterFactory(techSheet = techSheet, readonly = false, fs = fs).yaml.report(targetFile)
 
     echo("Written to $targetFile")
   }

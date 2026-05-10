@@ -4,16 +4,16 @@ import co.touchlab.kermit.Logger
 import okio.FileMetadata
 import okio.Path
 import org.techsheet.cli.detector.*
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 class Analyzer(
   private val log: Logger,
   private val detectors: Detectors = Detectors(),
 ) {
 
-  fun analyze(ctx: AnalyzerContext): TechSheet =
-    walkFromRoot(ctx).fold(TechSheet.empty()) { sheet, entry ->
-      dispatch(ctx, entry, sheet)
+  fun analyze(ctx: AnalyzerContext): DetectionResult =
+    walkFromRoot(ctx).fold(DetectionResult()) { acc, entry ->
+      dispatch(ctx, entry, acc)
     }
 
   private data class WalkEntry(val path: Path, val metadata: FileMetadata)
@@ -34,16 +34,16 @@ class Analyzer(
         }
       }
 
-  private fun dispatch(ctx: AnalyzerContext, entry: WalkEntry, sheet: TechSheet): TechSheet =
+  private fun dispatch(ctx: AnalyzerContext, entry: WalkEntry, current: DetectionResult): DetectionResult =
     entry.path.relativeTo(ctx.path).segments.joinToString("/").let { relative ->
       log.d { displayPath(relative, entry.metadata) }
       hitsFor(entry, relative)
         .takeIf { it.isNotEmpty() }
         ?.let { hits ->
           val content = contentOf(ctx, entry)
-          hits.fold(sheet) { acc, d -> applyDetector(d, entry.path, content, acc) }
+          hits.fold(current) { acc, d -> applyDetector(d, entry.path, content, acc) }
         }
-        ?: sheet.also { log.d { " - No matching detectors" } }
+        ?: current.also { log.d { " - No matching detectors" } }
     }
 
   private fun hitsFor(entry: WalkEntry, relative: String): List<Detector> = when {
@@ -64,11 +64,11 @@ class Analyzer(
       .onFailure { log.w(it) { "Failed to read $path; continuing without content" } }
       .getOrNull()
 
-  private fun applyDetector(d: Detector, path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-    if (d.skipIf(path, sheet)) {
-      sheet.also { log.d { " - Skipping detector: ${d.name}" } }
+  private fun applyDetector(d: Detector, path: Path, content: Lazy<String?>, current: DetectionResult): DetectionResult =
+    if (d.skipIf(path, current)) {
+      current.also { log.d { " - Skipping detector: ${d.name}" } }
     } else {
-      d.onMatch(path, content, sheet).also { log.d { " - Running detector: ${d.name}" } }
+      d.onMatch(path, content, current).also { log.d { " - Running detector: ${d.name}" } }
     }
 
   private fun extensionOf(name: String): String? =

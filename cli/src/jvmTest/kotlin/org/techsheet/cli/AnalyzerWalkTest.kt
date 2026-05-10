@@ -9,7 +9,7 @@ import okio.Path.Companion.toOkioPath
 import org.techsheet.cli.detector.Detector
 import org.techsheet.cli.detector.Detectors
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 import java.nio.file.Files
 import kotlin.test.Test
@@ -36,8 +36,8 @@ class AnalyzerWalkTest {
 
     class Tripwire : Detector("tripwire", Matcher.Filename("tripwire.json")) {
       var hit = false
-      override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-        sheet.also { hit = true }
+      override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+        result.also { hit = true }
     }
     val tw = Tripwire()
 
@@ -51,11 +51,11 @@ class AnalyzerWalkTest {
     }
 
     class Idea : Detector("idea", Matcher.DirectoryAt(".idea")) {
-      override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
-        sheet.withTool(ToolType.INTELLIJ_IDEA)
+      override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+        result.withTool(ToolType.INTELLIJ_IDEA)
     }
 
-    val sheet = Analyzer(silent, Detectors(listOf(Idea()))).analyze(AnalyzerContext(root, silent))
-    assertTrue(sheet.hasTool(ToolType.INTELLIJ_IDEA), "DirectoryAt('.idea') must fire on root .idea")
+    val result = Analyzer(silent, Detectors(listOf(Idea()))).analyze(AnalyzerContext(root, silent))
+    assertTrue(result.hasTool(ToolType.INTELLIJ_IDEA), "DirectoryAt('.idea') must fire on root .idea")
   }
 }

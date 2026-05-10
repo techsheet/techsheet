@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import org.techsheet.cli.domain.ToolType
 
 class JVMDetector : Detector(
@@ -16,11 +16,11 @@ class JVMDetector : Detector(
   Matcher.Filename("settings.gradle"),
 ) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.let { extractVersion(path.name, it) }
-      ?.let { sheet.withTool(ToolType.JVM, it) }
-      ?: sheet
+      ?.let { result.withTool(ToolType.JVM, it) }
+      ?: result
 
   private fun extractVersion(filename: String, text: String): String? = when (filename) {
     ".java-version" -> JAVA_VERSION_FILE.find(text)?.groupValues?.getOrNull(1)

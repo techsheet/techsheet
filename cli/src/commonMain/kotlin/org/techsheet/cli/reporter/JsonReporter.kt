@@ -2,12 +2,11 @@ package org.techsheet.cli.reporter
 
 import kotlinx.serialization.json.Json
 import okio.FileSystem
-import okio.Path
-import org.techsheet.cli.domain.TechSheetReport
+import org.techsheet.schema.TechSheet
 
 class JsonReporter(
-  private val report: TechSheetReport,
-  fs: FileSystem,
+    private val techSheet: TechSheet,
+    fs: FileSystem,
 ) : Reporter(fs) {
 
   private val json = Json {
@@ -16,5 +15,5 @@ class JsonReporter(
     explicitNulls = false
   }
 
-  override fun serialize(): String = json.encodeToString(report) + "\n"
+  override fun serialize(): String = json.encodeToString(techSheet) + "\n"
 }

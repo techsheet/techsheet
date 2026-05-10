@@ -2,7 +2,7 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 
 /**
  * Detects a technology by its presence as a named package in `package.json`
@@ -16,18 +16,18 @@ import org.techsheet.cli.domain.TechSheet
 abstract class AbstractNpmDependencyDetector(
   name: String,
   packageName: String,
-  private val apply: (TechSheet, String?) -> TechSheet,
+  private val apply: (DetectionResult, String?) -> DetectionResult,
 ) : Detector(name, Matcher.Filename("package.json")) {
 
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet =
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
     content.value
       ?.let(versionRegex::find)
       ?.groupValues
       ?.getOrNull(1)
       ?.trimStart('^', '~', '>', '=', ' ')
       ?.ifEmpty { null }
-      ?.let { apply(sheet, it) }
-      ?: sheet
+      ?.let { apply(result, it) }
+      ?: result
 
   private val versionRegex = Regex(""""${Regex.escape(packageName)}"\s*:\s*"([^"]+)"""")
 }

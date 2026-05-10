@@ -2,12 +2,12 @@ package org.techsheet.cli.detector
 
 import okio.Path
 import org.techsheet.cli.domain.Matcher
-import org.techsheet.cli.domain.TechSheet
+import org.techsheet.cli.domain.DetectionResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 private class Stub(name: String, vararg matchers: Matcher) : Detector(name, *matchers) {
-  override fun onMatch(path: Path, content: Lazy<String?>, sheet: TechSheet): TechSheet = sheet
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult = result
 }
 
 class DetectorsTest {

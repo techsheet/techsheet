@@ -2,7 +2,7 @@ package org.techsheet.cli.reporter
 
 import okio.FileSystem
 import okio.Path
-import org.techsheet.cli.domain.ToolEntry
+import org.techsheet.schema.Tool
 
 abstract class Reporter(
   private val fs: FileSystem,
@@ -23,4 +23,4 @@ abstract class Reporter(
   }
 }
 
-internal fun ToolEntry.displayName(): String = flavor?.let { "$name ($it)" } ?: name
+internal fun Tool.displayName(): String = flavor?.let { "$name ($it)" } ?: name
