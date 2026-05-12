@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techsheet.org/schema/v2/techsheet.schema.json",
+  "type": "object",
+  "anyOf": [
+    { "required": ["project"] },
+    { "required": ["languages"] },
+    { "required": ["frameworks"] },
+    { "required": ["services"] },
+    { "required": ["tools"] }
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "project": {
+      "$ref": "#/$defs/project"
+    },
+    "languages": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/language" },
+      "uniqueItems": true
+    },
+    "frameworks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/framework" },
+      "uniqueItems": true
+    },
+    "services": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/service" },
+      "uniqueItems": true
+    },
+    "tools": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/tool" },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "project": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200,
+          "pattern": "^[a-zA-Z0-9.,_ -]+$"
+        },
+        "description": { "type": "string" },
+        "team": { "$ref": "#/$defs/team" },
+        "urls": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/projectUrl" }
+        },
+        "server": { "$ref": "#/$defs/server" }
+      }
+    },
+    "team": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "type": "string" }
+      }
+    },
+    "projectUrl": {
+      "type": "object",
+      "required": ["name", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "description": "Any URL related to the project, i.e. VCS host, Wiki, Website, Issue-Tracker.",
+      "examples": []
+    },
+    "server": {
+      "type": "object",
+      "required": ["url"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "technologyName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable name of the technology.",
+      "examples": [
+        "Java",
+        "C#",
+        "Spring Boot",
+        "SQL Server",
+        "Apache Webserver",
+        "Internal Design Framework"
+      ]
+    },
+    "uniqueId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^[a-z0-9._-]+$",
+      "description": "Unique identifier for a project, technology or team. This can be a UUID or an arbitrary string. IDs need to be globally unique.",
+      "examples": [
+        "ce770f52-e33b-47ba-a3c1-2198568348b9",
+        "43398457339487",
+        "language.kotlin",
+        "framework.spring-boot",
+        "workspace.projects.cms"
+      ]
+    },
+    "technologyUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional URL of a specific technology. When dereferences, it should provide a meaningful description of the technology. For detected technologies, this is always https://techsheet.org/${id}",
+      "examples": [
+        "https://techsheet.org/language/html",
+        "https://techsheet.org/language/cpp",
+        "https://techsheet.org/framework/spring-boot",
+        "https://de.wikipedia.org/wiki/Brainfuck",
+        "https://example.com/our-own-secret-tech"
+      ]
+    },
+    "technologyVersion": {
+      "type": "string",
+      "description": "Optional version of the technology. This is likely a semver or calver and depends on detection type and availability.",
+      "examples": [
+        "1.3.8",
+        "4.0.0-SNAPSHOT",
+        "19",
+        "2026.3"
+      ]
+    },
+    "technologyFlavor": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9 _-]+$",
+      "description": "Optional, human readable flavor for a given technology.",
+      "examples": [
+        "Kotlin DSL",
+        "5+ version",
+        "XY Variant"
+      ]
+    },
+    "technologyCategory": {
+      "type": "string",
+      "pattern": "^[a-zA-Z _-]+$",
+      "description": "Optional, human readable category for a given technology. This can be any arbitrary string, as long as it matches the pattern.",
+      "examples": [
+        "Application",
+        "CMS",
+        "Security",
+        "Testing",
+        "Build",
+        "AI"
+      ]
+    },
+    "language": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" }
+      }
+    },
+    "framework": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" },
+        "flavor": { "$ref": "#/$defs/technologyFlavor" }
+      }
+    }
+  }
+}
