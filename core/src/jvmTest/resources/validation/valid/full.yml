@@ -1,0 +1,26 @@
+$schema: "https://techsheet.org/schema/v2/techsheet.json"
+project:
+  id: "my-project"
+  name: "My Project"
+  description: "A full techsheet example"
+languages:
+  - id: "language.kotlin"
+    name: "Kotlin"
+    url: "https://techsheet.org/language/kotlin"
+    version: "2.1.0"
+frameworks:
+  - id: "framework.spring-boot"
+    name: "Spring Boot"
+    category: "Application"
+    version: "3.4.0"
+services:
+  - id: "service.postgres"
+    name: "PostgreSQL"
+    category: "Database"
+    version: "16"
+tools:
+  - id: "tool.gradle"
+    name: "Gradle"
+    category: "Build"
+    flavor: "Kotlin DSL"
+    version: "8.7"

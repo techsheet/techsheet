@@ -1,15 +1,19 @@
 package org.techsheet.core
 
-import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class TechSheet(
-  @EncodeDefault(EncodeDefault.Mode.ALWAYS)
-  val schema: Int = 2,
+  @SerialName("\$schema")
+  val schema: String? = null,
   val project: Project? = null,
-  val languages: List<Language>,
-  val frameworks: List<Framework>,
-  val services: List<Service>,
-  val tools: List<Tool>,
-)
+  val languages: List<Language> = emptyList(),
+  val frameworks: List<Framework> = emptyList(),
+  val services: List<Service> = emptyList(),
+  val tools: List<Tool> = emptyList(),
+) {
+
+  fun isEmpty(): Boolean =
+    project == null && languages.isEmpty() && frameworks.isEmpty() && services.isEmpty() && tools.isEmpty()
+}

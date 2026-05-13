@@ -1,6 +1,5 @@
 package org.techsheet.core
 
-import kotlin.uuid.Uuid
 import kotlinx.serialization.Serializable
 
 /**
@@ -9,7 +8,8 @@ import kotlinx.serialization.Serializable
  * Provides context about the project that owns the sheet, useful for registries and dashboards
  * that aggregate multiple sheets.
  *
- * @property id Stable UUID that uniquely identifies this project across all sheets.
+ * @property id Arbitrary string that uniquely identifies this project. A v4 UUID is the recommended
+ *   default — highly recommended but not mandatory. Must be globally unique per server when uploading.
  * @property name Short human-readable project name.
  * @property description Optional longer description of what the project does.
  * @property team The team responsible for this project.
@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Project(
-  val id: Uuid,
+  val id: String,
   val name: String,
   val description: String? = null,
   val team: ProjectTeam? = null,
@@ -30,13 +30,13 @@ data class Project(
 /**
  * The team responsible for a project
  *
- * @property id Stable UUID that uniquely identifies this team.
+ * @property id Arbitrary string that uniquely identifies this team. A v4 UUID is recommended.
  * @property name Human-readable team name.
  * @since 2.0.0
  */
 @Serializable
 data class ProjectTeam(
-  val id: Uuid = Uuid.random(),
+  val id: String,
   val name: String,
 )
 

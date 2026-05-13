@@ -1,0 +1,5 @@
+$schema: "https://techsheet.org/schema/v2/techsheet.json"
+tools:
+  - id: "tool.gradle"
+    name: "Gradle"
+    flavor: "?"

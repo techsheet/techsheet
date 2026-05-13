@@ -1,0 +1,4 @@
+$schema: "https://techsheet.org/schema/v2/techsheet.json"
+project:
+  id: "this-project-id-is-way-too-long-and-exceeds-fifty-x"
+  name: "My Project"

@@ -1,0 +1,5 @@
+$schema: "https://techsheet.org/schema/v2/techsheet.json"
+frameworks:
+  - id: "framework.spring-boot"
+    name: "Spring Boot"
+    category: "Application"

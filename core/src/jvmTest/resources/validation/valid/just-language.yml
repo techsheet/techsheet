@@ -1,0 +1,5 @@
+$schema: "https://techsheet.org/schema/v2/techsheet.json"
+languages:
+  - id: "language.kotlin"
+    name: "Kotlin"
+    url: "https://techsheet.org/language/kotlin"

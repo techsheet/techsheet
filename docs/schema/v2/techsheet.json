@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techsheet.org/schema/v2/techsheet.json",
+  "title": "TechSheet",
+  "description": "Open standard for structured, automated reporting of technical insights about software projects. Describes technologies, ownership, and operational characteristics in a machine-readable format.",
+  "type": "object",
+  "additionalProperties": false,
+  "examples": [
+    {
+      "$schema": "https://techsheet.org/schema/v2/techsheet.json",
+      "project": {
+        "id": "ce770f52-e33b-47ba-a3c1-2198568348b9",
+        "name": "User Management API",
+        "description": "REST API for managing user accounts and authentication.",
+        "team": {
+          "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+          "name": "Platform Engineering"
+        },
+        "urls": [
+          { "name": "Repository", "url": "https://github.com/example/user-mgmt-api" }
+        ]
+      },
+      "languages": [
+        { "id": "language.kotlin", "name": "Kotlin", "url": "https://techsheet.org/language/kotlin", "version": "2.1.0" },
+        { "id": "language.typescript", "name": "TypeScript", "url": "https://techsheet.org/language/typescript", "version": "5.8" }
+      ],
+      "frameworks": [
+        { "id": "framework.spring-boot", "name": "Spring Boot", "category": "Application", "version": "3.4.0" },
+        { "id": "framework.angular", "name": "Angular", "category": "Frontend", "version": "19" }
+      ],
+      "services": [
+        { "id": "service.postgres", "name": "PostgreSQL", "category": "Database", "version": "16" }
+      ],
+      "tools": [
+        { "id": "tool.gradle", "name": "Gradle", "category": "Build", "flavor": "Kotlin DSL", "version": "8.7" }
+      ]
+    }
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "project": {
+      "$ref": "#/$defs/project"
+    },
+    "languages": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/language" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "examples": [
+        [
+          { "id": "language.kotlin", "name": "Kotlin", "url": "https://techsheet.org/language/kotlin", "version": "2.1.0" },
+          { "id": "language.sql", "name": "SQL", "url": "https://techsheet.org/language/sql" }
+        ]
+      ]
+    },
+    "frameworks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/framework" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "examples": [
+        [
+          { "id": "framework.spring-boot", "name": "Spring Boot", "category": "Application", "version": "3.4.0" },
+          { "id": "framework.junit", "name": "JUnit", "category": "Testing", "version": "5.11" }
+        ]
+      ]
+    },
+    "services": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/service" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "examples": [
+        [
+          { "id": "service.postgres", "name": "PostgreSQL", "category": "Database", "version": "16" },
+          { "id": "service.redis", "name": "Redis", "category": "Cache", "version": "7.4" }
+        ]
+      ]
+    },
+    "tools": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/tool" },
+      "minItems": 1,
+      "uniqueItems": true,
+      "examples": [
+        [
+          { "id": "tool.gradle", "name": "Gradle", "category": "Build", "flavor": "Kotlin DSL", "version": "8.7" },
+          { "id": "tool.docker", "name": "Docker", "category": "Container", "version": "27.5" }
+        ]
+      ]
+    }
+  },
+  "$defs": {
+    "project": {
+      "title": "Project",
+      "description": "Identifying and organizational metadata about the software system this TechSheet represents. Used for governance, ownership mapping, portfolio analysis, and cross-system correlation. Optional.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200,
+          "pattern": "^[a-zA-Z0-9.,_ -]+$",
+          "description": "Human-readable name of the software system.",
+          "examples": [
+            "User Management API",
+            "Corporate Website CMS",
+            "Payment Processing Service"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "description": "A brief, human-readable description of what this software system does.",
+          "examples": [
+            "REST API for managing user accounts and authentication.",
+            "Internal CMS powering the company website and blog."
+          ]
+        },
+        "team": { "$ref": "#/$defs/team" },
+        "urls": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/projectUrl" },
+          "description": "Named URLs associated with this project, such as its repository, documentation, wiki, or issue tracker."
+        },
+        "server": { "$ref": "#/$defs/server" }
+      },
+      "examples": [
+        {
+          "id": "ce770f52-e33b-47ba-a3c1-2198568348b9",
+          "name": "User Management API",
+          "description": "REST API for managing user accounts and authentication.",
+          "team": { "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "Platform Engineering" },
+          "urls": [
+            { "name": "Repository", "url": "https://github.com/example/user-mgmt-api" }
+          ]
+        }
+      ]
+    },
+    "team": {
+      "description": "The team responsible for this project.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Human-readable name of the team.",
+          "examples": [
+            "Platform Engineering",
+            "Frontend Guild",
+            "Data & Analytics"
+          ]
+        }
+      }
+    },
+    "projectUrl": {
+      "type": "object",
+      "required": ["name", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "description": "Any URL related to the project, i.e. VCS host, Wiki, Website, Issue-Tracker.",
+      "examples": [
+        { "name": "Repository", "url": "https://github.com/example/my-project" },
+        { "name": "Wiki", "url": "https://wiki.example.com/my-project" },
+        { "name": "Issue Tracker", "url": "https://jira.example.com/projects/MP" }
+      ]
+    },
+    "server": {
+      "description": "The TechSheet server this sheet is uploaded to.",
+      "type": "object",
+      "required": ["url"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "technologyName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable name of the technology.",
+      "examples": [
+        "Java",
+        "C#",
+        "Spring Boot",
+        "SQL Server",
+        "Apache Webserver",
+        "Internal Design Framework"
+      ]
+    },
+    "uniqueId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "pattern": "^[a-z0-9._-]+$",
+      "description": "Globally unique identifier for a project, technology, or team. Must not collide with any other ID across all TechSheets. A v4 UUID is recommended for project and team IDs; a dotted-slug convention (e.g. 'language.kotlin') is recommended for well-known technologies.",
+      "examples": [
+        "ce770f52-e33b-47ba-a3c1-2198568348b9",
+        "43398457339487",
+        "language.kotlin",
+        "framework.spring-boot",
+        "workspace.projects.cms"
+      ]
+    },
+    "technologyUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Optional URL of a specific technology. When dereferenced, it should provide a meaningful description of the technology. For detected technologies, this is always https://techsheet.org/${id}",
+      "examples": [
+        "https://techsheet.org/language/html",
+        "https://techsheet.org/language/cpp",
+        "https://techsheet.org/framework/spring-boot",
+        "https://de.wikipedia.org/wiki/Brainfuck",
+        "https://example.com/our-own-secret-tech"
+      ]
+    },
+    "technologyVersion": {
+      "type": "string",
+      "description": "Optional version of the technology. This is likely a semver or calver and depends on detection type and availability.",
+      "examples": [
+        "1.3.8",
+        "4.0.0-SNAPSHOT",
+        "19",
+        "2026.3"
+      ]
+    },
+    "technologyFlavor": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9 _-]+$",
+      "description": "Optional, human-readable flavor for a given technology.",
+      "examples": [
+        "Kotlin DSL",
+        "5+ version",
+        "XY Variant"
+      ]
+    },
+    "technologyCategory": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z _-]+$",
+      "description": "Optional, human-readable category for a given technology. This can be any arbitrary string, as long as it matches the pattern.",
+      "examples": [
+        "Application",
+        "CMS",
+        "Security",
+        "Testing",
+        "Build",
+        "AI"
+      ]
+    },
+    "language": {
+      "title": "Language",
+      "description": "A formal language used to express code, queries, configuration, templates, or structured data.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" }
+      }
+    },
+    "framework": {
+      "title": "Framework",
+      "description": "A foundational technology defining application structure, development patterns, or architectural conventions.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" }
+      }
+    },
+    "service": {
+      "title": "Service",
+      "description": "An external system the application depends on during runtime operation.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" }
+      }
+    },
+    "tool": {
+      "title": "Tool",
+      "description": "Software used during the engineering lifecycle to build, test, analyze, package, deploy, or operate systems.",
+      "type": "object",
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/uniqueId" },
+        "name": { "$ref": "#/$defs/technologyName" },
+        "url": { "$ref": "#/$defs/technologyUrl" },
+        "version": { "$ref": "#/$defs/technologyVersion" },
+        "category": { "$ref": "#/$defs/technologyCategory" },
+        "flavor": { "$ref": "#/$defs/technologyFlavor" }
+      }
+    }
+  }
+}
