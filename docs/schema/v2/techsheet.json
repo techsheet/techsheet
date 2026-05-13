@@ -240,7 +240,8 @@
     },
     "technologyFlavor": {
       "type": "string",
-      "pattern": "^[a-zA-Z0-9 _-]+$",
+      "minLength": 1,
+      "maxLength": 100,
       "description": "Optional, human-readable flavor for a given technology.",
       "examples": [
         "Kotlin DSL",
