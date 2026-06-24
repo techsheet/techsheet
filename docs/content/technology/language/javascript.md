@@ -1,24 +1,24 @@
 ---
-title: JavaScript
+title: "JavaScript"
 aliases:
-  - /language/javascript
+- "/language/javascript"
 bookToC: false
 techsheet:
-  key: javascript
-  type: language
+  key: "javascript"
+  type: "language"
   related:
-    - type: language
-      key: typescript
-      comment: "typed superset, compiles to JS"
-    - type: tool
-      key: nodejs
-      comment: "server-side runtime"
-    - type: tool
-      key: npm
-      comment: "primary package manager"
-    - type: framework
-      key: react
-      comment: "dominant UI framework"
+  - type: "language"
+    key: "typescript"
+    comment: "typed superset, compiles to JS"
+  - type: "tool"
+    key: "nodejs"
+    comment: "server-side runtime"
+  - type: "tool"
+    key: "npm"
+    comment: "primary package manager"
+  - type: "framework"
+    key: "react"
+    comment: "dominant UI framework"
 ---
 
 **The ubiquitous dynamic programming language of the web, powering interactive behavior in browsers and server-side

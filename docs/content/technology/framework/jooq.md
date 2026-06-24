@@ -1,31 +1,31 @@
 ---
-title: jOOQ
+title: "jOOQ"
 aliases:
-  - /framework/jooq
+- "/framework/jooq"
 bookToC: false
 techsheet:
-  key: jooq
-  type: framework
-  category: Data
+  key: "jooq"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: language
-      key: kotlin
-      comment: "supported language"
-    - type: framework
-      key: hibernate
-      comment: "alternative ORM-based persistence"
-    - type: framework
-      key: mybatis
-      comment: "alternative SQL-centric persistence"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported language"
+  - type: "framework"
+    key: "hibernate"
+    comment: "alternative ORM-based persistence"
+  - type: "framework"
+    key: "mybatis"
+    comment: "alternative SQL-centric persistence"
 ---
 
 **A type-safe SQL library for [Java](../language/java.md) and [Kotlin](../language/kotlin.md) that generates

@@ -1,25 +1,25 @@
 ---
-title: Aider
+title: "Aider"
 aliases:
-  - /tool/aider
+- "/tool/aider"
 bookToC: false
 techsheet:
-  key: aider
-  type: tool
-  category: AI
+  key: "aider"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: git
-      comment: "auto-commits changes via git"
-    - type: language
-      key: python
-      comment: "implementation language"
-    - type: tool
-      key: claude
-      comment: "supported LLM backend"
-    - type: tool
-      key: codex
-      comment: "terminal-based AI coding alternative"
+  - type: "tool"
+    key: "git"
+    comment: "auto-commits changes via git"
+  - type: "language"
+    key: "python"
+    comment: "implementation language"
+  - type: "tool"
+    key: "claude"
+    comment: "supported LLM backend"
+  - type: "tool"
+    key: "codex"
+    comment: "terminal-based AI coding alternative"
 ---
 
 **An open-source, terminal-based AI pair programming tool that edits code in existing repositories using large language

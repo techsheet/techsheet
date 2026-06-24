@@ -1,27 +1,27 @@
 ---
-title: Craft CMS
+title: "Craft CMS"
 aliases:
-  - /framework/craft-cms
+- "/framework/craft-cms"
 bookToC: false
 techsheet:
-  key: craft-cms
-  type: framework
-  category: CMS
+  key: "craft-cms"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: yii2
-      comment: "underlying application framework"
-    - type: tool
-      key: composer
-      comment: "package manager for plugins and updates"
-    - type: framework
-      key: wordpress
-      comment: "dominant CMS alternative"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "yii2"
+    comment: "underlying application framework"
+  - type: "tool"
+    key: "composer"
+    comment: "package manager for plugins and updates"
+  - type: "framework"
+    key: "wordpress"
+    comment: "dominant CMS alternative"
 ---
 
 **A commercial, developer-oriented content management system built on [PHP](../language/php.md) and

@@ -1,27 +1,27 @@
 ---
-title: WordPress
+title: "WordPress"
 aliases:
-  - /framework/wordpress
+- "/framework/wordpress"
 bookToC: false
 techsheet:
-  key: wordpress
-  type: framework
-  category: CMS
+  key: "wordpress"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "primary language"
-    - type: framework
-      key: drupal
-      comment: "major CMS alternative"
-    - type: framework
-      key: joomla
-      comment: "PHP-based CMS alternative"
-    - type: tool
-      key: composer
-      comment: "dependency management"
+  - type: "language"
+    key: "php"
+    comment: "primary language"
+  - type: "framework"
+    key: "drupal"
+    comment: "major CMS alternative"
+  - type: "framework"
+    key: "joomla"
+    comment: "PHP-based CMS alternative"
+  - type: "tool"
+    key: "composer"
+    comment: "dependency management"
 ---
 
 **An open-source content management system written in [PHP](../language/php.md), powering a significant share of

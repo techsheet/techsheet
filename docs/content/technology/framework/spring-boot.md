@@ -1,31 +1,31 @@
 ---
-title: Spring Boot
+title: "Spring Boot"
 aliases:
-  - /framework/spring-boot
+- "/framework/spring-boot"
 bookToC: false
 techsheet:
-  key: spring-boot
-  type: framework
-  category: Application
+  key: "spring-boot"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary implementation language"
-    - type: framework
-      key: quarkus
-      comment: "alternative cloud-native JVM framework"
-    - type: framework
-      key: micronaut
-      comment: "alternative compile-time JVM framework"
-    - type: framework
-      key: hibernate
-      comment: "default JPA provider"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
+  - type: "framework"
+    key: "quarkus"
+    comment: "alternative cloud-native JVM framework"
+  - type: "framework"
+    key: "micronaut"
+    comment: "alternative compile-time JVM framework"
+  - type: "framework"
+    key: "hibernate"
+    comment: "default JPA provider"
 ---
 
 **An opinionated, convention-over-configuration framework for building

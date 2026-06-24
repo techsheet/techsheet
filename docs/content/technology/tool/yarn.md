@@ -1,25 +1,25 @@
 ---
-title: Yarn
+title: "Yarn"
 aliases:
-  - /tool/yarn
+- "/tool/yarn"
 bookToC: false
 techsheet:
-  key: yarn
-  type: tool
-  category: Build
+  key: "yarn"
+  type: "tool"
+  category: "Build"
   related:
-    - type: tool
-      key: npm
-      comment: "direct alternative, same registry and manifest format"
-    - type: tool
-      key: nodejs
-      comment: "underlying runtime platform"
-    - type: language
-      key: javascript
-      comment: "primary language of the ecosystem"
-    - type: language
-      key: typescript
-      comment: "major ecosystem language, packages distributed via Yarn"
+  - type: "tool"
+    key: "npm"
+    comment: "direct alternative, same registry and manifest format"
+  - type: "tool"
+    key: "nodejs"
+    comment: "underlying runtime platform"
+  - type: "language"
+    key: "javascript"
+    comment: "primary language of the ecosystem"
+  - type: "language"
+    key: "typescript"
+    comment: "major ecosystem language, packages distributed via Yarn"
 ---
 
 **A fast, reliable package manager for [JavaScript](../language/javascript.md)

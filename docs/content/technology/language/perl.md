@@ -1,24 +1,24 @@
 ---
-title: Perl
+title: "Perl"
 aliases:
-  - /language/perl
+- "/language/perl"
 bookToC: false
 techsheet:
-  key: perl
-  type: language
+  key: "perl"
+  type: "language"
   related:
-    - type: language
-      key: python
-      comment: "common successor for scripting tasks"
-    - type: language
-      key: shell
-      comment: "complementary system scripting"
-    - type: language
-      key: awk
-      comment: "text processing predecessor"
-    - type: language
-      key: php
-      comment: "web scripting alternative, influenced by Perl"
+  - type: "language"
+    key: "python"
+    comment: "common successor for scripting tasks"
+  - type: "language"
+    key: "shell"
+    comment: "complementary system scripting"
+  - type: "language"
+    key: "awk"
+    comment: "text processing predecessor"
+  - type: "language"
+    key: "php"
+    comment: "web scripting alternative, influenced by Perl"
 ---
 
 **A high-level, general-purpose programming language known for its powerful text processing capabilities and practical

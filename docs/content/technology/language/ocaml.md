@@ -1,24 +1,24 @@
 ---
-title: OCaml
+title: "OCaml"
 aliases:
-  - /language/ocaml
+- "/language/ocaml"
 bookToC: false
 techsheet:
-  key: ocaml
-  type: language
+  key: "ocaml"
+  type: "language"
   related:
-    - type: language
-      key: haskell
-      comment: "ML family, similar type system"
-    - type: language
-      key: fsharp
-      comment: "direct descendant, syntactic basis"
-    - type: language
-      key: scala
-      comment: "functional-first, ML-influenced type system"
-    - type: language
-      key: erlang
-      comment: "functional, used in similar systems domains"
+  - type: "language"
+    key: "haskell"
+    comment: "ML family, similar type system"
+  - type: "language"
+    key: "fsharp"
+    comment: "direct descendant, syntactic basis"
+  - type: "language"
+    key: "scala"
+    comment: "functional-first, ML-influenced type system"
+  - type: "language"
+    key: "erlang"
+    comment: "functional, used in similar systems domains"
 ---
 
 **A statically typed, functional programming language from the ML family, designed for safety, performance, and

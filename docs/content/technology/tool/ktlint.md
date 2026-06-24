@@ -1,25 +1,25 @@
 ---
-title: ktlint
+title: "ktlint"
 aliases:
-  - /tool/ktlint
+- "/tool/ktlint"
 bookToC: false
 techsheet:
-  key: ktlint
-  type: tool
-  category: Format
+  key: "ktlint"
+  type: "tool"
+  category: "Format"
   related:
-    - type: language
-      key: kotlin
-      comment: "target language"
-    - type: tool
-      key: detekt
-      comment: "complementary Kotlin static analysis"
-    - type: tool
-      key: editorconfig
-      comment: "configuration source for code style rules"
-    - type: tool
-      key: gradle
-      comment: "primary build tool integration"
+  - type: "language"
+    key: "kotlin"
+    comment: "target language"
+  - type: "tool"
+    key: "detekt"
+    comment: "complementary Kotlin static analysis"
+  - type: "tool"
+    key: "editorconfig"
+    comment: "configuration source for code style rules"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary build tool integration"
 ---
 
 **An open-source linter and formatter for [Kotlin](../language/kotlin.md) that enforces a consistent code style

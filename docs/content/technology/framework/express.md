@@ -1,28 +1,28 @@
 ---
-title: Express
+title: "Express"
 aliases:
-  - /framework/express
+- "/framework/express"
 bookToC: false
 techsheet:
-  key: express
-  type: framework
-  category: Application
+  key: "express"
+  type: "framework"
+  category: "Application"
   languages:
-    - javascript
-    - typescript
+  - "javascript"
+  - "typescript"
   related:
-    - type: tool
-      key: nodejs
-      comment: "runtime platform"
-    - type: language
-      key: javascript
-      comment: "primary implementation language"
-    - type: language
-      key: typescript
-      comment: "commonly used with type definitions"
-    - type: framework
-      key: nextjs
-      comment: "Node.js full-stack framework, often replaces Express"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime platform"
+  - type: "language"
+    key: "javascript"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "typescript"
+    comment: "commonly used with type definitions"
+  - type: "framework"
+    key: "nextjs"
+    comment: "Node.js full-stack framework, often replaces Express"
 ---
 
 **A minimal and flexible web application framework for [Node.js](../tool/nodejs.md) that provides a robust set of

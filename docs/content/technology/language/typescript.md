@@ -1,24 +1,24 @@
 ---
-title: TypeScript
+title: "TypeScript"
 aliases:
-  - /language/typescript
+- "/language/typescript"
 bookToC: false
 techsheet:
-  key: typescript
-  type: language
+  key: "typescript"
+  type: "language"
   related:
-    - type: language
-      key: javascript
-      comment: "base language, TypeScript is a superset"
-    - type: tool
-      key: nodejs
-      comment: "primary server-side runtime"
-    - type: framework
-      key: angular
-      comment: "TypeScript-first application framework"
-    - type: tool
-      key: npm
-      comment: "primary package manager"
+  - type: "language"
+    key: "javascript"
+    comment: "base language, TypeScript is a superset"
+  - type: "tool"
+    key: "nodejs"
+    comment: "primary server-side runtime"
+  - type: "framework"
+    key: "angular"
+    comment: "TypeScript-first application framework"
+  - type: "tool"
+    key: "npm"
+    comment: "primary package manager"
 ---
 
 **A statically typed superset of [JavaScript](javascript.md) that compiles to plain JavaScript for use

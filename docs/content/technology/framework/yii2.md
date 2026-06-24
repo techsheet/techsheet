@@ -1,27 +1,27 @@
 ---
-title: Yii2
+title: "Yii2"
 aliases:
-  - /framework/yii2
+- "/framework/yii2"
 bookToC: false
 techsheet:
-  key: yii2
-  type: framework
-  category: Application
+  key: "yii2"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "PHP alternative, most widely adopted"
-    - type: framework
-      key: symfony
-      comment: "PHP alternative, component-oriented"
-    - type: tool
-      key: composer
-      comment: "PHP package manager"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "PHP alternative, most widely adopted"
+  - type: "framework"
+    key: "symfony"
+    comment: "PHP alternative, component-oriented"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP package manager"
 ---
 
 **A high-performance, component-based [PHP](../language/php.md) web application framework emphasizing speed,

@@ -1,28 +1,28 @@
 ---
-title: Akka HTTP
+title: "Akka HTTP"
 aliases:
-  - /framework/akka-http
+- "/framework/akka-http"
 bookToC: false
 techsheet:
-  key: akka-http
-  type: framework
-  category: Application
+  key: "akka-http"
+  type: "framework"
+  category: "Application"
   languages:
-    - scala
-    - java
+  - "scala"
+  - "java"
   related:
-    - type: framework
-      key: akka
-      comment: "underlying actor system"
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: framework
-      key: play-framework
-      comment: "alternative JVM web framework, also Akka-based"
-    - type: framework
-      key: http4s
-      comment: "alternative Scala HTTP framework"
+  - type: "framework"
+    key: "akka"
+    comment: "underlying actor system"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "framework"
+    key: "play-framework"
+    comment: "alternative JVM web framework, also Akka-based"
+  - type: "framework"
+    key: "http4s"
+    comment: "alternative Scala HTTP framework"
 ---
 
 **A reactive HTTP toolkit for building REST APIs and streaming services on top of [Akka](akka.md)

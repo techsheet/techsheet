@@ -1,28 +1,28 @@
 ---
-title: JUnit
+title: "JUnit"
 aliases:
-  - /framework/junit
+- "/framework/junit"
 bookToC: false
 techsheet:
-  key: junit
-  type: framework
-  category: Testing
+  key: "junit"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: mockito
-      comment: "commonly paired mocking framework"
-    - type: framework
-      key: testng
-      comment: "direct alternative for JVM testing"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "mockito"
+    comment: "commonly paired mocking framework"
+  - type: "framework"
+    key: "testng"
+    comment: "direct alternative for JVM testing"
 ---
 
 **The standard unit testing framework for [Java](../language/java.md) and [JVM](../tool/jvm.md)-based

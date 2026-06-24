@@ -1,27 +1,27 @@
 ---
-title: Spock
+title: "Spock"
 aliases:
-  - /framework/spock
+- "/framework/spock"
 bookToC: false
 techsheet:
-  key: spock
-  type: framework
-  category: Testing
+  key: "spock"
+  type: "framework"
+  category: "Testing"
   languages:
-    - groovy
+  - "groovy"
   related:
-    - type: language
-      key: groovy
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: junit
-      comment: "JUnit platform runner, alternative"
-    - type: tool
-      key: gradle
-      comment: "common build tool pairing"
+  - type: "language"
+    key: "groovy"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "junit"
+    comment: "JUnit platform runner, alternative"
+  - type: "tool"
+    key: "gradle"
+    comment: "common build tool pairing"
 ---
 
 **A specification-driven testing and specification framework for [JVM](../tool/jvm.md) applications, written

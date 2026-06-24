@@ -1,22 +1,22 @@
 ---
-title: Docker
+title: "Docker"
 aliases:
-  - /tool/docker
+- "/tool/docker"
 bookToC: false
 techsheet:
-  key: docker
-  type: tool
-  category: Container
+  key: "docker"
+  type: "tool"
+  category: "Container"
   related:
-    - type: tool
-      key: docker-compose
-      comment: "companion multi-container orchestration"
-    - type: framework
-      key: testcontainers
-      comment: "integration testing via disposable containers"
-    - type: tool
-      key: github-actions
-      comment: "common CI/CD integration target"
+  - type: "tool"
+    key: "docker-compose"
+    comment: "companion multi-container orchestration"
+  - type: "framework"
+    key: "testcontainers"
+    comment: "integration testing via disposable containers"
+  - type: "tool"
+    key: "github-actions"
+    comment: "common CI/CD integration target"
 ---
 
 **An open-source platform for building, shipping, and running applications in isolated, lightweight containers.**

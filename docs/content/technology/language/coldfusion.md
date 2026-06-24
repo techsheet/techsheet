@@ -1,24 +1,24 @@
 ---
-title: ColdFusion
+title: "ColdFusion"
 aliases:
-  - /language/coldfusion
+- "/language/coldfusion"
 bookToC: false
 techsheet:
-  key: coldfusion
-  type: language
+  key: "coldfusion"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "compiles to JVM bytecode since ColdFusion MX"
-    - type: language
-      key: java
-      comment: "full Java class interoperability"
-    - type: language
-      key: html
-      comment: "tag-based syntax embedded in HTML"
-    - type: language
-      key: php
-      comment: "similar server-side web scripting role"
+  - type: "tool"
+    key: "jvm"
+    comment: "compiles to JVM bytecode since ColdFusion MX"
+  - type: "language"
+    key: "java"
+    comment: "full Java class interoperability"
+  - type: "language"
+    key: "html"
+    comment: "tag-based syntax embedded in HTML"
+  - type: "language"
+    key: "php"
+    comment: "similar server-side web scripting role"
 ---
 
 **A tag-based and scripting language for rapid web application development, running on the [JVM](../tool/jvm.md)

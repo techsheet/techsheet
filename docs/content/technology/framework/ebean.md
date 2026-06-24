@@ -1,28 +1,28 @@
 ---
-title: Ebean
+title: "Ebean"
 aliases:
-  - /framework/ebean
+- "/framework/ebean"
 bookToC: false
 techsheet:
-  key: ebean
-  type: framework
-  category: Data
+  key: "ebean"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: hibernate
-      comment: "direct alternative, JPA-based ORM"
-    - type: framework
-      key: jooq
-      comment: "alternative, SQL-centric data access"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
+  - type: "framework"
+    key: "hibernate"
+    comment: "direct alternative, JPA-based ORM"
+  - type: "framework"
+    key: "jooq"
+    comment: "alternative, SQL-centric data access"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
 ---
 
 **A lightweight ORM for [Java](../language/java.md) and [Kotlin](../language/kotlin.md) that emphasizes

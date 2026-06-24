@@ -1,24 +1,24 @@
 ---
 title: "F#"
 aliases:
-  - /language/fsharp
+- "/language/fsharp"
 bookToC: false
 techsheet:
-  key: fsharp
-  type: language
+  key: "fsharp"
+  type: "language"
   related:
-    - type: language
-      key: csharp
-      comment: ".NET sibling, full interop"
-    - type: language
-      key: ocaml
-      comment: "ancestor language, syntactic basis"
-    - type: language
-      key: haskell
-      comment: "functional programming peer"
-    - type: language
-      key: scala
-      comment: "functional-first on managed runtime"
+  - type: "language"
+    key: "csharp"
+    comment: ".NET sibling, full interop"
+  - type: "language"
+    key: "ocaml"
+    comment: "ancestor language, syntactic basis"
+  - type: "language"
+    key: "haskell"
+    comment: "functional programming peer"
+  - type: "language"
+    key: "scala"
+    comment: "functional-first on managed runtime"
 ---
 
 **A strongly typed, functional-first programming language for the .NET platform, designed for concise and correct code.

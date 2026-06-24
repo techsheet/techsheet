@@ -1,25 +1,25 @@
 ---
-title: Cursor
+title: "Cursor"
 aliases:
-  - /tool/cursor
+- "/tool/cursor"
 bookToC: false
 techsheet:
-  key: cursor
-  type: tool
-  category: AI
+  key: "cursor"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: vscode
-      comment: "forked from, shares extension ecosystem"
-    - type: tool
-      key: windsurf
-      comment: "direct alternative, AI-native IDE"
-    - type: tool
-      key: github-copilot
-      comment: "alternative AI coding assistant"
-    - type: tool
-      key: claude
-      comment: "available as integrated AI model"
+  - type: "tool"
+    key: "vscode"
+    comment: "forked from, shares extension ecosystem"
+  - type: "tool"
+    key: "windsurf"
+    comment: "direct alternative, AI-native IDE"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "alternative AI coding assistant"
+  - type: "tool"
+    key: "claude"
+    comment: "available as integrated AI model"
 ---
 
 **An AI-native code editor built as a fork of [Visual Studio Code](vscode.md), designed to integrate large

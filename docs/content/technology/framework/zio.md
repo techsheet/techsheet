@@ -1,27 +1,27 @@
 ---
-title: ZIO
+title: "ZIO"
 aliases:
-  - /framework/zio
+- "/framework/zio"
 bookToC: false
 techsheet:
-  key: zio
-  type: framework
-  category: Concurrency
+  key: "zio"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - scala
+  - "scala"
   related:
-    - type: language
-      key: scala
-      comment: "host language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: cats-effect
-      comment: "alternative Scala effect system"
-    - type: framework
-      key: http4s
-      comment: "functional HTTP library, interop via ZIO"
+  - type: "language"
+    key: "scala"
+    comment: "host language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "cats-effect"
+    comment: "alternative Scala effect system"
+  - type: "framework"
+    key: "http4s"
+    comment: "functional HTTP library, interop via ZIO"
 ---
 
 **A type-safe, composable concurrency and asynchronous programming library for [Scala](../language/scala.md) built

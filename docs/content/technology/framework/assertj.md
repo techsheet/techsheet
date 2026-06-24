@@ -1,28 +1,28 @@
 ---
-title: AssertJ
+title: "AssertJ"
 aliases:
-  - /framework/assertj
+- "/framework/assertj"
 bookToC: false
 techsheet:
-  key: assertj
-  type: framework
-  category: Testing
+  key: "assertj"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: junit
-      comment: "primary test runner complement"
-    - type: framework
-      key: mockito
-      comment: "common testing companion"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: language
-      key: kotlin
-      comment: "supported language"
+  - type: "framework"
+    key: "junit"
+    comment: "primary test runner complement"
+  - type: "framework"
+    key: "mockito"
+    comment: "common testing companion"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported language"
 ---
 
 **A fluent assertion library for [Java](../language/java.md) and [Kotlin](../language/kotlin.md) that

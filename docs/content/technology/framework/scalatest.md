@@ -1,27 +1,27 @@
 ---
-title: ScalaTest
+title: "ScalaTest"
 aliases:
-  - /framework/scalatest
+- "/framework/scalatest"
 bookToC: false
 techsheet:
-  key: scalatest
-  type: framework
-  category: Testing
+  key: "scalatest"
+  type: "framework"
+  category: "Testing"
   languages:
-    - scala
+  - "scala"
   related:
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: junit
-      comment: "JVM testing alternative, runner compatibility"
-    - type: tool
-      key: sbt
-      comment: "primary build tool for Scala projects"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "junit"
+    comment: "JVM testing alternative, runner compatibility"
+  - type: "tool"
+    key: "sbt"
+    comment: "primary build tool for Scala projects"
 ---
 
 **The most widely adopted testing framework for [Scala](../language/scala.md), offering multiple DSL styles for

@@ -1,25 +1,25 @@
 ---
-title: Kiro
+title: "Kiro"
 aliases:
-  - /tool/kiro
+- "/tool/kiro"
 bookToC: false
 techsheet:
-  key: kiro
-  type: tool
-  category: AI
+  key: "kiro"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: amazon-q
-      comment: "sibling AWS AI tool, shares Bedrock backend"
-    - type: tool
-      key: cursor
-      comment: "direct alternative, AI-native IDE"
-    - type: tool
-      key: windsurf
-      comment: "direct alternative, AI-native IDE"
-    - type: tool
-      key: vscode
-      comment: "built on Code OSS, shares extension ecosystem"
+  - type: "tool"
+    key: "amazon-q"
+    comment: "sibling AWS AI tool, shares Bedrock backend"
+  - type: "tool"
+    key: "cursor"
+    comment: "direct alternative, AI-native IDE"
+  - type: "tool"
+    key: "windsurf"
+    comment: "direct alternative, AI-native IDE"
+  - type: "tool"
+    key: "vscode"
+    comment: "built on Code OSS, shares extension ecosystem"
 ---
 
 **A spec-driven AI IDE from Amazon Web Services that generates code from structured specifications rather than ad-hoc

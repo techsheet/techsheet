@@ -1,16 +1,16 @@
 ---
-title: PostgreSQL
+title: "PostgreSQL"
 aliases:
-  - /service/postgres
+- "/service/postgres"
 bookToC: false
 techsheet:
-  key: postgres
-  type: service
-  category: Database
+  key: "postgres"
+  type: "service"
+  category: "Database"
   related:
-    - type: language
-      key: sql
-      comment: "primary query language"
+  - type: "language"
+    key: "sql"
+    comment: "primary query language"
 ---
 
 **An advanced open-source object-relational database system known for its reliability, feature richness, and standards compliance.**

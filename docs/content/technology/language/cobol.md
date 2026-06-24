@@ -1,21 +1,21 @@
 ---
-title: COBOL
+title: "COBOL"
 aliases:
-  - /language/cobol
+- "/language/cobol"
 bookToC: false
 techsheet:
-  key: cobol
-  type: language
+  key: "cobol"
+  type: "language"
   related:
-    - type: language
-      key: sql
-      comment: "embedded SQL for database access"
-    - type: language
-      key: abap
-      comment: "SAP enterprise language influenced by COBOL"
-    - type: language
-      key: fortran
-      comment: "contemporary from the same era"
+  - type: "language"
+    key: "sql"
+    comment: "embedded SQL for database access"
+  - type: "language"
+    key: "abap"
+    comment: "SAP enterprise language influenced by COBOL"
+  - type: "language"
+    key: "fortran"
+    comment: "contemporary from the same era"
 ---
 
 **A business-oriented programming language designed for processing large volumes of structured data in enterprise and

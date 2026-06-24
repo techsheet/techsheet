@@ -1,18 +1,18 @@
 ---
-title: AsciiDoc
+title: "AsciiDoc"
 aliases:
-  - /language/asciidoc
+- "/language/asciidoc"
 bookToC: false
 techsheet:
-  key: asciidoc
-  type: language
+  key: "asciidoc"
+  type: "language"
   related:
-    - type: language
-      key: markdown
-      comment: "lightweight markup alternative"
-    - type: language
-      key: html
-      comment: "common output target"
+  - type: "language"
+    key: "markdown"
+    comment: "lightweight markup alternative"
+  - type: "language"
+    key: "html"
+    comment: "common output target"
 ---
 
 **A plain-text document format and publishing toolchain designed for writing technical documentation with semantic

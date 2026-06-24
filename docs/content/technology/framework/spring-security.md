@@ -1,28 +1,28 @@
 ---
-title: Spring Security
+title: "Spring Security"
 aliases:
-  - /framework/spring-security
+- "/framework/spring-security"
 bookToC: false
 techsheet:
-  key: spring-security
-  type: framework
-  category: Security
+  key: "spring-security"
+  type: "framework"
+  category: "Security"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: spring-boot
-      comment: "primary host framework"
-    - type: framework
-      key: spring-mvc
-      comment: "secures servlet-based web apps"
-    - type: framework
-      key: spring-webflux
-      comment: "secures reactive web apps"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "primary host framework"
+  - type: "framework"
+    key: "spring-mvc"
+    comment: "secures servlet-based web apps"
+  - type: "framework"
+    key: "spring-webflux"
+    comment: "secures reactive web apps"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A comprehensive authentication and access-control framework for securing [Java](../language/java.md)

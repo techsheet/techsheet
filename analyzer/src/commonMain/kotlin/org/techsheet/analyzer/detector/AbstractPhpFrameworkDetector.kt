@@ -1,0 +1,46 @@
+package org.techsheet.analyzer.detector
+
+import okio.Path
+import org.techsheet.analyzer.domain.DetectionResult
+import org.techsheet.analyzer.domain.FrameworkType
+import org.techsheet.analyzer.domain.Matcher
+
+/**
+ * Base for PHP framework/library detectors
+ *
+ * Inspects Composer manifests (`composer.json`, `composer.lock`) for one or more package coordinates and extracts a
+ * version where possible.
+ */
+abstract class AbstractPhpFrameworkDetector(
+    name: String,
+    private val framework: FrameworkType,
+    private val packageNames: List<String>,
+) : Detector(
+  name,
+  Matcher.Filename("composer.json"),
+  Matcher.Filename("composer.lock"),
+) {
+
+  override fun onMatch(path: Path, content: Lazy<String?>, result: DetectionResult): DetectionResult =
+    content.value?.let { text ->
+      packageNames.fold(result) { acc, pkg ->
+        when (path.name) {
+          "composer.lock" -> lockVersionRegex(pkg).find(text)
+          else -> manifestVersionRegex(pkg).find(text)
+        }
+          ?.groupValues?.getOrNull(1)
+          ?.trimStart('^', '~', '>', '=', ' ', 'v')
+          ?.ifEmpty { null }
+          ?.let { acc.withFramework(framework, it) }
+          ?: acc
+      }
+    } ?: result
+
+  private fun manifestVersionRegex(pkg: String): Regex =
+    Regex(""""${Regex.escape(pkg)}"\s*:\s*"([^"]+)"""")
+
+  // composer.lock writes packages with `name` immediately followed by `version` in the
+  // same object, so a positional pattern reliably correlates the two without balanced-brace matching.
+  private fun lockVersionRegex(pkg: String): Regex =
+    Regex(""""name"\s*:\s*"${Regex.escape(pkg)}"\s*,\s*"version"\s*:\s*"([^"]+)"""")
+}

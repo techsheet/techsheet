@@ -1,28 +1,28 @@
 ---
-title: Mockito
+title: "Mockito"
 aliases:
-  - /framework/mockito
+- "/framework/mockito"
 bookToC: false
 techsheet:
-  key: mockito
-  type: framework
-  category: Testing
+  key: "mockito"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: junit
-      comment: "primary test runner companion"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: language
-      key: kotlin
-      comment: "supported language"
-    - type: framework
-      key: assertj
-      comment: "commonly paired assertion library"
+  - type: "framework"
+    key: "junit"
+    comment: "primary test runner companion"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported language"
+  - type: "framework"
+    key: "assertj"
+    comment: "commonly paired assertion library"
 ---
 
 **A mocking framework for unit tests in [Java](../language/java.md) and [Kotlin](../language/kotlin.md) that

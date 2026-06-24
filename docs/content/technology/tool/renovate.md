@@ -1,25 +1,25 @@
 ---
-title: Renovate
+title: "Renovate"
 aliases:
-  - /tool/renovate
+- "/tool/renovate"
 bookToC: false
 techsheet:
-  key: renovate
-  type: tool
-  category: Security
+  key: "renovate"
+  type: "tool"
+  category: "Security"
   related:
-    - type: tool
-      key: github-actions
-      comment: "common CI platform for running Renovate"
-    - type: tool
-      key: npm
-      comment: "primary managed package ecosystem"
-    - type: tool
-      key: docker
-      comment: "manages Docker image dependency updates"
-    - type: tool
-      key: git
-      comment: "operates via Git branches and pull requests"
+  - type: "tool"
+    key: "github-actions"
+    comment: "common CI platform for running Renovate"
+  - type: "tool"
+    key: "npm"
+    comment: "primary managed package ecosystem"
+  - type: "tool"
+    key: "docker"
+    comment: "manages Docker image dependency updates"
+  - type: "tool"
+    key: "git"
+    comment: "operates via Git branches and pull requests"
 ---
 
 **An automated dependency update tool that keeps software projects current by opening pull requests for outdated

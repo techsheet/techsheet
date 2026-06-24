@@ -1,27 +1,27 @@
 ---
-title: Ktorm
+title: "Ktorm"
 aliases:
-  - /framework/ktorm
+- "/framework/ktorm"
 bookToC: false
 techsheet:
-  key: ktorm
-  type: framework
-  category: Data
+  key: "ktorm"
+  type: "framework"
+  category: "Data"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: exposed
-      comment: "Kotlin-specific ORM alternative"
-    - type: framework
-      key: hibernate
-      comment: "JVM ORM alternative"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "exposed"
+    comment: "Kotlin-specific ORM alternative"
+  - type: "framework"
+    key: "hibernate"
+    comment: "JVM ORM alternative"
 ---
 
 **A lightweight ORM framework for [Kotlin](../language/kotlin.md) that provides a strongly typed, pure-Kotlin DSL

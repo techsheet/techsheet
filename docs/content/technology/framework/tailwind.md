@@ -1,27 +1,27 @@
 ---
-title: Tailwind CSS
+title: "Tailwind CSS"
 aliases:
-  - /framework/tailwind
+- "/framework/tailwind"
 bookToC: false
 techsheet:
-  key: tailwind
-  type: framework
-  category: UI
+  key: "tailwind"
+  type: "framework"
+  category: "UI"
   languages:
-    - css
+  - "css"
   related:
-    - type: language
-      key: css
-      comment: "target language"
-    - type: language
-      key: javascript
-      comment: "configuration and plugin language"
-    - type: tool
-      key: nodejs
-      comment: "build-time runtime"
-    - type: framework
-      key: react
-      comment: "common companion framework"
+  - type: "language"
+    key: "css"
+    comment: "target language"
+  - type: "language"
+    key: "javascript"
+    comment: "configuration and plugin language"
+  - type: "tool"
+    key: "nodejs"
+    comment: "build-time runtime"
+  - type: "framework"
+    key: "react"
+    comment: "common companion framework"
 ---
 
 **A utility-first CSS framework that provides low-level, composable class names for building custom user interfaces

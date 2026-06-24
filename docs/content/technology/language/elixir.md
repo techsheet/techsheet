@@ -1,18 +1,18 @@
 ---
-title: Elixir
+title: "Elixir"
 aliases:
-  - /language/elixir
+- "/language/elixir"
 bookToC: false
 techsheet:
-  key: elixir
-  type: language
+  key: "elixir"
+  type: "language"
   related:
-    - type: language
-      key: erlang
-      comment: "runs on the BEAM VM, full interop"
-    - type: language
-      key: clojure
-      comment: "modern functional language on an established VM"
+  - type: "language"
+    key: "erlang"
+    comment: "runs on the BEAM VM, full interop"
+  - type: "language"
+    key: "clojure"
+    comment: "modern functional language on an established VM"
 ---
 
 **A dynamic, functional programming language built on the Erlang VM, designed for scalable and fault-tolerant

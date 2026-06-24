@@ -1,24 +1,24 @@
 ---
 title: "C#"
 aliases:
-  - /language/csharp
+- "/language/csharp"
 bookToC: false
 techsheet:
-  key: csharp
-  type: language
+  key: "csharp"
+  type: "language"
   related:
-    - type: language
-      key: java
-      comment: "direct competitor and design influence"
-    - type: language
-      key: fsharp
-      comment: "functional .NET sibling"
-    - type: language
-      key: visual-basic
-      comment: ".NET sibling"
-    - type: language
-      key: typescript
-      comment: "Anders Hejlsberg designed both"
+  - type: "language"
+    key: "java"
+    comment: "direct competitor and design influence"
+  - type: "language"
+    key: "fsharp"
+    comment: "functional .NET sibling"
+  - type: "language"
+    key: "visual-basic"
+    comment: ".NET sibling"
+  - type: "language"
+    key: "typescript"
+    comment: "Anders Hejlsberg designed both"
 ---
 
 **A modern, multi-paradigm programming language developed by Microsoft for building applications on the .NET platform.**

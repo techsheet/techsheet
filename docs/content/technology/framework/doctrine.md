@@ -1,27 +1,27 @@
 ---
-title: Doctrine
+title: "Doctrine"
 aliases:
-  - /framework/doctrine
+- "/framework/doctrine"
 bookToC: false
 techsheet:
-  key: doctrine
-  type: framework
-  category: Data
+  key: "doctrine"
+  type: "framework"
+  category: "Data"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "default ORM integration"
-    - type: framework
-      key: eloquent
-      comment: "alternative PHP ORM (Active Record)"
-    - type: framework
-      key: hibernate
-      comment: "Java counterpart, primary design influence"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "default ORM integration"
+  - type: "framework"
+    key: "eloquent"
+    comment: "alternative PHP ORM (Active Record)"
+  - type: "framework"
+    key: "hibernate"
+    comment: "Java counterpart, primary design influence"
 ---
 
 **A set of [PHP](../language/php.md) libraries focused on database storage and object mapping, best known for its

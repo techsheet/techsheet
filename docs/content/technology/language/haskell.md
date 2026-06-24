@@ -1,24 +1,24 @@
 ---
-title: Haskell
+title: "Haskell"
 aliases:
-  - /language/haskell
+- "/language/haskell"
 bookToC: false
 techsheet:
-  key: haskell
-  type: language
+  key: "haskell"
+  type: "language"
   related:
-    - type: language
-      key: ocaml
-      comment: "ML family, similar type system"
-    - type: language
-      key: scala
-      comment: "functional alternative on JVM, Haskell-inspired type features"
-    - type: language
-      key: fsharp
-      comment: "ML-family functional language on .NET"
-    - type: language
-      key: erlang
-      comment: "functional, concurrent, used in similar domains"
+  - type: "language"
+    key: "ocaml"
+    comment: "ML family, similar type system"
+  - type: "language"
+    key: "scala"
+    comment: "functional alternative on JVM, Haskell-inspired type features"
+  - type: "language"
+    key: "fsharp"
+    comment: "ML-family functional language on .NET"
+  - type: "language"
+    key: "erlang"
+    comment: "functional, concurrent, used in similar domains"
 ---
 
 **A purely functional, statically typed programming language known for its expressive type system and emphasis on

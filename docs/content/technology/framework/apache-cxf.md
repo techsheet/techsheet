@@ -1,27 +1,27 @@
 ---
-title: Apache CXF
+title: "Apache CXF"
 aliases:
-  - /framework/apache-cxf
+- "/framework/apache-cxf"
 bookToC: false
 techsheet:
-  key: apache-cxf
-  type: framework
-  category: Application
+  key: "apache-cxf"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
+  - "java"
   related:
-    - type: language
-      key: java
-      comment: "implementation language"
-    - type: framework
-      key: jakarta-ee
-      comment: "specification provider (JAX-WS, JAX-RS)"
-    - type: framework
-      key: spring-boot
-      comment: "common integration target"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "implementation language"
+  - type: "framework"
+    key: "jakarta-ee"
+    comment: "specification provider (JAX-WS, JAX-RS)"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "common integration target"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **An open-source services framework for building and consuming SOAP and RESTful web services on

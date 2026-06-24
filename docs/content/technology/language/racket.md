@@ -1,21 +1,21 @@
 ---
-title: Racket
+title: "Racket"
 aliases:
-  - /language/racket
+- "/language/racket"
 bookToC: false
 techsheet:
-  key: racket
-  type: language
+  key: "racket"
+  type: "language"
   related:
-    - type: language
-      key: clojure
-      comment: "Lisp-family sibling"
-    - type: language
-      key: haskell
-      comment: "functional programming peer"
-    - type: language
-      key: ocaml
-      comment: "PLT research peer"
+  - type: "language"
+    key: "clojure"
+    comment: "Lisp-family sibling"
+  - type: "language"
+    key: "haskell"
+    comment: "functional programming peer"
+  - type: "language"
+    key: "ocaml"
+    comment: "PLT research peer"
 ---
 
 **A general-purpose, multi-paradigm programming language in the Lisp/Scheme family, designed for programming language

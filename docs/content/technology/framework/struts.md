@@ -1,27 +1,27 @@
 ---
-title: Struts
+title: "Struts"
 aliases:
-  - /framework/struts
+- "/framework/struts"
 bookToC: false
 techsheet:
-  key: struts
-  type: framework
-  category: Application
+  key: "struts"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
+  - "java"
   related:
-    - type: language
-      key: java
-      comment: "implementation language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: spring-mvc
-      comment: "modern alternative for Java web MVC"
-    - type: framework
-      key: jakarta-ee
-      comment: "underlying specification platform (Servlets, JSP)"
+  - type: "language"
+    key: "java"
+    comment: "implementation language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "spring-mvc"
+    comment: "modern alternative for Java web MVC"
+  - type: "framework"
+    key: "jakarta-ee"
+    comment: "underlying specification platform (Servlets, JSP)"
 ---
 
 **An open-source Model-View-Controller (MVC) framework for building Java web applications on the Servlet API.**

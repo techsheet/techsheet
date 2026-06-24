@@ -1,22 +1,22 @@
 ---
-title: CODEOWNERS
+title: "CODEOWNERS"
 aliases:
-  - /tool/codeowners
+- "/tool/codeowners"
 bookToC: false
 techsheet:
-  key: codeowners
-  type: tool
-  category: CI
+  key: "codeowners"
+  type: "tool"
+  category: "CI"
   related:
-    - type: tool
-      key: git
-      comment: "underlying version control system"
-    - type: tool
-      key: github-actions
-      comment: "GitHub CI, same platform"
-    - type: tool
-      key: gitlab-ci
-      comment: "GitLab CI, also supports CODEOWNERS"
+  - type: "tool"
+    key: "git"
+    comment: "underlying version control system"
+  - type: "tool"
+    key: "github-actions"
+    comment: "GitHub CI, same platform"
+  - type: "tool"
+    key: "gitlab-ci"
+    comment: "GitLab CI, also supports CODEOWNERS"
 ---
 
 **A repository configuration file that defines ownership rules for file paths, enabling automatic review assignment and

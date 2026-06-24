@@ -1,24 +1,24 @@
 ---
-title: ReactPHP
+title: "ReactPHP"
 aliases:
-  - /framework/reactphp
+- "/framework/reactphp"
 bookToC: false
 techsheet:
-  key: reactphp
-  type: framework
-  category: Concurrency
+  key: "reactphp"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: tool
-      key: composer
-      comment: "package manager"
-    - type: framework
-      key: symfony
-      comment: "complementary framework, shared ecosystem"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "tool"
+    key: "composer"
+    comment: "package manager"
+  - type: "framework"
+    key: "symfony"
+    comment: "complementary framework, shared ecosystem"
 ---
 
 **An event-driven, non-blocking I/O library for asynchronous programming in [PHP](../language/php.md).**

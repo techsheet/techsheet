@@ -1,27 +1,27 @@
 ---
-title: Kotlin
+title: "Kotlin"
 aliases:
-  - /language/kotlin
+- "/language/kotlin"
 bookToC: false
 techsheet:
-  key: kotlin
-  type: language
+  key: "kotlin"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "JVM sibling, full interop"
-    - type: language
-      key: scala
-      comment: "JVM sibling, functional alternative"
-    - type: language
-      key: groovy
-      comment: "JVM sibling, dynamic scripting"
-    - type: tool
-      key: gradle
-      comment: "primary build tool, Kotlin DSL"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "JVM sibling, full interop"
+  - type: "language"
+    key: "scala"
+    comment: "JVM sibling, functional alternative"
+  - type: "language"
+    key: "groovy"
+    comment: "JVM sibling, dynamic scripting"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary build tool, Kotlin DSL"
 ---
 
 **A modern, statically typed programming language for the [JVM](../tool/jvm.md), Android, and multiplatform

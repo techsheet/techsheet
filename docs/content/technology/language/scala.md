@@ -1,24 +1,24 @@
 ---
-title: Scala
+title: "Scala"
 aliases:
-  - /language/scala
+- "/language/scala"
 bookToC: false
 techsheet:
-  key: scala
-  type: language
+  key: "scala"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "JVM sibling, full interop"
-    - type: language
-      key: kotlin
-      comment: "JVM sibling, modern alternative"
-    - type: language
-      key: haskell
-      comment: "primary functional programming influence"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "JVM sibling, full interop"
+  - type: "language"
+    key: "kotlin"
+    comment: "JVM sibling, modern alternative"
+  - type: "language"
+    key: "haskell"
+    comment: "primary functional programming influence"
 ---
 
 **A general-purpose programming language that combines object-oriented and functional programming on

@@ -1,27 +1,27 @@
 ---
-title: Lumen
+title: "Lumen"
 aliases:
-  - /framework/lumen
+- "/framework/lumen"
 bookToC: false
 techsheet:
-  key: lumen
-  type: framework
-  category: Application
+  key: "lumen"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: framework
-      key: laravel
-      comment: "parent framework, full-stack counterpart"
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: eloquent
-      comment: "ORM available as optional component"
-    - type: tool
-      key: composer
-      comment: "PHP package manager"
+  - type: "framework"
+    key: "laravel"
+    comment: "parent framework, full-stack counterpart"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "eloquent"
+    comment: "ORM available as optional component"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP package manager"
 ---
 
 **A lightweight micro-framework for [PHP](../language/php.md), derived

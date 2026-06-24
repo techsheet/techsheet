@@ -1,18 +1,18 @@
 ---
-title: Batch
+title: "Batch"
 aliases:
-  - /language/batch
+- "/language/batch"
 bookToC: false
 techsheet:
-  key: batch
-  type: language
+  key: "batch"
+  type: "language"
   related:
-    - type: language
-      key: powershell
-      comment: "modern Windows scripting successor"
-    - type: language
-      key: shell
-      comment: "Unix counterpart for command-line scripting"
+  - type: "language"
+    key: "powershell"
+    comment: "modern Windows scripting successor"
+  - type: "language"
+    key: "shell"
+    comment: "Unix counterpart for command-line scripting"
 ---
 
 **A scripting language for the Windows command-line interpreter (cmd.exe) used to automate tasks through sequential

@@ -1,27 +1,27 @@
 ---
-title: PHPUnit
+title: "PHPUnit"
 aliases:
-  - /framework/phpunit
+- "/framework/phpunit"
 bookToC: false
 techsheet:
-  key: phpunit
-  type: framework
-  category: Testing
+  key: "phpunit"
+  type: "framework"
+  category: "Testing"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "target language"
-    - type: tool
-      key: composer
-      comment: "package manager for installation"
-    - type: framework
-      key: symfony
-      comment: "major PHP framework, shares testing conventions"
-    - type: framework
-      key: laravel
-      comment: "major PHP framework, built-in PHPUnit integration"
+  - type: "language"
+    key: "php"
+    comment: "target language"
+  - type: "tool"
+    key: "composer"
+    comment: "package manager for installation"
+  - type: "framework"
+    key: "symfony"
+    comment: "major PHP framework, shares testing conventions"
+  - type: "framework"
+    key: "laravel"
+    comment: "major PHP framework, built-in PHPUnit integration"
 ---
 
 **The dominant unit testing framework for [PHP](../language/php.md), modeled after the xUnit architecture.**

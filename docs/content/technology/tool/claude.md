@@ -1,25 +1,25 @@
 ---
-title: Claude
+title: "Claude"
 aliases:
-  - /tool/claude
+- "/tool/claude"
 bookToC: false
 techsheet:
-  key: claude
-  type: tool
-  category: AI
+  key: "claude"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: github-copilot
-      comment: "alternative AI coding assistant"
-    - type: tool
-      key: cursor
-      comment: "alternative AI-powered IDE"
-    - type: tool
-      key: aider
-      comment: "alternative CLI-based AI coding tool"
-    - type: tool
-      key: vscode
-      comment: "primary IDE integration"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "alternative AI coding assistant"
+  - type: "tool"
+    key: "cursor"
+    comment: "alternative AI-powered IDE"
+  - type: "tool"
+    key: "aider"
+    comment: "alternative CLI-based AI coding tool"
+  - type: "tool"
+    key: "vscode"
+    comment: "primary IDE integration"
 ---
 
 **An AI assistant and coding agent built by Anthropic, capable of extended autonomous software engineering tasks through

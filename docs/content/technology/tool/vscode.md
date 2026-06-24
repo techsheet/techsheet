@@ -1,25 +1,25 @@
 ---
-title: Visual Studio Code
+title: "Visual Studio Code"
 aliases:
-  - /tool/vscode
+- "/tool/vscode"
 bookToC: false
 techsheet:
-  key: vscode
-  type: tool
-  category: IDE
+  key: "vscode"
+  type: "tool"
+  category: "IDE"
   related:
-    - type: tool
-      key: intellij-idea
-      comment: "alternative full-featured IDE"
-    - type: tool
-      key: editorconfig
-      comment: "cross-editor configuration standard"
-    - type: tool
-      key: github-copilot
-      comment: "AI pair-programming extension"
-    - type: language
-      key: typescript
-      comment: "built with TypeScript, first-class support"
+  - type: "tool"
+    key: "intellij-idea"
+    comment: "alternative full-featured IDE"
+  - type: "tool"
+    key: "editorconfig"
+    comment: "cross-editor configuration standard"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "AI pair-programming extension"
+  - type: "language"
+    key: "typescript"
+    comment: "built with TypeScript, first-class support"
 ---
 
 **A free, open-source code editor built on web technologies, extensible through a rich marketplace of extensions.**

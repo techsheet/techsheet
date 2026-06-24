@@ -1,28 +1,28 @@
 ---
-title: Spring WebFlux
+title: "Spring WebFlux"
 aliases:
-  - /framework/spring-webflux
+- "/framework/spring-webflux"
 bookToC: false
 techsheet:
-  key: spring-webflux
-  type: framework
-  category: Application
+  key: "spring-webflux"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: reactor
-      comment: "reactive foundation library"
-    - type: framework
-      key: spring-boot
-      comment: "parent application framework"
-    - type: framework
-      key: spring-mvc
-      comment: "imperative counterpart in Spring"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "framework"
+    key: "reactor"
+    comment: "reactive foundation library"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "parent application framework"
+  - type: "framework"
+    key: "spring-mvc"
+    comment: "imperative counterpart in Spring"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A non-blocking, reactive web framework in the Spring ecosystem for building

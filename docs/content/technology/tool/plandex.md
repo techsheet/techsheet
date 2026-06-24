@@ -1,25 +1,25 @@
 ---
-title: Plandex
+title: "Plandex"
 aliases:
-  - /tool/plandex
+- "/tool/plandex"
 bookToC: false
 techsheet:
-  key: plandex
-  type: tool
-  category: AI
+  key: "plandex"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: aider
-      comment: "terminal-based AI coding alternative"
-    - type: tool
-      key: claude
-      comment: "supported LLM backend"
-    - type: tool
-      key: codex
-      comment: "terminal-based AI coding alternative"
-    - type: tool
-      key: git
-      comment: "version control for plan branches"
+  - type: "tool"
+    key: "aider"
+    comment: "terminal-based AI coding alternative"
+  - type: "tool"
+    key: "claude"
+    comment: "supported LLM backend"
+  - type: "tool"
+    key: "codex"
+    comment: "terminal-based AI coding alternative"
+  - type: "tool"
+    key: "git"
+    comment: "version control for plan branches"
 ---
 
 **An open-source, terminal-based AI coding engine designed to manage complex, multi-file software development tasks

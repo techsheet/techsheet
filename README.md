@@ -13,18 +13,24 @@ structured, uniform manner.
 
 </div>
 
-*TechSheet provides a [CLI](#cli) to analyze your repositories. It currently detects 
-**[47+ languages](./docs/detectors.md#languages)**, **[84+ frameworks](./docs/detectors.md#frameworks)**, and 
-**[34+ tools](./docs/detectors.md#tools)**, including versions where possible. Additionally, the TechSheet 
+*TechSheet provides an [Analyzer](#analyzer) to scan your repositories. It currently detects 
+**[47+ languages](https://techsheet.org/technology/language/)**, **[84+ frameworks](https://techsheet.org/technology/framework/)**, and 
+**[34+ tools](https://techsheet.org/technology/tool/)**, including versions where possible. Additionally, the TechSheet 
 [Server](#server) can be used for storing and aggregating reports as well as gathering insights across teams and 
 projects.*
 
-## CLI
+## Analyzer
 
-The CLI can be installed and used on various platforms, as a precompiled binary for Linux, OSX and Windows, as a Docker 
+The Analyzer can be installed and used on various platforms, as a precompiled binary for Linux, OSX and Windows, as a Docker 
 image, a CI job on GitHub / GitLab or as a self-containing JAR.
 
-Simply run analyze at your repository root to generate a report:
+Run `init` at your repository root to set up a new project and generate an initial report:
+
+```bash
+techsheet init
+```
+
+Or run `analyze` directly to generate a report without project metadata:
 
 ```bash
 techsheet analyze
@@ -45,7 +51,7 @@ techsheet:
 
 ### Installation
 
-The CLI can be installed in several ways:
+The Analyzer can be installed in several ways:
 
 <details open>
 <summary>Docker</summary>
@@ -137,11 +143,7 @@ techsheet analyze --help
 ### Detectors
 
 The list of detected languages, frameworks, services and tools is constantly growing and improving with each release. 
-Find the full list of detectors [here](./docs/detectors.md) or simply run:
-
-```bash
-techsheet detectors
-```
+Find the full list [on the website](https://techsheet.org/technology/).
 
 Missing something? [Open an issue][new-detector-template] or send a PR.
 
@@ -157,16 +159,16 @@ TechSheet is a [Kotlin Multiplatform][kmp-url] module with JVM and native target
 Requires JDK 21+.
 
 ```bash
-./gradlew :cli:assemble                        # builds all targets
-./gradlew :cli:jvmRun --args="analyze ."       # run the JVM build directly
+./gradlew :analyzer:assemble                        # builds all targets
+./gradlew :analyzer:jvmRun --args="analyze ."       # run the JVM build directly
 ```
 
 | Target      | Command                                          | Output                                                          |
 |-------------|--------------------------------------------------|-----------------------------------------------------------------|
-| JVM         | `./gradlew :cli:jvmJar`                          | `cli/build/libs/techsheet-cli-jvm.jar`                          |
-| Linux x64   | `./gradlew :cli:linkReleaseExecutableLinuxX64`   | `cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe`   |
-| Windows x64 | `./gradlew :cli:linkReleaseExecutableMingwX64`   | `cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe`    |
-| macOS arm64 | `./gradlew :cli:linkReleaseExecutableMacosArm64` | `cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe` |
+| JVM         | `./gradlew :analyzer:jvmJar`                          | `analyzer/build/libs/techsheet-analyzer-jvm.jar`                          |
+| Linux x64   | `./gradlew :analyzer:linkReleaseExecutableLinuxX64`   | `analyzer/build/bin/linuxX64/releaseExecutable/techsheet-analyzer.kexe`   |
+| Windows x64 | `./gradlew :analyzer:linkReleaseExecutableMingwX64`   | `analyzer/build/bin/mingwX64/releaseExecutable/techsheet-analyzer.exe`    |
+| macOS arm64 | `./gradlew :analyzer:linkReleaseExecutableMacosArm64` | `analyzer/build/bin/macosArm64/releaseExecutable/techsheet-analyzer.kexe` |
 
 Use `linkDebugExecutable*` instead of `linkReleaseExecutable*` for debug builds.
 
@@ -200,7 +202,7 @@ Adding a fixture:
 1. Add or extend a project in the [`test-projects`](https://github.com/techsheet/test-projects) repo (via PR)
 2. Add or update `techsheet.expected.yml` in that project directory
 3. Update the submodule pointer in this repo
-4. Run `./gradlew :cli:jvmTest` and `:cli:assemble` if you changed `commonMain`
+4. Run `./gradlew :analyzer:jvmTest` and `:analyzer:assemble` if you changed `commonMain`
 
 ## Contributing
 

@@ -1,31 +1,31 @@
 ---
-title: Play Framework
+title: "Play Framework"
 aliases:
-  - /framework/play-framework
+- "/framework/play-framework"
 bookToC: false
 techsheet:
-  key: play-framework
-  type: framework
-  category: Application
+  key: "play-framework"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - scala
+  - "java"
+  - "scala"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: framework
-      key: akka-http
-      comment: "Scala web alternative, shared Akka ecosystem"
-    - type: framework
-      key: spring-boot
-      comment: "major JVM web framework alternative"
-    - type: tool
-      key: sbt
-      comment: "default build tool"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "framework"
+    key: "akka-http"
+    comment: "Scala web alternative, shared Akka ecosystem"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "major JVM web framework alternative"
+  - type: "tool"
+    key: "sbt"
+    comment: "default build tool"
 ---
 
 **A reactive, full-stack web application framework for [Scala](../language/scala.md)

@@ -22,14 +22,14 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
       - name: Assemble all targets
-        run: ./gradlew :cli:assemble --no-daemon
+        run: ./gradlew :analyzer:assemble --no-daemon
       - name: Stage release assets
         run: |
-          mkdir -p dist/cli/linux-x64 dist/cli/windows-x64 dist/cli/macos-arm64 dist/cli/jvm
-          cp cli/build/bin/linuxX64/releaseExecutable/techsheet-cli.kexe   dist/cli/linux-x64/techsheet
-          cp cli/build/bin/mingwX64/releaseExecutable/techsheet-cli.exe    dist/cli/windows-x64/techsheet.exe
-          cp cli/build/bin/macosArm64/releaseExecutable/techsheet-cli.kexe dist/cli/macos-arm64/techsheet
-          cp cli/build/libs/techsheet-cli-jvm.jar                          dist/cli/jvm/techsheet.jar
+          mkdir -p dist
+          cp analyzer/build/bin/linuxX64/releaseExecutable/techsheet-analyzer.kexe   dist/techsheet-analyzer_linux-x64
+          cp analyzer/build/bin/mingwX64/releaseExecutable/techsheet-analyzer.exe    dist/techsheet-analyzer.exe
+          cp analyzer/build/bin/macosArm64/releaseExecutable/techsheet-analyzer.kexe dist/techsheet-analyzer_osx-arm64
+          cp analyzer/build/libs/techsheet-analyzer-jvm.jar                          dist/techsheet-analyzer.jar
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: release-assets
@@ -45,7 +45,7 @@ jobs:
         with:
           name: release-assets
           path: dist
-      - run: chmod +x dist/cli/linux-x64/techsheet
+      - run: chmod +x dist/techsheet-analyzer_linux-x64
       - uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
         with:
           registry: ghcr.io
@@ -60,8 +60,8 @@ jobs:
             type=raw,value=latest
       - uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f # v7.1.0
         with:
-          context: dist/cli/linux-x64
-          file: cli/Dockerfile
+          context: dist
+          file: analyzer/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -81,15 +81,13 @@ jobs:
           GH_REPO: ${{ github.repository }}
           TAG: ${{ github.ref_name }}
         run: |
-          mkdir -p release
-          cp dist/cli/linux-x64/techsheet       release/techsheet-linux-x64
-          cp dist/cli/windows-x64/techsheet.exe release/techsheet-windows-x64.exe
-          cp dist/cli/macos-arm64/techsheet     release/techsheet-macos-arm64
-          cp dist/cli/jvm/techsheet.jar         release/techsheet.jar
-          for f in release/techsheet-linux-x64 release/techsheet-windows-x64.exe release/techsheet-macos-arm64 release/techsheet.jar; do
+          for f in dist/techsheet-analyzer_linux-x64 dist/techsheet-analyzer.exe dist/techsheet-analyzer_osx-arm64 dist/techsheet-analyzer.jar; do
             cosign sign-blob --yes "$f" --bundle "${f}.sigstore.json"
           done
           gh release create "$TAG" \
             --title "$TAG" \
             --generate-notes \
-            release/*
+            dist/techsheet-analyzer_linux-x64 dist/techsheet-analyzer_linux-x64.sigstore.json \
+            dist/techsheet-analyzer.exe dist/techsheet-analyzer.exe.sigstore.json \
+            dist/techsheet-analyzer_osx-arm64 dist/techsheet-analyzer_osx-arm64.sigstore.json \
+            dist/techsheet-analyzer.jar dist/techsheet-analyzer.jar.sigstore.json

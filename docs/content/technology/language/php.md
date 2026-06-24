@@ -1,27 +1,27 @@
 ---
-title: PHP
+title: "PHP"
 aliases:
-  - /language/php
+- "/language/php"
 bookToC: false
 techsheet:
-  key: php
-  type: language
+  key: "php"
+  type: "language"
   related:
-    - type: tool
-      key: composer
-      comment: "standard package manager"
-    - type: framework
-      key: laravel
-      comment: "dominant application framework"
-    - type: framework
-      key: symfony
-      comment: "enterprise application framework"
-    - type: framework
-      key: wordpress
-      comment: "most widely deployed PHP CMS"
-    - type: language
-      key: javascript
-      comment: "common web companion"
+  - type: "tool"
+    key: "composer"
+    comment: "standard package manager"
+  - type: "framework"
+    key: "laravel"
+    comment: "dominant application framework"
+  - type: "framework"
+    key: "symfony"
+    comment: "enterprise application framework"
+  - type: "framework"
+    key: "wordpress"
+    comment: "most widely deployed PHP CMS"
+  - type: "language"
+    key: "javascript"
+    comment: "common web companion"
 ---
 
 **A widely-used, general-purpose scripting language originally designed for server-side web development.**

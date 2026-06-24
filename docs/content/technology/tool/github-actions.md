@@ -1,25 +1,25 @@
 ---
-title: GitHub Actions
+title: "GitHub Actions"
 aliases:
-  - /tool/github-actions
+- "/tool/github-actions"
 bookToC: false
 techsheet:
-  key: github-actions
-  type: tool
-  category: CI
+  key: "github-actions"
+  type: "tool"
+  category: "CI"
   related:
-    - type: tool
-      key: gitlab-ci
-      comment: "direct CI/CD alternative"
-    - type: tool
-      key: docker
-      comment: "common container runtime in workflows"
-    - type: tool
-      key: git
-      comment: "underlying version control system"
-    - type: tool
-      key: renovate
-      comment: "dependency automation often run as an action"
+  - type: "tool"
+    key: "gitlab-ci"
+    comment: "direct CI/CD alternative"
+  - type: "tool"
+    key: "docker"
+    comment: "common container runtime in workflows"
+  - type: "tool"
+    key: "git"
+    comment: "underlying version control system"
+  - type: "tool"
+    key: "renovate"
+    comment: "dependency automation often run as an action"
 ---
 
 **A CI/CD platform integrated into GitHub that automates software build, test, and deployment workflows directly from a

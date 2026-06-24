@@ -1,27 +1,27 @@
 ---
-title: Slim
+title: "Slim"
 aliases:
-  - /framework/slim
+- "/framework/slim"
 bookToC: false
 techsheet:
-  key: slim
-  type: framework
-  category: Application
+  key: "slim"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "provides underlying HTTP and routing components"
-    - type: framework
-      key: laravel
-      comment: "full-stack PHP alternative"
-    - type: framework
-      key: lumen
-      comment: "competing PHP micro-framework"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "provides underlying HTTP and routing components"
+  - type: "framework"
+    key: "laravel"
+    comment: "full-stack PHP alternative"
+  - type: "framework"
+    key: "lumen"
+    comment: "competing PHP micro-framework"
 ---
 
 **A lightweight [PHP](../language/php.md) micro-framework for building APIs and small web applications with

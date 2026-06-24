@@ -1,24 +1,24 @@
 ---
-title: ASP.NET Core
+title: "ASP.NET Core"
 aliases:
-  - /framework/asp-net-core
+- "/framework/asp-net-core"
 bookToC: false
 techsheet:
-  key: asp-net-core
-  type: framework
-  category: Application
+  key: "asp-net-core"
+  type: "framework"
+  category: "Application"
   languages:
-    - csharp
+  - "csharp"
   related:
-    - type: language
-      key: csharp
-      comment: "primary language"
-    - type: language
-      key: fsharp
-      comment: "alternative .NET language"
-    - type: framework
-      key: spring-boot
-      comment: "JVM equivalent, enterprise web framework"
+  - type: "language"
+    key: "csharp"
+    comment: "primary language"
+  - type: "language"
+    key: "fsharp"
+    comment: "alternative .NET language"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "JVM equivalent, enterprise web framework"
 ---
 
 **A cross-platform, high-performance web framework for building modern cloud-based applications with .NET.**

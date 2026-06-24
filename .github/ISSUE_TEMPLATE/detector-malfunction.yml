@@ -37,7 +37,7 @@ body:
     attributes:
       label: Affected detector
       description: Name the affected detectors class or name, if possible
-      placeholder: e.g. org.techsheet.cli.detector.SpringBootDetector, DockerDetector, Vue.js
+      placeholder: e.g. org.techsheet.analyzer.detector.SpringBootDetector, DockerDetector, Vue.js
     validations:
       required: false
 
@@ -81,7 +81,7 @@ body:
     attributes:
       label: Checklist
       options:
-        - label: I checked that this detector exists in the [detectors list](../../blob/master/docs/detectors.md). If not, request a new detector instead.
+        - label: I checked that this detector exists in the [technology list](https://techsheet.org/technology). If not, request a new detector instead.
           required: true
         - label: I have opened (or plan to open) a PR in test-projects with a reproducing fixture
           required: false

@@ -1,24 +1,24 @@
 ---
-title: Python
+title: "Python"
 aliases:
-  - /language/python
+- "/language/python"
 bookToC: false
 techsheet:
-  key: python
-  type: language
+  key: "python"
+  type: "language"
   related:
-    - type: framework
-      key: django
-      comment: "flagship web framework"
-    - type: framework
-      key: fastapi
-      comment: "modern async web framework"
-    - type: framework
-      key: flask
-      comment: "lightweight web microframework"
-    - type: language
-      key: r
-      comment: "alternative for statistical computing"
+  - type: "framework"
+    key: "django"
+    comment: "flagship web framework"
+  - type: "framework"
+    key: "fastapi"
+    comment: "modern async web framework"
+  - type: "framework"
+    key: "flask"
+    comment: "lightweight web microframework"
+  - type: "language"
+    key: "r"
+    comment: "alternative for statistical computing"
 ---
 
 **A high-level, dynamically typed, general-purpose programming language emphasizing code readability and developer

@@ -1,28 +1,28 @@
 ---
-title: Vert.x
+title: "Vert.x"
 aliases:
-  - /framework/vertx
+- "/framework/vertx"
 bookToC: false
 techsheet:
-  key: vertx
-  type: framework
-  category: Application
+  key: "vertx"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary implementation language"
-    - type: framework
-      key: quarkus
-      comment: "built on Vert.x, native integration"
-    - type: framework
-      key: spring-webflux
-      comment: "reactive JVM alternative"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
+  - type: "framework"
+    key: "quarkus"
+    comment: "built on Vert.x, native integration"
+  - type: "framework"
+    key: "spring-webflux"
+    comment: "reactive JVM alternative"
 ---
 
 **A polyglot, event-driven application framework for building reactive and high-performance applications on

@@ -1,24 +1,24 @@
 ---
-title: R
+title: "R"
 aliases:
-  - /language/r
+- "/language/r"
 bookToC: false
 techsheet:
-  key: r
-  type: language
+  key: "r"
+  type: "language"
   related:
-    - type: language
-      key: python
-      comment: "primary alternative for data science"
-    - type: language
-      key: julia
-      comment: "modern alternative for scientific computing"
-    - type: language
-      key: sql
-      comment: "commonly used together for data access"
-    - type: language
-      key: fortran
-      comment: "heritage in numerical computing"
+  - type: "language"
+    key: "python"
+    comment: "primary alternative for data science"
+  - type: "language"
+    key: "julia"
+    comment: "modern alternative for scientific computing"
+  - type: "language"
+    key: "sql"
+    comment: "commonly used together for data access"
+  - type: "language"
+    key: "fortran"
+    comment: "heritage in numerical computing"
 ---
 
 **A programming language and environment designed for statistical computing, data analysis, and graphical visualization.

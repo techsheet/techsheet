@@ -1,27 +1,27 @@
 ---
-title: Contao
+title: "Contao"
 aliases:
-  - /framework/contao
+- "/framework/contao"
 bookToC: false
 techsheet:
-  key: contao
-  type: framework
-  category: CMS
+  key: "contao"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "runtime language"
-    - type: framework
-      key: symfony
-      comment: "underlying application framework"
-    - type: framework
-      key: typo3
-      comment: "alternative PHP CMS, also German-origin"
-    - type: framework
-      key: doctrine
-      comment: "ORM layer, integrated via Symfony"
+  - type: "language"
+    key: "php"
+    comment: "runtime language"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying application framework"
+  - type: "framework"
+    key: "typo3"
+    comment: "alternative PHP CMS, also German-origin"
+  - type: "framework"
+    key: "doctrine"
+    comment: "ORM layer, integrated via Symfony"
 ---
 
 **An open-source content management system built on [Symfony](symfony.md) and designed for

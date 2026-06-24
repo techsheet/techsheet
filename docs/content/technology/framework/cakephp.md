@@ -1,27 +1,27 @@
 ---
-title: CakePHP
+title: "CakePHP"
 aliases:
-  - /framework/cakephp
+- "/framework/cakephp"
 bookToC: false
 techsheet:
-  key: cakephp
-  type: framework
-  category: Application
+  key: "cakephp"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "major PHP framework alternative"
-    - type: framework
-      key: symfony
-      comment: "PHP framework, shares components"
-    - type: framework
-      key: doctrine
-      comment: "PHP ORM alternative to CakePHP's built-in ORM"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "major PHP framework alternative"
+  - type: "framework"
+    key: "symfony"
+    comment: "PHP framework, shares components"
+  - type: "framework"
+    key: "doctrine"
+    comment: "PHP ORM alternative to CakePHP's built-in ORM"
 ---
 
 **A rapid-development [PHP](../language/php.md) framework built around the convention-over-configuration principle

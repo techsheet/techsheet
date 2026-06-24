@@ -1,24 +1,24 @@
 ---
-title: FastAPI
+title: "FastAPI"
 aliases:
-  - /framework/fastapi
+- "/framework/fastapi"
 bookToC: false
 techsheet:
-  key: fastapi
-  type: framework
-  category: Application
+  key: "fastapi"
+  type: "framework"
+  category: "Application"
   languages:
-    - python
+  - "python"
   related:
-    - type: language
-      key: python
-      comment: "runtime language"
-    - type: framework
-      key: flask
-      comment: "lightweight alternative, similar micro-framework approach"
-    - type: framework
-      key: django
-      comment: "full-stack alternative for Python web applications"
+  - type: "language"
+    key: "python"
+    comment: "runtime language"
+  - type: "framework"
+    key: "flask"
+    comment: "lightweight alternative, similar micro-framework approach"
+  - type: "framework"
+    key: "django"
+    comment: "full-stack alternative for Python web applications"
 ---
 
 **A modern, high-performance [Python](../language/python.md) web framework for building APIs, based on standard

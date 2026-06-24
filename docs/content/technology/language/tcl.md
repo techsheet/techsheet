@@ -1,24 +1,24 @@
 ---
-title: Tcl
+title: "Tcl"
 aliases:
-  - /language/tcl
+- "/language/tcl"
 bookToC: false
 techsheet:
-  key: tcl
-  type: language
+  key: "tcl"
+  type: "language"
   related:
-    - type: language
-      key: perl
-      comment: "fellow dynamic scripting language of the same era"
-    - type: language
-      key: python
-      comment: "dynamic scripting alternative, influenced by Tcl"
-    - type: language
-      key: lua
-      comment: "embeddable scripting alternative"
-    - type: language
-      key: shell
-      comment: "similar automation and glue scripting role"
+  - type: "language"
+    key: "perl"
+    comment: "fellow dynamic scripting language of the same era"
+  - type: "language"
+    key: "python"
+    comment: "dynamic scripting alternative, influenced by Tcl"
+  - type: "language"
+    key: "lua"
+    comment: "embeddable scripting alternative"
+  - type: "language"
+    key: "shell"
+    comment: "similar automation and glue scripting role"
 ---
 
 **A dynamic, interpreted scripting language designed for embeddability, rapid prototyping, and gluing together software

@@ -1,28 +1,28 @@
 ---
-title: Spring Data
+title: "Spring Data"
 aliases:
-  - /framework/spring-data
+- "/framework/spring-data"
 bookToC: false
 techsheet:
-  key: spring-data
-  type: framework
-  category: Data
+  key: "spring-data"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: spring-boot
-      comment: "typical application host"
-    - type: framework
-      key: hibernate
-      comment: "default JPA provider"
-    - type: framework
-      key: jooq
-      comment: "JVM data access alternative"
-    - type: language
-      key: java
-      comment: "primary language"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "typical application host"
+  - type: "framework"
+    key: "hibernate"
+    comment: "default JPA provider"
+  - type: "framework"
+    key: "jooq"
+    comment: "JVM data access alternative"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
 ---
 
 **A unified data access framework that simplifies repository implementations across relational and NoSQL datastores in

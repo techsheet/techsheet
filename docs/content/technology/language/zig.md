@@ -1,21 +1,21 @@
 ---
-title: Zig
+title: "Zig"
 aliases:
-  - /language/zig
+- "/language/zig"
 bookToC: false
 techsheet:
-  key: zig
-  type: language
+  key: "zig"
+  type: "language"
   related:
-    - type: language
-      key: cpp
-      comment: "systems programming alternative with C ABI interop"
-    - type: language
-      key: nim
-      comment: "modern compiled systems language"
-    - type: language
-      key: assembly
-      comment: "low-level target; Zig supports inline assembly"
+  - type: "language"
+    key: "cpp"
+    comment: "systems programming alternative with C ABI interop"
+  - type: "language"
+    key: "nim"
+    comment: "modern compiled systems language"
+  - type: "language"
+    key: "assembly"
+    comment: "low-level target; Zig supports inline assembly"
 ---
 
 **A general-purpose, statically typed systems programming language focused on explicit behavior, comptime evaluation,

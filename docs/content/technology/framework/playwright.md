@@ -1,28 +1,28 @@
 ---
-title: Playwright
+title: "Playwright"
 aliases:
-  - /framework/playwright
+- "/framework/playwright"
 bookToC: false
 techsheet:
-  key: playwright
-  type: framework
-  category: Testing
+  key: "playwright"
+  type: "framework"
+  category: "Testing"
   languages:
-    - javascript
-    - typescript
-    - python
-    - java
-    - csharp
+  - "javascript"
+  - "typescript"
+  - "python"
+  - "java"
+  - "csharp"
   related:
-    - type: tool
-      key: nodejs
-      comment: "runtime platform for primary bindings"
-    - type: language
-      key: typescript
-      comment: "primary implementation language"
-    - type: language
-      key: python
-      comment: "supported language binding"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime platform for primary bindings"
+  - type: "language"
+    key: "typescript"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "python"
+    comment: "supported language binding"
 ---
 
 **A cross-browser end-to-end testing framework designed for reliable automation of modern web applications.**

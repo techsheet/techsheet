@@ -1,24 +1,24 @@
 ---
-title: Fortran
+title: "Fortran"
 aliases:
-  - /language/fortran
+- "/language/fortran"
 bookToC: false
 techsheet:
-  key: fortran
-  type: language
+  key: "fortran"
+  type: "language"
   related:
-    - type: language
-      key: cpp
-      comment: "HPC companion language"
-    - type: language
-      key: julia
-      comment: "modern numerical computing alternative"
-    - type: language
-      key: python
-      comment: "widely used scientific computing alternative"
-    - type: language
-      key: cuda
-      comment: "GPU acceleration in HPC workloads"
+  - type: "language"
+    key: "cpp"
+    comment: "HPC companion language"
+  - type: "language"
+    key: "julia"
+    comment: "modern numerical computing alternative"
+  - type: "language"
+    key: "python"
+    comment: "widely used scientific computing alternative"
+  - type: "language"
+    key: "cuda"
+    comment: "GPU acceleration in HPC workloads"
 ---
 
 **The first widely adopted high-level programming language, designed for efficient numerical computation and scientific

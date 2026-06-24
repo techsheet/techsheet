@@ -5,7 +5,7 @@ bookCollapseSection: true
 
 # Tools
 
-*This section contains all tools detected by the TechSheet CLI.*
+*This section contains all tools detected by the TechSheet Analyzer.*
 
 - [Aider](aider.md)
 - [Amazon Q](amazon-q.md)

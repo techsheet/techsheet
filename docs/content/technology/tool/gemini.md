@@ -1,25 +1,25 @@
 ---
-title: Gemini
+title: "Gemini"
 aliases:
-  - /tool/gemini
+- "/tool/gemini"
 bookToC: false
 techsheet:
-  key: gemini
-  type: tool
-  category: AI
+  key: "gemini"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: claude
-      comment: "alternative AI assistant and coding agent"
-    - type: tool
-      key: github-copilot
-      comment: "alternative AI coding assistant"
-    - type: tool
-      key: cursor
-      comment: "AI-powered IDE with Gemini model support"
-    - type: tool
-      key: codex
-      comment: "alternative AI coding agent"
+  - type: "tool"
+    key: "claude"
+    comment: "alternative AI assistant and coding agent"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "alternative AI coding assistant"
+  - type: "tool"
+    key: "cursor"
+    comment: "AI-powered IDE with Gemini model support"
+  - type: "tool"
+    key: "codex"
+    comment: "alternative AI coding agent"
 ---
 
 **A family of multimodal AI models developed by Google DeepMind, powering coding assistance, conversational AI, and

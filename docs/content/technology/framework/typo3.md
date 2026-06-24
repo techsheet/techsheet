@@ -1,30 +1,30 @@
 ---
-title: TYPO3
+title: "TYPO3"
 aliases:
-  - /framework/typo3
+- "/framework/typo3"
 bookToC: false
 techsheet:
-  key: typo3
-  type: framework
-  category: CMS
+  key: "typo3"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "runtime language"
-    - type: framework
-      key: symfony
-      comment: "underlying component framework"
-    - type: framework
-      key: drupal
-      comment: "PHP CMS alternative, enterprise focus"
-    - type: framework
-      key: wordpress
-      comment: "PHP CMS alternative, broader adoption"
-    - type: tool
-      key: composer
-      comment: "PHP dependency management"
+  - type: "language"
+    key: "php"
+    comment: "runtime language"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying component framework"
+  - type: "framework"
+    key: "drupal"
+    comment: "PHP CMS alternative, enterprise focus"
+  - type: "framework"
+    key: "wordpress"
+    comment: "PHP CMS alternative, broader adoption"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP dependency management"
 ---
 
 **An enterprise-grade, open-source content management system built on [PHP](../language/php.md)

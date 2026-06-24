@@ -1,22 +1,22 @@
 ---
-title: GitLab CI
+title: "GitLab CI"
 aliases:
-  - /tool/gitlab-ci
+- "/tool/gitlab-ci"
 bookToC: false
 techsheet:
-  key: gitlab-ci
-  type: tool
-  category: CI
+  key: "gitlab-ci"
+  type: "tool"
+  category: "CI"
   related:
-    - type: tool
-      key: github-actions
-      comment: "direct alternative, GitHub-based CI/CD"
-    - type: tool
-      key: docker
-      comment: "runner execution environment"
-    - type: tool
-      key: git
-      comment: "underlying version control system"
+  - type: "tool"
+    key: "github-actions"
+    comment: "direct alternative, GitHub-based CI/CD"
+  - type: "tool"
+    key: "docker"
+    comment: "runner execution environment"
+  - type: "tool"
+    key: "git"
+    comment: "underlying version control system"
 ---
 
 **A built-in continuous integration and delivery platform for GitLab that defines pipelines as code using YAML

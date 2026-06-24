@@ -1,21 +1,21 @@
 ---
-title: PL/SQL
+title: "PL/SQL"
 aliases:
-  - /language/plsql
+- "/language/plsql"
 bookToC: false
 techsheet:
-  key: plsql
-  type: language
+  key: "plsql"
+  type: "language"
   related:
-    - type: language
-      key: sql
-      comment: "base language, extended by PL/SQL"
-    - type: language
-      key: java
-      comment: "alternative for Oracle stored procedures"
-    - type: service
-      key: postgres
-      comment: "PL/pgSQL dialect inspired by PL/SQL"
+  - type: "language"
+    key: "sql"
+    comment: "base language, extended by PL/SQL"
+  - type: "language"
+    key: "java"
+    comment: "alternative for Oracle stored procedures"
+  - type: "service"
+    key: "postgres"
+    comment: "PL/pgSQL dialect inspired by PL/SQL"
 ---
 
 **Oracle's procedural extension of [SQL](sql.md), designed for writing stored procedures, functions,

@@ -12,29 +12,29 @@ Thanks for your interest! Here's how to help.
 
 Requires JDK 21+. See the [Development](README.md#development) section of the README for build commands.
 
-When you touch `commonMain`, run **both** `:cli:jvmTest` and `:cli:assemble`:
+When you touch `commonMain`, run **both** `:analyzer:jvmTest` and `:analyzer:assemble`:
 
 ```bash
-./gradlew :cli:jvmTest :cli:assemble
+./gradlew :analyzer:jvmTest :analyzer:assemble
 ```
 
-`jvmTest` only exercises the JVM target — `:cli:assemble` builds every KMP target and surfaces accidental use of
+`jvmTest` only exercises the JVM target — `:analyzer:assemble` builds every KMP target and surfaces accidental use of
 JVM-only APIs in common code.
 
 ## Adding a detector
 
 1. If your detector reports a new language / framework / tool / service, add an entry to the matching enum in
-   `cli/src/commonMain/kotlin/org/techsheet/cli/domain/` (`LanguageType`, `FrameworkType`, `ToolType`, `ServiceType`).
-2. Add the detector under `cli/src/commonMain/kotlin/org/techsheet/cli/detector/`:
+   `analyzer/src/commonMain/kotlin/org/techsheet/analyzer/domain/` (`LanguageType`, `FrameworkType`, `ToolType`, `ServiceType`).
+2. Add the detector under `analyzer/src/commonMain/kotlin/org/techsheet/analyzer/detector/`:
   - For dependency-manifest checks, extend one of the existing abstracts: `AbstractNpmDependencyDetector`,
     `AbstractJvmDependencyDetector`, `AbstractPythonDependencyDetector`, `AbstractSourceFileLanguageDetector`.
   - Otherwise extend `Detector(name, vararg matchers: Matcher)` and override `onMatch(path, content, sheet)`. Pick the
     narrowest `Matcher`: `Filename` / `Extension` match anywhere in the tree (monorepo-friendly); `FileAt` /
     `DirectoryAt` are for markers that must be at a specific path (e.g. `.github/workflows/`).
 3. Register the detector in the `Detectors.ALL` list in `Detectors.kt`.
-4. Add a fixture project at `cli/src/jvmTest/resources/test-projects/<name>/` containing the marker files.
+4. Add a fixture project under `test-projects/<name>/` containing the marker files.
 5. Add a `testCase("<name>") { ... }` entry in `AnalyzerIntegrationTest.cases` asserting the expected `TechSheet`.
-6. Run `./gradlew :cli:jvmTest :cli:assemble`.
+6. Run `./gradlew :analyzer:jvmTest :analyzer:assemble`.
 
 Keep `onMatch` tiny — it should hand off to the abstract or make a single `sheet.withX(...)` call. Never swallow caught
 exceptions silently; log at WARN with the throwable.

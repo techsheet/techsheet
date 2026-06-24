@@ -1,30 +1,30 @@
 ---
-title: Dropwizard
+title: "Dropwizard"
 aliases:
-  - /framework/dropwizard
+- "/framework/dropwizard"
 bookToC: false
 techsheet:
-  key: dropwizard
-  type: framework
-  category: Application
+  key: "dropwizard"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
+  - "java"
   related:
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: spring-boot
-      comment: "dominant alternative for Java microservices"
-    - type: framework
-      key: micronaut
-      comment: "modern lightweight alternative"
-    - type: framework
-      key: jakarta-ee
-      comment: "provides JAX-RS and Servlet APIs used internally"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "dominant alternative for Java microservices"
+  - type: "framework"
+    key: "micronaut"
+    comment: "modern lightweight alternative"
+  - type: "framework"
+    key: "jakarta-ee"
+    comment: "provides JAX-RS and Servlet APIs used internally"
 ---
 
 **An opinionated [Java](../language/java.md) framework for building production-ready RESTful web services with

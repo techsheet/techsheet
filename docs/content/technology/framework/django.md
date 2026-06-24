@@ -1,24 +1,24 @@
 ---
-title: Django
+title: "Django"
 aliases:
-  - /framework/django
+- "/framework/django"
 bookToC: false
 techsheet:
-  key: django
-  type: framework
-  category: Application
+  key: "django"
+  type: "framework"
+  category: "Application"
   languages:
-    - python
+  - "python"
   related:
-    - type: language
-      key: python
-      comment: "implementation language"
-    - type: framework
-      key: flask
-      comment: "Python web alternative, micro-framework"
-    - type: framework
-      key: fastapi
-      comment: "Python web alternative, async-first"
+  - type: "language"
+    key: "python"
+    comment: "implementation language"
+  - type: "framework"
+    key: "flask"
+    comment: "Python web alternative, micro-framework"
+  - type: "framework"
+    key: "fastapi"
+    comment: "Python web alternative, async-first"
 ---
 
 **A high-level [Python](../language/python.md) web framework that encourages rapid development and clean,

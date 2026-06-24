@@ -1,28 +1,28 @@
 ---
-title: RxJava
+title: "RxJava"
 aliases:
-  - /framework/rxjava
+- "/framework/rxjava"
 bookToC: false
 techsheet:
-  key: rxjava
-  type: framework
-  category: Concurrency
+  key: "rxjava"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: reactor
-      comment: "direct alternative, Reactive Streams on JVM"
-    - type: framework
-      key: kotlinx-coroutines
-      comment: "alternative async model for Kotlin"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: language
-      key: kotlin
-      comment: "secondary language, full interop"
+  - type: "framework"
+    key: "reactor"
+    comment: "direct alternative, Reactive Streams on JVM"
+  - type: "framework"
+    key: "kotlinx-coroutines"
+    comment: "alternative async model for Kotlin"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "language"
+    key: "kotlin"
+    comment: "secondary language, full interop"
 ---
 
 **A reactive extensions library for composing asynchronous and event-based programs on the [JVM](../tool/jvm.md)

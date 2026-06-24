@@ -5,7 +5,7 @@ bookCollapseSection: true
 
 # Languages
 
-*This section contains all languages detected by the TechSheet CLI.*
+*This section contains all languages detected by the TechSheet Analyzer.*
 
 - [ABAP](abap.md)
 - [Apex](apex.md)

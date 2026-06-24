@@ -1,27 +1,27 @@
 ---
-title: Grav
+title: "Grav"
 aliases:
-  - /framework/grav
+- "/framework/grav"
 bookToC: false
 techsheet:
-  key: grav
-  type: framework
-  category: CMS
+  key: "grav"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "uses Symfony components"
-    - type: framework
-      key: wordpress
-      comment: "dominant PHP CMS alternative, database-driven"
-    - type: framework
-      key: drupal
-      comment: "major PHP CMS alternative"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "uses Symfony components"
+  - type: "framework"
+    key: "wordpress"
+    comment: "dominant PHP CMS alternative, database-driven"
+  - type: "framework"
+    key: "drupal"
+    comment: "major PHP CMS alternative"
 ---
 
 **A flat-file content management system built on [PHP](../language/php.md) that requires no database and stores

@@ -4,29 +4,20 @@ set -euo pipefail
 # Run from the project root regardless of the caller's CWD.
 cd "$(dirname "$0")/.."
 
-# Note: `:cli:jvmRun` sets ./cli as the JVM's working directory, so paths
-# passed to --args are resolved against ./cli — hence the `../` prefixes
-# below for detectors (whose output path is relative to the JVM CWD) and
-# the `../` source argument for analyze (so its output paths resolve
-# relative to the project root).
+# Note: `:analyzer:jvmRun` sets ./analyzer as the JVM's working directory,
+# so the `../` source argument for analyze resolves relative to the project root.
 
-./gradlew :cli:jvmRun --args="detectors --markdown=../docs/detectors.md"
+./gradlew :docs:updateDocs
 
-languages=$(grep -m1 "Currently supporting.*languages" docs/detectors.md | grep -o '[0-9]\+')
-frameworks=$(grep -m1 "Currently supporting.*frameworks" docs/detectors.md | grep -o '[0-9]\+')
-tools=$(grep -m1 "Currently supporting.*tools" docs/detectors.md | grep -o '[0-9]\+')
-sed -i \
-  -e "s/\[[0-9]*+ languages\]/[${languages}+ languages]/" \
-  -e "s/\[[0-9]*+ frameworks\]/[${frameworks}+ frameworks]/" \
-  -e "s/\[[0-9]*+ tools\]/[${tools}+ tools]/" \
-  README.md
-
-./gradlew :cli:jvmRun --args="analyze ../ \
+./gradlew :analyzer:jvmRun --args="analyze ../ \
   --file=../techsheet.yml"
 
-./gradlew :cli:jvmRun --args="analyze ../ \
+./gradlew :analyzer:jvmRun --args="analyze ../ \
   -q \
   --file=../docs/example/techsheet.yml \
   --report-markdown=../docs/example/techsheet.md \
   --report-html=../docs/example/techsheet.html \
   --report-json=../docs/example/techsheet.json"
+
+.venv/bin/generate-schema-doc --config-file jsfh-conf.yaml docs/content/spec/v2/techsheet.json docs/content/spec/v2/techsheet.md
+sed -i '1s/^/---\ntitle: Schema V2 (current)\nweight: 60\naliases:\n  - \/schema\/v2\/techsheet\n---\n\n/' docs/content/spec/v2/techsheet.md

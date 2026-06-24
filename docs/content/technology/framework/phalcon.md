@@ -1,27 +1,27 @@
 ---
-title: Phalcon
+title: "Phalcon"
 aliases:
-  - /framework/phalcon
+- "/framework/phalcon"
 bookToC: false
 techsheet:
-  key: phalcon
-  type: framework
-  category: Application
+  key: "phalcon"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "PHP framework alternative"
-    - type: framework
-      key: symfony
-      comment: "PHP framework alternative"
-    - type: framework
-      key: codeigniter
-      comment: "PHP framework alternative, similar lightweight focus"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "PHP framework alternative"
+  - type: "framework"
+    key: "symfony"
+    comment: "PHP framework alternative"
+  - type: "framework"
+    key: "codeigniter"
+    comment: "PHP framework alternative, similar lightweight focus"
 ---
 
 **A high-performance [PHP](../language/php.md) web framework delivered as a C extension for minimal overhead and

@@ -51,6 +51,9 @@ menu:
     - name: "Server"
       url: "/server/"
       weight: 40
+    - name: "Integrations"
+      url: "/integrations/"
+      weight: 50
 
   # before: []
   after:

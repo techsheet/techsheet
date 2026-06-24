@@ -1,22 +1,22 @@
 ---
-title: EditorConfig
+title: "EditorConfig"
 aliases:
-  - /tool/editorconfig
+- "/tool/editorconfig"
 bookToC: false
 techsheet:
-  key: editorconfig
-  type: tool
-  category: Format
+  key: "editorconfig"
+  type: "tool"
+  category: "Format"
   related:
-    - type: tool
-      key: prettier
-      comment: "complementary code formatter"
-    - type: tool
-      key: eslint
-      comment: "complementary linter and formatter"
-    - type: tool
-      key: git
-      comment: "config file typically version-controlled"
+  - type: "tool"
+    key: "prettier"
+    comment: "complementary code formatter"
+  - type: "tool"
+    key: "eslint"
+    comment: "complementary linter and formatter"
+  - type: "tool"
+    key: "git"
+    comment: "config file typically version-controlled"
 ---
 
 **A file format and collection of editor plugins for defining and maintaining consistent coding styles across editors

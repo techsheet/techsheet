@@ -1,25 +1,25 @@
 ---
-title: NPM
+title: "NPM"
 aliases:
-  - /tool/npm
+- "/tool/npm"
 bookToC: false
 techsheet:
-  key: npm
-  type: tool
-  category: Build
+  key: "npm"
+  type: "tool"
+  category: "Build"
   related:
-    - type: tool
-      key: nodejs
-      comment: "bundled runtime platform"
-    - type: tool
-      key: yarn
-      comment: "alternative package manager for the same ecosystem"
-    - type: language
-      key: javascript
-      comment: "primary language of the ecosystem"
-    - type: language
-      key: typescript
-      comment: "major ecosystem language, packages distributed via npm"
+  - type: "tool"
+    key: "nodejs"
+    comment: "bundled runtime platform"
+  - type: "tool"
+    key: "yarn"
+    comment: "alternative package manager for the same ecosystem"
+  - type: "language"
+    key: "javascript"
+    comment: "primary language of the ecosystem"
+  - type: "language"
+    key: "typescript"
+    comment: "major ecosystem language, packages distributed via npm"
 ---
 
 **The default package manager for [Node.js](nodejs.md), providing dependency management, script execution,

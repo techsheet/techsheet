@@ -1,21 +1,21 @@
 ---
-title: Pascal
+title: "Pascal"
 aliases:
-  - /language/pascal
+- "/language/pascal"
 bookToC: false
 techsheet:
-  key: pascal
-  type: language
+  key: "pascal"
+  type: "language"
   related:
-    - type: language
-      key: csharp
-      comment: "spiritual successor via Anders Hejlsberg"
-    - type: language
-      key: cpp
-      comment: "contemporary compiled alternative"
-    - type: language
-      key: fortran
-      comment: "same era, structured compiled language"
+  - type: "language"
+    key: "csharp"
+    comment: "spiritual successor via Anders Hejlsberg"
+  - type: "language"
+    key: "cpp"
+    comment: "contemporary compiled alternative"
+  - type: "language"
+    key: "fortran"
+    comment: "same era, structured compiled language"
 ---
 
 **A procedural, statically typed programming language designed for teaching structured programming and reliable software

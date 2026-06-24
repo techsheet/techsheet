@@ -1,22 +1,22 @@
 ---
-title: Amazon Q
+title: "Amazon Q"
 aliases:
-  - /tool/amazon-q
+- "/tool/amazon-q"
 bookToC: false
 techsheet:
-  key: amazon-q
-  type: tool
-  category: AI
+  key: "amazon-q"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: github-copilot
-      comment: "direct competitor, AI coding assistant"
-    - type: tool
-      key: claude
-      comment: "direct competitor, AI coding assistant"
-    - type: tool
-      key: cursor
-      comment: "AI-powered IDE alternative"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "direct competitor, AI coding assistant"
+  - type: "tool"
+    key: "claude"
+    comment: "direct competitor, AI coding assistant"
+  - type: "tool"
+    key: "cursor"
+    comment: "AI-powered IDE alternative"
 ---
 
 **An AI-powered software development assistant from Amazon Web Services that provides code generation, transformation,

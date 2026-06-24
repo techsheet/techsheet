@@ -1,27 +1,27 @@
 ---
-title: Drupal
+title: "Drupal"
 aliases:
-  - /framework/drupal
+- "/framework/drupal"
 bookToC: false
 techsheet:
-  key: drupal
-  type: framework
-  category: CMS
+  key: "drupal"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "primary language"
-    - type: framework
-      key: symfony
-      comment: "underlying component framework"
-    - type: framework
-      key: wordpress
-      comment: "leading CMS alternative"
-    - type: tool
-      key: composer
-      comment: "dependency management"
+  - type: "language"
+    key: "php"
+    comment: "primary language"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying component framework"
+  - type: "framework"
+    key: "wordpress"
+    comment: "leading CMS alternative"
+  - type: "tool"
+    key: "composer"
+    comment: "dependency management"
 ---
 
 **An open-source content management framework written in [PHP](../language/php.md), designed for building

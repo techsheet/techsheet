@@ -823,4 +823,4 @@ XY Variant
 | **Max length** | 100 |
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-05-13 at 10:41:28 +0200
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2026-06-24 at 16:43:49 +0200

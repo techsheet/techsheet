@@ -1,25 +1,25 @@
 ---
-title: SBT
+title: "SBT"
 aliases:
-  - /tool/sbt
+- "/tool/sbt"
 bookToC: false
 techsheet:
-  key: sbt
-  type: tool
-  category: Build
+  key: "sbt"
+  type: "tool"
+  category: "Build"
   related:
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "target runtime platform"
-    - type: tool
-      key: gradle
-      comment: "alternative JVM build tool"
-    - type: tool
-      key: maven
-      comment: "alternative JVM build tool"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "target runtime platform"
+  - type: "tool"
+    key: "gradle"
+    comment: "alternative JVM build tool"
+  - type: "tool"
+    key: "maven"
+    comment: "alternative JVM build tool"
 ---
 
 **The standard build tool for [Scala](../language/scala.md) projects, providing incremental compilation and an

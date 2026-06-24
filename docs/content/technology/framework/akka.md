@@ -1,31 +1,31 @@
 ---
-title: Akka
+title: "Akka"
 aliases:
-  - /framework/akka
+- "/framework/akka"
 bookToC: false
 techsheet:
-  key: akka
-  type: framework
-  category: Concurrency
+  key: "akka"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - scala
-    - java
+  - "scala"
+  - "java"
   related:
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: language
-      key: java
-      comment: "supported language via Java API"
-    - type: framework
-      key: akka-http
-      comment: "HTTP module built on Akka"
-    - type: framework
-      key: play-framework
-      comment: "web framework historically built on Akka"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "language"
+    key: "java"
+    comment: "supported language via Java API"
+  - type: "framework"
+    key: "akka-http"
+    comment: "HTTP module built on Akka"
+  - type: "framework"
+    key: "play-framework"
+    comment: "web framework historically built on Akka"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A toolkit for building concurrent, distributed, and fault-tolerant applications on the [JVM](../tool/jvm.md)

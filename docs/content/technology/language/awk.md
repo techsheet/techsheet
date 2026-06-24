@@ -1,18 +1,18 @@
 ---
-title: Awk
+title: "Awk"
 aliases:
-  - /language/awk
+- "/language/awk"
 bookToC: false
 techsheet:
-  key: awk
-  type: language
+  key: "awk"
+  type: "language"
   related:
-    - type: language
-      key: shell
-      comment: "commonly embedded in shell scripts"
-    - type: language
-      key: perl
-      comment: "absorbed many awk use cases for larger programs"
+  - type: "language"
+    key: "shell"
+    comment: "commonly embedded in shell scripts"
+  - type: "language"
+    key: "perl"
+    comment: "absorbed many awk use cases for larger programs"
 ---
 
 **A pattern-scanning and text-processing language designed for extracting and transforming structured data from text

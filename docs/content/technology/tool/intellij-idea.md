@@ -1,25 +1,25 @@
 ---
-title: IntelliJ IDEA
+title: "IntelliJ IDEA"
 aliases:
-  - /tool/intellij-idea
+- "/tool/intellij-idea"
 bookToC: false
 techsheet:
-  key: intellij-idea
-  type: tool
-  category: IDE
+  key: "intellij-idea"
+  type: "tool"
+  category: "IDE"
   related:
-    - type: tool
-      key: vscode
-      comment: "primary alternative IDE"
-    - type: language
-      key: java
-      comment: "core supported language"
-    - type: language
-      key: kotlin
-      comment: "JetBrains language, deep integration"
-    - type: tool
-      key: gradle
-      comment: "primary build tool integration"
+  - type: "tool"
+    key: "vscode"
+    comment: "primary alternative IDE"
+  - type: "language"
+    key: "java"
+    comment: "core supported language"
+  - type: "language"
+    key: "kotlin"
+    comment: "JetBrains language, deep integration"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary build tool integration"
 ---
 
 **A professional integrated development environment built for [Java](../language/java.md) and JVM languages,

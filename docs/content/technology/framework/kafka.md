@@ -1,29 +1,29 @@
 ---
-title: Apache Kafka
+title: "Apache Kafka"
 aliases:
-  - /framework/kafka
+- "/framework/kafka"
 bookToC: false
 techsheet:
-  key: kafka
-  type: framework
-  category: Data
+  key: "kafka"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
-    - scala
+  - "java"
+  - "kotlin"
+  - "scala"
   related:
-    - type: language
-      key: java
-      comment: "primary implementation language"
-    - type: language
-      key: scala
-      comment: "co-implementation language, widely used in Kafka ecosystem"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: spring-boot
-      comment: "Spring for Apache Kafka integration"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "scala"
+    comment: "co-implementation language, widely used in Kafka ecosystem"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "Spring for Apache Kafka integration"
 ---
 
 **A distributed event streaming platform designed for high-throughput, fault-tolerant, real-time data pipelines and

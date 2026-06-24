@@ -1,31 +1,31 @@
 ---
-title: Micronaut
+title: "Micronaut"
 aliases:
-  - /framework/micronaut
+- "/framework/micronaut"
 bookToC: false
 techsheet:
-  key: micronaut
-  type: framework
-  category: Application
+  key: "micronaut"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary implementation language"
-    - type: framework
-      key: quarkus
-      comment: "alternative compile-time JVM framework"
-    - type: framework
-      key: spring-boot
-      comment: "dominant JVM framework alternative"
-    - type: language
-      key: kotlin
-      comment: "supported implementation language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
+  - type: "framework"
+    key: "quarkus"
+    comment: "alternative compile-time JVM framework"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "dominant JVM framework alternative"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported implementation language"
 ---
 
 **A compile-time, reflection-free application framework for building modular microservices and serverless applications

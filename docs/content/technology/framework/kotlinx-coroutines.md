@@ -1,30 +1,30 @@
 ---
-title: Kotlinx Coroutines
+title: "Kotlinx Coroutines"
 aliases:
-  - /framework/kotlinx-coroutines
+- "/framework/kotlinx-coroutines"
 bookToC: false
 techsheet:
-  key: kotlinx-coroutines
-  type: framework
-  category: Concurrency
+  key: "kotlinx-coroutines"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: ktor
-      comment: "Kotlin web framework built on coroutines"
-    - type: framework
-      key: reactor
-      comment: "JVM concurrency alternative, reactive streams"
-    - type: framework
-      key: arrow
-      comment: "Kotlin functional companion library"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "ktor"
+    comment: "Kotlin web framework built on coroutines"
+  - type: "framework"
+    key: "reactor"
+    comment: "JVM concurrency alternative, reactive streams"
+  - type: "framework"
+    key: "arrow"
+    comment: "Kotlin functional companion library"
 ---
 
 **A structured concurrency library for [Kotlin](../language/kotlin.md) that provides lightweight, composable

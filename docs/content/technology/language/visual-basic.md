@@ -1,24 +1,24 @@
 ---
-title: Visual Basic
+title: "Visual Basic"
 aliases:
-  - /language/visual-basic
+- "/language/visual-basic"
 bookToC: false
 techsheet:
-  key: visual-basic
-  type: language
+  key: "visual-basic"
+  type: "language"
   related:
-    - type: language
-      key: csharp
-      comment: ".NET sibling, modern successor"
-    - type: language
-      key: fsharp
-      comment: ".NET sibling, functional alternative"
-    - type: framework
-      key: asp-net-core
-      comment: "web framework on shared .NET runtime"
-    - type: language
-      key: sql
-      comment: "commonly paired for database access"
+  - type: "language"
+    key: "csharp"
+    comment: ".NET sibling, modern successor"
+  - type: "language"
+    key: "fsharp"
+    comment: ".NET sibling, functional alternative"
+  - type: "framework"
+    key: "asp-net-core"
+    comment: "web framework on shared .NET runtime"
+  - type: "language"
+    key: "sql"
+    comment: "commonly paired for database access"
 ---
 
 **An event-driven, object-oriented programming language from Microsoft, designed for rapid application development on

@@ -1,31 +1,31 @@
 ---
-title: Vue.js
+title: "Vue.js"
 aliases:
-  - /framework/vue
+- "/framework/vue"
 bookToC: false
 techsheet:
-  key: vue
-  type: framework
-  category: Application
+  key: "vue"
+  type: "framework"
+  category: "Application"
   languages:
-    - javascript
-    - typescript
+  - "javascript"
+  - "typescript"
   related:
-    - type: language
-      key: javascript
-      comment: "primary implementation language"
-    - type: language
-      key: typescript
-      comment: "widely used typed variant in Vue projects"
-    - type: framework
-      key: react
-      comment: "direct alternative, component-based SPA library"
-    - type: framework
-      key: angular
-      comment: "direct alternative, full-featured SPA framework"
-    - type: framework
-      key: svelte
-      comment: "direct alternative, compiler-based UI framework"
+  - type: "language"
+    key: "javascript"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "typescript"
+    comment: "widely used typed variant in Vue projects"
+  - type: "framework"
+    key: "react"
+    comment: "direct alternative, component-based SPA library"
+  - type: "framework"
+    key: "angular"
+    comment: "direct alternative, full-featured SPA framework"
+  - type: "framework"
+    key: "svelte"
+    comment: "direct alternative, compiler-based UI framework"
 ---
 
 **A progressive, component-based [JavaScript](../language/javascript.md) framework for building user interfaces

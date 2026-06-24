@@ -1,28 +1,28 @@
 ---
-title: Prettier
+title: "Prettier"
 aliases:
-  - /tool/prettier
+- "/tool/prettier"
 bookToC: false
 techsheet:
-  key: prettier
-  type: tool
-  category: Format
+  key: "prettier"
+  type: "tool"
+  category: "Format"
   related:
-    - type: tool
-      key: eslint
-      comment: "complementary linter"
-    - type: tool
-      key: editorconfig
-      comment: "complementary editor configuration"
-    - type: tool
-      key: nodejs
-      comment: "runtime platform"
-    - type: language
-      key: javascript
-      comment: "primary language formatted"
-    - type: language
-      key: typescript
-      comment: "primary language formatted"
+  - type: "tool"
+    key: "eslint"
+    comment: "complementary linter"
+  - type: "tool"
+    key: "editorconfig"
+    comment: "complementary editor configuration"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime platform"
+  - type: "language"
+    key: "javascript"
+    comment: "primary language formatted"
+  - type: "language"
+    key: "typescript"
+    comment: "primary language formatted"
 ---
 
 **An opinionated code formatter that enforces a consistent style by parsing and reprinting code.**

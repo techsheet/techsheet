@@ -1,27 +1,27 @@
 ---
-title: Arrow
+title: "Arrow"
 aliases:
-  - /framework/arrow
+- "/framework/arrow"
 bookToC: false
 techsheet:
-  key: arrow
-  type: framework
-  category: Concurrency
+  key: "arrow"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: kotlinx-coroutines
-      comment: "foundation, Arrow extends coroutines with typed errors and resources"
-    - type: framework
-      key: cats-effect
-      comment: "Scala equivalent, functional effect system"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "kotlinx-coroutines"
+    comment: "foundation, Arrow extends coroutines with typed errors and resources"
+  - type: "framework"
+    key: "cats-effect"
+    comment: "Scala equivalent, functional effect system"
 ---
 
 **A functional programming library for [Kotlin](../language/kotlin.md) that provides typed error handling,

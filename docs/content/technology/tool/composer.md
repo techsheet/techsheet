@@ -1,25 +1,25 @@
 ---
-title: Composer
+title: "Composer"
 aliases:
-  - /tool/composer
+- "/tool/composer"
 bookToC: false
 techsheet:
-  key: composer
-  type: tool
-  category: Build
+  key: "composer"
+  type: "tool"
+  category: "Build"
   related:
-    - type: language
-      key: php
-      comment: "target language"
-    - type: tool
-      key: npm
-      comment: "analogous package manager for JavaScript"
-    - type: framework
-      key: laravel
-      comment: "major PHP framework, relies on Composer"
-    - type: framework
-      key: symfony
-      comment: "major PHP framework, tightly integrated"
+  - type: "language"
+    key: "php"
+    comment: "target language"
+  - type: "tool"
+    key: "npm"
+    comment: "analogous package manager for JavaScript"
+  - type: "framework"
+    key: "laravel"
+    comment: "major PHP framework, relies on Composer"
+  - type: "framework"
+    key: "symfony"
+    comment: "major PHP framework, tightly integrated"
 ---
 
 **The standard dependency manager for [PHP](../language/php.md), providing per-project package installation and

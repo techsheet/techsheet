@@ -1,25 +1,25 @@
 ---
-title: OpenAI Codex
+title: "OpenAI Codex"
 aliases:
-  - /tool/codex
+- "/tool/codex"
 bookToC: false
 techsheet:
-  key: codex
-  type: tool
-  category: AI
+  key: "codex"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: claude
-      comment: "alternative CLI-based AI coding agent"
-    - type: tool
-      key: github-copilot
-      comment: "OpenAI-powered alternative, IDE-focused"
-    - type: tool
-      key: cursor
-      comment: "alternative AI-powered IDE"
-    - type: tool
-      key: aider
-      comment: "alternative open-source CLI coding agent"
+  - type: "tool"
+    key: "claude"
+    comment: "alternative CLI-based AI coding agent"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "OpenAI-powered alternative, IDE-focused"
+  - type: "tool"
+    key: "cursor"
+    comment: "alternative AI-powered IDE"
+  - type: "tool"
+    key: "aider"
+    comment: "alternative open-source CLI coding agent"
 ---
 
 **An open-source CLI coding agent by OpenAI that executes software engineering tasks autonomously in a sandboxed

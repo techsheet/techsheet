@@ -1,28 +1,28 @@
 ---
-title: Spring MVC
+title: "Spring MVC"
 aliases:
-  - /framework/spring-mvc
+- "/framework/spring-mvc"
 bookToC: false
 techsheet:
-  key: spring-mvc
-  type: framework
-  category: Application
+  key: "spring-mvc"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: spring-boot
-      comment: "opinionated bootstrap layer"
-    - type: framework
-      key: spring-webflux
-      comment: "reactive alternative in Spring"
-    - type: framework
-      key: spring-security
-      comment: "authentication and authorization companion"
-    - type: language
-      key: java
-      comment: "primary implementation language"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "opinionated bootstrap layer"
+  - type: "framework"
+    key: "spring-webflux"
+    comment: "reactive alternative in Spring"
+  - type: "framework"
+    key: "spring-security"
+    comment: "authentication and authorization companion"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
 ---
 
 **The web framework module of the Spring Framework, providing a servlet-based model-view-controller architecture for

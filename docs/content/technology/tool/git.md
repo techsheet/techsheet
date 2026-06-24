@@ -1,22 +1,22 @@
 ---
-title: Git
+title: "Git"
 aliases:
-  - /tool/git
+- "/tool/git"
 bookToC: false
 techsheet:
-  key: git
-  type: tool
-  category: VCS
+  key: "git"
+  type: "tool"
+  category: "VCS"
   related:
-    - type: tool
-      key: github-actions
-      comment: "CI platform built on Git hosting"
-    - type: tool
-      key: gitlab-ci
-      comment: "CI platform built on Git hosting"
-    - type: tool
-      key: docker
-      comment: "common CI/CD companion"
+  - type: "tool"
+    key: "github-actions"
+    comment: "CI platform built on Git hosting"
+  - type: "tool"
+    key: "gitlab-ci"
+    comment: "CI platform built on Git hosting"
+  - type: "tool"
+    key: "docker"
+    comment: "common CI/CD companion"
 ---
 
 **A distributed version control system designed for speed, data integrity, and support for non-linear workflows.**

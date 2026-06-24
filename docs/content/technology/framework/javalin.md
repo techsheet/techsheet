@@ -1,31 +1,31 @@
 ---
-title: Javalin
+title: "Javalin"
 aliases:
-  - /framework/javalin
+- "/framework/javalin"
 bookToC: false
 techsheet:
-  key: javalin
-  type: framework
-  category: Application
+  key: "javalin"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: language
-      key: kotlin
-      comment: "supported language, first-class API"
-    - type: framework
-      key: ktor
-      comment: "lightweight Kotlin alternative"
-    - type: framework
-      key: vertx
-      comment: "lightweight JVM alternative"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported language, first-class API"
+  - type: "framework"
+    key: "ktor"
+    comment: "lightweight Kotlin alternative"
+  - type: "framework"
+    key: "vertx"
+    comment: "lightweight JVM alternative"
 ---
 
 **A lightweight web framework for [Java](../language/java.md) and [Kotlin](../language/kotlin.md) designed

@@ -1,28 +1,28 @@
 ---
-title: JVM
+title: "JVM"
 aliases:
-  - /tool/jvm
+- "/tool/jvm"
 bookToC: false
 techsheet:
-  key: jvm
-  type: tool
-  category: Runtime
+  key: "jvm"
+  type: "tool"
+  category: "Runtime"
   related:
-    - type: language
-      key: java
-      comment: "primary language of the platform"
-    - type: language
-      key: kotlin
-      comment: "major JVM language, modern alternative to Java"
-    - type: language
-      key: scala
-      comment: "major JVM language, functional paradigm"
-    - type: tool
-      key: gradle
-      comment: "dominant JVM build tool"
-    - type: tool
-      key: maven
-      comment: "traditional JVM build tool"
+  - type: "language"
+    key: "java"
+    comment: "primary language of the platform"
+  - type: "language"
+    key: "kotlin"
+    comment: "major JVM language, modern alternative to Java"
+  - type: "language"
+    key: "scala"
+    comment: "major JVM language, functional paradigm"
+  - type: "tool"
+    key: "gradle"
+    comment: "dominant JVM build tool"
+  - type: "tool"
+    key: "maven"
+    comment: "traditional JVM build tool"
 ---
 
 **A platform-independent virtual machine that executes bytecode, serving as the shared runtime

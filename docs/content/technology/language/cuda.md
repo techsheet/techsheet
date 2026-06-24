@@ -1,21 +1,21 @@
 ---
-title: CUDA
+title: "CUDA"
 aliases:
-  - /language/cuda
+- "/language/cuda"
 bookToC: false
 techsheet:
-  key: cuda
-  type: language
+  key: "cuda"
+  type: "language"
   related:
-    - type: language
-      key: cpp
-      comment: "host language it extends"
-    - type: language
-      key: python
-      comment: "primary high-level binding ecosystem"
-    - type: language
-      key: fortran
-      comment: "CUDA Fortran support"
+  - type: "language"
+    key: "cpp"
+    comment: "host language it extends"
+  - type: "language"
+    key: "python"
+    comment: "primary high-level binding ecosystem"
+  - type: "language"
+    key: "fortran"
+    comment: "CUDA Fortran support"
 ---
 
 **A parallel computing platform and programming model that extends [C++](cpp.md) for general-purpose

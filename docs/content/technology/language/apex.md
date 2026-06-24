@@ -1,21 +1,21 @@
 ---
-title: Apex
+title: "Apex"
 aliases:
-  - /language/apex
+- "/language/apex"
 bookToC: false
 techsheet:
-  key: apex
-  type: language
+  key: "apex"
+  type: "language"
   related:
-    - type: language
-      key: java
-      comment: "syntax and type system modeled after Java"
-    - type: language
-      key: sql
-      comment: "SOQL/SOSL database query integration"
-    - type: language
-      key: abap
-      comment: "analogous vendor-locked enterprise language (SAP)"
+  - type: "language"
+    key: "java"
+    comment: "syntax and type system modeled after Java"
+  - type: "language"
+    key: "sql"
+    comment: "SOQL/SOSL database query integration"
+  - type: "language"
+    key: "abap"
+    comment: "analogous vendor-locked enterprise language (SAP)"
 ---
 
 **A proprietary, strongly typed programming language developed by Salesforce for building business logic on its

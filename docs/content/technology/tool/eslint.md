@@ -1,25 +1,25 @@
 ---
-title: ESLint
+title: "ESLint"
 aliases:
-  - /tool/eslint
+- "/tool/eslint"
 bookToC: false
 techsheet:
-  key: eslint
-  type: tool
-  category: Format
+  key: "eslint"
+  type: "tool"
+  category: "Format"
   related:
-    - type: language
-      key: javascript
-      comment: "primary target language"
-    - type: language
-      key: typescript
-      comment: "major supported language"
-    - type: tool
-      key: nodejs
-      comment: "runtime platform"
-    - type: tool
-      key: prettier
-      comment: "complementary formatter, often paired"
+  - type: "language"
+    key: "javascript"
+    comment: "primary target language"
+  - type: "language"
+    key: "typescript"
+    comment: "major supported language"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime platform"
+  - type: "tool"
+    key: "prettier"
+    comment: "complementary formatter, often paired"
 ---
 
 **A pluggable static analysis tool for identifying and fixing problems in [JavaScript](../language/javascript.md)

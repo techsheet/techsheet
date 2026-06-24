@@ -1,28 +1,28 @@
 ---
-title: REST Assured
+title: "REST Assured"
 aliases:
-  - /framework/rest-assured
+- "/framework/rest-assured"
 bookToC: false
 techsheet:
-  key: rest-assured
-  type: framework
-  category: Testing
+  key: "rest-assured"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: junit
-      comment: "typical test runner"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: wiremock
-      comment: "complementary API stubbing"
+  - type: "framework"
+    key: "junit"
+    comment: "typical test runner"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "wiremock"
+    comment: "complementary API stubbing"
 ---
 
 **A Java DSL for testing and validating REST APIs with a fluent, BDD-style syntax.**

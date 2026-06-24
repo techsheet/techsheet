@@ -1,24 +1,24 @@
 ---
-title: Flask
+title: "Flask"
 aliases:
-  - /framework/flask
+- "/framework/flask"
 bookToC: false
 techsheet:
-  key: flask
-  type: framework
-  category: Application
+  key: "flask"
+  type: "framework"
+  category: "Application"
   languages:
-    - python
+  - "python"
   related:
-    - type: language
-      key: python
-      comment: "implementation language"
-    - type: framework
-      key: django
-      comment: "full-stack Python alternative"
-    - type: framework
-      key: fastapi
-      comment: "modern async Python alternative"
+  - type: "language"
+    key: "python"
+    comment: "implementation language"
+  - type: "framework"
+    key: "django"
+    comment: "full-stack Python alternative"
+  - type: "framework"
+    key: "fastapi"
+    comment: "modern async Python alternative"
 ---
 
 **A lightweight [Python](../language/python.md) web framework designed for simplicity and extensibility, often

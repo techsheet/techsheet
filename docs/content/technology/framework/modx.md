@@ -1,27 +1,27 @@
 ---
-title: MODX
+title: "MODX"
 aliases:
-  - /framework/modx
+- "/framework/modx"
 bookToC: false
 techsheet:
-  key: modx
-  type: framework
-  category: CMS
+  key: "modx"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: wordpress
-      comment: "dominant PHP CMS alternative"
-    - type: framework
-      key: drupal
-      comment: "PHP CMS alternative, enterprise-oriented"
-    - type: framework
-      key: laravel
-      comment: "PHP application framework, common migration target"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "wordpress"
+    comment: "dominant PHP CMS alternative"
+  - type: "framework"
+    key: "drupal"
+    comment: "PHP CMS alternative, enterprise-oriented"
+  - type: "framework"
+    key: "laravel"
+    comment: "PHP application framework, common migration target"
 ---
 
 **A flexible, open-source content management system built on [PHP](../language/php.md), designed around a

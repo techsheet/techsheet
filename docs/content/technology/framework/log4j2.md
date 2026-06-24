@@ -1,28 +1,28 @@
 ---
-title: Log4j2
+title: "Log4j2"
 aliases:
-  - /framework/log4j2
+- "/framework/log4j2"
 bookToC: false
 techsheet:
-  key: log4j2
-  type: framework
-  category: Logging
+  key: "log4j2"
+  type: "framework"
+  category: "Logging"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: slf4j
-      comment: "common logging facade"
-    - type: framework
-      key: logback
-      comment: "alternative logging backend"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
+  - type: "framework"
+    key: "slf4j"
+    comment: "common logging facade"
+  - type: "framework"
+    key: "logback"
+    comment: "alternative logging backend"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
 ---
 
 **A high-performance, extensible logging framework for [Java](../language/java.md) applications, built as the

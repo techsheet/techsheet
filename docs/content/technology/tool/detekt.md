@@ -1,25 +1,25 @@
 ---
-title: Detekt
+title: "Detekt"
 aliases:
-  - /tool/detekt
+- "/tool/detekt"
 bookToC: false
 techsheet:
-  key: detekt
-  type: tool
-  category: Format
+  key: "detekt"
+  type: "tool"
+  category: "Format"
   related:
-    - type: language
-      key: kotlin
-      comment: "target language"
-    - type: tool
-      key: ktlint
-      comment: "complementary Kotlin linter/formatter"
-    - type: tool
-      key: gradle
-      comment: "primary build tool integration"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "language"
+    key: "kotlin"
+    comment: "target language"
+  - type: "tool"
+    key: "ktlint"
+    comment: "complementary Kotlin linter/formatter"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary build tool integration"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A static code analysis tool for [Kotlin](../language/kotlin.md) that detects code smells, complexity issues, and

@@ -1,30 +1,30 @@
 ---
-title: Slick
+title: "Slick"
 aliases:
-  - /framework/slick
+- "/framework/slick"
 bookToC: false
 techsheet:
-  key: slick
-  type: framework
-  category: Data
+  key: "slick"
+  type: "framework"
+  category: "Data"
   languages:
-    - scala
+  - "scala"
   related:
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: play-framework
-      comment: "commonly paired web framework"
-    - type: framework
-      key: jooq
-      comment: "JVM alternative, type-safe SQL"
-    - type: framework
-      key: hibernate
-      comment: "JVM alternative, ORM-based"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "play-framework"
+    comment: "commonly paired web framework"
+  - type: "framework"
+    key: "jooq"
+    comment: "JVM alternative, type-safe SQL"
+  - type: "framework"
+    key: "hibernate"
+    comment: "JVM alternative, ORM-based"
 ---
 
 **A functional-relational mapping library for [Scala](../language/scala.md) that models database queries as

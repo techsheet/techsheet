@@ -1,28 +1,28 @@
 ---
-title: Project Reactor
+title: "Project Reactor"
 aliases:
-  - /framework/reactor
+- "/framework/reactor"
 bookToC: false
 techsheet:
-  key: reactor
-  type: framework
-  category: Concurrency
+  key: "reactor"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: spring-webflux
-      comment: "primary consumer, reactive web stack"
-    - type: framework
-      key: rxjava
-      comment: "alternative Reactive Streams implementation"
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "framework"
+    key: "spring-webflux"
+    comment: "primary consumer, reactive web stack"
+  - type: "framework"
+    key: "rxjava"
+    comment: "alternative Reactive Streams implementation"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A reactive programming library for building non-blocking, backpressure-aware applications on

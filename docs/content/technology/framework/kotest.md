@@ -1,27 +1,27 @@
 ---
-title: Kotest
+title: "Kotest"
 aliases:
-  - /framework/kotest
+- "/framework/kotest"
 bookToC: false
 techsheet:
-  key: kotest
-  type: framework
-  category: Testing
+  key: "kotest"
+  type: "framework"
+  category: "Testing"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: junit
-      comment: "JVM testing alternative, interop layer"
-    - type: framework
-      key: mockito
-      comment: "complementary mocking library"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "junit"
+    comment: "JVM testing alternative, interop layer"
+  - type: "framework"
+    key: "mockito"
+    comment: "complementary mocking library"
 ---
 
 **A comprehensive, multiplatform testing framework for [Kotlin](../language/kotlin.md) that provides expressive

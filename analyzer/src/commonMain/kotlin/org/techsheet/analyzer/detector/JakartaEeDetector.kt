@@ -1,0 +1,17 @@
+package org.techsheet.analyzer.detector
+
+import org.techsheet.analyzer.domain.FrameworkType
+
+class JakartaEeDetector : AbstractJvmFrameworkDetector(
+  name = "Jakarta EE",
+  framework = FrameworkType.JAKARTA_EE,
+  coordinates = listOf(
+    Coordinate("jakarta.platform"),
+    Coordinate("jakarta.servlet"),
+    Coordinate("jakarta.ws.rs"),
+    Coordinate("jakarta.enterprise"),
+    Coordinate("jakarta.persistence"),
+    Coordinate("javax", "javaee-api"),
+    Coordinate("javax.servlet", "javax.servlet-api"),
+  ),
+)

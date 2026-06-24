@@ -1,27 +1,27 @@
 ---
-title: Ktor
+title: "Ktor"
 aliases:
-  - /framework/ktor
+- "/framework/ktor"
 bookToC: false
 techsheet:
-  key: ktor
-  type: framework
-  category: Application
+  key: "ktor"
+  type: "framework"
+  category: "Application"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language, idiomatic Kotlin API"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: kotlinx-coroutines
-      comment: "coroutine foundation for async I/O"
-    - type: framework
-      key: micronaut
-      comment: "alternative JVM/Kotlin web framework"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language, idiomatic Kotlin API"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "kotlinx-coroutines"
+    comment: "coroutine foundation for async I/O"
+  - type: "framework"
+    key: "micronaut"
+    comment: "alternative JVM/Kotlin web framework"
 ---
 
 **An asynchronous web framework for [Kotlin](../language/kotlin.md), built on coroutines and designed for

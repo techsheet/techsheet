@@ -1,21 +1,21 @@
 ---
-title: VHDL
+title: "VHDL"
 aliases:
-  - /language/vhdl
+- "/language/vhdl"
 bookToC: false
 techsheet:
-  key: vhdl
-  type: language
+  key: "vhdl"
+  type: "language"
   related:
-    - type: language
-      key: assembly
-      comment: "hardware-level programming"
-    - type: language
-      key: cuda
-      comment: "hardware-level parallel computing"
-    - type: language
-      key: tcl
-      comment: "common scripting language in EDA toolchains"
+  - type: "language"
+    key: "assembly"
+    comment: "hardware-level programming"
+  - type: "language"
+    key: "cuda"
+    comment: "hardware-level parallel computing"
+  - type: "language"
+    key: "tcl"
+    comment: "common scripting language in EDA toolchains"
 ---
 
 **A hardware description language used to model, simulate, and synthesize digital electronic systems.**

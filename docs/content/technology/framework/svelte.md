@@ -1,28 +1,28 @@
 ---
-title: Svelte
+title: "Svelte"
 aliases:
-  - /framework/svelte
+- "/framework/svelte"
 bookToC: false
 techsheet:
-  key: svelte
-  type: framework
-  category: Application
+  key: "svelte"
+  type: "framework"
+  category: "Application"
   languages:
-    - javascript
-    - typescript
+  - "javascript"
+  - "typescript"
   related:
-    - type: framework
-      key: react
-      comment: "direct alternative, component-based UI"
-    - type: framework
-      key: vue
-      comment: "direct alternative, component-based UI"
-    - type: language
-      key: typescript
-      comment: "primary language"
-    - type: tool
-      key: nodejs
-      comment: "build and runtime platform"
+  - type: "framework"
+    key: "react"
+    comment: "direct alternative, component-based UI"
+  - type: "framework"
+    key: "vue"
+    comment: "direct alternative, component-based UI"
+  - type: "language"
+    key: "typescript"
+    comment: "primary language"
+  - type: "tool"
+    key: "nodejs"
+    comment: "build and runtime platform"
 ---
 
 **A component-based frontend framework that shifts work from the browser to a compile step, producing highly optimized

@@ -1,21 +1,21 @@
 ---
-title: CSS
+title: "CSS"
 aliases:
-  - /language/css
+- "/language/css"
 bookToC: false
 techsheet:
-  key: css
-  type: language
+  key: "css"
+  type: "language"
   related:
-    - type: language
-      key: html
-      comment: "markup language it styles"
-    - type: language
-      key: scss
-      comment: "preprocessor superset"
-    - type: framework
-      key: tailwind
-      comment: "utility-first CSS framework"
+  - type: "language"
+    key: "html"
+    comment: "markup language it styles"
+  - type: "language"
+    key: "scss"
+    comment: "preprocessor superset"
+  - type: "framework"
+    key: "tailwind"
+    comment: "utility-first CSS framework"
 ---
 
 **A declarative style sheet language used to describe the presentation of documents written

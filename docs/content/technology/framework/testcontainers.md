@@ -1,29 +1,29 @@
 ---
-title: Testcontainers
+title: "Testcontainers"
 aliases:
-  - /framework/testcontainers
+- "/framework/testcontainers"
 bookToC: false
 techsheet:
-  key: testcontainers
-  type: framework
-  category: Testing
+  key: "testcontainers"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
-    - python
+  - "java"
+  - "kotlin"
+  - "python"
   related:
-    - type: tool
-      key: docker
-      comment: "required container runtime"
-    - type: framework
-      key: junit
-      comment: "primary test framework integration"
-    - type: language
-      key: java
-      comment: "original implementation language"
-    - type: framework
-      key: wiremock
-      comment: "complementary HTTP service testing"
+  - type: "tool"
+    key: "docker"
+    comment: "required container runtime"
+  - type: "framework"
+    key: "junit"
+    comment: "primary test framework integration"
+  - type: "language"
+    key: "java"
+    comment: "original implementation language"
+  - type: "framework"
+    key: "wiremock"
+    comment: "complementary HTTP service testing"
 ---
 
 **An integration testing library that uses disposable [Docker](../tool/docker.md) containers to provide

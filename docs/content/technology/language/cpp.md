@@ -1,21 +1,21 @@
 ---
-title: C++
+title: "C++"
 aliases:
-  - /language/cpp
+- "/language/cpp"
 bookToC: false
 techsheet:
-  key: cpp
-  type: language
+  key: "cpp"
+  type: "language"
   related:
-    - type: language
-      key: assembly
-      comment: "inline assembly and low-level companion"
-    - type: language
-      key: cuda
-      comment: "C++ host language for GPU kernels"
-    - type: language
-      key: csharp
-      comment: "higher-level alternative with similar syntax lineage"
+  - type: "language"
+    key: "assembly"
+    comment: "inline assembly and low-level companion"
+  - type: "language"
+    key: "cuda"
+    comment: "C++ host language for GPU kernels"
+  - type: "language"
+    key: "csharp"
+    comment: "higher-level alternative with similar syntax lineage"
 ---
 
 **A general-purpose systems programming language that combines high-level abstractions with low-level hardware control

@@ -1,25 +1,25 @@
 ---
-title: Node.js
+title: "Node.js"
 aliases:
-  - /tool/nodejs
+- "/tool/nodejs"
 bookToC: false
 techsheet:
-  key: nodejs
-  type: tool
-  category: Runtime
+  key: "nodejs"
+  type: "tool"
+  category: "Runtime"
   related:
-    - type: language
-      key: javascript
-      comment: "primary language of the runtime"
-    - type: language
-      key: typescript
-      comment: "widely used via transpilation or native support"
-    - type: tool
-      key: npm
-      comment: "bundled package manager"
-    - type: framework
-      key: express
-      comment: "most popular Node.js web framework"
+  - type: "language"
+    key: "javascript"
+    comment: "primary language of the runtime"
+  - type: "language"
+    key: "typescript"
+    comment: "widely used via transpilation or native support"
+  - type: "tool"
+    key: "npm"
+    comment: "bundled package manager"
+  - type: "framework"
+    key: "express"
+    comment: "most popular Node.js web framework"
 ---
 
 **A cross-platform [JavaScript](../language/javascript.md) runtime built on Chrome's V8 engine, designed for

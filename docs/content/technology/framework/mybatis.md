@@ -1,28 +1,28 @@
 ---
-title: MyBatis
+title: "MyBatis"
 aliases:
-  - /framework/mybatis
+- "/framework/mybatis"
 bookToC: false
 techsheet:
-  key: mybatis
-  type: framework
-  category: Data
+  key: "mybatis"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: hibernate
-      comment: "JVM alternative, full ORM"
-    - type: framework
-      key: spring-data
-      comment: "common integration layer"
-    - type: framework
-      key: jooq
-      comment: "JVM alternative, typesafe SQL"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "hibernate"
+    comment: "JVM alternative, full ORM"
+  - type: "framework"
+    key: "spring-data"
+    comment: "common integration layer"
+  - type: "framework"
+    key: "jooq"
+    comment: "JVM alternative, typesafe SQL"
 ---
 
 **A SQL mapping framework for [Java](../language/java.md) and [Kotlin](../language/kotlin.md) that gives

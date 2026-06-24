@@ -1,25 +1,25 @@
 ---
-title: Gradle
+title: "Gradle"
 aliases:
-  - /tool/gradle
+- "/tool/gradle"
 bookToC: false
 techsheet:
-  key: gradle
-  type: tool
-  category: Build
+  key: "gradle"
+  type: "tool"
+  category: "Build"
   related:
-    - type: tool
-      key: jvm
-      comment: "target runtime platform"
-    - type: tool
-      key: maven
-      comment: "primary alternative for JVM builds"
-    - type: language
-      key: kotlin
-      comment: "Kotlin DSL and supported language"
-    - type: language
-      key: groovy
-      comment: "Groovy DSL and supported language"
+  - type: "tool"
+    key: "jvm"
+    comment: "target runtime platform"
+  - type: "tool"
+    key: "maven"
+    comment: "primary alternative for JVM builds"
+  - type: "language"
+    key: "kotlin"
+    comment: "Kotlin DSL and supported language"
+  - type: "language"
+    key: "groovy"
+    comment: "Groovy DSL and supported language"
 ---
 
 **An open-source build automation tool designed for flexibility and performance across JVM, Android, and polyglot

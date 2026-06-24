@@ -1,27 +1,27 @@
 ---
-title: Symfony
+title: "Symfony"
 aliases:
-  - /framework/symfony
+- "/framework/symfony"
 bookToC: false
 techsheet:
-  key: symfony
-  type: framework
-  category: Application
+  key: "symfony"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "PHP alternative, consumes Symfony components"
-    - type: framework
-      key: doctrine
-      comment: "default ORM and database abstraction"
-    - type: tool
-      key: composer
-      comment: "PHP package manager"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "PHP alternative, consumes Symfony components"
+  - type: "framework"
+    key: "doctrine"
+    comment: "default ORM and database abstraction"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP package manager"
 ---
 
 **A modular, component-based [PHP](../language/php.md) web application framework designed for building robust,

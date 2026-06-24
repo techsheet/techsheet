@@ -1,22 +1,22 @@
 ---
-title: Docker Compose
+title: "Docker Compose"
 aliases:
-  - /tool/docker-compose
+- "/tool/docker-compose"
 bookToC: false
 techsheet:
-  key: docker-compose
-  type: tool
-  category: Container
+  key: "docker-compose"
+  type: "tool"
+  category: "Container"
   related:
-    - type: tool
-      key: docker
-      comment: "underlying container runtime"
-    - type: tool
-      key: gitlab-ci
-      comment: "CI integration for service dependencies"
-    - type: tool
-      key: github-actions
-      comment: "CI integration for service dependencies"
+  - type: "tool"
+    key: "docker"
+    comment: "underlying container runtime"
+  - type: "tool"
+    key: "gitlab-ci"
+    comment: "CI integration for service dependencies"
+  - type: "tool"
+    key: "github-actions"
+    comment: "CI integration for service dependencies"
 ---
 
 **A container orchestration tool for defining and running multi-container [Docker](docker.md) applications

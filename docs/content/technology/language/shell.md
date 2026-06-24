@@ -1,24 +1,24 @@
 ---
-title: Shell
+title: "Shell"
 aliases:
-  - /language/shell
+- "/language/shell"
 bookToC: false
 techsheet:
-  key: shell
-  type: language
+  key: "shell"
+  type: "language"
   related:
-    - type: language
-      key: powershell
-      comment: "Windows-native shell alternative"
-    - type: language
-      key: python
-      comment: "common replacement for complex scripts"
-    - type: language
-      key: perl
-      comment: "classic Unix scripting complement"
-    - type: language
-      key: awk
-      comment: "text processing companion in pipelines"
+  - type: "language"
+    key: "powershell"
+    comment: "Windows-native shell alternative"
+  - type: "language"
+    key: "python"
+    comment: "common replacement for complex scripts"
+  - type: "language"
+    key: "perl"
+    comment: "classic Unix scripting complement"
+  - type: "language"
+    key: "awk"
+    comment: "text processing companion in pipelines"
 ---
 
 **A family of command-line interpreters and scripting languages that serve as the primary interface for Unix and

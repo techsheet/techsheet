@@ -1,27 +1,27 @@
 ---
-title: Cats Effect
+title: "Cats Effect"
 aliases:
-  - /framework/cats-effect
+- "/framework/cats-effect"
 bookToC: false
 techsheet:
-  key: cats-effect
-  type: framework
-  category: Concurrency
+  key: "cats-effect"
+  type: "framework"
+  category: "Concurrency"
   languages:
-    - scala
+  - "scala"
   related:
-    - type: language
-      key: scala
-      comment: "host language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: zio
-      comment: "alternative Scala effect system"
-    - type: framework
-      key: http4s
-      comment: "web framework built on Cats Effect"
+  - type: "language"
+    key: "scala"
+    comment: "host language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "zio"
+    comment: "alternative Scala effect system"
+  - type: "framework"
+    key: "http4s"
+    comment: "web framework built on Cats Effect"
 ---
 
 **A purely functional runtime system for [Scala](../language/scala.md) that provides safe, composable concurrency

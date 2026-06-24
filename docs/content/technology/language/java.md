@@ -1,24 +1,24 @@
 ---
-title: Java
+title: "Java"
 aliases:
-  - /language/java
+- "/language/java"
 bookToC: false
 techsheet:
-  key: java
-  type: language
+  key: "java"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: kotlin
-      comment: "JVM sibling, full interop"
-    - type: language
-      key: scala
-      comment: "JVM sibling, functional alternative"
-    - type: language
-      key: groovy
-      comment: "JVM sibling, dynamic scripting"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "kotlin"
+    comment: "JVM sibling, full interop"
+  - type: "language"
+    key: "scala"
+    comment: "JVM sibling, functional alternative"
+  - type: "language"
+    key: "groovy"
+    comment: "JVM sibling, dynamic scripting"
 ---
 
 **A widely-used, class-based, object-oriented programming language designed for portability across platforms.**

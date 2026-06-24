@@ -1,31 +1,31 @@
 ---
-title: Helidon
+title: "Helidon"
 aliases:
-  - /framework/helidon
+- "/framework/helidon"
 bookToC: false
 techsheet:
-  key: helidon
-  type: framework
-  category: Application
+  key: "helidon"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: micronaut
-      comment: "alternative cloud-native JVM framework"
-    - type: framework
-      key: quarkus
-      comment: "alternative cloud-native JVM framework"
-    - type: framework
-      key: jakarta-ee
-      comment: "standards base for Helidon MP"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "micronaut"
+    comment: "alternative cloud-native JVM framework"
+  - type: "framework"
+    key: "quarkus"
+    comment: "alternative cloud-native JVM framework"
+  - type: "framework"
+    key: "jakarta-ee"
+    comment: "standards base for Helidon MP"
 ---
 
 **An open-source, lightweight Java framework for building cloud-native microservices, developed by Oracle.**

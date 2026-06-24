@@ -1,21 +1,21 @@
 ---
-title: SCSS/SASS
+title: "SCSS/SASS"
 aliases:
-  - /language/scss
+- "/language/scss"
 bookToC: false
 techsheet:
-  key: scss
-  type: language
+  key: "scss"
+  type: "language"
   related:
-    - type: language
-      key: css
-      comment: "base language it extends"
-    - type: framework
-      key: tailwind
-      comment: "alternative CSS authoring approach"
-    - type: tool
-      key: nodejs
-      comment: "runtime for Dart Sass compiler"
+  - type: "language"
+    key: "css"
+    comment: "base language it extends"
+  - type: "framework"
+    key: "tailwind"
+    comment: "alternative CSS authoring approach"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime for Dart Sass compiler"
 ---
 
 **A preprocessor scripting language that extends [CSS](css.md) with variables, nesting, mixins, and

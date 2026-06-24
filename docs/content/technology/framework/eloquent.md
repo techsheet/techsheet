@@ -1,24 +1,24 @@
 ---
-title: Eloquent
+title: "Eloquent"
 aliases:
-  - /framework/eloquent
+- "/framework/eloquent"
 bookToC: false
 techsheet:
-  key: eloquent
-  type: framework
-  category: Data
+  key: "eloquent"
+  type: "framework"
+  category: "Data"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "parent framework, ships Eloquent as default ORM"
-    - type: framework
-      key: doctrine
-      comment: "alternative PHP ORM (Data Mapper pattern)"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "parent framework, ships Eloquent as default ORM"
+  - type: "framework"
+    key: "doctrine"
+    comment: "alternative PHP ORM (Data Mapper pattern)"
 ---
 
 **An Active Record ORM for [PHP](../language/php.md) that provides an expressive, convention-driven interface for

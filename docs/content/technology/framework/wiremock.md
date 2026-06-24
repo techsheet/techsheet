@@ -1,28 +1,28 @@
 ---
-title: WireMock
+title: "WireMock"
 aliases:
-  - /framework/wiremock
+- "/framework/wiremock"
 bookToC: false
 techsheet:
-  key: wiremock
-  type: framework
-  category: Testing
+  key: "wiremock"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: junit
-      comment: "primary test framework companion"
-    - type: framework
-      key: testcontainers
-      comment: "complementary integration testing tool"
-    - type: framework
-      key: rest-assured
-      comment: "complementary API testing library"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "junit"
+    comment: "primary test framework companion"
+  - type: "framework"
+    key: "testcontainers"
+    comment: "complementary integration testing tool"
+  - type: "framework"
+    key: "rest-assured"
+    comment: "complementary API testing library"
 ---
 
 **A flexible HTTP mock server for stubbing and verifying external service calls in automated tests.**

@@ -1,24 +1,24 @@
 ---
-title: Clojure
+title: "Clojure"
 aliases:
-  - /language/clojure
+- "/language/clojure"
 bookToC: false
 techsheet:
-  key: clojure
-  type: language
+  key: "clojure"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "primary runtime platform"
-    - type: language
-      key: java
-      comment: "full JVM interoperability"
-    - type: language
-      key: javascript
-      comment: "ClojureScript compilation target"
-    - type: language
-      key: scala
-      comment: "functional JVM sibling"
+  - type: "tool"
+    key: "jvm"
+    comment: "primary runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "full JVM interoperability"
+  - type: "language"
+    key: "javascript"
+    comment: "ClojureScript compilation target"
+  - type: "language"
+    key: "scala"
+    comment: "functional JVM sibling"
 ---
 
 **A dynamic, functional Lisp dialect hosted on the [JVM](../tool/jvm.md), designed around immutable data

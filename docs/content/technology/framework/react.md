@@ -1,31 +1,31 @@
 ---
-title: React
+title: "React"
 aliases:
-  - /framework/react
+- "/framework/react"
 bookToC: false
 techsheet:
-  key: react
-  type: framework
-  category: Application
+  key: "react"
+  type: "framework"
+  category: "Application"
   languages:
-    - javascript
-    - typescript
+  - "javascript"
+  - "typescript"
   related:
-    - type: language
-      key: javascript
-      comment: "primary implementation language"
-    - type: language
-      key: typescript
-      comment: "predominant typed variant in React projects"
-    - type: framework
-      key: nextjs
-      comment: "leading React meta-framework"
-    - type: framework
-      key: angular
-      comment: "direct alternative, component-based SPA framework"
-    - type: framework
-      key: vue
-      comment: "direct alternative, component-based SPA framework"
+  - type: "language"
+    key: "javascript"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "typescript"
+    comment: "predominant typed variant in React projects"
+  - type: "framework"
+    key: "nextjs"
+    comment: "leading React meta-framework"
+  - type: "framework"
+    key: "angular"
+    comment: "direct alternative, component-based SPA framework"
+  - type: "framework"
+    key: "vue"
+    comment: "direct alternative, component-based SPA framework"
 ---
 
 **A declarative, component-based [JavaScript](../language/javascript.md) library for building user interfaces.**

@@ -1,30 +1,30 @@
 ---
-title: Jakarta EE
+title: "Jakarta EE"
 aliases:
-  - /framework/jakarta-ee
+- "/framework/jakarta-ee"
 bookToC: false
 techsheet:
-  key: jakarta-ee
-  type: framework
-  category: Application
+  key: "jakarta-ee"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
+  - "java"
   related:
-    - type: language
-      key: java
-      comment: "implementation language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: spring-boot
-      comment: "dominant alternative for Java enterprise apps"
-    - type: framework
-      key: quarkus
-      comment: "cloud-native Jakarta EE alternative"
-    - type: framework
-      key: hibernate
-      comment: "reference implementation of JPA"
+  - type: "language"
+    key: "java"
+    comment: "implementation language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "dominant alternative for Java enterprise apps"
+  - type: "framework"
+    key: "quarkus"
+    comment: "cloud-native Jakarta EE alternative"
+  - type: "framework"
+    key: "hibernate"
+    comment: "reference implementation of JPA"
 ---
 
 **A set of specifications for enterprise [Java](../language/java.md) that standardizes APIs for building portable,

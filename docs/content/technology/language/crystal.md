@@ -1,18 +1,18 @@
 ---
-title: Crystal
+title: "Crystal"
 aliases:
-  - /language/crystal
+- "/language/crystal"
 bookToC: false
 techsheet:
-  key: crystal
-  type: language
+  key: "crystal"
+  type: "language"
   related:
-    - type: language
-      key: nim
-      comment: "modern compiled language with similar goals"
-    - type: language
-      key: elixir
-      comment: "concurrent, developer-friendly alternative"
+  - type: "language"
+    key: "nim"
+    comment: "modern compiled language with similar goals"
+  - type: "language"
+    key: "elixir"
+    comment: "concurrent, developer-friendly alternative"
 ---
 
 **A statically typed, compiled programming language with Ruby-inspired syntax that targets native code through LLVM for

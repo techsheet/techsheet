@@ -1,4 +1,4 @@
-Write documentation content for **$ARGUMENTS** on the TechSheet technology reference site. Look up the matching enum value in `org.techsheet.cli.domain` to determine the type (language, tool, framework, service) and key. Then find the corresponding page under `docs/content/technology/{type}/{key}.md` and:
+Write documentation content for **$ARGUMENTS** on the TechSheet technology reference site. Look up the matching enum value in `org.techsheet.analyzer.domain` to determine the type (language, tool, framework, service) and key. Then find the corresponding page under `docs/content/technology/{type}/{key}.md` and:
 
 1. Add a `related` list to the `techsheet:` block in the front matter. Each entry is an object with `type`, `key`, and `comment` fields. Only reference technologies that exist as enum values in the domain model. Be selective: 2-5 entries, only strong and obvious relationships (same runtime/platform, direct alternatives, or direct complements). The `comment` is a short phrase explaining the relationship.
 2. Fill in the body content.

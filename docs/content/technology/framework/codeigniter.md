@@ -1,27 +1,27 @@
 ---
-title: CodeIgniter
+title: "CodeIgniter"
 aliases:
-  - /framework/codeigniter
+- "/framework/codeigniter"
 bookToC: false
 techsheet:
-  key: codeigniter
-  type: framework
-  category: Application
+  key: "codeigniter"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: laravel
-      comment: "dominant PHP framework alternative"
-    - type: framework
-      key: symfony
-      comment: "component-based PHP framework alternative"
-    - type: framework
-      key: cakephp
-      comment: "convention-over-configuration PHP sibling"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "laravel"
+    comment: "dominant PHP framework alternative"
+  - type: "framework"
+    key: "symfony"
+    comment: "component-based PHP framework alternative"
+  - type: "framework"
+    key: "cakephp"
+    comment: "convention-over-configuration PHP sibling"
 ---
 
 **A lightweight, full-stack [PHP](../language/php.md) framework built for developers who need a simple,

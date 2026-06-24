@@ -1,28 +1,28 @@
 ---
-title: SLF4J
+title: "SLF4J"
 aliases:
-  - /framework/slf4j
+- "/framework/slf4j"
 bookToC: false
 techsheet:
-  key: slf4j
-  type: framework
-  category: Logging
+  key: "slf4j"
+  type: "framework"
+  category: "Logging"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: logback
-      comment: "native SLF4J implementation by the same author"
-    - type: framework
-      key: log4j2
-      comment: "alternative logging backend"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
+  - type: "framework"
+    key: "logback"
+    comment: "native SLF4J implementation by the same author"
+  - type: "framework"
+    key: "log4j2"
+    comment: "alternative logging backend"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
 ---
 
 **A facade and abstraction layer for logging frameworks on the [JVM](../tool/jvm.md), enabling pluggable logging

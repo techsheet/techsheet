@@ -1,24 +1,24 @@
 ---
-title: Nim
+title: "Nim"
 aliases:
-  - /language/nim
+- "/language/nim"
 bookToC: false
 techsheet:
-  key: nim
-  type: language
+  key: "nim"
+  type: "language"
   related:
-    - type: language
-      key: python
-      comment: "syntax inspiration"
-    - type: language
-      key: cpp
-      comment: "compilation target, same performance tier"
-    - type: language
-      key: zig
-      comment: "modern systems-language alternative"
-    - type: language
-      key: crystal
-      comment: "similar niche, high-level compiled language"
+  - type: "language"
+    key: "python"
+    comment: "syntax inspiration"
+  - type: "language"
+    key: "cpp"
+    comment: "compilation target, same performance tier"
+  - type: "language"
+    key: "zig"
+    comment: "modern systems-language alternative"
+  - type: "language"
+    key: "crystal"
+    comment: "similar niche, high-level compiled language"
 ---
 
 **A statically typed, compiled systems programming language that combines the performance of low-level languages with a

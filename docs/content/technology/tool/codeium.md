@@ -1,25 +1,25 @@
 ---
-title: Codeium
+title: "Codeium"
 aliases:
-  - /tool/codeium
+- "/tool/codeium"
 bookToC: false
 techsheet:
-  key: codeium
-  type: tool
-  category: AI
+  key: "codeium"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: windsurf
-      comment: "successor product by the same company"
-    - type: tool
-      key: github-copilot
-      comment: "direct competitor, AI code completion"
-    - type: tool
-      key: vscode
-      comment: "primary supported IDE"
-    - type: tool
-      key: continue
-      comment: "alternative open-source AI coding assistant"
+  - type: "tool"
+    key: "windsurf"
+    comment: "successor product by the same company"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "direct competitor, AI code completion"
+  - type: "tool"
+    key: "vscode"
+    comment: "primary supported IDE"
+  - type: "tool"
+    key: "continue"
+    comment: "alternative open-source AI coding assistant"
 ---
 
 **An AI-powered code completion and assistance tool that provides autocomplete, search, and chat capabilities across

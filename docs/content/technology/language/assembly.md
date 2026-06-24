@@ -1,21 +1,21 @@
 ---
-title: Assembly
+title: "Assembly"
 aliases:
-  - /language/assembly
+- "/language/assembly"
 bookToC: false
 techsheet:
-  key: assembly
-  type: language
+  key: "assembly"
+  type: "language"
   related:
-    - type: language
-      key: cpp
-      comment: "inline assembly and primary high-level companion"
-    - type: language
-      key: cuda
-      comment: "GPU programming with assembly-level control"
-    - type: language
-      key: vhdl
-      comment: "hardware description at a similar abstraction level"
+  - type: "language"
+    key: "cpp"
+    comment: "inline assembly and primary high-level companion"
+  - type: "language"
+    key: "cuda"
+    comment: "GPU programming with assembly-level control"
+  - type: "language"
+    key: "vhdl"
+    comment: "hardware description at a similar abstraction level"
 ---
 
 **A low-level programming language that provides a symbolic representation of a processor's machine code instruction

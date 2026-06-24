@@ -1,30 +1,30 @@
 ---
-title: http4s
+title: "http4s"
 aliases:
-  - /framework/http4s
+- "/framework/http4s"
 bookToC: false
 techsheet:
-  key: http4s
-  type: framework
-  category: Application
+  key: "http4s"
+  type: "framework"
+  category: "Application"
   languages:
-    - scala
+  - "scala"
   related:
-    - type: language
-      key: scala
-      comment: "primary language"
-    - type: framework
-      key: cats-effect
-      comment: "foundational effect system"
-    - type: framework
-      key: akka-http
-      comment: "Scala HTTP alternative"
-    - type: framework
-      key: play-framework
-      comment: "Scala web framework alternative"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
+  - type: "language"
+    key: "scala"
+    comment: "primary language"
+  - type: "framework"
+    key: "cats-effect"
+    comment: "foundational effect system"
+  - type: "framework"
+    key: "akka-http"
+    comment: "Scala HTTP alternative"
+  - type: "framework"
+    key: "play-framework"
+    comment: "Scala web framework alternative"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
 ---
 
 **A purely functional HTTP library for [Scala](../language/scala.md), built on

@@ -1,24 +1,24 @@
 ---
-title: PowerShell
+title: "PowerShell"
 aliases:
-  - /language/powershell
+- "/language/powershell"
 bookToC: false
 techsheet:
-  key: powershell
-  type: language
+  key: "powershell"
+  type: "language"
   related:
-    - type: language
-      key: csharp
-      comment: "shared .NET runtime, deep type integration"
-    - type: language
-      key: shell
-      comment: "Unix counterpart for scripting and automation"
-    - type: language
-      key: batch
-      comment: "Windows predecessor"
-    - type: language
-      key: python
-      comment: "alternative scripting and automation language"
+  - type: "language"
+    key: "csharp"
+    comment: "shared .NET runtime, deep type integration"
+  - type: "language"
+    key: "shell"
+    comment: "Unix counterpart for scripting and automation"
+  - type: "language"
+    key: "batch"
+    comment: "Windows predecessor"
+  - type: "language"
+    key: "python"
+    comment: "alternative scripting and automation language"
 ---
 
 **A cross-platform, task-based command-line shell and scripting language built on the .NET runtime.**

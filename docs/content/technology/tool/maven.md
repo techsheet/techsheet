@@ -1,25 +1,25 @@
 ---
-title: Maven
+title: "Maven"
 aliases:
-  - /tool/maven
+- "/tool/maven"
 bookToC: false
 techsheet:
-  key: maven
-  type: tool
-  category: Build
+  key: "maven"
+  type: "tool"
+  category: "Build"
   related:
-    - type: tool
-      key: jvm
-      comment: "target runtime platform"
-    - type: tool
-      key: gradle
-      comment: "primary alternative, Groovy/Kotlin DSL"
-    - type: language
-      key: java
-      comment: "primary build language"
-    - type: tool
-      key: sbt
-      comment: "alternative JVM build tool for Scala"
+  - type: "tool"
+    key: "jvm"
+    comment: "target runtime platform"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary alternative, Groovy/Kotlin DSL"
+  - type: "language"
+    key: "java"
+    comment: "primary build language"
+  - type: "tool"
+    key: "sbt"
+    comment: "alternative JVM build tool for Scala"
 ---
 
 **A convention-over-configuration build automation and dependency management tool for [Java](../language/java.md)

@@ -1,30 +1,30 @@
 ---
-title: Concrete CMS
+title: "Concrete CMS"
 aliases:
-  - /framework/concrete-cms
+- "/framework/concrete-cms"
 bookToC: false
 techsheet:
-  key: concrete-cms
-  type: framework
-  category: CMS
+  key: "concrete-cms"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "underlying component framework"
-    - type: framework
-      key: doctrine
-      comment: "ORM layer used internally"
-    - type: framework
-      key: wordpress
-      comment: "dominant PHP CMS alternative"
-    - type: framework
-      key: drupal
-      comment: "enterprise PHP CMS alternative"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying component framework"
+  - type: "framework"
+    key: "doctrine"
+    comment: "ORM layer used internally"
+  - type: "framework"
+    key: "wordpress"
+    comment: "dominant PHP CMS alternative"
+  - type: "framework"
+    key: "drupal"
+    comment: "enterprise PHP CMS alternative"
 ---
 
 **An open-source content management system built on [PHP](../language/php.md), designed for in-context editing and

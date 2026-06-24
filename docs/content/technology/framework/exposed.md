@@ -1,30 +1,30 @@
 ---
-title: Exposed
+title: "Exposed"
 aliases:
-  - /framework/exposed
+- "/framework/exposed"
 bookToC: false
 techsheet:
-  key: exposed
-  type: framework
-  category: Data
+  key: "exposed"
+  type: "framework"
+  category: "Data"
   languages:
-    - kotlin
+  - "kotlin"
   related:
-    - type: language
-      key: kotlin
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: hibernate
-      comment: "JVM ORM alternative"
-    - type: framework
-      key: jooq
-      comment: "type-safe SQL alternative"
-    - type: framework
-      key: ktorm
-      comment: "Kotlin-specific ORM alternative"
+  - type: "language"
+    key: "kotlin"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "hibernate"
+    comment: "JVM ORM alternative"
+  - type: "framework"
+    key: "jooq"
+    comment: "type-safe SQL alternative"
+  - type: "framework"
+    key: "ktorm"
+    comment: "Kotlin-specific ORM alternative"
 ---
 
 **A lightweight SQL library for [Kotlin](../language/kotlin.md) that provides both a type-safe DSL and a DAO layer

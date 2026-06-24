@@ -1,25 +1,25 @@
 ---
-title: GitHub Copilot
+title: "GitHub Copilot"
 aliases:
-  - /tool/github-copilot
+- "/tool/github-copilot"
 bookToC: false
 techsheet:
-  key: github-copilot
-  type: tool
-  category: AI
+  key: "github-copilot"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: vscode
-      comment: "primary IDE integration"
-    - type: tool
-      key: claude
-      comment: "direct alternative, AI coding assistant"
-    - type: tool
-      key: cursor
-      comment: "direct alternative, AI-native IDE"
-    - type: tool
-      key: github-actions
-      comment: "same platform, GitHub ecosystem"
+  - type: "tool"
+    key: "vscode"
+    comment: "primary IDE integration"
+  - type: "tool"
+    key: "claude"
+    comment: "direct alternative, AI coding assistant"
+  - type: "tool"
+    key: "cursor"
+    comment: "direct alternative, AI-native IDE"
+  - type: "tool"
+    key: "github-actions"
+    comment: "same platform, GitHub ecosystem"
 ---
 
 **An AI-powered code completion and generation tool developed by GitHub, integrated directly into code editors.**

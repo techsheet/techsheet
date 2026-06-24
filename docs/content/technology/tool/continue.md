@@ -1,25 +1,25 @@
 ---
-title: Continue
+title: "Continue"
 aliases:
-  - /tool/continue
+- "/tool/continue"
 bookToC: false
 techsheet:
-  key: continue
-  type: tool
-  category: AI
+  key: "continue"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: vscode
-      comment: "primary host IDE"
-    - type: tool
-      key: intellij-idea
-      comment: "supported host IDE"
-    - type: tool
-      key: github-copilot
-      comment: "direct competitor, proprietary alternative"
-    - type: tool
-      key: cursor
-      comment: "alternative AI-powered editor"
+  - type: "tool"
+    key: "vscode"
+    comment: "primary host IDE"
+  - type: "tool"
+    key: "intellij-idea"
+    comment: "supported host IDE"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "direct competitor, proprietary alternative"
+  - type: "tool"
+    key: "cursor"
+    comment: "alternative AI-powered editor"
 ---
 
 **An open-source AI code assistant that integrates into existing IDEs to provide autocomplete, chat, and inline editing

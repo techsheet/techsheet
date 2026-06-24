@@ -1,27 +1,27 @@
 ---
-title: Zend Framework
+title: "Zend Framework"
 aliases:
-  - /framework/zend-framework
+- "/framework/zend-framework"
 bookToC: false
 techsheet:
-  key: zend-framework
-  type: framework
-  category: Application
+  key: "zend-framework"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "PHP alternative, architectural peer"
-    - type: framework
-      key: laravel
-      comment: "PHP alternative, dominant successor in adoption"
-    - type: tool
-      key: composer
-      comment: "PHP package manager"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "PHP alternative, architectural peer"
+  - type: "framework"
+    key: "laravel"
+    comment: "PHP alternative, dominant successor in adoption"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP package manager"
 ---
 
 **An enterprise-grade, component-based [PHP](../language/php.md) web application framework emphasizing design

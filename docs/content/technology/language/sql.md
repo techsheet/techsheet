@@ -1,24 +1,24 @@
 ---
-title: SQL
+title: "SQL"
 aliases:
-  - /language/sql
+- "/language/sql"
 bookToC: false
 techsheet:
-  key: sql
-  type: language
+  key: "sql"
+  type: "language"
   related:
-    - type: language
-      key: plsql
-      comment: "procedural extension"
-    - type: service
-      key: postgres
-      comment: "major open-source SQL database"
-    - type: framework
-      key: hibernate
-      comment: "ORM generating SQL from object mappings"
-    - type: framework
-      key: jooq
-      comment: "typesafe SQL query builder"
+  - type: "language"
+    key: "plsql"
+    comment: "procedural extension"
+  - type: "service"
+    key: "postgres"
+    comment: "major open-source SQL database"
+  - type: "framework"
+    key: "hibernate"
+    comment: "ORM generating SQL from object mappings"
+  - type: "framework"
+    key: "jooq"
+    comment: "typesafe SQL query builder"
 ---
 
 **A domain-specific language for managing, querying, and manipulating data in relational database management systems.**

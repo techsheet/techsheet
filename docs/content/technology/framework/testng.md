@@ -1,27 +1,27 @@
 ---
-title: TestNG
+title: "TestNG"
 aliases:
-  - /framework/testng
+- "/framework/testng"
 bookToC: false
 techsheet:
-  key: testng
-  type: framework
-  category: Testing
+  key: "testng"
+  type: "framework"
+  category: "Testing"
   languages:
-    - java
+  - "java"
   related:
-    - type: language
-      key: java
-      comment: "primary language"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: junit
-      comment: "direct alternative for JVM testing"
-    - type: framework
-      key: mockito
-      comment: "commonly paired mocking framework"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "junit"
+    comment: "direct alternative for JVM testing"
+  - type: "framework"
+    key: "mockito"
+    comment: "commonly paired mocking framework"
 ---
 
 **A flexible testing framework for [Java](../language/java.md) inspired by JUnit and NUnit, designed to cover all

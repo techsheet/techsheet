@@ -1,18 +1,18 @@
 ---
-title: Erlang
+title: "Erlang"
 aliases:
-  - /language/erlang
+- "/language/erlang"
 bookToC: false
 techsheet:
-  key: erlang
-  type: language
+  key: "erlang"
+  type: "language"
   related:
-    - type: language
-      key: elixir
-      comment: "BEAM sibling, modern alternative"
-    - type: language
-      key: haskell
-      comment: "functional programming peer"
+  - type: "language"
+    key: "elixir"
+    comment: "BEAM sibling, modern alternative"
+  - type: "language"
+    key: "haskell"
+    comment: "functional programming peer"
 ---
 
 **A functional, concurrent programming language designed for building massively scalable, fault-tolerant distributed

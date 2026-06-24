@@ -1,25 +1,25 @@
 ---
-title: Windsurf
+title: "Windsurf"
 aliases:
-  - /tool/windsurf
+- "/tool/windsurf"
 bookToC: false
 techsheet:
-  key: windsurf
-  type: tool
-  category: AI
+  key: "windsurf"
+  type: "tool"
+  category: "AI"
   related:
-    - type: tool
-      key: codeium
-      comment: "predecessor product by the same company"
-    - type: tool
-      key: cursor
-      comment: "direct alternative, AI-native IDE"
-    - type: tool
-      key: vscode
-      comment: "forked from, shares extension ecosystem"
-    - type: tool
-      key: github-copilot
-      comment: "alternative AI coding assistant"
+  - type: "tool"
+    key: "codeium"
+    comment: "predecessor product by the same company"
+  - type: "tool"
+    key: "cursor"
+    comment: "direct alternative, AI-native IDE"
+  - type: "tool"
+    key: "vscode"
+    comment: "forked from, shares extension ecosystem"
+  - type: "tool"
+    key: "github-copilot"
+    comment: "alternative AI coding assistant"
 ---
 
 **An AI-native code editor developed by Exacode (formerly Codeium), built as a fork

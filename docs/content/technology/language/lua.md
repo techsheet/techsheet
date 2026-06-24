@@ -1,21 +1,21 @@
 ---
-title: Lua
+title: "Lua"
 aliases:
-  - /language/lua
+- "/language/lua"
 bookToC: false
 techsheet:
-  key: lua
-  type: language
+  key: "lua"
+  type: "language"
   related:
-    - type: language
-      key: cpp
-      comment: "primary host language for embedding"
-    - type: language
-      key: python
-      comment: "alternative embeddable scripting language"
-    - type: language
-      key: javascript
-      comment: "alternative lightweight scripting language"
+  - type: "language"
+    key: "cpp"
+    comment: "primary host language for embedding"
+  - type: "language"
+    key: "python"
+    comment: "alternative embeddable scripting language"
+  - type: "language"
+    key: "javascript"
+    comment: "alternative lightweight scripting language"
 ---
 
 **A lightweight, high-level scripting language designed for embedding in applications.**

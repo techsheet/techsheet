@@ -1,24 +1,24 @@
 ---
-title: Groovy
+title: "Groovy"
 aliases:
-  - /language/groovy
+- "/language/groovy"
 bookToC: false
 techsheet:
-  key: groovy
-  type: language
+  key: "groovy"
+  type: "language"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "JVM sibling, full interop"
-    - type: tool
-      key: gradle
-      comment: "primary build DSL language"
-    - type: framework
-      key: spock
-      comment: "Groovy-native testing framework"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "JVM sibling, full interop"
+  - type: "tool"
+    key: "gradle"
+    comment: "primary build DSL language"
+  - type: "framework"
+    key: "spock"
+    comment: "Groovy-native testing framework"
 ---
 
 **A dynamic, optionally typed programming language for the [JVM](../tool/jvm.md) that emphasizes concise syntax

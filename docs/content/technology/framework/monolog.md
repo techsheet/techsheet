@@ -1,27 +1,27 @@
 ---
-title: Monolog
+title: "Monolog"
 aliases:
-  - /framework/monolog
+- "/framework/monolog"
 bookToC: false
 techsheet:
-  key: monolog
-  type: framework
-  category: Logging
+  key: "monolog"
+  type: "framework"
+  category: "Logging"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "primary language"
-    - type: framework
-      key: symfony
-      comment: "default logging integration"
-    - type: framework
-      key: laravel
-      comment: "default logging backend"
-    - type: tool
-      key: composer
-      comment: "package distribution"
+  - type: "language"
+    key: "php"
+    comment: "primary language"
+  - type: "framework"
+    key: "symfony"
+    comment: "default logging integration"
+  - type: "framework"
+    key: "laravel"
+    comment: "default logging backend"
+  - type: "tool"
+    key: "composer"
+    comment: "package distribution"
 ---
 
 **A comprehensive logging library for [PHP](../language/php.md) that implements the PSR-3 logger interface and

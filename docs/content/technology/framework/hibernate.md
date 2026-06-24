@@ -1,31 +1,31 @@
 ---
-title: Hibernate
+title: "Hibernate"
 aliases:
-  - /framework/hibernate
+- "/framework/hibernate"
 bookToC: false
 techsheet:
-  key: hibernate
-  type: framework
-  category: Data
+  key: "hibernate"
+  type: "framework"
+  category: "Data"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: framework
-      key: spring-data
-      comment: "common integration layer"
-    - type: framework
-      key: jakarta-ee
-      comment: "specification provider (JPA)"
-    - type: framework
-      key: jooq
-      comment: "JVM alternative, SQL-centric"
-    - type: framework
-      key: mybatis
-      comment: "JVM alternative, SQL mapping"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "framework"
+    key: "spring-data"
+    comment: "common integration layer"
+  - type: "framework"
+    key: "jakarta-ee"
+    comment: "specification provider (JPA)"
+  - type: "framework"
+    key: "jooq"
+    comment: "JVM alternative, SQL-centric"
+  - type: "framework"
+    key: "mybatis"
+    comment: "JVM alternative, SQL mapping"
 ---
 
 **An object-relational mapping (ORM) framework for [Java](../language/java.md)

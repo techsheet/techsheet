@@ -1,27 +1,27 @@
 ---
-title: FuelPHP
+title: "FuelPHP"
 aliases:
-  - /framework/fuelphp
+- "/framework/fuelphp"
 bookToC: false
 techsheet:
-  key: fuelphp
-  type: framework
-  category: Application
+  key: "fuelphp"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "application language"
-    - type: framework
-      key: codeigniter
-      comment: "predecessor and primary influence"
-    - type: framework
-      key: laravel
-      comment: "contemporary PHP framework alternative"
-    - type: tool
-      key: composer
-      comment: "dependency management"
+  - type: "language"
+    key: "php"
+    comment: "application language"
+  - type: "framework"
+    key: "codeigniter"
+    comment: "predecessor and primary influence"
+  - type: "framework"
+    key: "laravel"
+    comment: "contemporary PHP framework alternative"
+  - type: "tool"
+    key: "composer"
+    comment: "dependency management"
 ---
 
 **A full-stack [PHP](../language/php.md) framework built on an HMVC architecture, designed for flexibility and

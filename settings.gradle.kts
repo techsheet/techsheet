@@ -19,5 +19,6 @@ plugins {
 }
 
 include(":core")
-include(":cli")
+include(":analyzer")
+include(":docs")
 include(":test-projects")

@@ -5,7 +5,7 @@ bookCollapseSection: true
 
 # Frameworks
 
-*This section contains all frameworks detected by the TechSheet CLI.*
+*This section contains all frameworks detected by the TechSheet Analyzer.*
 
 - [Akka](akka.md)
 - [Akka HTTP](akka-http.md)

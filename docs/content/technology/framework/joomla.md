@@ -1,30 +1,30 @@
 ---
-title: Joomla
+title: "Joomla"
 aliases:
-  - /framework/joomla
+- "/framework/joomla"
 bookToC: false
 techsheet:
-  key: joomla
-  type: framework
-  category: CMS
+  key: "joomla"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "primary language"
-    - type: framework
-      key: wordpress
-      comment: "leading CMS alternative"
-    - type: framework
-      key: drupal
-      comment: "major CMS alternative"
-    - type: framework
-      key: symfony
-      comment: "underlying component framework"
-    - type: tool
-      key: composer
-      comment: "dependency management"
+  - type: "language"
+    key: "php"
+    comment: "primary language"
+  - type: "framework"
+    key: "wordpress"
+    comment: "leading CMS alternative"
+  - type: "framework"
+    key: "drupal"
+    comment: "major CMS alternative"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying component framework"
+  - type: "tool"
+    key: "composer"
+    comment: "dependency management"
 ---
 
 **An open-source content management system written in [PHP](../language/php.md), designed for building and

@@ -1,21 +1,21 @@
 ---
-title: HTML
+title: "HTML"
 aliases:
-  - /language/html
+- "/language/html"
 bookToC: false
 techsheet:
-  key: html
-  type: language
+  key: "html"
+  type: "language"
   related:
-    - type: language
-      key: css
-      comment: "companion language for styling"
-    - type: language
-      key: javascript
-      comment: "companion language for interactivity"
-    - type: language
-      key: typescript
-      comment: "typed alternative for client-side scripting"
+  - type: "language"
+    key: "css"
+    comment: "companion language for styling"
+  - type: "language"
+    key: "javascript"
+    comment: "companion language for interactivity"
+  - type: "language"
+    key: "typescript"
+    comment: "typed alternative for client-side scripting"
 ---
 
 **The standard markup language for structuring content on the World Wide Web.**

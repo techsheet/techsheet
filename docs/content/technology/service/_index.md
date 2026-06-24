@@ -5,6 +5,6 @@ bookCollapseSection: true
 
 # Services
 
-*This section contains all services detected by the TechSheet CLI.*
+*This section contains all services detected by the TechSheet Analyzer.*
 
 - [PostgreSQL](postgres.md)

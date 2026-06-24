@@ -1,27 +1,27 @@
 ---
-title: Magento
+title: "Magento"
 aliases:
-  - /framework/magento
+- "/framework/magento"
 bookToC: false
 techsheet:
-  key: magento
-  type: framework
-  category: CMS
+  key: "magento"
+  type: "framework"
+  category: "CMS"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "underlying component framework"
-    - type: tool
-      key: composer
-      comment: "PHP dependency manager"
-    - type: framework
-      key: wordpress
-      comment: "alternative PHP CMS with e-commerce via WooCommerce"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "underlying component framework"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP dependency manager"
+  - type: "framework"
+    key: "wordpress"
+    comment: "alternative PHP CMS with e-commerce via WooCommerce"
 ---
 
 **An open-source e-commerce platform built on [PHP](../language/php.md), designed for large-scale and highly

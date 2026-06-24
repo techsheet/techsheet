@@ -1,27 +1,27 @@
 ---
-title: Angular
+title: "Angular"
 aliases:
-  - /framework/angular
+- "/framework/angular"
 bookToC: false
 techsheet:
-  key: angular
-  type: framework
-  category: Application
+  key: "angular"
+  type: "framework"
+  category: "Application"
   languages:
-    - typescript
+  - "typescript"
   related:
-    - type: language
-      key: typescript
-      comment: "primary development language"
-    - type: framework
-      key: react
-      comment: "alternative frontend framework"
-    - type: framework
-      key: vue
-      comment: "alternative frontend framework"
-    - type: tool
-      key: nodejs
-      comment: "runtime and toolchain platform"
+  - type: "language"
+    key: "typescript"
+    comment: "primary development language"
+  - type: "framework"
+    key: "react"
+    comment: "alternative frontend framework"
+  - type: "framework"
+    key: "vue"
+    comment: "alternative frontend framework"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime and toolchain platform"
 ---
 
 **A comprehensive, TypeScript-based web application framework maintained by Google for building single-page and

@@ -1,28 +1,28 @@
 ---
-title: Logback
+title: "Logback"
 aliases:
-  - /framework/logback
+- "/framework/logback"
 bookToC: false
 techsheet:
-  key: logback
-  type: framework
-  category: Logging
+  key: "logback"
+  type: "framework"
+  category: "Logging"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: framework
-      key: slf4j
-      comment: "native API facade"
-    - type: framework
-      key: log4j2
-      comment: "direct alternative"
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary language"
+  - type: "framework"
+    key: "slf4j"
+    comment: "native API facade"
+  - type: "framework"
+    key: "log4j2"
+    comment: "direct alternative"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary language"
 ---
 
 **A reliable, fast, and flexible logging framework for [Java](../language/java.md) applications, designed as the

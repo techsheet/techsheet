@@ -1,28 +1,28 @@
 ---
-title: Next.js
+title: "Next.js"
 aliases:
-  - /framework/nextjs
+- "/framework/nextjs"
 bookToC: false
 techsheet:
-  key: nextjs
-  type: framework
-  category: Application
+  key: "nextjs"
+  type: "framework"
+  category: "Application"
   languages:
-    - javascript
-    - typescript
+  - "javascript"
+  - "typescript"
   related:
-    - type: framework
-      key: react
-      comment: "underlying UI library"
-    - type: tool
-      key: nodejs
-      comment: "runtime platform"
-    - type: language
-      key: typescript
-      comment: "primary development language"
-    - type: framework
-      key: express
-      comment: "alternative Node.js server framework"
+  - type: "framework"
+    key: "react"
+    comment: "underlying UI library"
+  - type: "tool"
+    key: "nodejs"
+    comment: "runtime platform"
+  - type: "language"
+    key: "typescript"
+    comment: "primary development language"
+  - type: "framework"
+    key: "express"
+    comment: "alternative Node.js server framework"
 ---
 
 **A full-stack [React](react.md) framework for building server-rendered and statically generated web

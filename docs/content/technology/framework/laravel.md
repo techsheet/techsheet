@@ -1,30 +1,30 @@
 ---
-title: Laravel
+title: "Laravel"
 aliases:
-  - /framework/laravel
+- "/framework/laravel"
 bookToC: false
 techsheet:
-  key: laravel
-  type: framework
-  category: Application
+  key: "laravel"
+  type: "framework"
+  category: "Application"
   languages:
-    - php
+  - "php"
   related:
-    - type: language
-      key: php
-      comment: "implementation language"
-    - type: framework
-      key: symfony
-      comment: "PHP alternative, shares components"
-    - type: framework
-      key: eloquent
-      comment: "built-in ORM"
-    - type: framework
-      key: lumen
-      comment: "lightweight Laravel micro-framework"
-    - type: tool
-      key: composer
-      comment: "PHP package manager"
+  - type: "language"
+    key: "php"
+    comment: "implementation language"
+  - type: "framework"
+    key: "symfony"
+    comment: "PHP alternative, shares components"
+  - type: "framework"
+    key: "eloquent"
+    comment: "built-in ORM"
+  - type: "framework"
+    key: "lumen"
+    comment: "lightweight Laravel micro-framework"
+  - type: "tool"
+    key: "composer"
+    comment: "PHP package manager"
 ---
 
 **A full-stack [PHP](../language/php.md) web application framework built on expressive syntax and

@@ -1,21 +1,21 @@
 ---
-title: ABAP
+title: "ABAP"
 aliases:
-  - /language/abap
+- "/language/abap"
 bookToC: false
 techsheet:
-  key: abap
-  type: language
+  key: "abap"
+  type: "language"
   related:
-    - type: language
-      key: sql
-      comment: "embedded Open SQL for database access"
-    - type: language
-      key: cobol
-      comment: "procedural predecessor in enterprise ERP"
-    - type: language
-      key: java
-      comment: "interoperability on SAP NetWeaver"
+  - type: "language"
+    key: "sql"
+    comment: "embedded Open SQL for database access"
+  - type: "language"
+    key: "cobol"
+    comment: "procedural predecessor in enterprise ERP"
+  - type: "language"
+    key: "java"
+    comment: "interoperability on SAP NetWeaver"
 ---
 
 **A proprietary, high-level programming language created by SAP for developing business applications on its enterprise

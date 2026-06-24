@@ -1,31 +1,31 @@
 ---
-title: Quarkus
+title: "Quarkus"
 aliases:
-  - /framework/quarkus
+- "/framework/quarkus"
 bookToC: false
 techsheet:
-  key: quarkus
-  type: framework
-  category: Application
+  key: "quarkus"
+  type: "framework"
+  category: "Application"
   languages:
-    - java
-    - kotlin
+  - "java"
+  - "kotlin"
   related:
-    - type: tool
-      key: jvm
-      comment: "runtime platform"
-    - type: language
-      key: java
-      comment: "primary implementation language"
-    - type: framework
-      key: micronaut
-      comment: "alternative compile-time JVM framework"
-    - type: framework
-      key: spring-boot
-      comment: "dominant JVM framework alternative"
-    - type: language
-      key: kotlin
-      comment: "supported implementation language"
+  - type: "tool"
+    key: "jvm"
+    comment: "runtime platform"
+  - type: "language"
+    key: "java"
+    comment: "primary implementation language"
+  - type: "framework"
+    key: "micronaut"
+    comment: "alternative compile-time JVM framework"
+  - type: "framework"
+    key: "spring-boot"
+    comment: "dominant JVM framework alternative"
+  - type: "language"
+    key: "kotlin"
+    comment: "supported implementation language"
 ---
 
 **A Kubernetes-native [Java](../language/java.md) framework tailored for GraalVM native images and HotSpot,

@@ -1,0 +1,10 @@
+package org.techsheet.analyzer.detector
+
+import org.techsheet.analyzer.domain.FrameworkType
+
+class KtorDetector : AbstractJvmFrameworkDetector(
+  name = "Ktor",
+  framework = FrameworkType.KTOR,
+  coordinates = listOf(Coordinate("io.ktor")),
+  pluginIds = listOf("io.ktor.plugin"),
+)

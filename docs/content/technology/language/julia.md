@@ -1,24 +1,24 @@
 ---
-title: Julia
+title: "Julia"
 aliases:
-  - /language/julia
+- "/language/julia"
 bookToC: false
 techsheet:
-  key: julia
-  type: language
+  key: "julia"
+  type: "language"
   related:
-    - type: language
-      key: python
-      comment: "primary alternative for scientific computing"
-    - type: language
-      key: r
-      comment: "alternative for statistical computing"
-    - type: language
-      key: fortran
-      comment: "numerical performance benchmark"
-    - type: language
-      key: cuda
-      comment: "GPU computing target"
+  - type: "language"
+    key: "python"
+    comment: "primary alternative for scientific computing"
+  - type: "language"
+    key: "r"
+    comment: "alternative for statistical computing"
+  - type: "language"
+    key: "fortran"
+    comment: "numerical performance benchmark"
+  - type: "language"
+    key: "cuda"
+    comment: "GPU computing target"
 ---
 
 **A high-level, high-performance programming language designed for technical computing, combining the ease

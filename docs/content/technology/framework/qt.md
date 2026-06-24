@@ -1,22 +1,22 @@
 ---
-title: Qt
+title: "Qt"
 aliases:
-  - /framework/qt
+- "/framework/qt"
 bookToC: false
 techsheet:
-  key: qt
-  type: framework
-  category: Application
+  key: "qt"
+  type: "framework"
+  category: "Application"
   languages:
-    - cpp
-    - python
+  - "cpp"
+  - "python"
   related:
-    - type: language
-      key: cpp
-      comment: "primary implementation language"
-    - type: language
-      key: python
-      comment: "widely used via PyQt and PySide bindings"
+  - type: "language"
+    key: "cpp"
+    comment: "primary implementation language"
+  - type: "language"
+    key: "python"
+    comment: "widely used via PyQt and PySide bindings"
 ---
 
 **A comprehensive cross-platform application framework for building graphical user interfaces and system-level software

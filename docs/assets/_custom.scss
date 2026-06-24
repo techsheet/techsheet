@@ -19,3 +19,16 @@
   max-width: 60vw;
   margin: 0 auto 1.5rem;
 }
+
+.landing-cta-columns > ul {
+  align-items: stretch;
+
+  > li {
+    display: flex;
+    flex-direction: column;
+
+    > p:last-child {
+      margin-top: auto;
+    }
+  }
+}

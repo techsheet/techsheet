@@ -1,18 +1,18 @@
 ---
-title: Solidity
+title: "Solidity"
 aliases:
-  - /language/solidity
+- "/language/solidity"
 bookToC: false
 techsheet:
-  key: solidity
-  type: language
+  key: "solidity"
+  type: "language"
   related:
-    - type: language
-      key: javascript
-      comment: "primary syntactic influence"
-    - type: language
-      key: typescript
-      comment: "dominant language for dApp frontends and tooling"
+  - type: "language"
+    key: "javascript"
+    comment: "primary syntactic influence"
+  - type: "language"
+    key: "typescript"
+    comment: "dominant language for dApp frontends and tooling"
 ---
 
 **A contract-oriented, statically typed programming language designed for implementing smart contracts on the Ethereum
