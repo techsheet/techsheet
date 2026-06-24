@@ -118,3 +118,13 @@ tasks.named<Jar>("jvmJar") {
 tasks.named<Test>("jvmTest") {
   useJUnitPlatform()
 }
+
+val updateDetectedTechnologyDocs by tasks.registering(JavaExec::class) {
+  group = "documentation"
+  description = "Sync technology doc pages with DetectedTechnology enums"
+  val jvmMain = kotlin.jvm().compilations.getByName("main")
+  dependsOn(jvmMain.compileTaskProvider)
+  mainClass.set("org.techsheet.cli.docgen.UpdateTechnologyDocsKt")
+  classpath(jvmMain.output.allOutputs, jvmMain.runtimeDependencyFiles)
+  args(rootProject.file("docs/content/technology").absolutePath)
+}
