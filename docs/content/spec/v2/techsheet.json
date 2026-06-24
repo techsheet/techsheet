@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://techsheet.org/schema/v2/techsheet.json",
-  "title": "TechSheet",
+  "$id": "https://techsheet.org/spec/v2/techsheet.json",
+  "title": "TechSheet v2",
   "description": "Open standard for structured, automated reporting of technical insights about software projects. Describes technologies, ownership, and operational characteristics in a machine-readable format.",
   "type": "object",
   "additionalProperties": false,
   "examples": [
     {
-      "$schema": "https://techsheet.org/schema/v2/techsheet.json",
+      "$schema": "https://techsheet.org/spec/v2/techsheet.json",
       "project": {
         "id": "ce770f52-e33b-47ba-a3c1-2198568348b9",
         "name": "User Management API",

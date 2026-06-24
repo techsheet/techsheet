@@ -16,7 +16,7 @@ import kotlin.test.fail
 class YamlFileValidationTest {
 
   private val schemaContent = FileSystem.SYSTEM.read(
-    "../docs/schema/v2/techsheet.json".toPath()
+    "../docs/content/spec/v2/techsheet.json".toPath()
   ) { readUtf8() }
 
   private val parser = Parser(

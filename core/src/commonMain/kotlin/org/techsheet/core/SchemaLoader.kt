@@ -32,6 +32,6 @@ class SchemaLoader(
     }
 
   companion object {
-    const val DEFAULT_SCHEMA_LOCATION = "https://techsheet.org/schema/v2/techsheet.json"
+    const val DEFAULT_SCHEMA_LOCATION = "https://techsheet.org/spec/v2/techsheet.json"
   }
 }

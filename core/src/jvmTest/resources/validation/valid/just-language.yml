@@ -1,4 +1,4 @@
-$schema: "https://techsheet.org/schema/v2/techsheet.json"
+$schema: "https://techsheet.org/spec/v2/techsheet.json"
 languages:
   - id: "language.kotlin"
     name: "Kotlin"
