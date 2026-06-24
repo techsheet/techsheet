@@ -1,0 +1,21 @@
+/* You can add custom styles here. */
+
+// @import "plugins/numbered";
+// @import "plugins/scrollbars";
+
+.landing-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.landing-tagline {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  max-width: 60vw;
+  margin: 0 auto 1.5rem;
+}

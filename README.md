@@ -170,6 +170,23 @@ Requires JDK 21+.
 
 Use `linkDebugExecutable*` instead of `linkReleaseExecutable*` for debug builds.
 
+### Building documentation
+
+TechSheet uses [Hugo](https://gohugo.io/) with the [Book](https://github.com/alex-shpak/hugo-book) theme for 
+documentation. The sources are in [docs](./docs).
+
+```bash
+cd docs && hugo server
+```
+
+Schema documentation is generated using `json-schema-for-humans` (Python). To set up:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## Testing
 
 Besides unit tests, behavior is validated against realistic project trees in the

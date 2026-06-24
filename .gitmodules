@@ -2,3 +2,6 @@
 	path = test-projects
 	url = git@github.com:techsheet/test-projects.git
 	branch = master
+[submodule "docs/themes/hugo-book"]
+	path = docs/themes/hugo-book
+	url = https://github.com/alex-shpak/hugo-book

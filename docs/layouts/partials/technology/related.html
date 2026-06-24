@@ -1,0 +1,11 @@
+{{ with .Params.techsheet.related }}
+<h2>Related Technologies</h2>
+<ul>
+  {{ range . }}
+    {{ $path := printf "/technology/%s/%s" .type .key }}
+    {{ with site.GetPage $path }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  {{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,8 @@
+template_name: md
+collapse_long_descriptions: false
+collapse_long_examples: false
+show_toc: false
+examples_as_yaml: true
+template_md_options:
+  show_heading_numbers: false
+  show_array_restrictions: false

@@ -31,6 +31,7 @@
 | [Express](https://techsheet.org/framework/express)                 | `4.16.1`  | Application | `framework.express`         |       |
 | [FastAPI](https://techsheet.org/framework/fastapi)                 | `0.115.0` | Application | `framework.fastapi`         |       |
 | [Flask](https://techsheet.org/framework/flask)                     | `3.0.3`   | Application | `framework.flask`           |       |
+| [Ktor](https://techsheet.org/framework/ktor)                       | `3.4.3`   | Application | `framework.ktor`            |       |
 | [Laravel](https://techsheet.org/framework/laravel)                 | `11.5.2`  | Application | `framework.laravel`         |       |
 | [Next.js](https://techsheet.org/framework/nextjs)                  | `16.2.4`  | Application | `framework.nextjs`          |       |
 | [Play Framework](https://techsheet.org/framework/play-framework)   | `3.0.10`  | Application | `framework.play-framework`  |       |
